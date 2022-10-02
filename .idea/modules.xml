@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/DataManagement/DataManagement.iml" filepath="$PROJECT_DIR$/DataManagement/DataManagement.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/DataManagement4Sek-c.iml" filepath="$PROJECT_DIR$/.idea/DataManagement4Sek-c.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataManagement/DataManagementBackend.iml" filepath="$PROJECT_DIR$/DataManagement/DataManagementBackend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DataManagementFrontend/DataManagementFrontend.iml" filepath="$PROJECT_DIR$/DataManagementFrontend/DataManagementFrontend.iml" />
     </modules>
   </component>
 </project>

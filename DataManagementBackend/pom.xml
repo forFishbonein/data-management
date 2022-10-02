@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sekc.datamanagement</groupId>
-    <artifactId>DataManagement</artifactId>
+    <artifactId>DataManagementBackend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>DataManagement</name>
+    <name>DataManagementBackend</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
