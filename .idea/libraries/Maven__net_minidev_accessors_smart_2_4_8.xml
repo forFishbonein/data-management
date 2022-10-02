@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="Maven: net.minidev:accessors-smart:2.4.8">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/net/minidev/accessors-smart/2.4.8/accessors-smart-2.4.8.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -8,6 +9,15 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/net/minidev/accessors-smart/2.4.8/accessors-smart-2.4.8-sources.jar!/" />
+=======
+      <root url="jar://$PROJECT_DIR$/../../Maven/apache-maven-3.8.4/mvn_resp/net/minidev/accessors-smart/2.4.8/accessors-smart-2.4.8.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../Maven/apache-maven-3.8.4/mvn_resp/net/minidev/accessors-smart/2.4.8/accessors-smart-2.4.8-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../Maven/apache-maven-3.8.4/mvn_resp/net/minidev/accessors-smart/2.4.8/accessors-smart-2.4.8-sources.jar!/" />
+>>>>>>> c6f6dca5ed4ffb66b00e7ad44e97c143b821ccec
     </SOURCES>
   </library>
 </component>
