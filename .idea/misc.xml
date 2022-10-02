@@ -9,10 +9,11 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/DataManagement/pom.xml" />
+        <option value="$PROJECT_DIR$/DataManagementBackend/pom.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectRootManager">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="jbr-11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
   <component name="SuppressionsComponent">
