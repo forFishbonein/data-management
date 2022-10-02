@@ -8,6 +8,7 @@ class DataManagementApplicationTests {
 
     @Test
     void contextLoads() {
+        System.out.println("hello world");
     }
 
 }

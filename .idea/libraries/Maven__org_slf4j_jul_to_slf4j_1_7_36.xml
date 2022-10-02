@@ -1,6 +1,15 @@
 <component name="libraryTable">
   <library name="Maven: org.slf4j:jul-to-slf4j:1.7.36">
     <CLASSES>
+<<<<<<< HEAD
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/org/slf4j/jul-to-slf4j/1.7.36/jul-to-slf4j-1.7.36.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/org/slf4j/jul-to-slf4j/1.7.36/jul-to-slf4j-1.7.36-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/org/slf4j/jul-to-slf4j/1.7.36/jul-to-slf4j-1.7.36-sources.jar!/" />
+=======
       <root url="jar://$PROJECT_DIR$/../../Maven/apache-maven-3.8.4/mvn_resp/org/slf4j/jul-to-slf4j/1.7.36/jul-to-slf4j-1.7.36.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -8,6 +17,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../../Maven/apache-maven-3.8.4/mvn_resp/org/slf4j/jul-to-slf4j/1.7.36/jul-to-slf4j-1.7.36-sources.jar!/" />
+>>>>>>> c6f6dca5ed4ffb66b00e7ad44e97c143b821ccec
     </SOURCES>
   </library>
 </component>

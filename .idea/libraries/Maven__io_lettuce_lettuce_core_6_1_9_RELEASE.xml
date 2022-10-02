@@ -1,6 +1,15 @@
 <component name="libraryTable">
   <library name="Maven: io.lettuce:lettuce-core:6.1.9.RELEASE">
     <CLASSES>
+<<<<<<< HEAD
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/io/lettuce/lettuce-core/6.1.9.RELEASE/lettuce-core-6.1.9.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/io/lettuce/lettuce-core/6.1.9.RELEASE/lettuce-core-6.1.9.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/io/lettuce/lettuce-core/6.1.9.RELEASE/lettuce-core-6.1.9.RELEASE-sources.jar!/" />
+=======
       <root url="jar://$PROJECT_DIR$/../../Maven/apache-maven-3.8.4/mvn_resp/io/lettuce/lettuce-core/6.1.9.RELEASE/lettuce-core-6.1.9.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -8,6 +17,7 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/../../Maven/apache-maven-3.8.4/mvn_resp/io/lettuce/lettuce-core/6.1.9.RELEASE/lettuce-core-6.1.9.RELEASE-sources.jar!/" />
+>>>>>>> c6f6dca5ed4ffb66b00e7ad44e97c143b821ccec
     </SOURCES>
   </library>
 </component>
