@@ -7,21 +7,19 @@ import lombok.Data;
 
 
 @Data
-public class Teacher {
+public class TeacherInfo {
     private static final long serialVersionUID = 1L;
 
     //使用MP的id生成策略
     @TableId(type = IdType.ASSIGN_ID)
     private Long teacherId;
 
-    private String teacherEmail;
+    private String teacherSid;
 
-    private String teacherPass;
+    private String teacherName;
 
-    private String createTime;
+    private String teacherTittle;
 
-    private String updateTime;
+    private String teacherTele;
 
-    @TableLogic
-    private String deleted;
 }
