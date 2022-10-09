@@ -1,7 +1,6 @@
 <template>
   <div>
-<<<<<<< HEAD
-     <!-- <TeacherNav></TeacherNav> -->
+      <TeacherNav></TeacherNav>
       <div class="container">
        <!-- <TeacherHeader></TeacherHeader> -->
         <div class="tbody">
@@ -12,26 +11,14 @@
           <div v-for="(item,index) in tdata" :key="index">
             <TeacherData :id="item.id" :title="item.title" :name="item.name" :desc="item.desc" :time="item.time"></TeacherData>
           </div>
-=======
-    <TeacherNav></TeacherNav>
-    <div class="container">
-      <!-- <TeacherHeader></TeacherHeader> -->
-      <div>
-        <div>
-          <span>资料</span>
-          <input placeholder="搜索"/>
-          <!-- <TeacherData></TeacherData> -->
->>>>>>> 9c2b76bd6bc95fab3ffbf23527b54596263b2c22
         </div>
       </div>
-    </div>
   </div>
 </template>
 
-<<<<<<< HEAD
   <script>
-  //import TeacherNav from './components/TeacherNav.vue'
-  //import TeacherHeader from './components/TeacherHeader.vue'
+  import TeacherNav from '../components/TeacherNav.vue'
+  //import TeacherHeader from '../components/TeacherHeader.vue'
   import TeacherData from '../components/TeacherData.vue'
   export default {
     data () {
@@ -55,30 +42,16 @@
       }
     },
     methods: {
-=======
-<script>
-import TeacherNav from '../components/TeacherNav.vue'
-// import TeacherHeader from './components/TeacherHeader.vue'
-import TeacherData from '../components/TeacherData.vue'
-export default {
-  data () {
-    return {
->>>>>>> 9c2b76bd6bc95fab3ffbf23527b54596263b2c22
 
+    },
+    components: {
+      TeacherNav,
+      // TeacherHeader,
+      TeacherData
     }
-  },
-  methods: {
-
-  },
-  components: {
-    TeacherNav,
-    // TeacherHeader,
-     TeacherData
-  }
 }
 </script>
 
-<<<<<<< HEAD
   <style scoped>
     .container{
       width: 1200px;
@@ -86,18 +59,19 @@ export default {
       display: flex;
       /* height: 200px; */
       /* background-color: brown; */
+      margin-top: 50px;
     }
     .tbody{
       display: flex;
       flex-direction: column;
       /* justify-content: center; */
-      background-color: #efefef;
+      background-color: #f5f9ff;
       min-height: 800px;
     }
     .line{
       width: 1200px;
       height: 50px;
-      background-color: #3c85d7;
+      background-color: #7a91bc;
       line-height: 50px;
     }
     .line > span{
@@ -113,10 +87,7 @@ export default {
       top: 50%;
       transform: translateY(-50%);
       margin-right: 20px;
+      padding-left: 20px;
+      border-radius: 10px;
     }
   </style>
-=======
-<style scoped>
-
-</style>
->>>>>>> 9c2b76bd6bc95fab3ffbf23527b54596263b2c22

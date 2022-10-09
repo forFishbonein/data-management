@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="Maven: io.jsonwebtoken:jjwt:0.9.1">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../../Maven/apache-maven-3.8.4/mvn_resp/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1.jar!/" />
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1.jar!/" />
     </CLASSES>
     <JAVADOC>
-      <root url="jar://$PROJECT_DIR$/../../Maven/apache-maven-3.8.4/mvn_resp/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1-javadoc.jar!/" />
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1-javadoc.jar!/" />
     </JAVADOC>
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/../../Maven/apache-maven-3.8.4/mvn_resp/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1-sources.jar!/" />
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/io/jsonwebtoken/jjwt/0.9.1/jjwt-0.9.1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
