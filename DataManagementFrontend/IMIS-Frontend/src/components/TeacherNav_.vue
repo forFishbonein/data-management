@@ -70,12 +70,10 @@ nav .el-menu-search {
   font-size: larger;
   font-weight: bold;
 }
-nav.searchInput {
-  width: 100px;
-  margin-top: .5rem;
+nav .searchInput {
+  width: 400px;
   margin-left: 4%;
-  margin-right: 4%;
-  line-height: 2rem;
+  line-height: 1rem;
   border:#ccc 1px solid;
   text-align: center;
   font-size: 18px;
@@ -96,7 +94,6 @@ nav .el-menu-center {
 }
 
 nav .el-menu-center:hover {
-  /* background-color: darkgray; */
   border-bottom: solid 2px;
   border-bottom-color: rgb(18, 17, 17); 
   height: 48px;
@@ -118,8 +115,6 @@ nav .el-menu-push {
 }
 nav .el-menu-push:hover {
   background-color: darkgray;
-   /*  border-bottom: solid 2px;
-  border-bottom-color: rgb(18, 17, 17); */
   height: 48px;
 }
 
