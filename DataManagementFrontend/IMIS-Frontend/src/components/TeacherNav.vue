@@ -1,8 +1,8 @@
 <template>
  <div>
-   <header>
+   <div class="header">
      <TeacherNav_ />
-   </header>
+   </div>
  </div>
 </template>
 
@@ -16,18 +16,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
-  body {
+  /* body {
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  }
-  header {
-    background: dimgrey;
-    width: auto;
-    height: 48px;
+  } */
+  .header {
+    background: #3c85d7;
+    width: 100%;
+    height: 60px;
+    display: flex;
   }
 </style>
