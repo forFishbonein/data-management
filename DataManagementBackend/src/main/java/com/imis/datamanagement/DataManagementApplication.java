@@ -1,4 +1,4 @@
-package com.sekc.datamanagement;
+package com.imis.datamanagement;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
