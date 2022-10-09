@@ -1,4 +1,4 @@
-package com.sekc.domain;
+package com.imis.datamanagement.domain;
 
 import java.util.Date;
 
