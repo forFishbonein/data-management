@@ -1,5 +1,6 @@
 <template>
   <div>
+<<<<<<< HEAD
      <!-- <TeacherNav></TeacherNav> -->
       <div class="container">
        <!-- <TeacherHeader></TeacherHeader> -->
@@ -11,11 +12,23 @@
           <div v-for="(item,index) in tdata" :key="index">
             <TeacherData :id="item.id" :title="item.title" :name="item.name" :desc="item.desc" :time="item.time"></TeacherData>
           </div>
+=======
+    <TeacherNav></TeacherNav>
+    <div class="container">
+      <!-- <TeacherHeader></TeacherHeader> -->
+      <div>
+        <div>
+          <span>资料</span>
+          <input placeholder="搜索"/>
+          <!-- <TeacherData></TeacherData> -->
+>>>>>>> 9c2b76bd6bc95fab3ffbf23527b54596263b2c22
         </div>
       </div>
     </div>
-  </template>
+  </div>
+</template>
 
+<<<<<<< HEAD
   <script>
   //import TeacherNav from './components/TeacherNav.vue'
   //import TeacherHeader from './components/TeacherHeader.vue'
@@ -42,16 +55,30 @@
       }
     },
     methods: {
+=======
+<script>
+import TeacherNav from '../components/TeacherNav.vue'
+// import TeacherHeader from './components/TeacherHeader.vue'
+import TeacherData from '../components/TeacherData.vue'
+export default {
+  data () {
+    return {
+>>>>>>> 9c2b76bd6bc95fab3ffbf23527b54596263b2c22
 
-    },
-    components: {
-     // TeacherNav,
-      //TeacherHeader,
-      TeacherData
     }
-  }
-  </script>
+  },
+  methods: {
 
+  },
+  components: {
+    TeacherNav,
+    // TeacherHeader,
+     TeacherData
+  }
+}
+</script>
+
+<<<<<<< HEAD
   <style scoped>
     .container{
       width: 1200px;
@@ -88,3 +115,8 @@
       margin-right: 20px;
     }
   </style>
+=======
+<style scoped>
+
+</style>
+>>>>>>> 9c2b76bd6bc95fab3ffbf23527b54596263b2c22
