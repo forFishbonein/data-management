@@ -1,21 +1,21 @@
 <template>
-    <TeacherNav></TeacherNav>
+    <!-- <TeacherNav></TeacherNav> -->
     <div class="container">
-      <TeacherHeader></TeacherHeader>
+      <!-- <TeacherHeader></TeacherHeader> -->
       <div>
         <div>
           <span>资料</span>
           <input placeholder="搜索"/>
-          <TeacherData></TeacherData>
+          <!-- <TeacherData></TeacherData> -->
         </div>
       </div>
     </div>
 </template>
 
 <script>
-import TeacherNav from './components/TeacherNav.vue'
-import TeacherHeader from './components/TeacherHeader.vue'
-import TeacherData from './components/TeacherData.vue'
+// import TeacherNav from './components/TeacherNav.vue'
+// import TeacherHeader from './components/TeacherHeader.vue'
+// import TeacherData from './components/TeacherData.vue'
 export default {
   data () {
     return {
@@ -24,15 +24,21 @@ export default {
   },
   methods: {
 
-  },
-  components: {
-    TeacherNav,
-    TeacherHeader,
-    TeacherData
   }
+  // components: {
+  //   TeacherNav,
+  //   TeacherHeader,
+  //   TeacherData
+  // }
 }
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+  .container{
+    width:1200px;
+    margin: 0 auto;
+    display: flex;
+    background-color: red($color: #000000);
+    height: 500px;
+  }
 </style>
