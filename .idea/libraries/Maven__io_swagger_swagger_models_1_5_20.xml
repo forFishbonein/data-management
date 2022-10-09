@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="Maven: io.swagger:swagger-models:1.5.20">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$MAVEN_REPOSITORY$/io/swagger/swagger-models/1.5.20/swagger-models-1.5.20.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -8,6 +9,15 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/io/swagger/swagger-models/1.5.20/swagger-models-1.5.20-sources.jar!/" />
+=======
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/io/swagger/swagger-models/1.5.20/swagger-models-1.5.20.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/io/swagger/swagger-models/1.5.20/swagger-models-1.5.20-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/io/swagger/swagger-models/1.5.20/swagger-models-1.5.20-sources.jar!/" />
+>>>>>>> 9689ca1f9aa45aa5907fa0b7646772e097a146b0
     </SOURCES>
   </library>
 </component>

@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="Maven: commons-codec:commons-codec:1.15">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.15/commons-codec-1.15.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -8,6 +9,15 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.15/commons-codec-1.15-sources.jar!/" />
+=======
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/commons-codec/commons-codec/1.15/commons-codec-1.15.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/commons-codec/commons-codec/1.15/commons-codec-1.15-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/commons-codec/commons-codec/1.15/commons-codec-1.15-sources.jar!/" />
+>>>>>>> 9689ca1f9aa45aa5907fa0b7646772e097a146b0
     </SOURCES>
   </library>
 </component>

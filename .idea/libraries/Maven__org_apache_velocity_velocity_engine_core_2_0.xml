@@ -1,6 +1,7 @@
 <component name="libraryTable">
   <library name="Maven: org.apache.velocity:velocity-engine-core:2.0">
     <CLASSES>
+<<<<<<< HEAD
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/velocity/velocity-engine-core/2.0/velocity-engine-core-2.0.jar!/" />
     </CLASSES>
     <JAVADOC>
@@ -8,6 +9,15 @@
     </JAVADOC>
     <SOURCES>
       <root url="jar://$MAVEN_REPOSITORY$/org/apache/velocity/velocity-engine-core/2.0/velocity-engine-core-2.0-sources.jar!/" />
+=======
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/org/apache/velocity/velocity-engine-core/2.0/velocity-engine-core-2.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/org/apache/velocity/velocity-engine-core/2.0/velocity-engine-core-2.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/javaweb/apache-maven-3.6.3/maven-repo/org/apache/velocity/velocity-engine-core/2.0/velocity-engine-core-2.0-sources.jar!/" />
+>>>>>>> 9689ca1f9aa45aa5907fa0b7646772e097a146b0
     </SOURCES>
   </library>
 </component>
