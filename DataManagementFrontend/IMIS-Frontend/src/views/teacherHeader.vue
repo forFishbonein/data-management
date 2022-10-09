@@ -44,7 +44,7 @@
         left:123px;
         top:185.5px;
         border-radius: 100%;
-        background-image: 
+
 
     }
 

@@ -1,7 +1,7 @@
 <template>
-    <TeacherNav></TeacherNav>
+<!--   // <TeacherNav></TeacherNav>-->
     <div class="container">
-      <TeacherHeader></TeacherHeader>
+<!--     // <TeacherHeader></TeacherHeader>-->
       <div>
         <div>
           <span>资料</span>
@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import TeacherNav from './components/TeacherNav.vue'
-import TeacherHeader from './components/TeacherHeader.vue'
-import TeacherData from './components/TeacherData.vue'
+//import TeacherNav from './components/TeacherNav.vue'
+//import TeacherHeader from './components/TeacherHeader.vue'
+import TeacherData from '../components/TeacherData.vue'
 export default {
   data () {
     return {
@@ -26,8 +26,8 @@ export default {
 
   },
   components: {
-    TeacherNav,
-    TeacherHeader,
+   // TeacherNav,
+    //TeacherHeader,
     TeacherData
   }
 }
