@@ -1,7 +1,8 @@
-# Data Management for Sek-C
+# Data Management for IMIS
+
 
 #### 介绍
-Data Management for Sek-C
+Data Management for IMIS
 
 #### 软件架构
 软件架构说明
