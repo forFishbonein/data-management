@@ -1,5 +1,5 @@
 server:
-  port: 80
+  port: 8080
   tomcat:
     uri-encoding: utf-8
 
@@ -47,7 +47,7 @@ spring:
       # authentication-database: admin
       username: admin
       password: 12345678
-      database:
+      database: template
 
   # 邮箱服务
   mail:

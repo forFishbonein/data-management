@@ -1,7 +1,6 @@
 <template>
   <nav>
-    <!-- <div class="logo"><img src="../logo.png"></div> -->
-    <div class="logo"><img src="./logo.png"></div>
+    <div><img src="./logo.png" class="logo"></div>
     <div class="el-menu-resource" href="#">资源广场</div>
     <div class="el-menu-search" >
       <input v-model="keyword" type="text" class="searchInput"
@@ -17,23 +16,24 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style scoped>
 nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 nav .logo {
-  padding: 15px 50px;
-  margin-left:10px;
-  margin-right:10px;
-  position: relative;
-  text-align: center;
-  border-bottom: transparent;
+  /* padding: 15px 50px; */
+  /* margin-left:10px; */
+  margin-right:50px;
+  /* position: relative; */
+  /* text-align: center; */
+  /* border-bottom: transparent; */
   display: flex;
-  height: 48px;
-  width: 80px;
+  height: 20px;
+  width: 50px;
 
 }
 
@@ -53,8 +53,9 @@ nav .el-menu-resource {
 nav .el-menu-resource:hover {
   /* background-color: darkgray; */
   border-bottom: solid 2px;
-  border-bottom-color: rgb(18, 17, 17); 
+  border-bottom-color: rgb(18, 17, 17);
   height: 48px;
+  cursor: pointer;
 }
 
 nav .el-menu-search {
@@ -77,7 +78,8 @@ nav .searchInput {
   border:#ccc 1px solid;
   text-align: center;
   font-size: 18px;
-  }
+  border-radius: 10px;
+}
 
 nav .el-menu-center {
   color: #FFFFFF;
@@ -95,8 +97,9 @@ nav .el-menu-center {
 
 nav .el-menu-center:hover {
   border-bottom: solid 2px;
-  border-bottom-color: rgb(18, 17, 17); 
+  border-bottom-color: rgb(18, 17, 17);
   height: 48px;
+  cursor: pointer;
 }
 
 nav .el-menu-push {
@@ -115,7 +118,9 @@ nav .el-menu-push {
 }
 nav .el-menu-push:hover {
   background-color: darkgray;
-  height: 48px;
+  /* height: 48px; */
+  cursor: pointer;
+
 }
 
 </style>
