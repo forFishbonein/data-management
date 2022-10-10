@@ -52,7 +52,7 @@
 }
 </script>
 
-  <style scoped>
+  <style lang="scss" scoped>
     .container{
       width: 1200px;
       margin: 0 auto;
@@ -60,34 +60,37 @@
       /* height: 200px; */
       /* background-color: brown; */
       margin-top: 50px;
+      .tbody{
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
+        background-color: #f5f9ff;
+        min-height: 800px;
+        .line{
+          width: 1200px;
+          height: 50px;
+          background-color: #7a91bc;
+          line-height: 50px;
+        }
+        .line > span{
+          float: left;
+          margin-left: 50px;
+          font-size: 20px;
+        }
+        .line > input{
+          float: right;
+          width: 390px;
+          height: 20px;
+          position: relative;
+          top: 50%;
+          transform: translateY(-50%);
+          margin-right: 20px;
+          padding-left: 20px;
+          border-radius: 10px;
+        }
+      }
     }
-    .tbody{
-      display: flex;
-      flex-direction: column;
-      /* justify-content: center; */
-      background-color: #f5f9ff;
-      min-height: 800px;
-    }
-    .line{
-      width: 1200px;
-      height: 50px;
-      background-color: #7a91bc;
-      line-height: 50px;
-    }
-    .line > span{
-      float: left;
-      margin-left: 50px;
-      font-size: 20px;
-    }
-    .line > input{
-      float: right;
-      width: 390px;
-      height: 20px;
-      position: relative;
-      top: 50%;
-      transform: translateY(-50%);
-      margin-right: 20px;
-      padding-left: 20px;
-      border-radius: 10px;
-    }
+
+
+
   </style>
