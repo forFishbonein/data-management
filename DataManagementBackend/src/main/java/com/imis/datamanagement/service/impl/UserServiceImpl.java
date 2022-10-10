@@ -1,8 +1,10 @@
 package com.imis.datamanagement.service.impl;
 
 import com.alibaba.druid.util.StringUtils;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.common.result.CodeMsg;
+import com.imis.datamanagement.common.vo.LoginVo;
 import com.imis.datamanagement.domain.User;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.mapper.UserMapper;
@@ -56,43 +58,49 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     //cookie的名字
     public static final String COOKIE_NAME_TOKEN = "token";
 
+    //TODO 缓存注解暂未添加
     public User getByUserId(long userId) {
 
         //取数据库
-        User user = userMapper.getById(id);
-        //再存入缓存
-        if (user != null) {
-            redisService.set(UserKey.getById, "" + id, user);
-        }
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(User::getUserId, userId);
+
+        User user = userMapper.selectOne(queryWrapper);
+
         return user;
     }
 
-    /**
-     * 典型缓存同步场景：更新密码
-     */
-    public boolean updatePassword(String token, long id, String formPass) {
-        //取user
-        User user = getById(id);
-        if(user == null) {
-            throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
-        }
-        //更新数据库
-        User toBeUpdate = new User();
-        toBeUpdate.setId(id);
-        toBeUpdate.setPassword(MD5Util.formPassToDBPass(formPass, user.getSalt()));
-        userMapper.update(toBeUpdate);
-        //更新缓存：先删除再插入
-        redisService.delete(UserKey.getById, ""+id);
-        user.setPassword(toBeUpdate.getPassword());
-        redisService.set(UserKey.token, token, user);
-        return true;
-    }
+//    /**
+//     * 典型缓存同步场景：更新密码
+//     */
+//    public boolean updatePassword(String token, long id, String formPass) {
+//        //取user
+//        User user = getById(id);
+//        if(user == null) {
+//            throw new GlobalException(CodeMsg.EMAIL_NOT_EXIST);
+//        }
+//        //更新数据库
+//        User toBeUpdate = new User();
+//        toBeUpdate.setId(id);
+//        toBeUpdate.setPassword(MD5Util.formPassToDBPass(formPass, user.getSalt()));
+//        userMapper.update(toBeUpdate);
+//        //更新缓存：先删除再插入
+//        redisService.delete(UserKey.getById, ""+id);
+//        user.setPassword(toBeUpdate.getPassword());
+//        redisService.set(UserKey.token, token, user);
+//        return true;
+//    }
 
+    /*
+    TODO 登录功能
+    发送验证码
+    验证验证码
+     */
     public String login(HttpServletResponse response, LoginVo loginVo) {
         if (loginVo == null) {
             throw new GlobalException(CodeMsg.SERVER_ERROR);
         }
-        String mobile = loginVo.getMobile();
+        String email = loginVo.getEmail();
         String formPass = loginVo.getPassword();
         //判断手机号是否存在
         User user = getById(Long.parseLong(mobile));
