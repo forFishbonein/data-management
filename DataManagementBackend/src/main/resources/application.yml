@@ -1,0 +1,80 @@
+server:
+  port: 88
+  tomcat:
+    uri-encoding: utf-8
+
+spring:
+  #druid配置
+  datasource:
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://121.41.107.144:3306/imis?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+  main:
+    banner-mode: off
+  #  mvc:
+  #    static-path-pattern : /static/**
+  #  resources:
+  #    static-locations:
+  #      classpath: /static/
+
+
+  # 缓存
+#  redis:
+#    host: 121.41.107.144
+#    port: 6379
+#    password: 1234
+#    database: 0
+#  cache:
+#    redis:
+#      time-to-live: 1800000 #设置缓存过期时间
+  data:
+    mongodb:
+      host: 121.41.107.144
+      port: 27017
+      # authentication-database: admin
+      username: admin
+      password: 12345678
+      database: template
+
+  # 邮箱服务
+  mail:
+    host: smtp.qq.com
+    username: 2856400640@qq.com
+    password: cxkoevueftkbdcfi
+    default-encoding: UTF-8
+
+# MP的配置
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+mybatis-plus:
+  configuration:
+    #在映射实体或者属性时，将数据库中表名和字段名中的下划线去掉，按照驼峰命名法映射
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      id-type: ASSIGN_ID
+      #配置逻辑删除
+      logic-delete-value: 1 #只在mybatisPlus时候生效
+      logic-not-delete-value: 0
+    banner: false
+
+
+
+
