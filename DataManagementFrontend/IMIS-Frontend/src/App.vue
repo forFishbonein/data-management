@@ -16,11 +16,38 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,legend,input,textarea,button
+,p,blockquote,th,td{
+    margin: 0;
+    padding: 0;
+}
+ul,ol,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color: #333;
+    cursor: pointer;
+}
+input,button,img,select,textarea{
+    border: none;
+    vertical-align: middle;
+    outline: none;
+}
+textarea{
+    resize:none;
+}
+button{
+    cursor: pointer;
+}
+label{
+    cursor: pointer;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 </style>
