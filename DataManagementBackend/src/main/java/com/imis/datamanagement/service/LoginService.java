@@ -12,15 +12,15 @@ import java.util.Map;
 
 public interface LoginService {
 
-    String codeCheck(Map map);
+    String codeLogin(Map map);
 
-    String passwordCheck(Map map);
+    String passLogin(Map map);
 
     String register(User user);
 
     String logout(String token);
 
-    String isRegistered(User user);
+    String registered(User user);
 
     String sendEmail(User user);
 
