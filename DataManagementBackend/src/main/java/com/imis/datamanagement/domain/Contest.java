@@ -1,29 +1,25 @@
 package com.imis.datamanagement.domain;
 
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 
 @Data
-public class User implements Serializable {
+public class Contest implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    //使用MP的id生成策略
     @TableId(type = IdType.ASSIGN_ID)
-    private Long userId;
+    private Long contestId;
 
-    private String userEmail;
+    private String contestName;
 
-    private String userPass;
+    private String contestLink;
 
-    private String userSid;
-
-    private String userName;
-
-    private String createTime;
+    private String creatTime;
 
     private String updateTime;
 
