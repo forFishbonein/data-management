@@ -8,22 +8,24 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class User implements Serializable {
+public class News implements Serializable {
     private static final long serialVersionUID = 1L;
 
     //使用MP的id生成策略
     @TableId(type = IdType.ASSIGN_ID)
-    private Long userId;
+    private Long newsId;
 
-    private String userEmail;
+    private String newsTitle;
 
-    private String userPass;
+    private String newsEditor;
 
-    private String userSid;
+    private String newsAuthor;
 
-    private String userName;
+    private String newsSource;
 
-    private String createTime;
+    private String newsView;
+
+    private String creatTime;
 
     private String updateTime;
 
