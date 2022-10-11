@@ -2,7 +2,7 @@
   <div>
     <TeacherNav></TeacherNav>
     <div class="container">
-      <!-- <TeacherHeader></TeacherHeader> -->
+      <TeacherHeader></TeacherHeader>
       <div class="tbody">
         <div class="line">
           <span>资料</span>
@@ -19,7 +19,7 @@
 
 <script>
 import TeacherNav from '../components/TeacherNav.vue'
-//import TeacherHeader from '../components/TeacherHeader.vue'
+import TeacherHeader from '../components/TeacherHeader.vue'
 import TeacherData from '../components/TeacherData.vue'
 
 export default {
@@ -46,7 +46,7 @@ export default {
   methods: {},
   components: {
     TeacherNav,
-    // TeacherHeader,
+    TeacherHeader,
     TeacherData
   }
 }
@@ -57,9 +57,10 @@ export default {
   width: 1200px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   /* height: 200px; */
   /* background-color: brown; */
-  margin-top: 50px;
+  // margin-top: 50px;
 
   .tbody {
     display: flex;
