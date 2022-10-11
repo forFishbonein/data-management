@@ -9,16 +9,15 @@ import java.io.Serializable;
 
 
 @Data
-public class Teacher implements Serializable {
+public class Experience implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    //使用MP的id生成策略
     @TableId(type = IdType.ASSIGN_ID)
-    private Long teacherId;
+    private Long experienceId;
 
-    private String teacherEmail;
+    private Long contestId;
 
-    private String teacherPass;
+    private String experienceContent;
 
     private String createTime;
 
