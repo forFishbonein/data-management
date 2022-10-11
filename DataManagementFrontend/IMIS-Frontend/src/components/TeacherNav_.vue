@@ -1,8 +1,9 @@
 <template>
   <nav>
-    <div><img src="./logo.png" class="logo"></div>
+    <div class="logo">logo</div>
     <div class="el-menu-resource" href="#">资源广场</div>
     <div class="el-menu-search" >
+      <!-- <img src="../../static/img/img.png" id="img1"> -->
       <input v-model="keyword" type="text" class="searchInput"
       placeholder="请输入搜索内容 ">
     </div>
@@ -20,20 +21,17 @@ export default {
 nav {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; 
   width: 100%;
 }
 
 nav .logo {
-  /* padding: 15px 50px; */
-  /* margin-left:10px; */
-  margin-right:50px;
-  /* position: relative; */
-  /* text-align: center; */
-  /* border-bottom: transparent; */
+  background-color: #FFFFFF;
+  margin-right:10px;
   display: flex;
-  height: 20px;
-  width: 50px;
+  height: 35px;
+  width: 120px;
+  border-radius: 10px;
 
 }
 
@@ -51,29 +49,25 @@ nav .el-menu-resource {
   font-weight: bold;
 }
 nav .el-menu-resource:hover {
-  /* background-color: darkgray; */
-  border-bottom: solid 2px;
-  border-bottom-color: rgb(18, 17, 17);
-  height: 48px;
-  cursor: pointer;
+  cursor: pointer; 
+  color: #409EFF; 
 }
 
 nav .el-menu-search {
   color: #FFFFFF;
+  width: 450px;
   padding: 15px 50px;
-  margin-left:10px;
-  margin-right:10px;
+  margin-left:50px;
+  margin-right:50px;
   position: relative;
-  text-align: center;
-  border-bottom: transparent;
   display: flex;
   transition: 0.4s;
   font-size: larger;
   font-weight: bold;
 }
 nav .searchInput {
-  width: 400px;
-  margin-left: 4%;
+  width: 450px;
+  text-align: left;
   line-height: 1rem;
   border:#ccc 1px solid;
   text-align: center;
@@ -96,15 +90,14 @@ nav .el-menu-center {
 }
 
 nav .el-menu-center:hover {
-  border-bottom: solid 2px;
-  border-bottom-color: rgb(18, 17, 17);
-  height: 48px;
-  cursor: pointer;
+  cursor: pointer; 
+  color: #409EFF; 
 }
 
 nav .el-menu-push {
   color: #FFFFFF;
   padding: 15px 50px;
+  float: right;
   margin-left:10px;
   margin-right:10px;
   border-radius: 30px;
@@ -117,7 +110,7 @@ nav .el-menu-push {
   font-weight: bold;
 }
 nav .el-menu-push:hover {
-  background-color: darkgray;
+  background-color: #7A91BC;
   /* height: 48px; */
   cursor: pointer;
 
