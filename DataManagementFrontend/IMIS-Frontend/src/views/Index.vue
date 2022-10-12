@@ -118,6 +118,7 @@ export default {
         background-color: #DCE9F8;
         border: 1px #7A91BC solid;
         border-left:none;
+        font-size:18px;
       }
     }
 
