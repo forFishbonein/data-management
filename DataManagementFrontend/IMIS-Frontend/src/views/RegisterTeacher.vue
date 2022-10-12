@@ -5,6 +5,7 @@
     </div>
     <div class="body">
       <form class="right">
+        <div class="rightheader">教师注册</div>
         <div class="box"><input class="containerfirst" type="text" placeholder="请输入邮箱"><button class="buttonin">获取验证码</button></div>
         <div class="box"><input class="container" type="text" placeholder="请输入验证码"></div>
         <div class="box"><input class="container" type="text" placeholder="请输入姓名"></div>
@@ -65,6 +66,16 @@ export default {
   align-items: center;
   height: 100px;
 }
+.rightheader{
+  background-color: white;
+  font-size: 25px;
+  height: 40px;
+  width: 500px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
 .right{
   background-color: white;
   height: 100%;
@@ -114,5 +125,8 @@ export default {
   opacity: 1;
   border-radius: 8px;
   background-color: cornflowerblue;
+}
+.button:hover {
+  background-color: rgb(79, 134, 236);
 }
 </style>
