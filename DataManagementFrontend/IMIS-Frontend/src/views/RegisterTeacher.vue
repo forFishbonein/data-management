@@ -5,7 +5,7 @@
     </div>
     <div class="body">
       <form class="right">
-        <div class="box"><input class="container" type="text" placeholder="请输入邮箱"></div>
+        <div class="box"><input class="containerfirst" type="text" placeholder="请输入邮箱"><button class="buttonin">获取验证码</button></div>
         <div class="box"><input class="container" type="text" placeholder="请输入验证码"></div>
         <div class="box"><input class="container" type="text" placeholder="请输入姓名"></div>
         <div class="box"><input class="container" type="text" placeholder="请输入教工号"></div>
@@ -79,11 +79,20 @@ export default {
   font-size: 16px;
   margin-top: 5px;
 }
-.box span {
-  display: inline-block;
-  text-align: right;
-  width: 100px;
-  height: 53px;
+.containerfirst{
+  width: 200px;
+  height: 30px;
+  padding: 0 2vh;
+  margin-top: 15px;
+  border: 1.5px solid #7A91BC;
+  opacity: 1;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 1);
+}
+.buttonin{
+  width: 95px;
+  height: 30px;
+  margin-left: 5px;
 }
 .container{
   width: 300px;
