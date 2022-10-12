@@ -8,11 +8,9 @@ package com.imis.datamanagement.service.impl;
 
 import com.imis.datamanagement.domain.User;
 import com.imis.datamanagement.service.LoginService;
+import org.springframework.stereotype.Service;
 
-
-import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
+@Service
 public class LoginServiceImpl implements LoginService {
 
     @Override

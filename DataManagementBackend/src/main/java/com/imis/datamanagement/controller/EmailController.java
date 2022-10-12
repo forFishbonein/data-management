@@ -19,16 +19,9 @@ public class EmailController {
 
     @Autowired
     UserService userService;
-
     @GetMapping("/sendEmail")
     public Result<String> sendEmail(@RequestBody LoginVo loginVo){
         userService.sendEmail(loginVo);
         return Result.success("已发送");
     }
-
-
-
-
-
-
 }

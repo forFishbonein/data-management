@@ -1,6 +1,5 @@
 package com.imis.datamanagement.controller;
 
-import com.imis.datamanagement.common.R;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.domain.User;
@@ -25,10 +24,5 @@ public class UserController {
         }
         return Result.success(user);
     }
-
-
-
-
-
 
 }
