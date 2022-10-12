@@ -17,7 +17,8 @@ public class CodeMsg {
     public static CodeMsg EMAIL_ERROR = new CodeMsg(500213, "邮箱格式错误");
     public static CodeMsg EMAIL_NOT_EXIST = new CodeMsg(500214, "邮箱不存在");
     public static CodeMsg PASSWORD_ERROR = new CodeMsg(500215, "密码错误");
-    public static CodeMsg PRIMARY_ERROR = new CodeMsg(500216, "主键冲突");
+    public static CodeMsg CODE_ERROR = new CodeMsg(500216, "验证码错误");
+    public static CodeMsg PRIMARY_ERROR = new CodeMsg(500217, "主键冲突");
 
 //
 

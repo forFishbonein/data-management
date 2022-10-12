@@ -8,13 +8,15 @@
         <pre>参赛时间:{{ time }}&nbsp;
           <img src="../../static/img/img.png"
                alt="pic"
-               id="img1">&nbsp;&nbsp;&nbsp;参赛人：{{ name }}
+               id="img1">
+          &nbsp;&nbsp;&nbsp;参赛人：{{ name }}
         </pre>
       </div>
     </div>
-    <img src="https://ts1.cn.mm.bing.net/th/id/R-C.fd6ff4fca56855c555d7761d446d8b91?rik=iw0S4On4zglJGw&riu=http%3a%2f%2fimg2.sycdn.imooc.com%2f5e2130420001fd6f08270861.jpg&ehk=gEjGSjUa9UoafPxT%2bqfctt32dutGeLo848S3gJNlbdk%3d&risl=&pid=ImgRaw&r=0"
-         alt="pic"
-         id="img2">
+    <img
+      src="https://ts1.cn.mm.bing.net/th/id/R-C.fd6ff4fca56855c555d7761d446d8b91?rik=iw0S4On4zglJGw&riu=http%3a%2f%2fimg2.sycdn.imooc.com%2f5e2130420001fd6f08270861.jpg&ehk=gEjGSjUa9UoafPxT%2bqfctt32dutGeLo848S3gJNlbdk%3d&risl=&pid=ImgRaw&r=0"
+      alt="pic"
+      id="img2">
   </div>
 </template>
 

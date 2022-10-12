@@ -29,7 +29,7 @@ export default {
 }
 */
 .header {
-  background: #3c85d7;
+  background: #94b1d1;
   width: 100%;
   height: 60px;
   display: flex;
