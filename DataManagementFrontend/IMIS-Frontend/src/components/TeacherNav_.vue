@@ -48,21 +48,14 @@ nav .el-menu-resource {
   font-weight: bold;
 }
 nav .el-menu-resource:hover {
-<<<<<<< HEAD
-  text-decoration-line: underline;
-  border-bottom: 1px solid #3C85D7;
-  cursor: pointer; 
-  color: #409EFF; 
-=======
   cursor: pointer;
   color: #409EFF;
->>>>>>> 05b85b9330cc354f6582896b9d7b26fa4c1ba4df
 }
 
 nav .el-menu-search {
   color: #FFFFFF;
   width: 450px;
-  height: 35px;
+  /* height: 35px; */
   padding: 15px 50px;
   margin-left:50px;
   margin-right:50px;
@@ -94,19 +87,17 @@ nav .search-icon:hover{
 }
 nav .searchInput {
   width: 450px;
-<<<<<<< HEAD
+
   height: 35px;
   border:#ccc 1px solid;
   text-align: center;
   position: relative;
   display: flex;
-=======
   height: 40px;
   text-align: left;
   /* line-height: 1rem; */
   border:#ccc 1px solid;
   /* text-align: center; */
->>>>>>> 05b85b9330cc354f6582896b9d7b26fa4c1ba4df
   font-size: 18px;
   border-radius: 0 10px 10px 0;
   padding-left: 10px;
