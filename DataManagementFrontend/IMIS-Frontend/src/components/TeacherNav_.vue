@@ -1,6 +1,9 @@
 <template>
   <nav>
-    <div class="logo">logo</div>
+    <div class="logo">
+      <img  src="../../static/img/logo.png"
+            alt="logo">
+      </div>
     <div class="el-menu-resource" href="#">资源广场</div>
     <div class="el-menu-search" >
       <!-- <img src="../../static/img/img.png" id="img1"> -->
@@ -32,7 +35,6 @@ nav .logo {
   height: 35px;
   width: 120px;
   border-radius: 10px;
-
 }
 
 nav .el-menu-resource {
