@@ -3,7 +3,7 @@
     <div class="logo">logo</div>
     <div class="el-menu-resource" href="#">资源广场</div>
     <div class="el-menu-search" >
-      <!-- <img src="../../static/img/img.png" id="img1"> -->
+      <div class="search-icon"><span class="iconfont">&#xe651;</span></div>
       <input v-model="keyword" type="text" class="searchInput"
       placeholder="请输入搜索内容 ">
     </div>
@@ -21,7 +21,7 @@ export default {
 nav {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   width: 100%;
   background-color: #FFFFFF;
 }
@@ -48,10 +48,15 @@ nav .el-menu-resource {
   font-weight: bold;
 }
 nav .el-menu-resource:hover {
+<<<<<<< HEAD
   text-decoration-line: underline;
   border-bottom: 1px solid #3C85D7;
   cursor: pointer; 
   color: #409EFF; 
+=======
+  cursor: pointer;
+  color: #409EFF;
+>>>>>>> 05b85b9330cc354f6582896b9d7b26fa4c1ba4df
 }
 
 nav .el-menu-search {
@@ -66,15 +71,45 @@ nav .el-menu-search {
   font-size: larger;
   font-weight: bold;
 }
+.iconfont{
+  font-family: "iconfont" !important;
+  font-size: 22px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #FFFFFF
+}
+nav .search-icon{
+  width: 70px;
+  height: 40px;
+  background-color: #DCE9F8;
+  border-radius: 10px 0 0 10px ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+nav .search-icon:hover{
+  background-color: #679cd1
+}
 nav .searchInput {
   width: 450px;
+<<<<<<< HEAD
   height: 35px;
   border:#ccc 1px solid;
   text-align: center;
   position: relative;
   display: flex;
+=======
+  height: 40px;
+  text-align: left;
+  /* line-height: 1rem; */
+  border:#ccc 1px solid;
+  /* text-align: center; */
+>>>>>>> 05b85b9330cc354f6582896b9d7b26fa4c1ba4df
   font-size: 18px;
-  border-radius: 10px;
+  border-radius: 0 10px 10px 0;
+  padding-left: 10px;
 }
 
 nav .el-menu-center {
@@ -90,8 +125,8 @@ nav .el-menu-center {
 }
 
 nav .el-menu-center:hover {
-  cursor: pointer; 
-  color: #409EFF; 
+  cursor: pointer;
+  color: #409EFF;
 }
 
 nav .el-menu-push {
