@@ -19,6 +19,7 @@ public class CodeMsg {
     public static CodeMsg PASSWORD_ERROR = new CodeMsg(500215, "密码错误");
     public static CodeMsg CODE_ERROR = new CodeMsg(500216, "验证码错误");
     public static CodeMsg PRIMARY_ERROR = new CodeMsg(500217, "主键冲突");
+    public static CodeMsg USER_NOT_EXIST = new CodeMsg(500218, "用户不存在");
 
 //
 
