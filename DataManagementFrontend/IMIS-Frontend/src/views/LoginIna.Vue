@@ -9,7 +9,7 @@
            </div>
            <form class="right">
                <div class="choice">
-                   <div>
+                   <div class="abc">
                        验证码登录
                    </div>
                    <div>
@@ -17,15 +17,17 @@
                    </div>
                </div>
                <div class="email">
-邮&emsp;箱<input type="email" placeholder="请输入邮箱">
+<!-- 邮&emsp;箱 -->
+<input type="email" placeholder="请输入邮箱">
                </div>
                <div class="yanzhengma">
-验证码<input placeholder="请输入验证码"/><button>发送验证码</button>
+<!-- 验证码 -->
+<input placeholder="请输入验证码"/><button>发送验证码</button>
                </div>
-               <div class="others">
+               <div class="others">&emsp;
                  <input type="checkbox" name="remember">
-                 <div>记住我</div>
-                 <div>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<a>忘记密码</a></div>
+                 <div>记住我</div>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                 <div>忘记密码</div>
                </div>
                <div>
 
@@ -70,7 +72,7 @@
 }
 .body{
 background-color: azure;
-height: 300px;
+height: 500px;
 display: flex;
 }
 .footer{
@@ -86,7 +88,7 @@ display: flex;
    width: 50%;
 }
 .right{
-   background-color: bisque;
+   background-color: rgb(255, 255, 255);
    height: 100%;
    width: 50%;
    display: flex;
@@ -98,6 +100,8 @@ display: flex;
  display: flex;
  /* width: 250px; */
  justify-content: space-around;
+ color: #0776f4;
+ margin-bottom: 50px;
 }
 input{
  /* width: 230px; */
@@ -105,13 +109,19 @@ input{
  opacity: 1;
  /* border-radius: 15px; */
  background: rgba(255, 255, 255, 1);
- margin:10px 15px
+ margin:10px 15px;
+ 
+border-radius: 10px;
+background: rgba(255, 255, 255, 1);
+padding-left: 10px;
+border: 1.5px solid rgba(122, 145, 188, 1);  
  }
 
  .others{
-   /* width: 250px; */
-   height: 25px;
+   width: 355px;
+   /* height: 25px; */
    display: flex;
+   margin: 10px 15px;
  }
  /* p{
    width: 150px;
@@ -136,5 +146,21 @@ input{
    width: 150px;
    height: 30px;
    border-radius: 5px;
+   border: 0;
+   background-color:#3C85D7 ;
+   color:white;
+
  }
-</style>
+ .abc{
+   border-bottom: #0776f4 solid 2px;
+ }
+ /* .others>div{
+   width: 100px;
+ } */
+</style> 
+
+
+
+
+
+
