@@ -15,17 +15,6 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginServiceImpl implements LoginService {
 
-
-    @Override
-    public String codeLogin(Map map) {
-        return null;
-    }
-
-    @Override
-    public String passLogin(Map map) {
-        return null;
-    }
-
     @Override
     public String register(User user) {
         return null;

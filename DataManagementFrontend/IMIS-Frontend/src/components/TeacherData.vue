@@ -8,7 +8,8 @@
         <pre>参赛时间:{{ time }}&nbsp;
           <img src="../../static/img/img.png"
                alt="pic"
-               id="img1">&nbsp;&nbsp;&nbsp;参赛人：{{ name }}
+               id="img1">
+          &nbsp;&nbsp;&nbsp;参赛人：{{ name }}
         </pre>
       </div>
     </div>
