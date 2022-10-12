@@ -4,7 +4,11 @@
       <img  src="../../static/img/logo.png"
             alt="logo">
       </div>
-    <div class="el-menu-resource" href="#">资源广场</div>
+    <div class="el-menu-resource" href="#">
+      <div class="aword">资源广场</div>
+    <span class="aline"></span>
+    <!-- <span class="bline"></span> -->
+  </div>
     <div class="el-menu-search" >
       <div class="search-icon"><span class="iconfont">&#xe651;</span></div>
       <input v-model="keyword" type="text" class="searchInput"
@@ -27,6 +31,12 @@ nav {
   justify-content: center;
   width: 100%;
   background-color: #FFFFFF;
+  box-shadow: 0px 0px 4px 0px #353333 ;
+  height: 70px;
+  /* margin-bottom: 20px; */
+  position: fixed;
+  top: 0px;
+  z-index: 999;
 }
 
 nav .logo {
@@ -36,6 +46,11 @@ nav .logo {
   height: 35px;
   width: 120px;
   border-radius: 10px;
+
+}
+nav .logo>img{
+  width: 120px;
+  height:35px;
 }
 
 nav .el-menu-resource {
@@ -49,11 +64,36 @@ nav .el-menu-resource {
   font-size: larger;
   font-weight: bold;
 }
+.aword{
+  height:30px;
+  width:100px;
+  position: relative;
+}
+.aline{
+  border-bottom: 3px solid #409EFF;
+  height: 0px;
+  /* width:100px; */
+  position: absolute;
+  top:50px;
+
+}
+.el-menu-resource:hover .aline{
+  animation:lineChange 1s;
+  /* animation-direction: alternate; */
+  animation-fill-mode: forwards;
+}
 nav .el-menu-resource:hover {
   cursor: pointer;
   color: #409EFF;
 }
-
+@keyframes lineChange{
+    from{
+      width:0px
+    }
+    to{
+      width:100px
+    }
+ }
 nav .el-menu-search {
   color: #FFFFFF;
   width: 450px;

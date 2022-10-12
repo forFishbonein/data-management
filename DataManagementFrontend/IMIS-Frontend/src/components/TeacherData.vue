@@ -6,7 +6,7 @@
       <span></span>
       <div id="item">
         <pre>
-          <div>&nbsp;&nbsp;&nbsp;参赛人：{{ name }}</div>
+          <div></div>
           参赛时间:{{ time }}&nbsp;
           <img src="../../static/img/img.png"
                alt="pic"
@@ -78,7 +78,7 @@ export default {
 }
 
 #img2 {
-  width: 130px;
+  width: 160px;
   height: 117px;
   float: right;
   margin-top: 10px;

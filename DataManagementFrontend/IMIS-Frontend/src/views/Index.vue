@@ -16,6 +16,12 @@
                        :time="item.time"></TeacherData>
         </div>
       </div>
+      <el-pagination
+      background
+      layout="prev, pager, next"
+      :total="1000"
+      class="apage">
+      </el-pagination>
     </div>
   </div>
 </template>
@@ -85,7 +91,7 @@ export default {
   /* height: 200px; */
   /* background-color: brown; */
   // margin-top: 50px;
-
+  padding-bottom: 50px;
   .tbody {
     display: flex;
     flex-direction: column;
@@ -160,6 +166,9 @@ export default {
       padding-left: 20px;
       border-radius: 10px;
     }
+  }
+  .apage{
+    margin-top: 30px;
   }
 }
 
