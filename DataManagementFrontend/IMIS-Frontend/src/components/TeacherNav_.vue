@@ -1,7 +1,10 @@
 <template>
   <nav>
-    <div class="logo">logo</div>
-    <div class="el-menu-resource" href="#"><span class="line">资源广场</span></div>
+    <div class="logo">
+      <img  src="../../static/img/logo.png"
+            alt="logo">
+      </div>
+    <div class="el-menu-resource" href="#">资源广场</div>
     <div class="el-menu-search" >
       <div class="search-icon"><span class="iconfont">&#xe651;</span></div>
       <input v-model="keyword" type="text" class="searchInput"
@@ -47,15 +50,7 @@ nav .el-menu-resource {
   font-size: larger;
   font-weight: bold;
 }
-
-.line:hover{
-  border-bottom: 1px dashed #3C85D7;
-}
-
 nav .el-menu-resource:hover {
-  /* text-decoration-line: underline;  */
-  cursor: pointer; 
-  color: #409EFF;
   cursor: pointer;
   color: #409EFF;
 }
@@ -95,13 +90,17 @@ nav .search-icon:hover{
 }
 nav .searchInput {
   width: 450px;
+
   height: 35px;
   border:#ccc 1px solid;
   text-align: center;
   position: relative;
   display: flex;
   height: 40px;
+  text-align: left;
+  /* line-height: 1rem; */
   border:#ccc 1px solid;
+  /* text-align: center; */
   font-size: 18px;
   border-radius: 0 10px 10px 0;
   padding-left: 10px;
