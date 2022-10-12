@@ -4,6 +4,8 @@ server:
     uri-encoding: utf-8
 
 spring:
+  jmx:
+    enabled: false
   #druid配置
   datasource:
     username: root
