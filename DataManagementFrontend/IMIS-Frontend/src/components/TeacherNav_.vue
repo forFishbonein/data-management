@@ -31,6 +31,9 @@ nav {
   justify-content: center;
   width: 100%;
   background-color: #FFFFFF;
+  box-shadow: 0px 0px 4px 0px #353333 ;
+  height: 70px;
+  /* margin-bottom: 20px; */
 }
 
 nav .logo {

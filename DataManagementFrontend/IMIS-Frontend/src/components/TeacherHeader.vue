@@ -3,7 +3,7 @@
     <div class="bgpicture"></div>
     <div class="teacher">
       <div class="teacher-pic">
-        <img  alt="头像" 
+        <img  alt="头像"
               src=""
               id=""
               ></div>
@@ -37,6 +37,7 @@ export default {
 <style scoped>
 
 .teacher-header{
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   height:200px;
@@ -70,7 +71,7 @@ export default {
 }
 
 .teacher .teacher-info .info1 {
-  
+
   display: flex;
   flex-direction: row;
 
@@ -79,7 +80,7 @@ export default {
   font-size: 28px;
   line-height: 40px;
   font-weight: 550;
-  margin-left: 20px; 
+  margin-left: 20px;
 }
 
 .teacher .teacher-info .info1 .teacher-title {
@@ -88,7 +89,7 @@ export default {
   font-weight: 400;
   margin-left: 100px;
   margin-top: 8px;
-  
+
 }
 
 .teacher .teacher-info .info2 {
@@ -100,13 +101,13 @@ export default {
   line-height:35px;
   font-weight: 400;
   margin-left: 20px;
-}  
+}
 
 .teacher .teacher-info .info2 .phone-number {
   font-size: normal;
   line-height:35px;
   font-weight: 400;
   margin-left: 75.5px;
-} 
+}
 
 </style>
