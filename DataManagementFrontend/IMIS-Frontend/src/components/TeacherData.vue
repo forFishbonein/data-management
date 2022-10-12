@@ -5,11 +5,14 @@
       <div id="desc">{{ desc }}</div>
       <span></span>
       <div id="item">
-        <pre>参赛时间:{{ time }}&nbsp;
+        <pre>
+          <div>&nbsp;&nbsp;&nbsp;参赛人：{{ name }}</div>
+          参赛时间:{{ time }}&nbsp;
           <img src="../../static/img/img.png"
                alt="pic"
                id="img1">
-          &nbsp;&nbsp;&nbsp;参赛人：{{ name }}
+               <div>&nbsp;&nbsp;&nbsp;参赛人：{{ name }}</div>
+          
         </pre>
       </div>
     </div>
@@ -71,7 +74,7 @@ export default {
 #img1 {
   width: 25px;
   height: 20px;
-  vertical-align: middle;
+  vertical-align: middle; 
 }
 
 #img2 {
@@ -100,5 +103,9 @@ export default {
   text-align: left;
   margin-left: 31px;
   margin-top: 20px;
+}
+pre{
+  display: flex;
+align-items: center;
 }
 </style>
