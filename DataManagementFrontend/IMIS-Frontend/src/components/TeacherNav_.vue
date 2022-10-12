@@ -78,7 +78,7 @@ nav .el-menu-resource {
 
 }
 .el-menu-resource:hover .aline{
-  animation:lineChange 2s infinite;
+  animation:lineChange 1s;
   /* animation-direction: alternate; */
   animation-fill-mode: forwards;
 }
