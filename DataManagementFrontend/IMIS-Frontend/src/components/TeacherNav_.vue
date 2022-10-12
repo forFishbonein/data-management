@@ -34,6 +34,9 @@ nav {
   box-shadow: 0px 0px 4px 0px #353333 ;
   height: 70px;
   /* margin-bottom: 20px; */
+  position: fixed;
+  top: 0px;
+  z-index: 999;
 }
 
 nav .logo {
