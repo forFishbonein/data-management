@@ -6,7 +6,10 @@
       <div class="tbody">
         <div class="line">
           <span>资料</span>
-          <input placeholder="搜索"/>
+          <div class="right-search">
+            <div class="search-icon"><span class="iconfont">&#xe651;</span></div>
+            <input placeholder="搜索" class="tsearch"/>
+          </div>
         </div>
         <div v-for="(item,index) in tdata" :key="index">
           <TeacherData :id="item.id" :title="item.title" :name="item.name" :desc="item.desc"
@@ -94,7 +97,49 @@ export default {
       width: 1200px;
       height: 50px;
       background-color: #7a91bc;
-      line-height: 50px;
+      // line-height: 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #DCE9F8;
+      .right-search{
+        // width:390px;
+        margin-right: 30px;
+      }
+      .search-icon{
+        width: 40px;
+        height: 35px;
+        background-color: #DCE9F8;
+        border-radius: 10px 0 0 10px ;
+        float: left;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        border: 1px #7A91BC solid;
+        border-right:none;
+      }
+      .search-icon:hover{
+        background-color: #679cd1
+      }
+      .iconfont{
+        font-family: "iconfont" !important;
+        font-size: 22px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: #FFFFFF
+      }
+      .tsearch{
+        width: 350px;
+        height: 35px;
+        border-radius: 0 10px 10px 0;
+        padding-left: 10px;
+        // float: right;
+        background-color: #DCE9F8;
+        border: 1px #7A91BC solid;
+        border-left:none;
+      }
     }
 
     .line > span {
