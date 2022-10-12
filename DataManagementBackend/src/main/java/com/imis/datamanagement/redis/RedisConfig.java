@@ -1,6 +1,7 @@
 package com.imis.datamanagement.redis;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
+@PropertySource("classpath:redis.properties")
 @ConfigurationProperties(prefix = "redis")
 public class RedisConfig {
     private String host;

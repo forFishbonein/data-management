@@ -33,15 +33,6 @@ spring:
   #      classpath: /static/
 
 
-  # 缓存
-  redis:
-    host: 121.41.107.144
-    port: 6379
-    password: 1234
-    database: 0
-  cache:
-    redis:
-      time-to-live: 1800000 #设置缓存过期时间
   data:
     mongodb:
       host: 121.41.107.144
@@ -55,7 +46,7 @@ spring:
   mail:
     host: smtp.qq.com
     username: 2856400640@qq.com
-    password: cxkoevueftkbdcfi
+    password: wzjstxvqaycaddhg
     default-encoding: UTF-8
 
 # MP的配置
