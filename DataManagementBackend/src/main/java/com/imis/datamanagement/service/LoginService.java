@@ -8,13 +8,7 @@ package com.imis.datamanagement.service;
 
 import com.imis.datamanagement.domain.User;
 
-import java.util.Map;
-
 public interface LoginService {
-
-    String codeLogin(Map map);
-
-    String passLogin(Map map);
 
     String register(User user);
 
@@ -22,6 +16,7 @@ public interface LoginService {
 
     String registered(User user);
 
+    //发送邮件验证码
     String sendEmail(User user);
 
 }

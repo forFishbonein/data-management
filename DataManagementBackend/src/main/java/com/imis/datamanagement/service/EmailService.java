@@ -20,7 +20,13 @@ public class EmailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendEmail(String to, String subject, String context) {
+    /***
+     *
+     * @param to 邮件接收人
+     * @param subject 标题
+     * @param context 内容
+     */
+    public void sendEmailTemplate(String to, String subject, String context) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setFrom(from);
         mailMessage.setTo(to);
