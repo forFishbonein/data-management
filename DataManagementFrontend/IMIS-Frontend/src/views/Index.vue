@@ -79,6 +79,7 @@ export default {
     min-height: 800px;
 
     .line {
+      color: #3C85D7;
       width: 1200px;
       height: 50px;
       background-color: #7a91bc;
