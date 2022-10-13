@@ -27,10 +27,10 @@
 </template>
 
 <script>
-import axios from 'axios'
 import TeacherNav from '../components/TeacherNav.vue'
 import TeacherHeader from '../components/TeacherHeader.vue'
 import TeacherData from '../components/TeacherData.vue'
+import {getMaterials} from '@/api'
 
 export default {
   data() {
@@ -40,14 +40,14 @@ export default {
   },
   methods: {
     getMaterials(){
-      axios.get('/static/json/materials.json').then(
-					response => {
-						this.materials = response.data
-					},
-					error => {
-						console.log('请求失败了', error.message)
-					}
-				)
+      getMaterials().then(
+        response => {
+          this.materials = response.data
+        },
+        error => {
+          console.log('请求失败了', error.message)
+        }
+      )
     }
   },
   components: {
