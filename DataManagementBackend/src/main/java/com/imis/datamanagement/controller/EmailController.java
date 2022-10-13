@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.xml.ws.soap.Addressing;
 
 @RestController
@@ -17,8 +18,9 @@ import javax.xml.ws.soap.Addressing;
 @Slf4j
 public class EmailController {
 
-    @Autowired
+    @Resource
     UserService userService;
+
     @GetMapping("/sendEmail")
     public Result<String> sendEmail(@RequestBody LoginVo loginVo){
         userService.sendEmail(loginVo);
