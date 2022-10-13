@@ -14,7 +14,7 @@ public class DataManagementApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(DataManagementApplication.class, args);
-        log.info("-------------------------------------------------------------");
+        log.info("--------------------我们启动成功啦！--------------------");
     }
 
 }

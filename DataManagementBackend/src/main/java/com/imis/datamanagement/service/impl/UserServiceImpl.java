@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.common.vo.LoginVo;
+import com.imis.datamanagement.common.vo.RegisterVo;
 import com.imis.datamanagement.domain.User;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.mapper.UserMapper;
@@ -87,11 +88,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public String register(User user) {
-        return null;
-    }
-
-    @Override
     public String logout(String token) {
         return null;
     }
@@ -123,12 +119,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //取数据库,判断邮箱是否存在
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(User::getUserEmail, email);
-        User user = getOne(queryWrapper);
-        if (user == null) {
+        User userInMysql = getOne(queryWrapper);
+        if (userInMysql == null) {
             throw new GlobalException(CodeMsg.EMAIL_NOT_EXIST);
         }
         //从Redis中获取缓存的验证码
-        //TODO 类型暂时留空，需要从发送验证码那里看存储的什么类型，然后这里再填上
         String codeInRedis = redisService.get(CodeKey.code, email, String.class);
         //进行验证码的比对（页面提交的验证码和Redis中保存的验证码比对）
         if(codeInRedis == null || !codeInRedis.equals(code)){
@@ -139,8 +134,46 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //生成唯一id作为token
         String token = UUIDUtil.uuid();
         //将token存入Cookie和redis
-        addCookie(response, token, user);
+        addCookie(response, token, userInMysql);
         return token;
+    }
+
+    /***
+     * @param response
+     * @param registerVo
+     * @return
+     */
+    @Override
+    public void register(HttpServletResponse response, RegisterVo registerVo) {
+        if (registerVo == null) {
+            throw new GlobalException(CodeMsg.SERVER_ERROR);
+        }
+        //获取用户输入的邮箱和验证码
+        String email = registerVo.getEmail();
+        String code = registerVo.getCode();
+        //取数据库,判断邮箱是否存在
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(User::getUserEmail, email);
+        User userInMysql = getOne(queryWrapper);
+        if (userInMysql != null) {
+            throw new GlobalException(CodeMsg.EMAIL_EXIST);
+        }
+        //从Redis中获取缓存的验证码
+        String codeInRedis = redisService.get(CodeKey.code, email, String.class);
+        //进行验证码的比对（页面提交的验证码和Redis中保存的验证码比对）
+        if(codeInRedis == null || !codeInRedis.equals(code)){
+            throw new GlobalException(CodeMsg.CODE_ERROR);
+        }
+        //如果校验成功，删除Redis中缓存的验证码
+        redisService.delete(CodeKey.code, email);
+        //数据库新增用户信息
+        User user = new User();
+        user.setUserEmail(registerVo.getEmail());
+        user.setUserName(registerVo.getName());
+        user.setUserPass(registerVo.getPassword());
+        user.setUserSid(registerVo.getSid());
+        userMapper.insert(user);
+
     }
 
     /**
