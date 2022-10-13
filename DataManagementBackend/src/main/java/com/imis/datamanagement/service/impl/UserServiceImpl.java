@@ -86,6 +86,21 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         log.info("验证码发送成功");
     }
 
+    @Override
+    public String register(User user) {
+        return null;
+    }
+
+    @Override
+    public String logout(String token) {
+        return null;
+    }
+
+    @Override
+    public String registered(User user) {
+        return null;
+    }
+
     /*
      * TODO 登录校验
      * 分成两种login
