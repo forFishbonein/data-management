@@ -3,9 +3,11 @@ import App from "./App";
 import router from "./router";
 import "./assets/font-search/iconfont.css";
 
-import ElementUI from "element-ui";
-import "element-ui/lib/theme-chalk/index.css";
-Vue.use(ElementUI);
+// import ElementUI from "element-ui";
+// import "element-ui/lib/theme-chalk/index.css";
+// Vue.use(ElementUI);
+import { Pagination } from 'element-ui';
+Vue.use(Pagination);
 
 Vue.config.productionTip = false;
 
