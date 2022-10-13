@@ -19,4 +19,9 @@ public interface UserService extends IService<User> {
 
     void sendEmail(LoginVo loginVo);
 
+    String register(User user);
+
+    String logout(String token);
+
+    String registered(User user);
 }
