@@ -1,15 +1,21 @@
 <template>
   <div id="app">
     <Index></Index>
+    <!-- <RegisterTeacher></RegisterTeacher> -->
+    <!-- <RegisterStudent></RegisterStudent> -->
   </div>
 </template>
 
 <script>
 import Index from './views/Index.vue'
+import RegisterTeacher from './views/RegisterTeacher.vue'
+import RegisterStudent from './views/RegisterStudent.vue'
 export default {
   name: 'App',
   components: {
-    Index
+    Index,
+    RegisterTeacher,
+    RegisterStudent,
   }
 }
 </script>
