@@ -20,7 +20,7 @@ public interface UserService extends IService<User> {
 
     void sendEmail(LoginVo loginVo);
 
-    String register(HttpServletResponse response, RegisterVo registerVo);
+    void register(HttpServletResponse response, RegisterVo registerVo);
 
     String logout(String token);
 
