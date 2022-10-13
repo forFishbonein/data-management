@@ -15,7 +15,7 @@ import java.util.Date;
 public class PicUploadFileSystemService {
 
     // 允许上传的格式
-    private static final String[] IMAGE_TYPE = new String[]{".*"};
+    private static final String[] IMAGE_TYPE = new String[]{".txt"};
 
     public PicUploadResult upload(MultipartFile uploadFile) {
         // 校验图片格式

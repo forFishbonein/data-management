@@ -16,9 +16,7 @@ import java.io.ByteArrayInputStream;
 public class PicUploadService {
 
     // 允许上传的格式
-    private static final String[] IMAGE_TYPE = new String[]{".bmp", ".jpg",       //如果想更改传输类型改这个
-
-            ".jpeg", ".gif", ".png"};
+    private static final String[] IMAGE_TYPE = new String[]{".txt"};
 
     @Autowired
     private OSSClient ossClient;
