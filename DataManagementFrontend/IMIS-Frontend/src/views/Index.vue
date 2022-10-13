@@ -11,22 +11,23 @@
             <input placeholder="搜索" class="tsearch"/>
           </div>
         </div>
-        <div v-for="(item,index) in tdata" :key="index">
+        <div v-for="(item, index) in materials" :key="index">
           <TeacherData :id="item.id" :title="item.title" :name="item.name" :desc="item.desc"
                        :time="item.time"></TeacherData>
         </div>
       </div>
       <el-pagination
-      background
-      layout="prev, pager, next"
-      :total="1000"
-      class="apage">
+        background
+        layout="prev, pager, next"
+        :total="1000"
+        class="apage">
       </el-pagination>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import TeacherNav from '../components/TeacherNav.vue'
 import TeacherHeader from '../components/TeacherHeader.vue'
 import TeacherData from '../components/TeacherData.vue'
@@ -34,50 +35,28 @@ import TeacherData from '../components/TeacherData.vue'
 export default {
   data() {
     return {
-      tdata: [
-        {
-          "id": 1,
-          "title": "哈哈",
-          "desc": "中南民大",
-          "name": "张三",
-          "time": "2022/09/01"
-        },
-        {
-          "id": 2,
-          "title": "哈哈咯咯咯",
-          "desc": "中南民大管理学院",
-          "name": "李四",
-          "time": "2022/09/02"
-        },
-        {
-          "id": 3,
-          "title": "哈哈咯咯咯",
-          "desc": "中南民大管理学院",
-          "name": "李四",
-          "time": "2022/09/02"
-        },
-        {
-          "id": 4,
-          "title": "哈哈咯咯咯",
-          "desc": "中南民大管理学院",
-          "name": "李四",
-          "time": "2022/09/02"
-        },
-        {
-          "id": 5,
-          "title": "哈哈咯咯咯",
-          "desc": "中南民大管理学院",
-          "name": "李四",
-          "time": "2022/09/02"
-        }
-      ]
+      materials: []
     }
   },
-  methods: {},
+  methods: {
+    getMaterials(){
+      axios.get('/static/json/materials.json').then(
+					response => {
+						this.materials = response.data
+					},
+					error => {
+						console.log('请求失败了', error.message)
+					}
+				)
+    }
+  },
   components: {
     TeacherNav,
     TeacherHeader,
     TeacherData
+  },
+  mounted() {
+    this.getMaterials();
   }
 }
 </script>
