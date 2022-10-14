@@ -28,22 +28,6 @@ public class PicUploadService {
 
         PicUploadResult fileUploadResult = new PicUploadResult();
 
-        //图片做校验，对后缀名
-        boolean isLegal = false;
-
-        for (String type : IMAGE_TYPE) {
-            if (StringUtils.endsWithIgnoreCase(uploadFile.getOriginalFilename(),
-                    type)) {
-                isLegal = true;
-                break;
-            }
-        }
-
-        if (!isLegal) {
-            fileUploadResult.setStatus("error");
-            return fileUploadResult;
-        }
-
         // 文件新路径
         String fileName = uploadFile.getOriginalFilename();
         String filePath = getFilePath(fileName);
@@ -70,10 +54,10 @@ public class PicUploadService {
 
     private String getFilePath(String sourceFileName) {
         DateTime dateTime = new DateTime();
-        return "images/" + dateTime.toString("yyyy")
+        return "file/" + dateTime.toString("yyyy")
                 + "/" + dateTime.toString("MM") + "/"
                 + dateTime.toString("dd") + "/" + System.currentTimeMillis() +
-                RandomUtils.nextInt(100, 9999) + "." +
+                RandomUtils.nextInt(100, 9999) + "." + sourceFileName + "." +
                 StringUtils.substringAfterLast(sourceFileName, ".");
     }
 
