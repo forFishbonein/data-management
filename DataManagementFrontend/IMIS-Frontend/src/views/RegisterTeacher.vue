@@ -117,6 +117,7 @@ export default {
   width: 95px;
   height: 30px;
   margin-left: 5px;
+  margin-top: 15px;
 }
 
 .container {
