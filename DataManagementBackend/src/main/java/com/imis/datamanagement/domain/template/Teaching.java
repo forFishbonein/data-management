@@ -49,6 +49,8 @@ public class Teaching extends AbstractTemplate {
     //------------------
     private Map<String, String> other;
 
+    private List<String> filePath;
+
     private String createTime;
 
     private String updateTime;
