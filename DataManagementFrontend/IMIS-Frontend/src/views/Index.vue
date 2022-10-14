@@ -39,7 +39,7 @@ export default {
     }
   },
   methods: {
-    getMaterials(){
+    getMaterials() {
       getMaterials().then(
         response => {
           this.materials = response.data
@@ -71,6 +71,7 @@ export default {
   /* background-color: brown; */
   // margin-top: 50px;
   padding-bottom: 50px;
+
   .tbody {
     display: flex;
     flex-direction: column;
@@ -87,27 +88,31 @@ export default {
       justify-content: space-between;
       align-items: center;
       background-color: #DCE9F8;
-      .right-search{
+
+      .right-search {
         // width:390px;
         margin-right: 30px;
       }
-      .search-icon{
+
+      .search-icon {
         width: 40px;
         height: 35px;
         background-color: #DCE9F8;
-        border-radius: 10px 0 0 10px ;
+        border-radius: 10px 0 0 10px;
         float: left;
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
         border: 1px #7A91BC solid;
-        border-right:none;
+        border-right: none;
       }
-      .search-icon:hover{
+
+      .search-icon:hover {
         background-color: #679cd1
       }
-      .iconfont{
+
+      .iconfont {
         font-family: "iconfont" !important;
         font-size: 22px;
         font-style: normal;
@@ -115,7 +120,8 @@ export default {
         -moz-osx-font-smoothing: grayscale;
         color: #FFFFFF
       }
-      .tsearch{
+
+      .tsearch {
         width: 350px;
         height: 35px;
         border-radius: 0 10px 10px 0;
@@ -123,8 +129,8 @@ export default {
         // float: right;
         background-color: #DCE9F8;
         border: 1px #7A91BC solid;
-        border-left:none;
-        font-size:18px;
+        border-left: none;
+        font-size: 18px;
       }
     }
 
@@ -146,7 +152,8 @@ export default {
       border-radius: 10px;
     }
   }
-  .apage{
+
+  .apage {
     margin-top: 30px;
   }
 }
