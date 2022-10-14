@@ -15,9 +15,6 @@ import java.io.ByteArrayInputStream;
 @Service
 public class PicUploadService {
 
-    // 允许上传的格式
-    private static final String[] IMAGE_TYPE = new String[]{".txt"};
-
     @Autowired
     private OSSClient ossClient;
 
@@ -34,9 +31,7 @@ public class PicUploadService {
 
         // 上传到阿里云
         try {
-            // 目录结构：images/2018/12/29/xxxx.jpg
-            ossClient.putObject(aliyunConfig.getBucketName(), filePath, new
-                    ByteArrayInputStream(uploadFile.getBytes()));
+            ossClient.putObject(aliyunConfig.getBucketName(), filePath, new ByteArrayInputStream(uploadFile.getBytes()));
         } catch (Exception e) {
             e.printStackTrace();
             //上传失败

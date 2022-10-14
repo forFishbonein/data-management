@@ -1,8 +1,8 @@
 package com.imis.datamanagement.controller;
 
+import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.common.vo.PicUploadResult;
 import com.imis.datamanagement.service.PicUploadService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,19 +10,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-@RequestMapping("pic/upload")
+import javax.annotation.Resource;
+
+@RequestMapping("/pic/upload")
 @Controller
 public class PicUploadController {
 
-    @Autowired
+    @Resource
     private PicUploadService picUploadService;
-
-//    @Autowired
-//    private PicUploadFileSystemService picUploadService;
 
     @PostMapping
     @ResponseBody
-    public PicUploadResult upload(@RequestParam("file") MultipartFile multipartFile) {
-        return this.picUploadService.upload(multipartFile);
+    public Result<PicUploadResult> upload(@RequestParam("file") MultipartFile multipartFile) {
+        return Result.success(picUploadService.upload(multipartFile));
     }
 }
