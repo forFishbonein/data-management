@@ -73,7 +73,7 @@ export default {
 }
 
 #img1 {
-  width: 20px;
+  width: 25px;
   height: 20px;
   vertical-align: middle; 
 }
