@@ -12,6 +12,7 @@ import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.List;
 import java.util.Map;
 
 @Data
@@ -48,6 +49,8 @@ public class Honor extends AbstractTemplate{
 
     //------------------
     private Map<String, String> other;
+
+    private List<String> filePath;
 
     private String createTime;
 
