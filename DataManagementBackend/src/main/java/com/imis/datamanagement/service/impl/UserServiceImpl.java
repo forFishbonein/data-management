@@ -17,9 +17,9 @@ import com.imis.datamanagement.service.UserService;
 import com.imis.datamanagement.utils.UUIDUtil;
 import com.imis.datamanagement.utils.ValidateCodeUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,13 +27,13 @@ import javax.servlet.http.HttpServletResponse;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-    @Autowired
+    @Resource
     UserMapper userMapper;
 
-    @Autowired
+    @Resource
     EmailService emailService;
 
-    @Autowired
+    @Resource
     RedisService redisService;
 
     //cookie的名字

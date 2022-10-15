@@ -11,19 +11,23 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 import java.util.Map;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Document(collection = "teaching")
 public class Teaching extends AbstractTemplate {
 
     //注意此处不能是private
     static final String TEMPLATE_TYPE = "teaching";
 
-    @TableId(type = IdType.ASSIGN_ID)
-    private Long id;
+    @Id
+    private Integer id;
 
     private Long uploaderId;
 
@@ -47,15 +51,6 @@ public class Teaching extends AbstractTemplate {
     private String member;
 
     //------------------
-    private Map<String, String> other;
 
-    private List<String> filePath;
-
-    private String createTime;
-
-    private String updateTime;
-
-    @TableLogic
-    private String deleted;
 
 }

@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.ByteArrayInputStream;
 
 @Service
-public class PicUploadService {
+public class FileUploadService {
 
     @Autowired
     private OSSClient ossClient;

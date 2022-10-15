@@ -1,8 +1,6 @@
 package com.imis.datamanagement.redis;
 
-/**
- * Created by jiangyunxiong on 2018/5/21.
- */
+
 public abstract class BasePrefix implements KeyPrefix {
 
     private int expireSeconds;

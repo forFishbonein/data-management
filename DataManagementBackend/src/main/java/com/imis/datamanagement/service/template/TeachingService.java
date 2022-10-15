@@ -6,10 +6,9 @@ package com.imis.datamanagement.service.template;
  * @File : DataManagement4IMIS
  */
 
-import com.imis.datamanagement.domain.template.Teaching;
-import com.imis.datamanagement.service.BaseTemplateService;
+import com.imis.datamanagement.service.MongoDBService;
 
-public class TeachingService extends BaseTemplateService<Teaching> {
+public class TeachingService extends MongoDBService {
 
 
 }

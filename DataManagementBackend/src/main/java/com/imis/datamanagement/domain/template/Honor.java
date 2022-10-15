@@ -21,7 +21,7 @@ import java.util.Map;
 @Document(collection = "honor")
 public class Honor extends AbstractTemplate{
 
-    static final String TEMPLATE_TYPE = "Honor";
+    static final String TEMPLATE_TYPE = "honor";
 
     @Id
     private Integer id;
