@@ -6,14 +6,12 @@ package com.imis.datamanagement.domain.template;
  * @File : DataManagement4IMIS
  */
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 import java.util.Map;
@@ -51,6 +49,21 @@ public class Teaching extends AbstractTemplate {
     private String member;
 
     //------------------
+    @Field("teaching_other")
+    private Map<String, String> other;
+
+    @Field("teaching_filePath")
+    private List<String> filePath;
+
+    @Field("teaching_createTime")
+    private String createTime;
+
+    @Field("teaching_updateTime")
+    private String updateTime;
+
+    @Value("0")
+    @Field("teaching_deleted")
+    private String deleted;
 
 
 }

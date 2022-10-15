@@ -31,12 +31,10 @@ public class MongoDBService {
     public void updateTemplate(AbstractTemplate abstractTemplate) {
 
         Query query = new Query(Criteria.where("_id").is(abstractTemplate.getId()));
-        System.out.println("query = " + query);
         Update update = null;
         
         try {
             Class c = Class.forName(abstractTemplate.getClass().getName());
-            System.out.println(c);
             Field[] fields = c.getDeclaredFields();
             for (Field f : fields) {
                 f.setAccessible(true);
@@ -44,9 +42,7 @@ public class MongoDBService {
             for (Field f : fields) {
                 String field = f.toString().substring(f.toString().lastIndexOf(".") + 1);
                 update = new Update().set(field, f.get(abstractTemplate));
-                System.out.println(update);
                 mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
-                System.out.println(abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
             }
         } catch (ClassNotFoundException | IllegalAccessException e) {
             e.printStackTrace();
