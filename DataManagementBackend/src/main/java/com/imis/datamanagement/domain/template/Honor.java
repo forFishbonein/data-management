@@ -6,23 +6,25 @@ package com.imis.datamanagement.domain.template;
  * @File : DataManagement4IMIS
  */
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 import java.util.Map;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
+@Document(collection = "honor")
 public class Honor extends AbstractTemplate{
 
-    static final String TEMPLATE_TYPE = "honor";
+    static final String TEMPLATE_TYPE = "Honor";
 
-    @TableId(type = IdType.ASSIGN_ID)
-    private Long id;
+    @Id
+    private Integer id;
 
     private Long uploaderId;
 
@@ -48,15 +50,20 @@ public class Honor extends AbstractTemplate{
     private String member;
 
     //------------------
+    @Field("honor_other")
     private Map<String, String> other;
 
+    @Field("honor_filePath")
     private List<String> filePath;
 
+    @Field("honor_createTime")
     private String createTime;
 
+    @Field("honor_updateTime")
     private String updateTime;
 
-    @TableLogic
+    @Value("0")
+    @Field("honor_deleted")
     private String deleted;
 
 }
