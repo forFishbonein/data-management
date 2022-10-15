@@ -8,10 +8,8 @@ package com.imis.datamanagement.domain.template;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 import java.util.Map;
@@ -50,20 +48,14 @@ public class Honor extends AbstractTemplate{
     private String member;
 
     //------------------
-    @Field("honor_other")
     private Map<String, String> other;
 
-    @Field("honor_filePath")
     private List<String> filePath;
 
-    @Field("honor_createTime")
     private String createTime;
 
-    @Field("honor_updateTime")
     private String updateTime;
 
-    @Value("0")
-    @Field("honor_deleted")
     private String deleted;
 
 }

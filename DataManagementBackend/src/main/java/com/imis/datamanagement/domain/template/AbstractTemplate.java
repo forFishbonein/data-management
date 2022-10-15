@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
 import java.util.Map;
@@ -30,14 +31,18 @@ public abstract class AbstractTemplate {
 
     Integer id;
 
+    @Field("a_other")
     Map<String, String> other;
 
+    @Field("a_filePath")
     List<String> filePath;
 
+    @Field("a_createTime")
     String createTime;
 
+    @Field("a_updateTime")
     String updateTime;
 
-    @Value("0")
+    @Field("a_deleted")
     String deleted;
 }
