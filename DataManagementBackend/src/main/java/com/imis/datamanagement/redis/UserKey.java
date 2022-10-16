@@ -1,8 +1,5 @@
 package com.imis.datamanagement.redis;
 
-/**
- * Created by jiangyunxiong on 2018/5/21.
- */
 public class UserKey extends BasePrefix {
 
     //token存在时间

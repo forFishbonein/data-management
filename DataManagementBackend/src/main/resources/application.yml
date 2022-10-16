@@ -35,12 +35,8 @@ spring:
 
   data:
     mongodb:
-      host: 121.41.107.144
-      port: 27017
-      # authentication-database: admin
-      username: admin
-      password: 12345678
-      database: template
+      uri: mongodb://admin:12345678@121.41.107.144:27017/template?authMechanism=DEFAULT&authSource=admin&authMechanism=SCRAM-SHA-1
+
 
   # 邮箱服务
   mail:

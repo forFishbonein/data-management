@@ -65,14 +65,15 @@ export default {
   height: 137px;
   margin-left: 40px;
   margin-top: 20px;
-  background-color: #a4abbd;
+  background-color: white;
+  box-shadow: 0px 0px 2px 0px #353333 ;
   /* display: flex; */
   /* flex-direction: column; */
   /* justify-content: space-between; */
 }
 
 #img1 {
-  width: 20px;
+  width: 25px;
   height: 20px;
   vertical-align: middle; 
 }
@@ -86,12 +87,14 @@ export default {
 }
 
 #title {
+  color: #3C85D7;
   text-align: left;
   margin-left: 31px;
   margin-top: 5px;
 }
 
 #desc {
+  color: #3C85D7;
   text-align: left;
   margin-left: 31px;
   display: flex;

@@ -1,10 +1,11 @@
 package com.imis.datamanagement.redis;
 
 import com.alibaba.fastjson.JSON;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+
+import javax.annotation.Resource;
 
 /**
  * redis服务
@@ -12,7 +13,7 @@ import redis.clients.jedis.JedisPool;
 @Service
 public class RedisService {
 
-    @Autowired
+    @Resource
     JedisPool jedisPool;
 
     /*

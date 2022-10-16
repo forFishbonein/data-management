@@ -4,7 +4,7 @@
  * @File : IpUtils.java
  * @Software : IntelliJ IDEA
  */
-package com.imis.datamanagement.utils;
+package com.imis.datamanagement.controller.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

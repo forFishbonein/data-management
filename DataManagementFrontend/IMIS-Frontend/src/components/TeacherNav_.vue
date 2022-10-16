@@ -5,7 +5,7 @@
             alt="logo">
       </div>
     <div class="el-menu-resource" href="#">
-      <div class="aword">资源广场</div>
+      <div class="aword1">资源广场</div>
     <span class="aline"></span>
     <!-- <span class="bline"></span> -->
   </div>
@@ -14,7 +14,10 @@
       <input v-model="keyword" type="text" class="searchInput"
       placeholder="请输入搜索内容 ">
     </div>
-    <div class="el-menu-center" href="#">个人中心</div>
+    <div class="el-menu-center" href="#">
+      <div class="aword2">个人中心</div>
+      <span class="bline"></span>
+    </div>
     <div class="el-menu-push" href="#">上传</div>
   </nav>
 </template>
@@ -64,7 +67,7 @@ nav .el-menu-resource {
   font-size: larger;
   font-weight: bold;
 }
-.aword{
+.aword1{
   height:30px;
   width:100px;
   position: relative;
@@ -78,15 +81,11 @@ nav .el-menu-resource {
 
 }
 .el-menu-resource:hover .aline{
-  animation:lineChange 1s;
+  animation:lineChange1 1s;
   /* animation-direction: alternate; */
   animation-fill-mode: forwards;
 }
-nav .el-menu-resource:hover {
-  cursor: pointer;
-  color: #409EFF;
-}
-@keyframes lineChange{
+@keyframes lineChange1{
     from{
       width:0px
     }
@@ -129,7 +128,6 @@ nav .search-icon:hover{
 }
 nav .searchInput {
   width: 450px;
-
   height: 35px;
   border:#ccc 1px solid;
   text-align: center;
@@ -157,10 +155,34 @@ nav .el-menu-center {
   font-weight: bold;
 }
 
-nav .el-menu-center:hover {
-  cursor: pointer;
-  color: #409EFF;
+.aword2{
+  height:30px;
+  width:100px;
+  position: relative;
 }
+.bline{
+  border-bottom: 3px solid #409EFF;
+  height: 0px;
+  /* width:100px; */
+  position: absolute;
+  top:50px;
+
+}
+.el-menu-center:hover .bline{
+  animation:lineChange2 2s infinite;
+  /* animation-direction: alternate; */
+  animation-fill-mode: forwards;
+}
+
+@keyframes lineChange2{
+    from{
+      width:0px
+    }
+    to{
+      width:100px
+    }
+ }
+
 
 nav .el-menu-push {
   color: #FFFFFF;
