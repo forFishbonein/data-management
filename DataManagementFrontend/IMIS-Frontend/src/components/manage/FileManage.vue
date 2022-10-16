@@ -55,6 +55,7 @@
           float: left;
           width: 144.5px;
           font-size: 17px;
+          text-align: center;
           color: #3C85D7;
         }
       }
@@ -85,7 +86,7 @@
             width: 144.5px;
             font-size: 17px;
             color: #3C85D7;
-
+            text-align: center;
           }
           &>li:nth-last-child(2){
             button{

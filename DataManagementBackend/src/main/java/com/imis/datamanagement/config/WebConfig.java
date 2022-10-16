@@ -16,14 +16,7 @@ public class WebConfig implements WebMvcConfigurer {
 
         //跨域配置：不可设置为*，不安全, 前后端分离项目，可能域名不一致（前端是8080，后端是8888）
         //注意我们用了nginx之后就不需要写端口号了：配置跨域，如果有多个域名就写多个
-        registry.addMapping("/**")
-                //是否发送cookie
-                .allowCredentials(true)
-                //放行哪些原始域
-                .allowedOrigins("*")
-                .allowedMethods(new String[]{"GET", "POST", "PUT", "DELETE"})
-                .allowedHeaders("*")
-                .exposedHeaders("*");
+        registry.addMapping("/**").allowedOrigins("http://localhost:8080");
     }
 
 //    //使拦截器生效：
@@ -37,10 +30,10 @@ public class WebConfig implements WebMvcConfigurer {
 ////                .excludePathPatterns("/sendEmail");
 //    }
 
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**")
-                .addResourceLocations("classpath:/static/");
-    }
+//    @Override
+//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//        registry.addResourceHandler("/static/**")
+//                .addResourceLocations("classpath:/static/");
+//    }
 
 }
