@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import Index from './views/Index.vue'
 import RegisterTeacher from './views/RegisterTeacher.vue'
 import RegisterStudent from './views/RegisterStudent.vue'
 import Compete from "./views/Compete";
@@ -17,7 +16,6 @@ export default {
   name: 'App',
   components: {
     Compete,
-    Index,
     RegisterTeacher,
     RegisterStudent,
   }
