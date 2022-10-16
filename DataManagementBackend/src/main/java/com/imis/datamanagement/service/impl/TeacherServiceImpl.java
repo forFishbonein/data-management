@@ -131,7 +131,6 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         teacher.setTeacherEmail(registerVo.getEmail());
         teacher.setTeacherPass(registerVo.getPassword());
         teacherMapper.insert(teacher);
-
     }
 
     public void addCookie(HttpServletResponse response, String token, Teacher teacher) {
@@ -166,7 +165,6 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
             throw new GlobalException(CodeMsg.EMAIL_EXIST);
         }
         String passInMysql = teacherInMysql.getTeacherPass();
-
         if (!passInMysql.equals(password)) {
             throw new GlobalException(CodeMsg.PASSWORD_ERROR);
         }
