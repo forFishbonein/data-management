@@ -72,7 +72,7 @@ public class MongoDBService {
     }
 
     //TODO 获取所有用户的所有资源（资源广场）
-    public String getAll() {
+    public List<Object> getAll() {
         Query query = new Query();
         List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
         List<Communication> communications = mongoTemplate.find(query, Communication.class);
@@ -95,9 +95,8 @@ public class MongoDBService {
         l.add(teachings);
         l.add(userDefineds);
 
-        String json = JSON.toJSONString(l);
 
-        return json;
+        return l;
     }
 
     //TODO 根据条件获取用户资源（资源广场）
