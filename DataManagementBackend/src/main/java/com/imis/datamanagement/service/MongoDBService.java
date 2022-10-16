@@ -9,7 +9,6 @@ package com.imis.datamanagement.service;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.domain.template.AbstractTemplate;
 import com.imis.datamanagement.exception.GlobalException;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -23,7 +22,6 @@ import java.util.Date;
 import java.util.Locale;
 
 @Service
-@Slf4j
 public class MongoDBService {
 
     @Resource
