@@ -20,8 +20,8 @@ public class NewsController {
     @Resource
     NewsService newsService;
 
-    @GetMapping("/{id}")
-    public Result<News> getByNewsId(@PathVariable("id") Long newsId){
+    @GetMapping("/{newSId}")
+    public Result<News> getByNewsId(@PathVariable("newsId") Long newsId){
         News news = newsService.getById(newsId);
         if (news == null) {
             return Result.error(CodeMsg.USER_NOT_EXIST);

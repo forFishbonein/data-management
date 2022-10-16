@@ -25,7 +25,8 @@ public class CodeMsg {
     public static CodeMsg FILE_EXIST = new CodeMsg(500220, "文件已存在");
 
     public static CodeMsg NEWS_NOT_EXIST = new CodeMsg(500300, "新闻不存在");
-    public static CodeMsg TEACHER_NOT_EXIST = new CodeMsg(500300, "教师不存在");
+    public static CodeMsg TEACHER_NOT_EXIST = new CodeMsg(500301, "教师不存在");
+    public static CodeMsg ID_NOT_EXIST = new CodeMsg(500302, "ID不存在");
 
 
 //
