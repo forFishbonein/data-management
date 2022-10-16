@@ -1,8 +1,8 @@
 package com.imis.datamanagement.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.domain.News;
-
 import com.imis.datamanagement.mapper.NewsMapper;
 import com.imis.datamanagement.service.NewsService;
 
@@ -10,7 +10,7 @@ import com.imis.datamanagement.service.NewsService;
 import javax.annotation.Resource;
 import java.util.List;
 
-public class NewsServiceImpl implements NewsService {
+public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements NewsService {
     @Resource
     NewsMapper newsMapper;
     @Override
