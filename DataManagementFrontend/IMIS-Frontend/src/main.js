@@ -18,5 +18,8 @@ new Vue({
   // axios,
   router,
   components: { App },
-  template: "<App/>"
+  template: "<App/>",
+  beforeCreate(){
+    Vue.prototype.$bus = this
+  }
 });

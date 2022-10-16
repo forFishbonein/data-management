@@ -18,15 +18,15 @@ public class LoginController {
     @Resource
     UserService userService;
 
-    @PostMapping("/register")
-    public Result<String> register(HttpServletResponse response, @RequestBody RegisterVo registerVo) {
-        userService.register(response, registerVo);
-        return Result.success("注册成功");
+    @PostMapping("/login")
+    public Result<String> codeLogin(HttpServletResponse response, @RequestBody LoginVo loginVo) {
+        userService.codeLogin(response, loginVo);
+        return Result.success("登陆成功");
     }
 
-    @PostMapping("/login")
-    public Result<String> login(HttpServletResponse response, @RequestBody LoginVo loginVo) {
-        userService.codeLogin(response, loginVo);
+    @PostMapping("/passLogin")
+    public Result<String> passLogin(HttpServletResponse response, @RequestBody LoginVo loginVo) {
+        userService.passLogin(response, loginVo);
         return Result.success("登陆成功");
     }
 

@@ -14,7 +14,6 @@ import java.util.Map;
 @Document(collection = "office")
 public class Office extends AbstractTemplate {
 
-
     static final String TEMPLATE_TYPE = "office";
 
     @Id

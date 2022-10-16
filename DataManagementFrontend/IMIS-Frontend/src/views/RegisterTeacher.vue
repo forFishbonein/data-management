@@ -6,31 +6,64 @@
     <div class="body">
       <form class="right">
         <div class="rightheader">教师注册</div>
-        <div class="box"><input class="containerfirst" type="text" placeholder="请输入邮箱">
+        <div class="box"><input class="containerfirst" type="text" placeholder="请输入邮箱" v-model="teacher.mail">
           <button class="buttonin">获取验证码</button>
         </div>
-        <div class="box"><input class="container" type="text" placeholder="请输入验证码"></div>
-        <div class="box"><input class="container" type="text" placeholder="请输入姓名"></div>
-        <div class="box"><input class="container" type="text" placeholder="请输入教工号"></div>
-        <div class="box"><input class="container" type="text" placeholder="请输入密码"></div>
-        <div class="box"><input class="container" type="text" placeholder="请再次输入密码"></div>
+        <div class="box"><input class="container" type="text" placeholder="请输入验证码" v-model="teacher.captcha"></div>
+        <div class="box"><input class="container" type="text" placeholder="请输入姓名" v-model="teacher.username"></div>
+        <div class="box"><input class="container" type="text" placeholder="请输入教工号" v-model="teacher.id"></div>
+        <div class="box"><input class="container" type="text" placeholder="请输入密码" v-model="teacher.password"></div>
+        <div class="box"><input class="container" type="text" placeholder="请再次输入密码" v-model="teacher.repassword"></div>
         <div class="box">
-          <button class="button">注册</button>
+          <button class="button" @click="regHandle($event,teacher)">注册</button>
         </div>
       </form>
     </div>
     <div class="footer">
-      邮箱：{{ email }}&emsp;大数据实验班版权所有
+      邮箱：256235478@qq.com&emsp;大数据实验班版权所有
     </div>
   </div>
 </template>
 
 <script>
+import {postRegisterTeacher} from "../api/register";
+
 export default {
   data() {
     return {
-      email: "256235478@qq.com"
+      teacher: {
+        mail: "",
+        captcha: "",
+        username: "",
+        id: "",
+        password: "",
+        repassword: ""
+      }
     }
+  },
+  methods: {
+    regHandle(teacher) {
+      if (
+        this.teacher.mail === '' ||
+        this.teacher.captcha === '' ||
+        this.teacher.username === '' ||
+        this.teacher.id === '' ||
+        this.teacher.password === '' ||
+        this.teacher.repassword === ''
+      ) {
+        alert('请您将信息填写完整')
+      } else if (this.teacher.password !== this.teacher.repassword) {
+        alert('两次输入的密码不一致')
+      } else {
+        postRegisterTeacher(teacher).then(
+          response => (
+
+            alert('恭喜您注册成功')
+          )
+        )
+
+      }
+    },
   }
 }
 </script>

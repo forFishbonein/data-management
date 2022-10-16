@@ -6,3 +6,11 @@ export function getMaterials(){
     url: '/materials.json',
   })
 }
+
+export function getSearchResults(keyword){
+  return request({
+    method: 'get',
+    data: keyword,
+    url: '/results.json',
+  })
+}
