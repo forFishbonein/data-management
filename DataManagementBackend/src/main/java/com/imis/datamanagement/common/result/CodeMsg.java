@@ -26,6 +26,7 @@ public class CodeMsg {
 
     public static CodeMsg NEWS_NOT_EXIST = new CodeMsg(500300, "新闻不存在");
 
+
 //
 
     private CodeMsg() {
