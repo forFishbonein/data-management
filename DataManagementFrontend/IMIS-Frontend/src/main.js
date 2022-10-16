@@ -1,8 +1,10 @@
 import Vue from "vue";
 import App from "./App";
 import router from "./router";
-import "./assets/font-search/iconfont.css";
+import VueRouter from "vue-router";
+import "./assets/font/iconfont.css";
 
+Vue.use(VueRouter);
 // import ElementUI from "element-ui";
 // import "element-ui/lib/theme-chalk/index.css";
 // Vue.use(ElementUI);
@@ -16,5 +18,8 @@ new Vue({
   // axios,
   router,
   components: { App },
-  template: "<App/>"
+  template: "<App/>",
+  beforeCreate(){
+    Vue.prototype.$bus = this
+  }
 });

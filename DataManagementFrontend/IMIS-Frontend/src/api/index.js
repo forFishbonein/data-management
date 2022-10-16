@@ -1,8 +1,23 @@
-import request from "@/request"
+import request from "@/request";
 
-export function getMaterials(){
+export function getMaterials() {
   return request({
-    method: 'get',
-    url: '/materials.json',
-  })
+    method: "get",
+    url: "/materials.json"
+  });
+}
+
+export function getSearchResults(keyword) {
+  return request({
+    method: "get",
+    data: keyword,
+    url: "/results.json"
+  });
+}
+
+export function test() {
+  return request({
+    method: "get",
+    url: "/file"
+  });
 }

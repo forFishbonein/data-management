@@ -42,7 +42,13 @@ export default {
     getMaterials() {
       getMaterials().then(
         response => {
-          this.materials = response.data
+          // console.log(response)
+          this.materials = response.data.data
+          if(response.data.code === 0){
+
+          }else{
+            console.log(response.data.message);
+          }
         },
         error => {
           console.log('请求失败了', error.message)

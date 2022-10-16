@@ -56,7 +56,7 @@ public class FileUploadController {
 
     @GetMapping
     @ResponseBody
-    public Result<String> getAll() {
+    public Result<Object> getAll() {
         return Result.success(mongoDBService.getAll());
     }
 
