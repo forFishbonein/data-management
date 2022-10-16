@@ -1,14 +1,16 @@
-import Vue from "vue";
-import Router from "vue-router";
+import VueRouter from "vue-router";
+import FileManage from "../components/manage/FileManage.vue";
+import CompetitionManage from "../components/manage/CompetitionManage.vue";
 
-Vue.use(Router);
-
-export default new Router({
-  // routes: [
-  //   {
-  //     path: '/',
-  //     name: 'HelloWorld',
-  //     component: HelloWorld
-  //   }
-  // ]
+export default new VueRouter({
+  routes: [
+    {
+      path: "/fileManage",
+      component: FileManage
+    },
+    {
+      path: "/competitionManage",
+      component: CompetitionManage
+    }
+  ]
 });

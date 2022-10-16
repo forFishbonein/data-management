@@ -3,7 +3,8 @@
     <!-- <TeacherIndex></TeacherIndex> -->
     <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
-    <StudentIndex></StudentIndex>
+    <!-- <StudentIndex></StudentIndex> -->
+    <Manage></Manage>
   </div>
 </template>
 
@@ -12,6 +13,7 @@ import TeacherIndex from './views/TeacherIndex.vue'
 import RegisterTeacher from './views/RegisterTeacher.vue'
 import RegisterStudent from './views/RegisterStudent.vue'
 import StudentIndex from './views/StudentIndex.vue'
+import Manage from './views/Manage.vue'
 
 export default {
   name: 'App',
@@ -19,7 +21,8 @@ export default {
     TeacherIndex,
     RegisterTeacher,
     RegisterStudent,
-    StudentIndex
+    StudentIndex,
+    Manage
   }
 }
 </script>
