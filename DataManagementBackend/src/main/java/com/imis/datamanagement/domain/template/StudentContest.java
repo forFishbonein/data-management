@@ -11,11 +11,10 @@ import java.util.Map;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Document(collection = "party")
-public class Party extends AbstractTemplate{
+@Document(collection = "contest")
+public class StudentContest extends AbstractTemplate{
 
-
-    static final String TEMPLATE_TYPE = "party";
+    static final String TEMPLATE_TYPE = "contest";
 
     @Id
     private Integer id;
@@ -27,17 +26,15 @@ public class Party extends AbstractTemplate{
     private String introduction;
 
     //------------------
+    private String name;
+
+    private String gameName;
+
+    private String grade;
+
+    private String instructor;
+
     private String time;
-
-    private String type;
-
-    private String topic;
-
-    private String content;
-
-    private String address;
-
-    private String participant;
 
     //------------------
     private Map<String, String> other;
@@ -49,4 +46,5 @@ public class Party extends AbstractTemplate{
     private String updateTime;
 
     private String deleted;
+
 }

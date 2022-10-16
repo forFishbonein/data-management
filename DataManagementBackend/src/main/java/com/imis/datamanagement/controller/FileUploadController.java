@@ -31,6 +31,14 @@ public class FileUploadController {
         return Result.success("更新成功");
     }
 
+    @DeleteMapping
+    public Result<String> delete(@RequestBody AbstractTemplate abstractTemplate) {
+        System.out.println("abstractTemplate.getId() = " + abstractTemplate.getId());
+        mongoDBService.deleteTemplate(abstractTemplate);
+        return Result.success("删除成功");
+    }
+
+
     @Resource
     private FileUploadService fileUploadService;
 
@@ -39,4 +47,11 @@ public class FileUploadController {
     public Result<PicUploadResult> upload(@RequestParam("file") MultipartFile multipartFile) {
         return Result.success(fileUploadService.upload(multipartFile));
     }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Result<String> getById(@PathVariable("id") Long id) {
+        return Result.success(mongoDBService.getById(id));
+    }
+
 }
