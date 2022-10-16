@@ -1,32 +1,31 @@
 <template>
   <div id="app">
-    <!-- <TeacherIndex></TeacherIndex> -->
+<!--    <Index></Index>-->
     <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
-    <StudentIndex></StudentIndex>
+    <Compete></Compete>
   </div>
 </template>
 
 <script>
-import TeacherIndex from './views/TeacherIndex.vue'
+import Index from './views/Index.vue'
 import RegisterTeacher from './views/RegisterTeacher.vue'
 import RegisterStudent from './views/RegisterStudent.vue'
-import StudentIndex from './views/StudentIndex.vue'
+import Compete from "./views/Compete";
 
 export default {
   name: 'App',
   components: {
-    TeacherIndex,
+    Compete,
+    Index,
     RegisterTeacher,
     RegisterStudent,
-    StudentIndex
   }
 }
 </script>
 
 <style>
 #app {
-  text-align: center;
 }
 
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, textarea, button, p, blockquote, th, td {
