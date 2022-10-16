@@ -29,7 +29,7 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
     @Override
     public List<News> getAllNews() {
         QueryWrapper<News> newsQueryWrapper = new QueryWrapper<>();
-        newsQueryWrapper.isNull("newId");
+        newsQueryWrapper.isNotNull("newId");
         List<News> allNews = newsMapper.selectList(newsQueryWrapper);
         return allNews;
     }
