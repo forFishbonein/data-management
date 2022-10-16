@@ -47,4 +47,11 @@ public class FileUploadController {
     public Result<PicUploadResult> upload(@RequestParam("file") MultipartFile multipartFile) {
         return Result.success(fileUploadService.upload(multipartFile));
     }
+
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Result<String> getById(@PathVariable("id") Long id) {
+        return Result.success(mongoDBService.getById(id));
+    }
+
 }
