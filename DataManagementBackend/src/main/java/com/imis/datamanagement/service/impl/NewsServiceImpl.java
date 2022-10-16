@@ -17,13 +17,15 @@ public class NewsServiceImpl implements NewsService {
     public News getById(long id) {
         QueryWrapper<News> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(News::getNewsId, id);
-        News onenews = newsMapper.selectOne(queryWrapper);
-        return onenews;
+        News oneNews = newsMapper.selectOne(queryWrapper);
+        return oneNews;
     }
 
     @Override
     public List<News> getAllNews() {
-
-        return null;
+        QueryWrapper<News> newsQueryWrapper = new QueryWrapper<>();
+        newsQueryWrapper.isNull("newId");
+        List<News> allNews = newsMapper.selectList(newsQueryWrapper);
+        return allNews;
     }
 }
