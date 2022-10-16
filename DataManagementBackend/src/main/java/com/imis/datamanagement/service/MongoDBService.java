@@ -9,7 +9,7 @@ package com.imis.datamanagement.service;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.domain.template.AbstractTemplate;
 import com.imis.datamanagement.exception.GlobalException;
-import lombok.extern.slf4j.Slf4j;
+import com.imis.datamanagement.utils.MongoUtil;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -23,22 +23,28 @@ import java.util.Date;
 import java.util.Locale;
 
 @Service
-@Slf4j
 public class MongoDBService {
 
     @Resource
     MongoTemplate mongoTemplate;
 
-    public void insertTemplate(AbstractTemplate abstractTemplate) {
-        Query query = new Query(Criteria.where("_id").is(abstractTemplate.getId()));
+    public Integer getMongoId(AbstractTemplate abstractTemplate) {
+        Integer id = MongoUtil.getMongoId();
+        Query query = new Query(Criteria.where("_id").is(id));
         AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());
         if (at != null) {
-            throw new GlobalException(CodeMsg.FILE_EXIST);
+            getMongoId(abstractTemplate);
         }
+        return id;
 
+    }
+
+    public void insertTemplate(AbstractTemplate abstractTemplate) {
+        abstractTemplate.setId(getMongoId(abstractTemplate));
         Date date = new Date();
-        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         abstractTemplate.setCreateTime(dateFormat.format(date));
+        abstractTemplate.setUpdateTime(dateFormat.format(date));
         abstractTemplate.setDeleted("0");
         mongoTemplate.insert(abstractTemplate);
     }
@@ -55,7 +61,7 @@ public class MongoDBService {
         }
 
         Update update = null;
-        
+
         try {
             Class c = Class.forName(abstractTemplate.getClass().getName());
             Field[] fields = c.getDeclaredFields();
@@ -68,7 +74,7 @@ public class MongoDBService {
                 mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
             }
             Date date = new Date();
-            SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             abstractTemplate.setUpdateTime(dateFormat.format(date));
             update = new Update().set("updateTime", abstractTemplate.getUpdateTime());
             mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
@@ -76,4 +82,23 @@ public class MongoDBService {
             e.printStackTrace();
         }
     }
+
+    public void deleteTemplate(AbstractTemplate abstractTemplate) {
+        Query query = new Query(Criteria.where("_id").is(abstractTemplate.getId()));
+        AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());
+        System.out.println(at);
+        if (at == null) {
+            throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
+        }
+        Update update = null;
+        update = new Update().set("0", abstractTemplate.getDeleted());
+        mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        abstractTemplate.setUpdateTime(dateFormat.format(date));
+        update = new Update().set("updateTime", abstractTemplate.getUpdateTime());
+        mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
+    }
+
+
 }
