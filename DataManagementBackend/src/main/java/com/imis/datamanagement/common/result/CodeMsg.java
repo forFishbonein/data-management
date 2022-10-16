@@ -25,6 +25,7 @@ public class CodeMsg {
     public static CodeMsg FILE_EXIST = new CodeMsg(500220, "文件已存在");
 
 
+
 //
 
     private CodeMsg() {
