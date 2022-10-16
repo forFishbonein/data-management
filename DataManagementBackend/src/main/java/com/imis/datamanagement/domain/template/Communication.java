@@ -1,5 +1,5 @@
 package com.imis.datamanagement.domain.template;
-//
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
@@ -7,10 +7,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-//
+
 import java.util.List;
 import java.util.Map;
-//
+
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Document(collection = "communication")
@@ -22,14 +22,14 @@ public class Communication extends AbstractTemplate {
     private Long id;
 
     private Long uploaderId;
-//
+
     private String num;
-//
+
     private String introduction;
-//
-//    //------------------
+
+    //------------------
     private String startTime;
-//
+
     private String lastTime;
 
     private String type;
@@ -45,8 +45,8 @@ public class Communication extends AbstractTemplate {
     private String whetherSpeak;
 
     private String whetherParticipate;
-//
-//    //------------------
+
+    //------------------
     private Map<String, String> other;
 
     private List<String> filePath;
