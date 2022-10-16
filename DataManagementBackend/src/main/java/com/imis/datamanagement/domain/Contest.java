@@ -19,7 +19,7 @@ public class Contest implements Serializable {
 
     private String contestLink;
 
-    private String creatTime;
+    private String createTime;
 
     private String updateTime;
 
