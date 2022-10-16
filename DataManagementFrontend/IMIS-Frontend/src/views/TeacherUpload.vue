@@ -68,7 +68,7 @@
                 <input type="number" placeholder="请输入数字">
             </div>
             <div class="resources">
-                <span>
+                 <span>
 课题组成员
                 </span>
                 <input type="text" placeholder="请输入文字">
