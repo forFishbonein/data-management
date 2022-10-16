@@ -6,6 +6,7 @@ package com.imis.datamanagement.service;
  * @File : DataManagement4IMIS
  */
 
+import com.alibaba.fastjson.JSON;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.domain.template.*;
 import com.imis.datamanagement.exception.GlobalException;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -38,7 +40,8 @@ public class MongoDBService {
         }
         return id;
     }
-    //TODO 获取当前用户的所有资源（个人详情）
+
+    //获取当前用户的所有资源（个人详情）
     public String getById(Long id) {
         System.out.println("id = " + id);
         Query query = new Query(Criteria.where("uploaderId").is(id));
@@ -52,15 +55,50 @@ public class MongoDBService {
         List<Teaching> teachings = mongoTemplate.find(query, Teaching.class);
         List<UserDefined> userDefineds = mongoTemplate.find(query, UserDefined.class);
 
-        String s = offices.toString() + papers.toString() + honors.toString();
-        System.out.println(offices);
-        System.out.println(papers);
-        System.out.println(honors);
-        System.out.println(s);
-        return s;
+        List<Object> l = new ArrayList<>();
+        l.add(achievememnts);
+        l.add(communications);
+        l.add(honors);
+        l.add(offices);
+        l.add(papers);
+        l.add(parties);
+        l.add(studentContests);
+        l.add(teachings);
+        l.add(userDefineds);
+
+        String json = JSON.toJSONString(l);
+
+        return json;
     }
 
     //TODO 获取所有用户的所有资源（资源广场）
+    public String getAll() {
+        Query query = new Query();
+        List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
+        List<Communication> communications = mongoTemplate.find(query, Communication.class);
+        List<Honor> honors = mongoTemplate.find(query, Honor.class);
+        List<Office> offices = mongoTemplate.find(query, Office.class);
+        List<Paper> papers = mongoTemplate.find(query, Paper.class);
+        List<Party> parties = mongoTemplate.find(query, Party.class);
+        List<StudentContest> studentContests = mongoTemplate.find(query, StudentContest.class);
+        List<Teaching> teachings = mongoTemplate.find(query, Teaching.class);
+        List<UserDefined> userDefineds = mongoTemplate.find(query, UserDefined.class);
+
+        List<Object> l = new ArrayList<>();
+        l.add(achievememnts);
+        l.add(communications);
+        l.add(honors);
+        l.add(offices);
+        l.add(papers);
+        l.add(parties);
+        l.add(studentContests);
+        l.add(teachings);
+        l.add(userDefineds);
+
+        String json = JSON.toJSONString(l);
+
+        return json;
+    }
 
     //TODO 根据条件获取用户资源（资源广场）
 

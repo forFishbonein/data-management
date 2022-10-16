@@ -1,24 +1,28 @@
 package com.imis.datamanagement.service;
+/*
+ *
+ * @Time : 2022/10/16
+ * @Author : https://blog.csdn.net/m0_56170277
+ * @File : DataManagement4IMIS
+ */
 
-
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.imis.datamanagement.common.vo.LoginVo;
 import com.imis.datamanagement.common.vo.RegisterVo;
-import com.imis.datamanagement.domain.User;
+import com.imis.datamanagement.domain.Teacher;
 
 import javax.servlet.http.HttpServletResponse;
 
-public interface UserService extends IService<User> {
+public interface TeacherService {
 
-    User getById(long id);
+    Teacher getById(long id);
 
     String codeLogin(HttpServletResponse response, LoginVo loginVo);
 
     String passLogin(HttpServletResponse response, LoginVo loginVo);
 
-    void addCookie(HttpServletResponse response, String token, User user);
+    void addCookie(HttpServletResponse response, String token, Teacher teacher);
 
-    User getByToken(HttpServletResponse response, String token);
+    Teacher getByToken(HttpServletResponse response, String token);
 
     void sendEmail(LoginVo loginVo);
 
@@ -26,5 +30,5 @@ public interface UserService extends IService<User> {
 
     String logout(String token);
 
-    String registered(User user);
+    String registered(Teacher teacher);
 }

@@ -54,4 +54,10 @@ public class FileUploadController {
         return Result.success(mongoDBService.getById(id));
     }
 
+    @GetMapping
+    @ResponseBody
+    public Result<String> getAll() {
+        return Result.success(mongoDBService.getAll());
+    }
+
 }
