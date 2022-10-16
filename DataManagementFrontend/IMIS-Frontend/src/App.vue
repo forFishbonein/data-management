@@ -1,22 +1,25 @@
 <template>
   <div id="app">
-    <Index></Index>
+    <!-- <TeacherIndex></TeacherIndex> -->
     <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
+    <StudentIndex></StudentIndex>
   </div>
 </template>
 
 <script>
-import Index from './views/Index.vue'
+import TeacherIndex from './views/TeacherIndex.vue'
 import RegisterTeacher from './views/RegisterTeacher.vue'
 import RegisterStudent from './views/RegisterStudent.vue'
+import StudentIndex from './views/StudentIndex.vue'
 
 export default {
   name: 'App',
   components: {
-    Index,
+    TeacherIndex,
     RegisterTeacher,
     RegisterStudent,
+    StudentIndex
   }
 }
 </script>
