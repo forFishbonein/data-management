@@ -6,7 +6,7 @@ import "./assets/font-search/iconfont.css";
 // import ElementUI from "element-ui";
 // import "element-ui/lib/theme-chalk/index.css";
 // Vue.use(ElementUI);
-import { Pagination } from 'element-ui';
+import { Pagination } from "element-ui";
 Vue.use(Pagination);
 
 Vue.config.productionTip = false;
