@@ -18,7 +18,7 @@ public class UserDefined extends AbstractTemplate{
     static final String TEMPLATE_TYPE = "user_defined";
 
     @Id
-    private Long id;
+    private Integer id;
 
     private Long uploaderId;
 

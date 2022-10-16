@@ -1,8 +1,6 @@
 package com.imis.datamanagement.domain.template;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
@@ -14,12 +12,12 @@ import java.util.Map;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Document(collection = "contest")
-public class Contest extends AbstractTemplate{
+public class StudentContest extends AbstractTemplate{
 
     static final String TEMPLATE_TYPE = "contest";
 
     @Id
-    private Long id;
+    private Integer id;
 
     private Long uploaderId;
 

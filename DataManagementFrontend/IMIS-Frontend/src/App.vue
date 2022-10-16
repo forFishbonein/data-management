@@ -1,36 +1,29 @@
 <template>
   <div id="app">
-    <!-- <Index></Index> -->
+<!--    <Index></Index>-->
     <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
-    <Search></Search>
-    <!-- <Resource_></Resource_> -->
-
+    <Compete></Compete>
   </div>
 </template>
 
 <script>
-import Index from './views/Index.vue'
 import RegisterTeacher from './views/RegisterTeacher.vue'
 import RegisterStudent from './views/RegisterStudent.vue'
-import Search from './views/Search.vue'
-import Resource_ from './views/Resource_.vue'
+import Compete from "./views/Compete";
 
 export default {
   name: 'App',
   components: {
-    Index,
+    Compete,
     RegisterTeacher,
     RegisterStudent,
-    Search,
-    Resource_
-}
+  }
 }
 </script>
 
 <style>
 #app {
-  text-align: center;
 }
 
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, textarea, button, p, blockquote, th, td {

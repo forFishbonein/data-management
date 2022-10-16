@@ -20,7 +20,7 @@ public class Achievememnt extends AbstractTemplate{
     static final String TEMPLATE_TYPE = "achievement";
 
     @Id
-    private Long id;
+    private Integer id;
 
     private Long uploaderId;
 

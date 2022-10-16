@@ -19,7 +19,7 @@ public class Communication extends AbstractTemplate {
    static final String TEMPLATE_TYPE = "communication";
 
     @Id
-    private Long id;
+    private Integer id;
 
     private Long uploaderId;
 
