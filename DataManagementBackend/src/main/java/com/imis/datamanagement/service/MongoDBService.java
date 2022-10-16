@@ -35,8 +35,9 @@ public class MongoDBService {
         }
 
         Date date = new Date();
-        SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         abstractTemplate.setCreateTime(dateFormat.format(date));
+        abstractTemplate.setUpdateTime(dateFormat.format(date));
         abstractTemplate.setDeleted("0");
         mongoTemplate.insert(abstractTemplate);
     }
@@ -53,7 +54,7 @@ public class MongoDBService {
         }
 
         Update update = null;
-        
+
         try {
             Class c = Class.forName(abstractTemplate.getClass().getName());
             Field[] fields = c.getDeclaredFields();
@@ -66,7 +67,7 @@ public class MongoDBService {
                 mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
             }
             Date date = new Date();
-            SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             abstractTemplate.setUpdateTime(dateFormat.format(date));
             update = new Update().set("updateTime", abstractTemplate.getUpdateTime());
             mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
@@ -74,4 +75,23 @@ public class MongoDBService {
             e.printStackTrace();
         }
     }
+
+    public void deleteTemplate(AbstractTemplate abstractTemplate) {
+        Query query = new Query(Criteria.where("_id").is(abstractTemplate.getId()));
+        AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());
+        System.out.println(at);
+        if (at == null) {
+            throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
+        }
+        Update update = null;
+        update = new Update().set("0", abstractTemplate.getDeleted());
+        mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        abstractTemplate.setUpdateTime(dateFormat.format(date));
+        update = new Update().set("updateTime", abstractTemplate.getUpdateTime());
+        mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
+    }
+
+
 }
