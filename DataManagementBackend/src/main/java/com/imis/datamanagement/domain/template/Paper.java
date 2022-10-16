@@ -18,7 +18,7 @@ public class Paper extends AbstractTemplate{
     static final String TEMPLATE_TYPE = "paper";
 
     @Id
-    private Long id;
+    private Integer id;
 
     private Long uploaderId;
 

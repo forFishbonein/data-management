@@ -18,7 +18,7 @@ public class Party extends AbstractTemplate{
     static final String TEMPLATE_TYPE = "party";
 
     @Id
-    private Long id;
+    private Integer id;
 
     private Long uploaderId;
 

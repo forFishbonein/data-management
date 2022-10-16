@@ -3,7 +3,7 @@
     <div class="logo">
       <img  src="../../static/img/logo.png"
             alt="logo">
-      </div>
+    </div>
     <div class="el-menu-resource" href="#">
       <div class="aword1">资源广场</div>
     <span class="aline"></span>
@@ -66,6 +66,7 @@ nav .el-menu-resource {
   display: flex;
   font-size: larger;
   font-weight: bold;
+  cursor: pointer;
 }
 .aword1{
   height:30px;
@@ -153,6 +154,7 @@ nav .el-menu-center {
   display: flex;
   font-size: larger;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .aword2{
@@ -169,7 +171,7 @@ nav .el-menu-center {
 
 }
 .el-menu-center:hover .bline{
-  animation:lineChange2 2s infinite;
+  animation:lineChange2 1s;
   /* animation-direction: alternate; */
   animation-fill-mode: forwards;
 }

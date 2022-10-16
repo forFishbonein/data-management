@@ -7,7 +7,7 @@ package com.imis.datamanagement.service;
  */
 
 import com.imis.datamanagement.common.result.CodeMsg;
-import com.imis.datamanagement.domain.template.AbstractTemplate;
+import com.imis.datamanagement.domain.template.*;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.utils.MongoUtil;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -20,6 +20,7 @@ import javax.annotation.Resource;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 @Service
@@ -36,8 +37,32 @@ public class MongoDBService {
             getMongoId(abstractTemplate);
         }
         return id;
-
     }
+    //TODO 获取当前用户的所有资源（个人详情）
+    public String getById(Long id) {
+        System.out.println("id = " + id);
+        Query query = new Query(Criteria.where("uploaderId").is(id));
+        List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
+        List<Communication> communications = mongoTemplate.find(query, Communication.class);
+        List<Honor> honors = mongoTemplate.find(query, Honor.class);
+        List<Office> offices = mongoTemplate.find(query, Office.class);
+        List<Paper> papers = mongoTemplate.find(query, Paper.class);
+        List<Party> parties = mongoTemplate.find(query, Party.class);
+        List<StudentContest> studentContests = mongoTemplate.find(query, StudentContest.class);
+        List<Teaching> teachings = mongoTemplate.find(query, Teaching.class);
+        List<UserDefined> userDefineds = mongoTemplate.find(query, UserDefined.class);
+
+        String s = offices.toString() + papers.toString() + honors.toString();
+        System.out.println(offices);
+        System.out.println(papers);
+        System.out.println(honors);
+        System.out.println(s);
+        return s;
+    }
+
+    //TODO 获取所有用户的所有资源（资源广场）
+
+    //TODO 根据条件获取用户资源（资源广场）
 
     public void insertTemplate(AbstractTemplate abstractTemplate) {
         abstractTemplate.setId(getMongoId(abstractTemplate));
