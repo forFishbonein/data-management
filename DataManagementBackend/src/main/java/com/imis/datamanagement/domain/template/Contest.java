@@ -19,7 +19,7 @@ public class Contest extends AbstractTemplate{
     static final String TEMPLATE_TYPE = "contest";
 
     @Id
-    private Long id;
+    private Integer id;
 
     private Long uploaderId;
 
