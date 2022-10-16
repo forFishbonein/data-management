@@ -38,7 +38,7 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
     public void deleteById(long id) {
         //判断id是否存在
         QueryWrapper<News> deleteQueryWrapper = new QueryWrapper<>();
-        deleteQueryWrapper.lambda().eq(News::getNewsId, id);
+        deleteQueryWrapper.lambda().eq(News::getNewsId,id);
         News oneId = newsMapper.selectOne(deleteQueryWrapper);
         if (oneId == null) {
             throw new GlobalException(CodeMsg.NEWS_NOT_EXIST);
