@@ -9,6 +9,7 @@ package com.imis.datamanagement.service;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.domain.template.AbstractTemplate;
 import com.imis.datamanagement.exception.GlobalException;
+import com.imis.datamanagement.utils.MongoUtil;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -27,13 +28,19 @@ public class MongoDBService {
     @Resource
     MongoTemplate mongoTemplate;
 
-    public void insertTemplate(AbstractTemplate abstractTemplate) {
-        Query query = new Query(Criteria.where("_id").is(abstractTemplate.getId()));
+    public Integer getMongoId(AbstractTemplate abstractTemplate) {
+        Integer id = MongoUtil.getMongoId();
+        Query query = new Query(Criteria.where("_id").is(id));
         AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());
         if (at != null) {
-            throw new GlobalException(CodeMsg.FILE_EXIST);
+            getMongoId(abstractTemplate);
         }
+        return id;
 
+    }
+
+    public void insertTemplate(AbstractTemplate abstractTemplate) {
+        abstractTemplate.setId(getMongoId(abstractTemplate));
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         abstractTemplate.setCreateTime(dateFormat.format(date));
