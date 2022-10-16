@@ -1,8 +1,11 @@
 <template>
   <div id="app">
-    <Index></Index>
+    <!-- <Index></Index> -->
     <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
+    <Search></Search>
+    <!-- <Resource_></Resource_> -->
+
   </div>
 </template>
 
@@ -10,6 +13,8 @@
 import Index from './views/Index.vue'
 import RegisterTeacher from './views/RegisterTeacher.vue'
 import RegisterStudent from './views/RegisterStudent.vue'
+import Search from './views/Search.vue'
+import Resource_ from './views/Resource_.vue'
 
 export default {
   name: 'App',
@@ -17,7 +22,9 @@ export default {
     Index,
     RegisterTeacher,
     RegisterStudent,
-  }
+    Search,
+    Resource_
+}
 }
 </script>
 
