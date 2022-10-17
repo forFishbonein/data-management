@@ -104,6 +104,7 @@ nav .upload {
   border-radius: 8px;
   transition: 0.25s;
   background-color: #3C85D7;
+  margin-top: 2px;
 }
 
 nav .upload:hover {
@@ -115,8 +116,5 @@ nav .upload div {
   width: 100px;
   text-align: center;
 }
-
-
-
 
 </style>
