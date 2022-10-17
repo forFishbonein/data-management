@@ -79,7 +79,7 @@ nav .logo img {
 }
 
 nav .resource {
-  color: #3C85D7;
+  color: #015ecb;
   position: relative;
   text-align: center;
   display: flex;
@@ -87,7 +87,7 @@ nav .resource {
 }
 
 nav .profile {
-  color: #3C85D7;
+  color: #015ecb;
   position: relative;
   text-align: center;
   display: flex;
