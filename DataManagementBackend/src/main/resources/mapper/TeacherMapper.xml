@@ -3,12 +3,12 @@
 <mapper namespace="com.imis.datamanagement.mapper.TeacherMapper">
 
     <select id="getByTeacherId" resultType="com.imis.datamanagement.common.vo.ShowVo">
-        select * from teacher inner join teacher_info
+        select * from teacher t1 inner join teacher_info t2
         <where>
-            teacher.id = teacher_info.id
+            t1.teacher_id = t2.teacher_id
             and
             <if test="id != null and id != ''">
-                teacher_id = #{id}
+                t1.teacher_id = #{id}
             </if>
         </where>
     </select>

@@ -11,11 +11,9 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.common.vo.LoginVo;
-import com.imis.datamanagement.common.vo.RegisterVo;
 import com.imis.datamanagement.common.vo.ShowVo;
 import com.imis.datamanagement.common.vo.TeacherRegisterVo;
 import com.imis.datamanagement.domain.Teacher;
-import com.imis.datamanagement.domain.TeacherInfo;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.mapper.TeacherMapper;
 import com.imis.datamanagement.redis.CodeKey;
@@ -23,7 +21,6 @@ import com.imis.datamanagement.redis.RedisService;
 import com.imis.datamanagement.redis.TeacherKey;
 import com.imis.datamanagement.service.EmailService;
 import com.imis.datamanagement.service.TeacherService;
-import com.imis.datamanagement.service.UserService;
 import com.imis.datamanagement.utils.UUIDUtil;
 import com.imis.datamanagement.utils.ValidateCodeUtils;
 import lombok.extern.slf4j.Slf4j;
@@ -186,8 +183,8 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(Teacher::getTeacherEmail, email);
         Teacher teacherInMysql = getOne(queryWrapper);
-        if (teacherInMysql != null) {
-            throw new GlobalException(CodeMsg.EMAIL_EXIST);
+        if (teacherInMysql == null) {
+            throw new GlobalException(CodeMsg.USER_NOT_EXIST);
         }
         String passInMysql = teacherInMysql.getTeacherPass();
         if (!passInMysql.equals(password)) {
