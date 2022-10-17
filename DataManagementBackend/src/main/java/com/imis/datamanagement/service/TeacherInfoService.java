@@ -9,6 +9,7 @@ package com.imis.datamanagement.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.common.result.CodeMsg;
+import com.imis.datamanagement.common.vo.TeacherRegisterVo;
 import com.imis.datamanagement.domain.Teacher;
 import com.imis.datamanagement.domain.TeacherInfo;
 import com.imis.datamanagement.exception.GlobalException;
@@ -27,7 +28,7 @@ public class TeacherInfoService extends ServiceImpl<TeacherInfoMapper, TeacherIn
     @Resource
     TeacherService teacherService;
 
-    public void createInfo(Long id) {
+    public void createInfo(Long id, TeacherRegisterVo registerVo) {
         Teacher teacherInMysql = teacherService.getById(id);
         if (teacherInMysql != null) {
             throw new GlobalException(CodeMsg.TEACHER_NOT_EXIST);
@@ -40,6 +41,10 @@ public class TeacherInfoService extends ServiceImpl<TeacherInfoMapper, TeacherIn
         }
         TeacherInfo teacherInfo = new TeacherInfo();
         teacherInfo.setTeacherId(id);
+        teacherInfo.setTeacherSid(registerVo.getTeacherSid());
+        teacherInfo.setTeacherName(registerVo.getTeacherName());
+        teacherInfo.setTeacherTele(registerVo.getTeacherTele());
+        teacherInfo.setTeacherTittle(registerVo.getTeacherTittle());
         teacherInfoMapper.insert(teacherInfo);
     }
 

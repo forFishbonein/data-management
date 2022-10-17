@@ -12,7 +12,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.common.vo.LoginVo;
 import com.imis.datamanagement.common.vo.RegisterVo;
+import com.imis.datamanagement.common.vo.ShowVo;
+import com.imis.datamanagement.common.vo.TeacherRegisterVo;
 import com.imis.datamanagement.domain.Teacher;
+import com.imis.datamanagement.domain.TeacherInfo;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.mapper.TeacherMapper;
 import com.imis.datamanagement.redis.CodeKey;
@@ -87,6 +90,18 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         return null;
     }
 
+    @Override
+    public ShowVo show(Long id) {
+        ShowVo showVo = teacherMapper.getByTeacherId(id);
+        if (showVo == null) {
+            throw new GlobalException(CodeMsg.USER_NOT_EXIST);
+        }
+        if (showVo != null) {
+            redisService.set(TeacherKey.getById, "" + id, showVo);
+        }
+        return showVo;
+    }
+
     public String codeLogin(HttpServletResponse response, LoginVo loginVo) {
         if (loginVo == null) {
             throw new GlobalException(CodeMsg.SERVER_ERROR);
@@ -105,16 +120,17 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         }
         redisService.delete(CodeKey.code, email);
         String token = UUIDUtil.uuid();
-        addCookie(response, token, teacherInMysql);
+        ShowVo teacher = show(teacherInMysql.getTeacherId());
+        addCookie(response, token, teacher);
         return token;
     }
 
     @Override
-    public void register(HttpServletResponse response, RegisterVo registerVo) {
+    public void register(HttpServletResponse response, TeacherRegisterVo registerVo) {
         if (registerVo == null) {
             throw new GlobalException(CodeMsg.SERVER_ERROR);
         }
-        String email = registerVo.getEmail();
+        String email = registerVo.getTeacherEmail();
         String code = registerVo.getCode();
         QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(Teacher::getTeacherEmail, email);
@@ -128,12 +144,13 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         }
         redisService.delete(CodeKey.code, email);
         Teacher teacher = new Teacher();
-        teacher.setTeacherEmail(registerVo.getEmail());
-        teacher.setTeacherPass(registerVo.getPassword());
+        teacher.setTeacherEmail(registerVo.getTeacherEmail());
+        teacher.setTeacherPass(registerVo.getTeacherPass());
+
         teacherMapper.insert(teacher);
     }
 
-    public void addCookie(HttpServletResponse response, String token, Teacher teacher) {
+    public void addCookie(HttpServletResponse response, String token, ShowVo teacher) {
         redisService.set(TeacherKey.token, token, teacher);
         Cookie cookie = new Cookie(COOKIE_NAME_TOKEN, token);
         cookie.setMaxAge(TeacherKey.token.expireSeconds());
@@ -141,11 +158,11 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         response.addCookie(cookie);
     }
 
-    public Teacher getByToken(HttpServletResponse response, String token) {
+    public ShowVo getByToken(HttpServletResponse response, String token) {
         if (StringUtils.isEmpty(token)) {
             return null;
         }
-        Teacher teacher = redisService.get(TeacherKey.token, token, Teacher.class);
+        ShowVo teacher = redisService.get(TeacherKey.token, token, ShowVo.class);
         if (teacher != null) {
             addCookie(response, token, teacher);
         }
@@ -169,7 +186,8 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
             throw new GlobalException(CodeMsg.PASSWORD_ERROR);
         }
         String token = UUIDUtil.uuid();
-        addCookie(response, token, teacherInMysql);
+        ShowVo teacher = show(teacherInMysql.getTeacherId());
+        addCookie(response, token, teacher);
         return token;
     }
 

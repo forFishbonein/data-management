@@ -28,7 +28,7 @@ public class CodeMsg {
     public static CodeMsg ID_NOT_EXIST = new CodeMsg(500302, "ID不存在");
 
 
-//
+
 
     private CodeMsg() {
     }
