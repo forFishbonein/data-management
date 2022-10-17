@@ -14,7 +14,7 @@
         <span>个人中心</span>
       </div>
       <div class="upload">
-        <div>上传</div>
+        <span>上传</span>
       </div>
     </nav>
   </div>
@@ -79,7 +79,7 @@ nav .logo img {
 }
 
 nav .resource {
-  color: #015ecb;
+  color: #3C85D7;
   position: relative;
   text-align: center;
   display: flex;
@@ -87,7 +87,7 @@ nav .resource {
 }
 
 nav .profile {
-  color: #015ecb;
+  color: #3C85D7;
   position: relative;
   text-align: center;
   display: flex;
@@ -104,7 +104,7 @@ nav .upload {
   border-radius: 8px;
   transition: 0.25s;
   background-color: #3C85D7;
-  margin-top: 2px;
+  margin-top:2px;
 }
 
 nav .upload:hover {
@@ -112,9 +112,12 @@ nav .upload:hover {
   cursor: pointer;
 }
 
-nav .upload div {
+nav .upload span {
   width: 100px;
   text-align: center;
 }
+
+
+
 
 </style>
