@@ -1,37 +1,112 @@
 <template>
-  <div>
-    <div class="header">
-      <TeacherNav_/>
+  <nav>
+    <div class="logo">
+      <img src="../../static/img/logo.png" alt="logo">
     </div>
-  </div>
+    <div class="resource">
+      <span>资源广场</span>
+    </div>
+    <div class="search">
+      <NavSearch></NavSearch>
+    </div>
+    <div class="profile">
+      <span>个人中心</span>
+    </div>
+    <div class="upload">
+      <span>上传文件</span>
+    </div>
+  </nav>
 </template>
-
 <script>
-import TeacherNav_ from './TeacherNav_'
+import NavSearch from '../components/NavSearch.vue'
 
 export default {
-  name: 'TeacherNav',
+  name: "TeacherNav_",
   components: {
-    TeacherNav_
+    NavSearch
   }
 }
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  background-color: #FFFFFF;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+  height: 45px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  font-size: 16px;
+  line-height: 45px;
 }
 
-/* body {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-}
-*/
-.header {
-  background: #94b1d1;
+nav span:before {
+  content: '';
+  height: 2px;
+  background-color: #7dc5e7;
   width: 100%;
-  height: 60px;
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  transform: scaleX(0);
+  transition: .3s;
+}
+
+nav span:hover:before {
+  transform: scaleX(1);
+}
+
+nav .logo {
   display: flex;
 }
+
+nav .logo img {
+  width: 120px;
+  height: 35px;
+}
+
+nav .resource {
+  color: #3C85D7;
+  position: relative;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
+}
+
+nav .profile {
+  color: #3C85D7;
+  position: relative;
+  text-align: center;
+  display: flex;
+  cursor: pointer;
+}
+
+nav .upload {
+  display: flex;
+  width: 100px;
+  height: 40px;
+  color: #FFFFFF;
+  line-height: 40px;
+  border-radius: 8px;
+  transition: 0.25s;
+  background-color: #3C85D7;
+}
+
+nav .upload:hover {
+  background-color: #1E5594;
+  cursor: pointer;
+}
+
+nav .upload span {
+  width: 100px;
+  text-align: center;
+}
+
+
+
+
 </style>
