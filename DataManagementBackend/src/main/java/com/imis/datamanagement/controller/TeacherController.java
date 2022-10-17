@@ -8,8 +8,8 @@ package com.imis.datamanagement.controller;
 
 import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.common.vo.LoginVo;
-import com.imis.datamanagement.common.vo.RegisterVo;
 import com.imis.datamanagement.common.vo.TeacherRegisterVo;
+import com.imis.datamanagement.service.TeacherInfoService;
 import com.imis.datamanagement.service.TeacherService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +28,9 @@ public class TeacherController {
     @Resource
     TeacherService teacherService;
 
+    @Resource
+    TeacherInfoService teacherInfoService;
+
     @PostMapping("/login")
     public Result<String> codeLogin(HttpServletResponse response, @RequestBody LoginVo loginVo) {
         teacherService.codeLogin(response, loginVo);
@@ -43,6 +46,7 @@ public class TeacherController {
     @PostMapping("/register")
     public Result<String> register(HttpServletResponse response, @RequestBody TeacherRegisterVo registerVo) {
         teacherService.register(response, registerVo);
+        teacherInfoService.createInfo(teacherService.getIdByEmail(registerVo.getTeacherEmail()), registerVo);
         return Result.success("注册成功");
     }
 }

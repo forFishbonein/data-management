@@ -18,6 +18,8 @@ public interface TeacherService {
 
     Teacher getById(long id);
 
+    Long getIdByEmail(String email);
+
     String codeLogin(HttpServletResponse response, LoginVo loginVo);
 
     String passLogin(HttpServletResponse response, LoginVo loginVo);

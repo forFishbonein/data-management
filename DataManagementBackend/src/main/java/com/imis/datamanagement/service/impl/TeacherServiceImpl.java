@@ -62,6 +62,14 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         return teacher;
     }
 
+    @Override
+    public Long getIdByEmail(String email) {
+        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(Teacher::getTeacherEmail, email);
+        Teacher teacher = teacherMapper.selectOne(queryWrapper);
+        return teacher.getTeacherId();
+    }
+
     public void sendEmail(LoginVo loginVo) {
 
         String email = loginVo.getEmail();

@@ -14,7 +14,6 @@ import com.imis.datamanagement.domain.Teacher;
 import com.imis.datamanagement.domain.TeacherInfo;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.mapper.TeacherInfoMapper;
-import com.imis.datamanagement.mapper.TeacherMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -30,8 +29,8 @@ public class TeacherInfoService extends ServiceImpl<TeacherInfoMapper, TeacherIn
 
     public void createInfo(Long id, TeacherRegisterVo registerVo) {
         Teacher teacherInMysql = teacherService.getById(id);
-        if (teacherInMysql != null) {
-            throw new GlobalException(CodeMsg.TEACHER_NOT_EXIST);
+        if (teacherInMysql == null) {
+            throw new GlobalException(CodeMsg.USER_NOT_EXIST);
         }
         QueryWrapper<TeacherInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(TeacherInfo::getTeacherId, id);
@@ -51,13 +50,13 @@ public class TeacherInfoService extends ServiceImpl<TeacherInfoMapper, TeacherIn
     public void updateInfo(TeacherInfo teacherInfo) {
         Teacher teacherInMysql = teacherService.getById(teacherInfo.getTeacherId());
         if (teacherInMysql == null) {
-            throw new GlobalException(CodeMsg.TEACHER_NOT_EXIST);
+            throw new GlobalException(CodeMsg.USER_NOT_EXIST);
         }
         QueryWrapper<TeacherInfo> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(TeacherInfo::getTeacherId, teacherInfo.getTeacherId());
         TeacherInfo teacherInfoInMysql = teacherInfoMapper.selectOne(queryWrapper);
         if (teacherInfoInMysql == null) {
-            throw new GlobalException(CodeMsg.TEACHER_NOT_EXIST);
+            throw new GlobalException(CodeMsg.USER_NOT_EXIST);
         }
         teacherInfoMapper.update(teacherInfo, queryWrapper);
     }
