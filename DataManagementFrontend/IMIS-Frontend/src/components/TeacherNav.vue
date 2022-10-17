@@ -70,6 +70,7 @@ nav span:hover:before {
 
 nav .logo {
   display: flex;
+  margin-top: 5px;
 }
 
 nav .logo img {

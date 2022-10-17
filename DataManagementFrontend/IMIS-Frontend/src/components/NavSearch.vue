@@ -39,11 +39,12 @@ export default {
 </script>
 
 <style scoped>
-nav .search {
+.search {
   color: #FFFFFF;
-  width: 450px;
+  width: 550px;
   position: relative;
   display: flex;
+  margin-top: 5px;
 }
 
 .iconfont {
@@ -57,7 +58,7 @@ nav .search {
 
 nav .search-icon {
   width: 60px;
-  height: 40px;
+  height: 36px;
   background-color: #dce9f8;
   border-radius: 0px 8px 8px 0px;
   border-right: #ccc 1.5px solid;
@@ -70,10 +71,10 @@ nav .search-icon {
 
 
 nav .searchInput {
-  width: 450px;
+  width: 550px;
   position: relative;
   display: flex;
-  height: 40px;
+  height: 36px;
   border-left: #ccc 1.5px solid;
   border-radius: 8px 0px 0px 8px;
   font-size: 16px;
@@ -89,7 +90,9 @@ nav .searchInput {
 .search-icon:hover,
 .searchInput:hover,
 .search-icon:hover ~ .searchInput,
-.searchInput:hover ~ .search-icon {
+.searchInput:hover ~ .search-icon,
+.searchInput:focus,
+.searchInput:focus ~ .search-icon{
   border-top: #3c85d7 2px solid;
   border-bottom: #3c85d7 2px solid;
 }
@@ -99,11 +102,13 @@ nav .searchInput {
 }
 
 .search .searchInput:hover ~ .search-icon,
+.search .searchInput:focus ~ .search-icon,
 .search .search-icon:hover {
   border-right: #3c85d7 2px solid;
 }
 
 .search .search-icon:hover ~ .searchInput,
+.search .searchInput:focus,
 .search .searchInput:hover {
   border-left: #3c85d7 2px solid;
 }
