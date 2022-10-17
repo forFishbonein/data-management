@@ -49,7 +49,6 @@ export default {
 }
 
 .bgpicture {
-  border:-1;
   background-color: gainsboro;
   width: 1200px;
   height: 120px;
@@ -73,7 +72,6 @@ export default {
   border-radius: 100%;
   position: absolute;
   margin: -40px 0 0 30px;
-  background-color: rgb(167, 59, 59);
 }
 
 .teacher-pic>img{
@@ -102,7 +100,6 @@ export default {
 
 .teacher .teacher-info .info1 .teacher-title {
   color: #3C85D7;
-  font-size: normal;
   line-height:35px;
   font-weight: 400;
   margin-left: 100px;
@@ -116,7 +113,6 @@ export default {
 }
 .teacher .teacher-info .info2 .file {
   color: #3C85D7;
-  font-size: normal;
   line-height:35px;
   font-weight: 400;
   margin-left: 20px;
@@ -124,7 +120,6 @@ export default {
 
 .teacher .teacher-info .info2 .phone-number {
   color: #3C85D7;
-  font-size: normal;
   line-height:35px;
   font-weight: 400;
   margin-left: 75.5px;

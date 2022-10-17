@@ -14,7 +14,7 @@
         <span>个人中心</span>
       </div>
       <div class="upload">
-        <span>上传</span>
+        <div>上传</div>
       </div>
     </nav>
   </div>
@@ -111,7 +111,7 @@ nav .upload:hover {
   cursor: pointer;
 }
 
-nav .upload span {
+nav .upload div {
   width: 100px;
   text-align: center;
 }
