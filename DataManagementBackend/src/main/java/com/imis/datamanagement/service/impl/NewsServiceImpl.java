@@ -29,7 +29,7 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
     @Override
     public List<News> getAllNews() {
         QueryWrapper<News> newsQueryWrapper = new QueryWrapper<>();
-        newsQueryWrapper.isNotNull("newId");
+        newsQueryWrapper.isNotNull("news_id");
         List<News> allNews = newsMapper.selectList(newsQueryWrapper);
         return allNews;
     }
@@ -42,7 +42,7 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
         News oneId = newsMapper.selectOne(deleteQueryWrapper);
         if (oneId == null) {
             throw new GlobalException(CodeMsg.NEWS_NOT_EXIST);
-        } else newsMapper.deleteById(id);
+        } else  newsMapper.deleteById(id);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
     }
 
     @Override
-    public void insertById(News news) {
+    public void insert(News news) {
         //插入的新闻
         newsMapper.insert(news);
     }
