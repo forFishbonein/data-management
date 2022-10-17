@@ -43,7 +43,6 @@ export default {
 <style scoped>
 
 .teacher-header{
-  margin-top: 40px;
   display: flex;
   flex-direction: column;
   height:200px;
