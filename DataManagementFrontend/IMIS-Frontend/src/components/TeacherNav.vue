@@ -1,21 +1,23 @@
 <template>
-  <nav>
-    <div class="logo">
-      <img src="../../static/img/logo.png" alt="logo">
-    </div>
-    <div class="resource">
-      <span>资源广场</span>
-    </div>
-    <div class="search">
-      <NavSearch></NavSearch>
-    </div>
-    <div class="profile">
-      <span>个人中心</span>
-    </div>
-    <div class="upload">
-      <span>上传文件</span>
-    </div>
-  </nav>
+  <div class="con">
+    <nav>
+      <div class="logo">
+        <img src="../../static/img/logo.png" alt="logo">
+      </div>
+      <div class="resource">
+        <span>资源广场</span>
+      </div>
+      <div class="search">
+        <NavSearch></NavSearch>
+      </div>
+      <div class="profile">
+        <span>个人中心</span>
+      </div>
+      <div class="upload">
+        <span>上传</span>
+      </div>
+    </nav>
+  </div>
 </template>
 <script>
 import NavSearch from '../components/NavSearch.vue'
@@ -29,17 +31,23 @@ export default {
 </script>
 
 <style scoped>
-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  background-color: #FFFFFF;
-  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
-  height: 45px;
-  position: fixed;
+.con{
+  position: sticky;
   top: 0;
   z-index: 999;
+
+  width: 100%;
+  height: 45px;
+  background-color: #FFFFFF;
+  box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  height: 45px;
+  margin: 0 auto;
   font-size: 16px;
   line-height: 45px;
 }
@@ -87,10 +95,11 @@ nav .profile {
 
 nav .upload {
   display: flex;
-  width: 100px;
+  width: 80px;
   height: 40px;
   color: #FFFFFF;
   line-height: 40px;
+  letter-spacing: 3px;
   border-radius: 8px;
   transition: 0.25s;
   background-color: #3C85D7;
