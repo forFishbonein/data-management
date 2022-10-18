@@ -34,7 +34,7 @@ public class ContestController {
         return Result.success(contests);
     }
 
-    //增加一条新闻
+    //增加一条竞赛
     @PostMapping("/insert")
     public Result<String> insert(@RequestBody Contest contest){
         contestService.insert(contest);
@@ -42,14 +42,14 @@ public class ContestController {
     }
 
     //根据id删除
-    @DeleteMapping("/delete/{contestId}")
+    @DeleteMapping("/{contestId}")
     public Result<String> deleteById(@PathVariable("contestId") Long contestId){
         contestService.deleteById(contestId);
         return Result.success("删除成功");
     }
 
     //根据id修改
-    @PutMapping("/update/{contestId}")
+    @PutMapping("/{contestId}")
     public Result<String> updateById(@PathVariable("contestId") Long contestId){
         contestService.updateById(contestId);
         return Result.success("修改成功");
