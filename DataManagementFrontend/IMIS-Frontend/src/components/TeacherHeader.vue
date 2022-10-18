@@ -35,8 +35,8 @@ export default {
     return {
       teacher: {
         teacherName: "AAA",
-        teacherEmail: "",
-        teacherSid: "",
+        teacherEmail: "w@w.ww",
+        teacherSid: "20202107",
         teacherTitle: "副教授",
         teacherTele: "12345678901"
       }
