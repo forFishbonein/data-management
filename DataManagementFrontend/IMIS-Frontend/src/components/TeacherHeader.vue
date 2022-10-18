@@ -68,7 +68,7 @@ export default {
 .teacher-header{
   display: flex;
   flex-direction: column;
-  height:200px;
+  height:250px;
   border-radius: 12px;
 }
 
@@ -124,7 +124,7 @@ export default {
 
 .teacher .teacher-info .info1 .teacher-name {
   color: #1A4D7F;
-  font-size: 28px;
+  font-size: 26px;
   line-height: 40px;
   font-weight: 550;
   margin-left: 20px;
@@ -137,14 +137,17 @@ export default {
 }
 
 .teacher .teacher-info .info2 .teacher-title {
+  font-size: 16px;
   color: #1A4D7F;
   line-height:35px;
   font-weight: 400;
   margin-left: 20px;
+
   /* margin-top: 8px; */
 }
 
 .teacher .teacher-info .info2 .teacher-tele {
+  font-size: 16px;
   color: #1A4D7F;
   line-height:35px;
   font-weight: 400;
@@ -157,17 +160,20 @@ export default {
 }
 
 .teacher .teacher-info .info3 .teacher-sid {
+  font-size: 16px;
   color: #1A4D7F;
   line-height:35px;
   font-weight: 400;
   margin-left: 20px;
 }
 
-.teacher .teacher-info .info2 .phone-number {
+
+.teacher .teacher-info .info3 .teacher-email {
+  font-size: 16px;
   color: #1A4D7F;
   line-height:35px;
   font-weight: 400;
-  margin-left: 75.5px;
+  margin-left: 75px;
 }
 
 

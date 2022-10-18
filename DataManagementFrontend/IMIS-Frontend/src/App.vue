@@ -1,7 +1,26 @@
 <template>
   <div id="app">
-<!--     <TeacherIndex></TeacherIndex>-->
-     <TeacherFile></TeacherFile>
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <TeacherIndex></TeacherIndex>
+    <TeacherIndex></TeacherIndex>
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> bdaa2e4fe1a8b4f7e351a68d2bc5d8d401008e1e
+   <TeacherIndex></TeacherIndex>
+<!--     <RegisterTeacher></RegisterTeacher>-->
+<!--     <RegisterStudent></RegisterStudent>-->
+<!--     <StudentIndex></StudentIndex>-->
+<!--     <Manage></Manage>-->
+    <!-- <Compete></Compete> -->
+<!--     <SearchResults></SearchResults>-->
+<!--    <test></test>-->
+    <!-- <LoginFooter></LoginFooter> -->
+<<<<<<< HEAD
+=======
+     <TeacherIndex></TeacherIndex>
+>>>>>>> aa9f786e38ff4a8ce0f1854aa2aa4ba83a039e9e
     <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
     <!-- <StudentIndex></StudentIndex> -->
@@ -9,6 +28,10 @@
     <!-- <Compete></Compete> -->
     <!-- <SearchResults></SearchResults> -->
     <!-- <test></test> -->
+>>>>>>> 1eaf1926808391991ef216b01a46ce6d05f6a110
+=======
+
+>>>>>>> bdaa2e4fe1a8b4f7e351a68d2bc5d8d401008e1e
   </div>
 </template>
 
@@ -21,12 +44,10 @@ import Compete from "./views/Compete"
 import SearchResults from "./views/SearchResults"
 import TeacherIndex from "./views/TeacherIndex";
 import test from "./views/test.vue";
-import TeacherFile from "./views/TeacherFile";
-
+import LoginIna from "./views/LoginIna.vue"
 export default {
   name: 'App',
   components: {
-    TeacherFile,
     Compete,
     RegisterTeacher,
     RegisterStudent,

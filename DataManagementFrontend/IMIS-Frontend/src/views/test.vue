@@ -26,7 +26,8 @@
       test() {
         test().then(
           response =>{
-            this.results = JSON.parse(response.data.data);
+            this.results = response.data.data;
+            // this.results = JSON.parse(response.data.data);
             console.log(this.results);
             console.log(typeof(this.results));
           }
