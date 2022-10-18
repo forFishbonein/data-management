@@ -1,6 +1,8 @@
 <template>
-<div class="container">
-<div class="body">
+  <div class="container">
+    <TeacherNav></TeacherNav>
+
+    <div class="body">
 <div class="title">项目名称</div>
 <div class="detail">项目详细项目详细项目详细资料简介资料简介资料简介资料简介简介资料简介资料简介资料简介简介资料简介资料简介资料简介简介资料简介资料简介资料简介</div>
 <div class="uploadSelect">
@@ -15,9 +17,9 @@
        课题组成员：xxx xxx
 </div>
   <div class="attachment">
-  <div class="attachment1"><pre>    1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;附件一名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../static/img/img_1.png" alt="pic" id="img1">
+  <div class="attachment1"><pre>    21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;附件一名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../static/img/img_1.png" alt="pic" id="img1">
     2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;附件二名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../static/img/img_1.png" alt="pic" id="img2">
-    3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;附件三名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../static/img/img_1.png" alt="pic" id="img3"></pre></div>
+    3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;docx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="../../static/img/img_1.png" alt="pic" id="img3"></pre></div>
 
     <div class="page-icon">
       <span class="page-disabled"><i></i>上一页</span>
@@ -29,46 +31,51 @@
       <a href="#">...</a>
       <a class="page-next" href="#">下一页<i></i></a>
     </div>
-
-
 </div>
   <div class="icon">
   <button class="edit">编辑</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button class="delete">删除</button>
   </div>
 </div>
-  <div class="footer">
-    指导老师：杨单  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：boinc@qq.com &nbsp;&nbsp;&nbsp;&nbsp;电话：027-67843646 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <pre>
-    </pre>开发人员：方菲、郭莹莹、何宇航、郝文海、刘璇、漆美霖、宋阳磊、王鑫、王亚东（按姓名排序)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  </div>
 </div>
 
 
 </template>
 
 <script>
+
+
+import TeacherNav from "../components/TeacherNav";
+import TeacherHeader from "../components/TeacherHeader";
+import TeacherData from "../components/TeacherData";
+
 export default {
-  name: "TeacherFile"
+  name: "TeacherFile",
+  data() {
+    return {
+    }
+
+  },
+  components: {
+    TeacherNav,
+    TeacherHeader,
+    TeacherData
+
+  },
 }
+
+
 </script>
 
 <style scoped>
 .container {
-  width: 1440px;
-  height: 1304px;
-  margin-left: 50px;
-  margin-top: 100px;
-  padding-top: 15px;
-  background-color: #EAF2FB;
-
+  background-color: #eaf2fb;
 }
 .body {
   width: 1200px;
   height: 1100px;
   margin-left: 120px;
   background-color: #FFFFFF;
-  border-style: solid;
-  border-color: black;
 }
 .title{
   font-size: 36px;
@@ -98,7 +105,7 @@ export default {
   line-height: 70px;
   margin-left:70px ;
   font-size: 18px;
-  box-shadow:0px 0px 10px 5px #aaa;
+  box-shadow: 1px 1px 2px 2px #aaa;
   color:rgb(17,51,85);
 }
 .attachment1{
