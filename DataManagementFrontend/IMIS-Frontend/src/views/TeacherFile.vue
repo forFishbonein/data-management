@@ -32,10 +32,15 @@
 
 
 </div>
-  <button class="edit">编辑</button>
+  <div class="icon">
+  <button class="edit">编辑</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <button class="delete">删除</button>
+  </div>
 </div>
-
+  <div class="footer">
+    指导老师：杨单  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;邮箱：boinc@qq.com &nbsp;&nbsp;&nbsp;&nbsp;电话：027-67843646 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <pre>
+    </pre>开发人员：方菲、郭莹莹、何宇航、郝文海、刘璇、漆美霖、宋阳磊、王鑫、王亚东（按姓名排序)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  </div>
 </div>
 
 
@@ -55,8 +60,7 @@ export default {
   margin-top: 100px;
   padding-top: 15px;
   background-color: #EAF2FB;
-  border-style: solid;
-  border-color: black;
+
 }
 .body {
   width: 1200px;
@@ -68,35 +72,43 @@ export default {
 }
 .title{
   font-size: 36px;
+  color:rgb(17,51,85);
   padding-top: 28px;
   padding-left: 66px;
 }
 .detail{
   width: 1000px;
-  height: 100px;
+  height: 80px;
   margin-left: 70px;
   margin-top: 100px;
   text-align:center;
+  color:rgb(26,77,127);
 }
 .uploadSelect{
   width: 1097px;
   height: 397px;
   margin-left: 70px;
   line-height: 50px;
+  color:rgb(17,51,85);
+
 }
 .attachment{
   width: 1097px;
   height: 280px;
   line-height: 70px;
   margin-left:70px ;
+  font-size: 18px;
   box-shadow:0px 0px 10px 5px #aaa;
+  color:rgb(17,51,85);
 }
 .attachment1{
   width: 1097px;
   height: 25px;
-  margin-top: 40px;
+  margin-top: 65px;
   margin-left: 70px;
-  font-size: 15px;
+  font-size: 16px;
+  color:rgb(17,51,85);
+
 }
 #img1{
   width: 40px;
@@ -173,10 +185,12 @@ export default {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  float: left;
   padding: 5px 16px 5px 16px;
 }
 .delete{
-  left: 1191px;
+  left: 1000px;
+  right: 50px;
   top: 1098px;
   width: 72px;
   height: 32px;
@@ -185,10 +199,28 @@ export default {
   size:14px;
   opacity: 1;
   border-radius: 3px;
-  display: flex;
+
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
   padding: 5px 16px 5px 16px;
+}
+.icon{
+  top: 2500px;
+  right: 900px;
+  float: right;
+  width:300px;
+margin-top: 20px;
+}
+.footer{
+  left: 0px;
+  top: 1232px;
+  width: 1440px;
+  height: 72px;
+  opacity: 1;
+  margin-top:100px ;
+  background: rgba(252, 252, 252, 1);
+  text-align: right;
 }
 </style>
