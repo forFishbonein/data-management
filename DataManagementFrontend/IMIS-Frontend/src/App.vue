@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-<!--   <TeacherIndex></TeacherIndex>-->
-    <TeacherFile></TeacherFile>
+   <TeacherIndex></TeacherIndex>
 <!--     <RegisterTeacher></RegisterTeacher>-->
 <!--     <RegisterStudent></RegisterStudent>-->
 <!--     <StudentIndex></StudentIndex>-->
@@ -10,19 +9,19 @@
 <!--     <SearchResults></SearchResults>-->
 <!--    <test></test>-->
     <!-- <LoginFooter></LoginFooter> -->
+
   </div>
 </template>
 
 <script>
-import RegisterTeacher from './views/RegisterTeacher'
-import RegisterStudent from './views/RegisterStudent'
-import StudentIndex from './views/StudentIndex'
+import RegisterTeacher from './views/RegisterTeacher.vue'
+import RegisterStudent from './views/RegisterStudent.vue'
+import StudentIndex from './views/StudentIndex.vue'
 import Manage from './views/Manage.vue'
 import Compete from "./views/Compete"
 import SearchResults from "./views/SearchResults"
-import TeacherIndex from "./views/TeacherIndex"
-import TeacherFile from "./views/TeacherFile"
-import test from "./views/test.vue"
+import TeacherIndex from "./views/TeacherIndex";
+import test from "./views/test.vue";
 import LoginIna from "./views/LoginIna.vue"
 export default {
   name: 'App',
@@ -34,7 +33,6 @@ export default {
     Manage,
     SearchResults,
     TeacherIndex,
-    TeacherFile,
     test
   }
 }
