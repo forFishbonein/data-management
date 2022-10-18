@@ -1,15 +1,16 @@
 package com.imis.datamanagement.redis;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolConfig;
 
+import javax.annotation.Resource;
+
 @Service
 public class RedisPoolFactory {
 
-    @Autowired
+    @Resource
     RedisConfig  redisConfig;
 
     /**

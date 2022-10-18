@@ -1,9 +1,11 @@
 server:
-  port: 80
+  port: 8888
   tomcat:
     uri-encoding: utf-8
 
 spring:
+  jmx:
+    enabled: false
   #druid配置
   datasource:
     username: root
@@ -31,29 +33,16 @@ spring:
   #      classpath: /static/
 
 
-  # 缓存
-  redis:
-    host: 121.41.107.144
-    port: 6379
-    password: 1234
-    database: 0
-  cache:
-    redis:
-      time-to-live: 1800000 #设置缓存过期时间
   data:
     mongodb:
-      host: 121.41.107.144
-      port: 27017
-      # authentication-database: admin
-      username: admin
-      password: 12345678
-      database: template
+      uri: mongodb://admin:12345678@121.41.107.144:27017/template?authMechanism=DEFAULT&authSource=admin&authMechanism=SCRAM-SHA-1
+
 
   # 邮箱服务
   mail:
     host: smtp.qq.com
     username: 2856400640@qq.com
-    password: cxkoevueftkbdcfi
+    password: wzjstxvqaycaddhg
     default-encoding: UTF-8
 
 # MP的配置

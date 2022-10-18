@@ -1,13 +1,14 @@
 package com.imis.datamanagement.redis;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 /**
  * 读取配置文件的redis信息
  */
-
 @Component
+@PropertySource("classpath:redis.properties")
 @ConfigurationProperties(prefix = "redis")
 public class RedisConfig {
     private String host;

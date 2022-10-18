@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.common.vo.LoginVo;
+import com.imis.datamanagement.common.vo.RegisterVo;
 import com.imis.datamanagement.domain.User;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.mapper.UserMapper;
@@ -13,12 +14,12 @@ import com.imis.datamanagement.redis.RedisService;
 import com.imis.datamanagement.redis.UserKey;
 import com.imis.datamanagement.service.EmailService;
 import com.imis.datamanagement.service.UserService;
-import com.imis.datamanagement.utils.UUIDUtil;
-import com.imis.datamanagement.utils.ValidateCodeUtils;
+import com.imis.datamanagement.redis.utils.UUIDUtil;
+import com.imis.datamanagement.redis.utils.ValidateCodeUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
@@ -26,13 +27,13 @@ import javax.servlet.http.HttpServletResponse;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
-    @Autowired
+    @Resource
     UserMapper userMapper;
 
-    @Autowired
+    @Resource
     EmailService emailService;
 
-    @Autowired
+    @Resource
     RedisService redisService;
 
     //cookie的名字
@@ -86,6 +87,16 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         log.info("验证码发送成功");
     }
 
+    @Override
+    public String logout(String token) {
+        return null;
+    }
+
+    @Override
+    public String registered(User user) {
+        return null;
+    }
+
     /*
      * TODO 登录校验
      * 分成两种login
@@ -94,6 +105,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     /**
      * 用户输入邮箱、验证码，选择验证码登录
+     *
      * @param response 用于存储cookie
      * @param loginVo
      * @return 返回token
@@ -108,15 +120,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //取数据库,判断邮箱是否存在
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(User::getUserEmail, email);
-        User user = getOne(queryWrapper);
-        if (user == null) {
+        User userInMysql = getOne(queryWrapper);
+        if (userInMysql == null) {
             throw new GlobalException(CodeMsg.EMAIL_NOT_EXIST);
         }
         //从Redis中获取缓存的验证码
-        //TODO 类型暂时留空，需要从发送验证码那里看存储的什么类型，然后这里再填上
         String codeInRedis = redisService.get(CodeKey.code, email, String.class);
         //进行验证码的比对（页面提交的验证码和Redis中保存的验证码比对）
-        if(codeInRedis == null || !codeInRedis.equals(code)){
+        if (codeInRedis == null || !codeInRedis.equals(code)) {
             throw new GlobalException(CodeMsg.CODE_ERROR);
         }
         //如果校验成功，删除Redis中缓存的验证码
@@ -124,8 +135,46 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //生成唯一id作为token
         String token = UUIDUtil.uuid();
         //将token存入Cookie和redis
-        addCookie(response, token, user);
+        addCookie(response, token, userInMysql);
         return token;
+    }
+
+    /***
+     * @param response
+     * @param registerVo
+     * @return
+     */
+    @Override
+    public void register(HttpServletResponse response, RegisterVo registerVo) {
+        if (registerVo == null) {
+            throw new GlobalException(CodeMsg.SERVER_ERROR);
+        }
+        //获取用户输入的邮箱和验证码
+        String email = registerVo.getEmail();
+        String code = registerVo.getCode();
+        //取数据库,判断邮箱是否存在
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(User::getUserEmail, email);
+        User userInMysql = getOne(queryWrapper);
+        if (userInMysql != null) {
+            throw new GlobalException(CodeMsg.EMAIL_EXIST);
+        }
+        //从Redis中获取缓存的验证码
+        String codeInRedis = redisService.get(CodeKey.code, email, String.class);
+        //进行验证码的比对（页面提交的验证码和Redis中保存的验证码比对）
+        if (codeInRedis == null || !codeInRedis.equals(code)) {
+            throw new GlobalException(CodeMsg.CODE_ERROR);
+        }
+        //如果校验成功，删除Redis中缓存的验证码
+        redisService.delete(CodeKey.code, email);
+        //数据库新增用户信息
+        User user = new User();
+        user.setUserEmail(registerVo.getEmail());
+        user.setUserName(registerVo.getName());
+        user.setUserPass(registerVo.getPassword());
+        user.setUserSid(registerVo.getSid());
+        userMapper.insert(user);
+
     }
 
     /**
@@ -154,31 +203,35 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         }
         return user;
     }
-}
 
-//    public String passLogin(HttpServletResponse response, LoginVo loginVo) {
-//        if (loginVo == null) {
-//            throw new GlobalException(CodeMsg.SERVER_ERROR);
-//        }
-//        String email = loginVo.getEmail();
-//        String formPass = loginVo.getPassword();
-//        //判断手机号是否存在
-//        User user = getById(Long.parseLong(mobile));
-//        if (user == null) {
-//            throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
-//        }
-//        //验证密码
-//        String dbPass = user.getPassword();
-//        String saltDB = user.getSalt();
-//        String calcPass = MD5Util.formPassToDBPass(formPass, saltDB);
-//        if (!calcPass.equals(dbPass)) {
-//            throw new GlobalException(CodeMsg.PASSWORD_ERROR);
-//        }
-//        //生成唯一id作为token
-//        String token = UUIDUtil.uuid();
-//        addCookie(response, token, user);
-//        return token;
-//    }
+
+    public String passLogin(HttpServletResponse response, LoginVo loginVo) {
+        if (loginVo == null) {
+            throw new GlobalException(CodeMsg.SERVER_ERROR);
+        }
+        String email = loginVo.getEmail();
+        String password = loginVo.getPassword();
+        //取数据库,判断邮箱是否存在
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(User::getUserEmail, email);
+        User userInMysql = getOne(queryWrapper);
+        if (userInMysql != null) {
+            throw new GlobalException(CodeMsg.EMAIL_EXIST);
+        }
+        //验证密码
+        String passInMysql = userInMysql.getUserPass();
+
+        if (!passInMysql.equals(password)) {
+            throw new GlobalException(CodeMsg.PASSWORD_ERROR);
+        }
+        //生成唯一id作为token
+        String token = UUIDUtil.uuid();
+        addCookie(response, token, userInMysql);
+        return token;
+    }
+
+
+}
 
 
 //    /**

@@ -1,22 +1,22 @@
 <template>
-  <div id="content1">
-    <div id="h">
-      <h1 id="title">{{ title }}</h1>
-      <div id="desc">{{ desc }}</div>
-      <span></span>
-      <div id="item">
-        <pre>参赛时间:{{ time }}&nbsp;
-          <img src="../../static/img/img.png"
-               alt="pic"
-               id="img1">
-          &nbsp;&nbsp;&nbsp;参赛人：{{ name }}
-        </pre>
-      </div>
+  <div id="container">
+    <div class="context">
+      <div class="title">{{ title }}</div>
+      <div class="introduction">{{ introduction }}</div>
+
     </div>
-    <img
-      src="https://ts1.cn.mm.bing.net/th/id/R-C.fd6ff4fca56855c555d7761d446d8b91?rik=iw0S4On4zglJGw&riu=http%3a%2f%2fimg2.sycdn.imooc.com%2f5e2130420001fd6f08270861.jpg&ehk=gEjGSjUa9UoafPxT%2bqfctt32dutGeLo848S3gJNlbdk%3d&risl=&pid=ImgRaw&r=0"
-      alt="pic"
-      id="img2">
+    <div class="img">
+      <img
+        src="https://img-blog.csdnimg.cn/51f3f7c487314ec2b3f5c3f526987009.png"
+        alt="pic">
+    </div>
+    <span class="time">上传时间:{{ time }}&nbsp;</span>
+    <span class="download" @click="dialogVisible = true" v-show="filePath.length">下载附件</span>
+
+    <span class="download-box" v-show="dialogVisible">
+        <div class="download-box-close" @click="dialogVisible = false">X</div>
+        <p v-for="(file,index) in filePath" :key="index">{{ file }}</p>
+      </span>
   </div>
 </template>
 
@@ -24,8 +24,15 @@
 export default {
   name: "TeacherData",
 
+  methods: {
+  },
+
   data() {
-    return {}
+    return {
+      dialogVisible: false
+    }
+
+
   },
   props: {
     id: {
@@ -36,9 +43,9 @@ export default {
       type: String,
       default: "资料"
     },
-    desc: {
+    introduction: {
       type: String,
-      default: "这里是中南民族大学"
+      default: "这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学"
     },
     name: {
       type: String,
@@ -47,58 +54,82 @@ export default {
     time: {
       type: String,
       default: "2022-10-9"
+    },
+    filePath: {
+      type: Array
     }
   }
 }
 </script>
 
 <style scoped>
-#h {
+
+#container {
+  position: relative;
+  width: 1100px;
+  height: 200px;
+  margin: 8px auto;
+  padding: 8px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.context {
   float: left;
 }
 
-#content1 {
-  width: 1114px;
-  height: 137px;
-  margin-left: 40px;
-  margin-top: 20px;
-  background-color: #a4abbd;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* justify-content: space-between; */
-}
-
-#img1 {
-  width: 25px;
-  height: 20px;
-  vertical-align: middle;
-}
-
-#img2 {
-  width: 130px;
-  height: 117px;
+.img img{
+  width: 200px;
+  height: 150px;
   float: right;
-  margin-top: 10px;
-  margin-right: 5px;
 }
 
-#title {
-  text-align: left;
-  margin-left: 31px;
-  margin-top: 5px;
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #3C85D7;
 }
 
-#desc {
-  text-align: left;
-  margin-left: 31px;
+.introduction {
   display: flex;
-  flex-wrap: wrap;
+  margin-top: 8px;
   width: 800px;
+  font-size: 14px;
+  color: #3C85D7;
 }
 
-#item {
-  text-align: left;
-  margin-left: 31px;
-  margin-top: 20px;
+.time {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-top: 10px;
 }
+
+.download {
+  position: absolute;
+  left: 170px;
+  bottom: 3px;
+  font-size: 14px;
+  color: #6ca6f5;
+}
+
+.download:hover {
+  color: #3d80ce;
+  cursor: pointer;
+}
+
+.download-box {
+  float: left;
+  position: absolute;
+  z-index: 999;
+  left: 50%;
+  margin-left: -250px;
+  width: 500px;
+  background-color: #3d80ce;
+}
+
+.download-box-close {
+  height: 30px;
+  background-color: #3d80ce;
+}
+
 </style>

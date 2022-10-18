@@ -1,6 +1,5 @@
 package com.imis.datamanagement.exception;
 
-
 import com.imis.datamanagement.common.result.CodeMsg;
 
 /**
