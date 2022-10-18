@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-<!--     <TeacherIndex></TeacherIndex>-->
+     <TeacherIndex></TeacherIndex>
     <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
     <!-- <StudentIndex></StudentIndex> -->
-<!--     <Manage></Manage>-->
+    <!-- <Manage></Manage> -->
     <!-- <Compete></Compete> -->
     <!-- <SearchResults></SearchResults> -->
     <!-- <test></test> -->
@@ -20,12 +20,10 @@ import Compete from "./views/Compete"
 import SearchResults from "./views/SearchResults"
 import TeacherIndex from "./views/TeacherIndex";
 import test from "./views/test.vue";
-import LoginIna from "./views/LoginIna.Vue";
 
 export default {
   name: 'App',
   components: {
-    LoginIna,
     Compete,
     RegisterTeacher,
     RegisterStudent,

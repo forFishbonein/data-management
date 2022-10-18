@@ -4,8 +4,7 @@
     <div class="hasBg">
       <div class="container">
         <div class="competitionSort">
-          <div
-            class="competitionSearch el-input el-input--medium el-input-group el-input-group--append el-input--suffix">
+          <div class="competitionSearch el-input el-input--medium el-input-group el-input-group--append el-input--suffix">
             <input type="text" autocomplete="off" placeholder="搜索竞赛名称" maxlength="20" class="el-input__inner">
             <div class="el-input-group__append">
               <button type="button" class="el-button el-button--default el-button--small">
@@ -17,26 +16,23 @@
         <div class="competitionList">
           <div class="hd mt30">
             <ul>
-              <li class="active">全部竞赛</li>
-              <li class="">分类一</li>
-              <li class="">分类二</li>
-              <li class="">分类三</li>
-              <li class="">分类四</li>
+              <li v-for="(item,index) in classify" :key="item.index"
+                  @click="addClass(index)" :class="{'active':position === index}">{{item}}</li>
             </ul>
           </div>
           <div class="bd mt30">
             <ul class="competitionListUl">
               <li class="status">
                 <div class="img">
-                  <img src="/profile/c6452a6748d9eff1b9dbb086c4484338.png">
+                  <img src="">
                 </div>
                 <div class="content">
-                  <div class="tit"><h2>第三届“大湾区杯”粤港澳金融数学建模竞赛</h2></div>
+                  <div class="tit">
+                    <h2>第三届“大湾区杯”粤港澳金融数学建模竞赛</h2>
+                  </div>
                   <div class="intro">
                     <p>品牌：“大湾区杯”粤港澳金融数学建模竞赛</p>
-                    <p>
-                      组织单位：浙江核新同花顺网络信息股份有限公司、深圳点宽网络科技有限公司、广东聚智诚科技有限公司
-                    </p>
+                    <p>组织单位：浙江核新同花顺网络信息股份有限公司、深圳点宽网络科技有限公司、广东聚智诚科技有限公司</p>
                   </div>
                   <div class="info">
                     <span class="dateTime"><i class="el-icon-time"></i>时间：2022-10-12 ~ 2022-11-08</span>
@@ -45,14 +41,15 @@
               </li>
               <li class="status">
                 <div class="img">
-                  <img src="/profile/2e21dba3769948cc71f43459081ba3de.jpg">
+                  <img src="">
                 </div>
                 <div class="content">
-                  <div class="tit"><h2>第五届“泰迪杯”数据分析技能赛</h2></div>
+                  <div class="tit">
+                    <h2>第五届“泰迪杯”数据分析技能赛</h2>
+                  </div>
                   <div class="intro">
                     <p>品牌：“泰迪杯”数据分析技能赛</p>
-                    <p>
-                      组织单位：泰迪杯数据分析技能赛组织委员会、广东泰迪智能科技股份有限公司、广东省工业与应用数学学会、人民邮电出版社、北京泰迪云智信息技术研究院、网宿科技股份有限公司</p>
+                    <p>组织单位：泰迪杯数据分析技能赛组织委员会、广东泰迪智能科技股份有限公司、广东省工业与应用数学学会、人民邮电出版社、北京泰迪云智信息技术研究院、网宿科技股份有限公司</p>
                   </div>
                   <div class="info">
                     <span class="dateTime"><i class="el-icon-time"></i>时间：2022-09-05 ~ 2022-11-13</span>
@@ -65,7 +62,7 @@
                 <button type="button" disabled="disabled" class="btn-prev"><i class="el-icon el-icon-arrow-left"></i>
                 </button>
                 <ul class="el-pager">
-                  <li class="number active">1</li><!---->
+                  <li class="number active">1</li>
                   <li class="number">2</li>
                   <li class="number">3</li>
                   <li class="number">4</li>
@@ -88,7 +85,17 @@
 import StudentNav from "../components/StudentNav";
 
 export default {
-  name: "Compete",
+  data() {
+    return {
+      classify: ['全部分类','分类一','分类二','分类三','分类四'],
+      position: ''
+    }
+  },
+  methods: {
+    addClass(index) {
+      this.position = index
+    }
+  },
   components: {StudentNav}
 }
 </script>
