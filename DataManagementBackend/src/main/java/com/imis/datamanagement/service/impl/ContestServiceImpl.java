@@ -7,10 +7,13 @@ import com.imis.datamanagement.domain.Contest;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.mapper.ContestMapper;
 import com.imis.datamanagement.service.ContestService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+
+@Service
 public class ContestServiceImpl extends ServiceImpl<ContestMapper, Contest> implements ContestService {
 
     @Resource
