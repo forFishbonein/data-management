@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
    <TeacherIndex></TeacherIndex>
 <!--     <RegisterTeacher></RegisterTeacher>-->
 <!--     <RegisterStudent></RegisterStudent>-->
@@ -9,6 +10,16 @@
 <!--     <SearchResults></SearchResults>-->
 <!--    <test></test>-->
     <!-- <LoginFooter></LoginFooter> -->
+=======
+     <TeacherIndex></TeacherIndex>
+    <!-- <RegisterTeacher></RegisterTeacher> -->
+    <!-- <RegisterStudent></RegisterStudent> -->
+    <!-- <StudentIndex></StudentIndex> -->
+    <!-- <Manage></Manage> -->
+    <!-- <Compete></Compete> -->
+    <!-- <SearchResults></SearchResults> -->
+    <!-- <test></test> -->
+>>>>>>> 1eaf1926808391991ef216b01a46ce6d05f6a110
   </div>
 </template>
 
@@ -21,11 +32,10 @@ import Compete from "./views/Compete"
 import SearchResults from "./views/SearchResults"
 import TeacherIndex from "./views/TeacherIndex";
 import test from "./views/test.vue";
-import LoginFooter from "./components/LoginFooter";
+
 export default {
   name: 'App',
   components: {
-    LoginFooter,
     Compete,
     RegisterTeacher,
     RegisterStudent,

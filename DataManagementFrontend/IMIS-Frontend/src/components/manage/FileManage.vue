@@ -2,10 +2,11 @@
   <div class="m-container">
     <div class="m-header">
       <ul>
-        <li>文件名</li>
-        <li>文件类型</li>
+        <li>资料名</li>
+        <li>类型</li>
         <li>上传日期</li>
         <li>上传者</li>
+        <li>查看详情</li>
         <li>编辑</li>
         <li>删除</li>
       </ul>
@@ -17,6 +18,7 @@
           <li>项目</li>
           <li>2022/10/16</li>
           <li>张三</li>
+          <li>查看详情</li>
           <li><button>编辑</button></li>
           <li><button>删除</button></li>
         </ul>
@@ -50,10 +52,9 @@
         float: left;
         display: flex;
         justify-content: space-around;
-        padding: 0 24px;
         li{
           float: left;
-          width: 144.5px;
+          width: 126px;
           font-size: 17px;
           text-align: center;
           color: #3C85D7;
@@ -70,7 +71,6 @@
       flex-direction: column;
       align-items: flex-start;
       border-radius: 15px;
-      padding: 24px;
       .m-item{
         background-color: #FDFDFD;
         width: 100%;
@@ -83,7 +83,7 @@
           height: 50px;
           li{
             float: left;
-            width: 144.5px;
+            width: 126px;
             font-size: 17px;
             color: #3C85D7;
             text-align: center;

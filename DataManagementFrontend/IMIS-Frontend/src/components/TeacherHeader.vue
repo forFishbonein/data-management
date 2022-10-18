@@ -68,7 +68,7 @@ export default {
 .teacher-header{
   display: flex;
   flex-direction: column;
-  height:235px;
+  height:200px;
   border-radius: 12px;
 }
 
@@ -119,6 +119,7 @@ export default {
 .teacher .teacher-info .info1 {
   display: flex;
   flex-direction: row;
+
 }
 
 .teacher .teacher-info .info1 .teacher-name {
@@ -166,8 +167,12 @@ export default {
   margin-left: 20px;
 }
 
+<<<<<<< HEAD
 .teacher .teacher-info .info3 .teacher-email {
   font-size: 16px;
+=======
+.teacher .teacher-info .info2 .phone-number {
+>>>>>>> 1eaf1926808391991ef216b01a46ce6d05f6a110
   color: #1A4D7F;
   line-height:35px;
   font-weight: 400;
