@@ -14,6 +14,8 @@ public interface UserService extends IService<User> {
 
     String codeLogin(HttpServletResponse response, LoginVo loginVo);
 
+    String passLogin(HttpServletResponse response, LoginVo loginVo);
+
     void addCookie(HttpServletResponse response, String token, User user);
 
     User getByToken(HttpServletResponse response, String token);

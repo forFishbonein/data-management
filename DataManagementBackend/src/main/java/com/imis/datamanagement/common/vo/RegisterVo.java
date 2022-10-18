@@ -10,6 +10,7 @@ import lombok.Data;
 
 @Data
 public class RegisterVo {
+
     private String email;
 
     private String code;
@@ -19,5 +20,4 @@ public class RegisterVo {
     private String password;
 
     private String sid;
-
 }

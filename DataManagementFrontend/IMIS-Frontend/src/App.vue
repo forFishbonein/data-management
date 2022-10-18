@@ -1,23 +1,39 @@
 <template>
   <div id="app">
-<!--    <Index></Index>-->
-    <!-- <RegisterTeacher></RegisterTeacher> -->
-    <!-- <RegisterStudent></RegisterStudent> -->
-    <Compete></Compete>
+<!--    <TeacherIndex></TeacherIndex>-->
+<!--     <RegisterTeacher></RegisterTeacher>-->
+<!--     <RegisterStudent></RegisterStudent>-->
+<!--     <StudentIndex></StudentIndex>-->
+<!--     <Manage></Manage>-->
+    <!-- <Compete></Compete> -->
+<!--     <SearchResults></SearchResults>-->
+<!--    <test></test>-->
+    <LoginFooter></LoginFooter>
   </div>
 </template>
 
 <script>
 import RegisterTeacher from './views/RegisterTeacher.vue'
 import RegisterStudent from './views/RegisterStudent.vue'
-import Compete from "./views/Compete";
-
+import StudentIndex from './views/StudentIndex.vue'
+import Manage from './views/Manage.vue'
+import Compete from "./views/Compete"
+import SearchResults from "./views/SearchResults"
+import TeacherIndex from "./views/TeacherIndex";
+import test from "./views/test.vue";
+import LoginFooter from "./components/LoginFooter";
 export default {
   name: 'App',
   components: {
+    LoginFooter,
     Compete,
     RegisterTeacher,
     RegisterStudent,
+    StudentIndex,
+    Manage,
+    SearchResults,
+    TeacherIndex,
+    test
   }
 }
 </script>

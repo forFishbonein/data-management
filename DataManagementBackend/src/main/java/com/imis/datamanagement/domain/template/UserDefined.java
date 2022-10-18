@@ -20,6 +20,8 @@ public class UserDefined extends AbstractTemplate{
     @Id
     private Integer id;
 
+    private String title;
+
     private Long uploaderId;
 
     private String num;

@@ -9,8 +9,6 @@ package com.imis.datamanagement.domain.template;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
@@ -37,6 +35,9 @@ public abstract class AbstractTemplate {
     String TEMPLATE_TYPE;
 
     Integer id;
+
+    @Field("a_tittle")
+    String title;
 
     @Field("a_other")
     Map<String, String> other;
