@@ -48,7 +48,7 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
     }
 
     @Override
-    public void updateById(News news) {
+    public void update(News news) {
         QueryWrapper<News> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(News::getNewsId, news.getNewsId());
         News newsInMysql = newsMapper.selectOne(queryWrapper);

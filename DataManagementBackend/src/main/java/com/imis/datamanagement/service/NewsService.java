@@ -14,7 +14,7 @@ public interface NewsService extends IService<News> {
 
     void deleteById(long id);
 
-    void updateById(News news);
+    void update(News news);
 
     void insert(News news);
 }
