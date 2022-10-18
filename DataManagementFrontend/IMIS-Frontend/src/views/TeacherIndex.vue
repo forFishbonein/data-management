@@ -47,13 +47,9 @@ export default {
   },
   methods: {
     getMaterials() {
-      console.log("------------");
-      console.log(this.materials);
-      console.log("------------");
       getMaterials().then(resp => {
         this.materials = resp.data.data;
       });
-      console.log(this.materials);
     }
   },
   components: {

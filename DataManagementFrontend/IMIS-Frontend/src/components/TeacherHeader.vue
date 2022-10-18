@@ -29,16 +29,26 @@
 <script>
 export default {
   mounted() {
+
+  },
+  methods: {
+    getByTeacherId() {
+      getByTeacherId().then(resp => {
+        this.teacher = resp.data.data;
+      });
+    }
   },
 
   data() {
     return {
+      id: "",
+
       teacher: {
-        teacherName: "AAA",
-        teacherEmail: "w@w.ww",
-        teacherSid: "20202107",
-        teacherTitle: "副教授",
-        teacherTele: "12345678901"
+        teacherName: "",
+        teacherEmail: "",
+        teacherSid: "",
+        teacherTitle: "",
+        teacherTele: ""
       }
 
     }

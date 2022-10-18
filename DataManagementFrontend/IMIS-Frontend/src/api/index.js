@@ -21,3 +21,11 @@ export function test() {
     url: "/file"
   });
 }
+
+export function getByTeacherId(id) {
+  return request({
+    method: "get",
+    data: {id: this.id},
+    url: "/getByTeacherId.json"
+  });
+}
