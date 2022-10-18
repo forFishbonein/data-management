@@ -2,10 +2,9 @@
   <div class="container">
     <TeacherNav></TeacherNav>
     <div class="context">
-      <div class="title"></div>
-      <div class="introduction"></div>
-      <div class="createTime"></div>
-
+      <div class="title">测试标题</div>
+      <div class="createTime">2022-10-16 11:25:30</div>
+      <div class="introduction">测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段</div>
     </div>
 
 
@@ -51,7 +50,36 @@ export default {
 
 <style scoped>
 .container {
+  height: 100vh;
   background-color: #eaf2fb;
+}
+
+.context {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  background-color: white;
+  border-radius: 16px;
+}
+
+.title {
+  padding: 40px;
+  color: #113355;
+  font-size: 28px;
+
+}
+
+.createTime {
+  padding-left: 40px;
+}
+
+.introduction {
+  margin: 40px;
+  padding: 40px;
+  background-color: #f5e3e3;
+  color: #113355;
+  border-radius: 16px;
 }
 
 </style>
