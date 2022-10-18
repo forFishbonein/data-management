@@ -124,6 +124,7 @@ export default {
   display: flex;
   flex-direction: row;
 }
+
 /* .teacher .teacher-info .info2 .file {
   color: #1A4D7F;
   line-height:35px;
