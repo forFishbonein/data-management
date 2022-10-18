@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-<!--    <TeacherIndex></TeacherIndex>-->
+   <TeacherIndex></TeacherIndex>
 <!--     <RegisterTeacher></RegisterTeacher>-->
 <!--     <RegisterStudent></RegisterStudent>-->
 <!--     <StudentIndex></StudentIndex>-->
@@ -8,7 +8,7 @@
     <!-- <Compete></Compete> -->
 <!--     <SearchResults></SearchResults>-->
 <!--    <test></test>-->
-    <LoginFooter></LoginFooter>
+    <!-- <LoginFooter></LoginFooter> -->
   </div>
 </template>
 
