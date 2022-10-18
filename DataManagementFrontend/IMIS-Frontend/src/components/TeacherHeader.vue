@@ -3,14 +3,12 @@
     <div class="bgpicture">
       <img  alt="背景"
               src="https://img.tukuppt.com/bg_grid/00/09/63/Si1rs8A7Di.jpg!/fh/350"
-              id=""
               >
     </div>
     <div class="teacher">
       <div class="teacher-pic">
         <img  alt="头像"
               src="https://ts2.cn.mm.bing.net/th?id=OIP-C.19LPGfyiWw_LZodJOolXSAHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.25&pid=3.1&rm=2"
-              id=""
               >
       </div>
       <div class="teacher-info">
@@ -26,13 +24,28 @@
   </div>
 </template>
 
+
 <script>
+import {getByTeacherId} from '@/api'
+
 export default {
   mounted() {
+    console.log(this)
+    this.getById(this.id);
+  },
+  methods: {
+    getById(id) {
+      getByTeacherId(id).then(resp => {
+        this.teacher = resp.data.data;
+        console.log(resp.data.data);
+      });
+    }
   },
 
   data() {
     return {
+      id: "1581923146833891329",
+
       teacher: {
         teacher_name: "AAA",
         teacher_email: "w@w.ww",

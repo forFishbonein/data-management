@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <TeacherIndex></TeacherIndex>
-<!--     <RegisterTeacher></RegisterTeacher>-->
+     <TeacherIndex></TeacherIndex>
+    <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
-<!--     <StudentIndex></StudentIndex>-->
-<!--     <Manage></Manage>-->
+    <!-- <StudentIndex></StudentIndex> -->
+    <!-- <Manage></Manage> -->
     <!-- <Compete></Compete> -->
-<!--     <SearchResults></SearchResults>-->
-<!--    <test></test>-->
+    <!-- <SearchResults></SearchResults> -->
+    <!-- <test></test> -->
   </div>
 </template>
 
@@ -20,6 +20,7 @@ import Compete from "./views/Compete"
 import SearchResults from "./views/SearchResults"
 import TeacherIndex from "./views/TeacherIndex";
 import test from "./views/test.vue";
+
 export default {
   name: 'App',
   components: {
