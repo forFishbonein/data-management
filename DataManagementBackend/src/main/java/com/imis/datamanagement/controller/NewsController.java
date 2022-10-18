@@ -50,9 +50,9 @@ public class NewsController {
     }
 
     //根据id修改
-    @PostMapping("/{newsId}")
-    public Result<String> updateById(@PathVariable("newsId") Long newsId) {
-        newsService.updateById(newsId);
+    @PostMapping
+    public Result<String> updateById(@RequestBody News news) {
+        newsService.updateById(news);
         return Result.success("修改成功");
     }
 }
