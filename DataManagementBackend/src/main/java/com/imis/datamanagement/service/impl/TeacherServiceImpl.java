@@ -101,9 +101,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         if (showVo == null) {
             throw new GlobalException(CodeMsg.USER_NOT_EXIST);
         }
-        if (showVo != null) {
-            redisService.set(TeacherKey.getById, "" + id, showVo);
-        }
+        redisService.set(TeacherKey.getById, "" + id, showVo);
         return showVo;
     }
 

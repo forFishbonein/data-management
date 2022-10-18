@@ -19,6 +19,8 @@ public class Office extends AbstractTemplate {
     @Id
     private Integer id;
 
+    private String title;
+
     private Long uploaderId;
 
     private String num;

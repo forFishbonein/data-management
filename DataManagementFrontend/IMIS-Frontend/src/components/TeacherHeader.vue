@@ -15,12 +15,11 @@
       </div>
       <div class="teacher-info">
         <div class ="info1">
-          <div class="teacher-name">{{ name }}</div>
-          <div class="teacher-title">教师职称：{{ title }}</div>
+          <div class="teacher-name">{{ teacher.teacherName }}</div>
         </div>
         <div class="info2">
-          <div class="file">资料总数：{{ total }}</div>
-          <div class="phone-number">电话：{{ telNumber }}</div>
+          <div class="teacher-title">教师职称：{{ teacher.teacherTitle }}</div>
+          <div class="phone-number">电话：{{ teacher.teacherTele }}</div>
         </div>
       </div>
     </div>
@@ -29,12 +28,19 @@
 
 <script>
 export default {
+  mounted() {
+  },
+
   data() {
     return {
-      name: "AAA",
-      title: "副教授",
-      telNumber: "12345678901",
-      total: "5"
+      teacher: {
+        teacherName: "AAA",
+        teacherEmail: "",
+        teacherSid: "",
+        teacherTitle: "副教授",
+        teacherTele: "12345678901"
+      }
+
     }
   }
 }

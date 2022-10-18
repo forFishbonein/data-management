@@ -36,6 +36,9 @@ public abstract class AbstractTemplate {
 
     Integer id;
 
+    @Field("a_tittle")
+    String title;
+
     @Field("a_other")
     Map<String, String> other;
 

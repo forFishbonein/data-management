@@ -6,16 +6,16 @@ package com.imis.datamanagement.controller;
  * @File : DataManagement4IMIS
  */
 
+import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.common.vo.LoginVo;
+import com.imis.datamanagement.common.vo.ShowVo;
 import com.imis.datamanagement.common.vo.TeacherRegisterVo;
+import com.imis.datamanagement.domain.User;
 import com.imis.datamanagement.service.TeacherInfoService;
 import com.imis.datamanagement.service.TeacherService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -49,4 +49,12 @@ public class TeacherController {
         teacherInfoService.createInfo(teacherService.getIdByEmail(registerVo.getTeacherEmail()), registerVo);
         return Result.success("注册成功");
     }
+
+    @GetMapping("/{id}")
+    public Result<ShowVo> getById(@PathVariable("id") Long id) {
+        return Result.success(teacherService.show(id));
+
+    }
+
+
 }

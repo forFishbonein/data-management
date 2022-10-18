@@ -12,8 +12,13 @@
           </div>
         </div>
         <div v-for="(item, index) in materials" :key="index">
-          <TeacherData :id="item.id" :title="item.title" :name="item.name" :desc="item.desc"
-                       :time="item.time"></TeacherData>
+          <TeacherData :id="item.id"
+                       :title="item.title"
+                       :name="item.name"
+                       :introduction="item.introduction"
+                       :createTime="item.createTime"
+                       :filePath="item.filePath">
+          </TeacherData>
         </div>
       </div>
       <el-pagination
@@ -30,30 +35,25 @@
 import TeacherNav from '../components/TeacherNav.vue'
 import TeacherHeader from '../components/TeacherHeader.vue'
 import TeacherData from '../components/TeacherData.vue'
+import axios from "axios"
 import {getMaterials} from '@/api'
 
 export default {
   data() {
     return {
-      materials: []
+      materials: [
+      ]
     }
   },
   methods: {
     getMaterials() {
-      getMaterials().then(
-        response => {
-          // console.log(response)
-          this.materials = response.data.data
-          if(response.data.code === 0){
-
-          }else{
-            console.log(response.data.message);
-          }
-        },
-        error => {
-          console.log('请求失败了', error.message)
-        }
-      )
+      console.log("------------");
+      console.log(this.materials);
+      console.log("------------");
+      getMaterials().then(resp => {
+        this.materials = resp.data.data;
+      });
+      console.log(this.materials);
     }
   },
   components: {
@@ -93,7 +93,6 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #DCE9F8;
 
       .right-search {
         // width:390px;
