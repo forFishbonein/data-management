@@ -51,8 +51,8 @@ public class NewsController {
 
     //根据id修改
     @PostMapping
-    public Result<String> updateById(@RequestBody News news) {
-        newsService.updateById(news);
+    public Result<String> update(@RequestBody News news) {
+        newsService.update(news);
         return Result.success("修改成功");
     }
 }
