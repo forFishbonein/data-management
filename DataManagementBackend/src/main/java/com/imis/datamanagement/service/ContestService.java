@@ -1,14 +1,21 @@
 package com.imis.datamanagement.service;
 
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.imis.datamanagement.domain.Contest;
+import com.imis.datamanagement.domain.News;
 
 import java.util.List;
 
-public interface ContestService {
+public interface ContestService extends IService<Contest> {
+
     Contest getById(long id);
+
     List<Contest> getAllContest();
+
     void deleteById(long id);
-    void updateById(long id);
+
+    void update(Contest contest);
+
     void insert(Contest contest);
 
 }

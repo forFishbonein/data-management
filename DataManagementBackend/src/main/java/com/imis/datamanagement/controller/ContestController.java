@@ -3,6 +3,7 @@ package com.imis.datamanagement.controller;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.domain.Contest;
+import com.imis.datamanagement.domain.News;
 import com.imis.datamanagement.service.ContestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -49,9 +50,9 @@ public class ContestController {
     }
 
     //根据id修改
-    @PutMapping("/{contestId}")
-    public Result<String> updateById(@PathVariable("contestId") Long contestId){
-        contestService.updateById(contestId);
+    @PostMapping
+    public Result<String> update(@RequestBody Contest contest){
+        contestService.update(contest);
         return Result.success("修改成功");
     }
 
