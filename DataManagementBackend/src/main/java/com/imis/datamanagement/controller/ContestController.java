@@ -3,7 +3,6 @@ package com.imis.datamanagement.controller;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.domain.Contest;
-import com.imis.datamanagement.domain.News;
 import com.imis.datamanagement.service.ContestService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;

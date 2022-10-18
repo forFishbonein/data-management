@@ -6,12 +6,10 @@ package com.imis.datamanagement.controller;
  * @File : DataManagement4IMIS
  */
 
-import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.common.vo.LoginVo;
 import com.imis.datamanagement.common.vo.ShowVo;
 import com.imis.datamanagement.common.vo.TeacherRegisterVo;
-import com.imis.datamanagement.domain.User;
 import com.imis.datamanagement.service.TeacherInfoService;
 import com.imis.datamanagement.service.TeacherService;
 import lombok.extern.slf4j.Slf4j;
