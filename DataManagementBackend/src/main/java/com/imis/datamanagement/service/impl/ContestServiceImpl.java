@@ -4,17 +4,16 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.domain.Contest;
-import com.imis.datamanagement.domain.News;
-import com.imis.datamanagement.domain.Teacher;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.mapper.ContestMapper;
-import com.imis.datamanagement.mapper.TeacherMapper;
-import com.imis.datamanagement.redis.TeacherKey;
 import com.imis.datamanagement.service.ContestService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
 
+
+@Service
 public class ContestServiceImpl extends ServiceImpl<ContestMapper, Contest> implements ContestService {
 
     @Resource

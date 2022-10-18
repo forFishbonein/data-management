@@ -1,7 +1,6 @@
 package com.imis.datamanagement.service;
 
 import com.imis.datamanagement.domain.Contest;
-import com.imis.datamanagement.domain.News;
 
 import java.util.List;
 
