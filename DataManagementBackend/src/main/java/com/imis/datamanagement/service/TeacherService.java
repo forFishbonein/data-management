@@ -7,7 +7,6 @@ package com.imis.datamanagement.service;
  */
 
 import com.imis.datamanagement.common.vo.LoginVo;
-import com.imis.datamanagement.common.vo.RegisterVo;
 import com.imis.datamanagement.common.vo.ShowVo;
 import com.imis.datamanagement.common.vo.TeacherRegisterVo;
 import com.imis.datamanagement.domain.Teacher;

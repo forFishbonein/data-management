@@ -9,8 +9,9 @@ import com.imis.datamanagement.mapper.NewsMapper;
 import com.imis.datamanagement.service.NewsService;
 import org.springframework.stereotype.Service;
 
-
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -38,22 +39,27 @@ public class NewsServiceImpl extends ServiceImpl<NewsMapper, News> implements Ne
     public void deleteById(long id) {
         //判断id是否存在
         QueryWrapper<News> deleteQueryWrapper = new QueryWrapper<>();
-        deleteQueryWrapper.lambda().eq(News::getNewsId,id);
+        deleteQueryWrapper.lambda().eq(News::getNewsId, id);
         News oneId = newsMapper.selectOne(deleteQueryWrapper);
         if (oneId == null) {
             throw new GlobalException(CodeMsg.NEWS_NOT_EXIST);
-        } else  newsMapper.deleteById(id);
+        }
+        newsMapper.deleteById(id);
     }
 
     @Override
-    public void updateById(long id) {
-        //判断id是否存在
-        QueryWrapper<News> updateQueryWrapper = new QueryWrapper<>();
-        updateQueryWrapper.lambda().eq(News::getNewsId, id);
-        News updateId = newsMapper.selectOne(updateQueryWrapper);
-        if (updateId == null) {
+    public void update(News news) {
+        QueryWrapper<News> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(News::getNewsId, news.getNewsId());
+        News newsInMysql = newsMapper.selectOne(queryWrapper);
+        if (newsInMysql == null) {
             throw new GlobalException(CodeMsg.NEWS_NOT_EXIST);
-        } else newsMapper.updateById(updateId);
+        }
+        //获取当前时间
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        news.setUpdateTime(dateFormat.format(date));
+        newsMapper.update(news, queryWrapper);
     }
 
     @Override

@@ -10,6 +10,8 @@ import com.imis.datamanagement.service.ContestService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -47,15 +49,21 @@ public class ContestServiceImpl extends ServiceImpl<ContestMapper, Contest> impl
     }
 
     @Override
-    public void updateById(long id) {
+    public void update(Contest contest) {
         //判断id是否存在
-        QueryWrapper<Contest> updateQueryWrapper = new QueryWrapper<>();
-        updateQueryWrapper.lambda().eq(Contest::getContestId, id);
-        Contest updateId = contestMapper.selectOne(updateQueryWrapper);
-        if (updateId == null) {
+        QueryWrapper<Contest> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(Contest::getContestId,contest.getContestId());
+        Contest contestInMysql = contestMapper.selectOne(QueryWrapper);
+        if (contestInMysql == null) {
             throw new GlobalException(CodeMsg.CONTEST_NOT_EXIST);
-        } else contestMapper.updateById(updateId);
+        }
+        //获取当前时间
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        contest.setUpdateTime(dateFormat.format(date));
+        contestMapper.update(contest, queryWrapper);
     }
+
 
     @Override
     public void insert(Contest contest) {
