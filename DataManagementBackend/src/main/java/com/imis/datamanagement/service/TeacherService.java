@@ -8,6 +8,8 @@ package com.imis.datamanagement.service;
 
 import com.imis.datamanagement.common.vo.LoginVo;
 import com.imis.datamanagement.common.vo.RegisterVo;
+import com.imis.datamanagement.common.vo.ShowVo;
+import com.imis.datamanagement.common.vo.TeacherRegisterVo;
 import com.imis.datamanagement.domain.Teacher;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,19 +18,23 @@ public interface TeacherService {
 
     Teacher getById(long id);
 
+    Long getIdByEmail(String email);
+
     String codeLogin(HttpServletResponse response, LoginVo loginVo);
 
     String passLogin(HttpServletResponse response, LoginVo loginVo);
 
-    void addCookie(HttpServletResponse response, String token, Teacher teacher);
+    void addCookie(HttpServletResponse response, String token, ShowVo teacher);
 
-    Teacher getByToken(HttpServletResponse response, String token);
+    ShowVo getByToken(HttpServletResponse response, String token);
 
     void sendEmail(LoginVo loginVo);
 
-    void register(HttpServletResponse response, RegisterVo registerVo);
+    void register(HttpServletResponse response, TeacherRegisterVo registerVo);
 
     String logout(String token);
 
     String registered(Teacher teacher);
+
+    ShowVo show(Long id);
 }

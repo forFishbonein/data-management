@@ -11,7 +11,8 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.common.vo.LoginVo;
-import com.imis.datamanagement.common.vo.RegisterVo;
+import com.imis.datamanagement.common.vo.ShowVo;
+import com.imis.datamanagement.common.vo.TeacherRegisterVo;
 import com.imis.datamanagement.domain.Teacher;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.mapper.TeacherMapper;
@@ -20,9 +21,8 @@ import com.imis.datamanagement.redis.RedisService;
 import com.imis.datamanagement.redis.TeacherKey;
 import com.imis.datamanagement.service.EmailService;
 import com.imis.datamanagement.service.TeacherService;
-import com.imis.datamanagement.service.UserService;
-import com.imis.datamanagement.utils.UUIDUtil;
-import com.imis.datamanagement.utils.ValidateCodeUtils;
+import com.imis.datamanagement.redis.utils.UUIDUtil;
+import com.imis.datamanagement.redis.utils.ValidateCodeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -59,6 +59,14 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         return teacher;
     }
 
+    @Override
+    public Long getIdByEmail(String email) {
+        QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(Teacher::getTeacherEmail, email);
+        Teacher teacher = teacherMapper.selectOne(queryWrapper);
+        return teacher.getTeacherId();
+    }
+
     public void sendEmail(LoginVo loginVo) {
 
         String email = loginVo.getEmail();
@@ -87,6 +95,16 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         return null;
     }
 
+    @Override
+    public ShowVo show(Long id) {
+        ShowVo showVo = teacherMapper.getByTeacherId(id);
+        if (showVo == null) {
+            throw new GlobalException(CodeMsg.USER_NOT_EXIST);
+        }
+        redisService.set(TeacherKey.getById, "" + id, showVo);
+        return showVo;
+    }
+
     public String codeLogin(HttpServletResponse response, LoginVo loginVo) {
         if (loginVo == null) {
             throw new GlobalException(CodeMsg.SERVER_ERROR);
@@ -105,16 +123,17 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         }
         redisService.delete(CodeKey.code, email);
         String token = UUIDUtil.uuid();
-        addCookie(response, token, teacherInMysql);
+        ShowVo teacher = show(teacherInMysql.getTeacherId());
+        addCookie(response, token, teacher);
         return token;
     }
 
     @Override
-    public void register(HttpServletResponse response, RegisterVo registerVo) {
+    public void register(HttpServletResponse response, TeacherRegisterVo registerVo) {
         if (registerVo == null) {
             throw new GlobalException(CodeMsg.SERVER_ERROR);
         }
-        String email = registerVo.getEmail();
+        String email = registerVo.getTeacherEmail();
         String code = registerVo.getCode();
         QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(Teacher::getTeacherEmail, email);
@@ -128,12 +147,13 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         }
         redisService.delete(CodeKey.code, email);
         Teacher teacher = new Teacher();
-        teacher.setTeacherEmail(registerVo.getEmail());
-        teacher.setTeacherPass(registerVo.getPassword());
+        teacher.setTeacherEmail(registerVo.getTeacherEmail());
+        teacher.setTeacherPass(registerVo.getTeacherPass());
+
         teacherMapper.insert(teacher);
     }
 
-    public void addCookie(HttpServletResponse response, String token, Teacher teacher) {
+    public void addCookie(HttpServletResponse response, String token, ShowVo teacher) {
         redisService.set(TeacherKey.token, token, teacher);
         Cookie cookie = new Cookie(COOKIE_NAME_TOKEN, token);
         cookie.setMaxAge(TeacherKey.token.expireSeconds());
@@ -141,11 +161,11 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         response.addCookie(cookie);
     }
 
-    public Teacher getByToken(HttpServletResponse response, String token) {
+    public ShowVo getByToken(HttpServletResponse response, String token) {
         if (StringUtils.isEmpty(token)) {
             return null;
         }
-        Teacher teacher = redisService.get(TeacherKey.token, token, Teacher.class);
+        ShowVo teacher = redisService.get(TeacherKey.token, token, ShowVo.class);
         if (teacher != null) {
             addCookie(response, token, teacher);
         }
@@ -161,15 +181,16 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         QueryWrapper<Teacher> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(Teacher::getTeacherEmail, email);
         Teacher teacherInMysql = getOne(queryWrapper);
-        if (teacherInMysql != null) {
-            throw new GlobalException(CodeMsg.EMAIL_EXIST);
+        if (teacherInMysql == null) {
+            throw new GlobalException(CodeMsg.USER_NOT_EXIST);
         }
         String passInMysql = teacherInMysql.getTeacherPass();
         if (!passInMysql.equals(password)) {
             throw new GlobalException(CodeMsg.PASSWORD_ERROR);
         }
         String token = UUIDUtil.uuid();
-        addCookie(response, token, teacherInMysql);
+        ShowVo teacher = show(teacherInMysql.getTeacherId());
+        addCookie(response, token, teacher);
         return token;
     }
 

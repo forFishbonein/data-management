@@ -11,6 +11,7 @@ Vue.use(VueRouter);
 import { Pagination } from "element-ui";
 Vue.use(Pagination);
 
+
 Vue.config.productionTip = false;
 
 new Vue({

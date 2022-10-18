@@ -15,7 +15,7 @@ public class News implements Serializable {
     @TableId(type = IdType.ASSIGN_ID)
     private Long newsId;
 
-    private String newsTittle;
+    private String newsTitle;
 
     private String newsEditor;
 

@@ -1,9 +1,10 @@
 <template>
-    <div class="el-menu-search" >
-      <div class="search-icon" @click="getSearchResults(keyword)"><span class="iconfont">&#xe651;</span></div>
-      <input v-model="keyword" type="text" class="searchInput"
-      placeholder="请输入搜索内容 ">
-    </div>
+  <div class="search">
+    <input v-model="keyword" type="text" class="searchInput" placeholder="请输入搜索内容 ">
+    <div class="search-icon" @click="getSearchResults(keyword)"><span class="iconfont">&#xe651;</span></div>
+
+  </div>
+
 </template>
 
 <script>
@@ -16,7 +17,6 @@ export default {
   data() {
     return {
       keyword: '',
-      // searchResult:[]
     }
   },
   methods: {
@@ -39,19 +39,15 @@ export default {
 </script>
 
 <style scoped>
-nav .el-menu-search {
+.search {
   color: #FFFFFF;
-  width: 450px;
-  /* height: 35px; */
-  padding: 15px 50px;
-  margin-left:50px;
-  margin-right:50px;
+  width: 550px;
   position: relative;
   display: flex;
-  font-size: larger;
-  font-weight: bold;
+  margin-top: 5px;
 }
-.iconfont{
+
+.iconfont {
   font-family: "iconfont" !important;
   font-size: 22px;
   font-style: normal;
@@ -59,35 +55,62 @@ nav .el-menu-search {
   -moz-osx-font-smoothing: grayscale;
   color: #FFFFFF
 }
-nav .search-icon{
-  width: 70px;
-  height: 40px;
-  background-color: #DCE9F8;
-  border-radius: 10px 0 0 10px ;
+
+nav .search-icon {
+  width: 60px;
+  height: 36px;
+  background-color: #dce9f8;
+  border-radius: 0px 8px 8px 0px;
+  border-right: #ccc 1.5px solid;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
-nav .search-icon:hover{
-  background-color: #679cd1
-}
+
+
+
 nav .searchInput {
-  width: 450px;
-  height: 35px;
-  border:#ccc 1px solid;
-  text-align: center;
+  width: 550px;
   position: relative;
   display: flex;
-  height: 40px;
-  text-align: left;
-  /* line-height: 1rem; */
-  border:#ccc 1px solid;
-  /* text-align: center; */
-  font-size: 18px;
-  border-radius: 0 10px 10px 0;
+  height: 36px;
+  border-left: #ccc 1.5px solid;
+  border-radius: 8px 0px 0px 8px;
+  font-size: 16px;
   padding-left: 10px;
 }
 
+nav .search-icon,
+nav .searchInput {
+  border-top: #ccc 1.5px solid;
+  border-bottom: #ccc 1.5px solid;
+}
+
+.search-icon:hover,
+.searchInput:hover,
+.search-icon:hover ~ .searchInput,
+.searchInput:hover ~ .search-icon,
+.searchInput:focus,
+.searchInput:focus ~ .search-icon{
+  border-top: #3c85d7 2px solid;
+  border-bottom: #3c85d7 2px solid;
+}
+
+.search-icon:hover {
+  background-color: #3c85d7
+}
+
+.search .searchInput:hover ~ .search-icon,
+.search .searchInput:focus ~ .search-icon,
+.search .search-icon:hover {
+  border-right: #3c85d7 2px solid;
+}
+
+.search .search-icon:hover ~ .searchInput,
+.search .searchInput:focus,
+.search .searchInput:hover {
+  border-left: #3c85d7 2px solid;
+}
 
 </style>

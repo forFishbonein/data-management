@@ -23,12 +23,11 @@ public class CodeMsg {
     public static CodeMsg EMAIL_EXIST = new CodeMsg(500219, "用户已存在");
     public static CodeMsg FILE_NOT_EXIST = new CodeMsg(500220, "文件不存在或已删除");
     public static CodeMsg FILE_EXIST = new CodeMsg(500220, "文件已存在");
+    //新闻模块 5003XX
     public static CodeMsg NEWS_NOT_EXIST = new CodeMsg(500300, "新闻不存在");
-    public static CodeMsg TEACHER_NOT_EXIST = new CodeMsg(500301, "教师不存在");
-    public static CodeMsg ID_NOT_EXIST = new CodeMsg(500302, "ID不存在");
+    //竞赛模块 5004XX
+    public static CodeMsg CONTEST_NOT_EXIST = new CodeMsg(500400, "竞赛不存在");
 
-
-//
 
     private CodeMsg() {
     }

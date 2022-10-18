@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-   <TeacherIndex></TeacherIndex>
+    <TeacherIndex></TeacherIndex>
+    <TeacherIndex></TeacherIndex>
     <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
     <!-- <StudentIndex></StudentIndex> -->
     <!-- <Manage></Manage> -->
     <!-- <Compete></Compete> -->
     <!-- <SearchResults></SearchResults> -->
-    <test></test>
+    <!-- <test></test> -->
   </div>
 </template>
 
