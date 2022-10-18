@@ -1,7 +1,22 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
     <TeacherIndex></TeacherIndex>
     <TeacherIndex></TeacherIndex>
+=======
+<<<<<<< HEAD
+   <TeacherIndex></TeacherIndex>
+<!--     <RegisterTeacher></RegisterTeacher>-->
+<!--     <RegisterStudent></RegisterStudent>-->
+<!--     <StudentIndex></StudentIndex>-->
+<!--     <Manage></Manage>-->
+    <!-- <Compete></Compete> -->
+<!--     <SearchResults></SearchResults>-->
+<!--    <test></test>-->
+    <!-- <LoginFooter></LoginFooter> -->
+=======
+     <TeacherIndex></TeacherIndex>
+>>>>>>> aa9f786e38ff4a8ce0f1854aa2aa4ba83a039e9e
     <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
     <!-- <StudentIndex></StudentIndex> -->
@@ -9,6 +24,7 @@
     <!-- <Compete></Compete> -->
     <!-- <SearchResults></SearchResults> -->
     <!-- <test></test> -->
+>>>>>>> 1eaf1926808391991ef216b01a46ce6d05f6a110
   </div>
 </template>
 

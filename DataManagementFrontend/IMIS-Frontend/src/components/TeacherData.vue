@@ -3,7 +3,6 @@
     <div class="context">
       <div class="title">{{ title }}</div>
       <div class="introduction">{{ introduction }}</div>
-
     </div>
     <div class="img">
       <img
@@ -67,10 +66,13 @@ export default {
 #container {
   position: relative;
   width: 1100px;
-  height: 200px;
-  margin: 8px auto;
+  height: 160px;
+  margin: 16px auto;
   padding: 8px;
-  border-bottom: 1px solid #e5e5e5;
+  background-color: #fafafa;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  /* border-bottom: 1px solid #e5e5e5; */
 }
 
 .context {
@@ -78,22 +80,25 @@ export default {
 }
 
 .img img{
-  width: 200px;
-  height: 150px;
+  width: 210px;
+  height: 140px;
   float: right;
 }
 
 .title {
   font-size: 18px;
   font-weight: bold;
-  color: #3C85D7;
+  color: #1a4d7f;
+  margin-top:8px;
+  margin-left:15px;
 }
 
 .introduction {
   display: flex;
-  margin-top: 8px;
+  margin-top: 14px;
   width: 800px;
-  font-size: 14px;
+  font-size: 16px;
+  margin-left:15px;
   color: #3C85D7;
 }
 
@@ -101,15 +106,21 @@ export default {
   position: absolute;
   left: 0;
   bottom: 0;
-  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left:23px;
+  font-size: 14px;
+  color:#595959;
+
 }
 
 .download {
   position: absolute;
   left: 170px;
-  bottom: 3px;
+  bottom: 1px;
   font-size: 14px;
   color: #6ca6f5;
+  margin-bottom: 10px;
+  margin-left:30px;
 }
 
 .download:hover {

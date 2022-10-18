@@ -12,7 +12,7 @@
               <input placeholder="搜索" class="tsearch"/>
             </div> -->
           </div>
-          <div v-for="(item, index) in materials" :key="index">
+          <div class="data-container" v-for="(item, index) in materials" :key="index">
             <TeacherData :id="item.id"
                         :title="item.title"
                         :name="item.name"
@@ -119,7 +119,7 @@ export default {
       margin-left: 8px;
       font-size: 20px;
       color:#113355;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 550;
       margin-right:0;
     }
@@ -128,6 +128,10 @@ export default {
   
   .apage {
     margin-top: 30px;
+  }
+
+  .data-container {
+    background-color: #FFFFFF;
   }
 }
 
