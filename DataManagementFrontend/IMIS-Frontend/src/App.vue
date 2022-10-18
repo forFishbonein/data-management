@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-   <!-- <TeacherIndex></TeacherIndex> -->
+   <TeacherIndex></TeacherIndex>
     <!-- <RegisterTeacher></RegisterTeacher> -->
     <!-- <RegisterStudent></RegisterStudent> -->
     <!-- <StudentIndex></StudentIndex> -->
@@ -20,6 +20,7 @@ import Compete from "./views/Compete"
 import SearchResults from "./views/SearchResults"
 import TeacherIndex from "./views/TeacherIndex";
 import test from "./views/test.vue";
+import LoginIna from "./views/LoginIna.vue"
 export default {
   name: 'App',
   components: {
