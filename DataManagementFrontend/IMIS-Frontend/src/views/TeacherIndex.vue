@@ -1,25 +1,26 @@
 <template>
-  <div>
+  <div class="body">
     <TeacherNav></TeacherNav>
     <div class="container">
       <TeacherHeader></TeacherHeader>
-      <div class="tbody">
-        <div class="line">
-          <span>资料</span>
-          <div class="right-search">
-            <div class="search-icon"><span class="iconfont">&#xe651;</span></div>
-            <input placeholder="搜索" class="tsearch"/>
+      <!-- <div class="sub-container"> -->
+        <div class="tbody">
+          <div class="line">
+            <span>资料</span>
+            <!-- <div class="right-search">
+              <div class="search-icon"><span class="iconfont">&#xe651;</span></div>
+              <input placeholder="搜索" class="tsearch"/>
+            </div> -->
           </div>
-        </div>
-        <div v-for="(item, index) in materials" :key="index">
-          <TeacherData :id="item.id"
-                       :title="item.title"
-                       :name="item.name"
-                       :introduction="item.introduction"
-                       :createTime="item.createTime"
-                       :filePath="item.filePath">
-          </TeacherData>
-        </div>
+          <div v-for="(item, index) in materials" :key="index">
+            <TeacherData :id="item.id"
+                        :title="item.title"
+                        :name="item.name"
+                        :introduction="item.introduction"
+                        :createTime="item.createTime"
+                        :filePath="item.filePath">
+            </TeacherData>
+          </div>
       </div>
       <el-pagination
         background
@@ -68,9 +69,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.body {
+  background-color: #eaf2fb;
+}
+
 .container {
   width: 1200px;
-  margin: 0 auto;
+  margin: 10px auto;
   display: flex;
   flex-direction: column;
   /* height: 200px; */
@@ -78,21 +84,30 @@ export default {
   // margin-top: 50px;
   padding-bottom: 50px;
 
+  // .sub-container {
+  //   margin-top:10px;
+  //   width: 1200px;
+  // }
+
   .tbody {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     background-color: #f5f9ff;
     min-height: 800px;
+    border-radius: 12px;
+
 
     .line {
       color: #3C85D7;
       width: 1200px;
       height: 50px;
-      background-color: #7a91bc;
+      background-color: #FFFFFF;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-radius: 12px;
+
 
       .right-search {
         // width:390px;

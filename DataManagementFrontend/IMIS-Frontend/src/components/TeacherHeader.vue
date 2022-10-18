@@ -15,11 +15,11 @@
       </div>
       <div class="teacher-info">
         <div class ="info1">
-          <div class="teacher-name">{{ teacher.teacherName }}</div>
+          <div class="teacher-name">{{ teacher.teacher_name }}</div>
         </div>
         <div class="info2">
-          <div class="teacher-title">教师职称：{{ teacher.teacherTitle }}</div>
-          <div class="phone-number">电话：{{ teacher.teacherTele }}</div>
+          <div class="teacher-title">教师职称：{{ teacher.teacher_title }}</div>
+          <div class="phone-number">电话：{{ teacher.teacher_tele }}</div>
         </div>
       </div>
     </div>
@@ -34,11 +34,11 @@ export default {
   data() {
     return {
       teacher: {
-        teacherName: "AAA",
-        teacherEmail: "w@w.ww",
-        teacherSid: "20202107",
-        teacherTitle: "副教授",
-        teacherTele: "12345678901"
+        teacher_name: "AAA",
+        teacher_email: "w@w.ww",
+        teacher_sid: "20202107",
+        teacher_title: "副教授",
+        teacher_tele: "12345678901"
       }
 
     }
@@ -52,10 +52,11 @@ export default {
   display: flex;
   flex-direction: column;
   height:200px;
+  border-radius: 12px;
 }
 
 .bgpicture {
-  background-color: gainsboro;
+  /* background-color: gainsboro; */
   width: 1200px;
   height: 120px;
 }
@@ -70,6 +71,8 @@ export default {
   flex-direction: row;
   height: 70px;
   margin-bottom: 8px;
+  background-color: #FFFFFF;
+  border-radius: 12px;
 }
 
 .teacher .teacher-pic {
@@ -97,35 +100,34 @@ export default {
 
 }
 .teacher .teacher-info .info1 .teacher-name {
-  color: #3C85D7;
+  color: #1A4D7F;
   font-size: 28px;
   line-height: 40px;
   font-weight: 550;
   margin-left: 20px;
 }
 
-.teacher .teacher-info .info1 .teacher-title {
-  color: #3C85D7;
-  line-height:35px;
-  font-weight: 400;
-  margin-left: 100px;
-  margin-top: 8px;
-
-}
-
 .teacher .teacher-info .info2 {
   display: flex;
   flex-direction: row;
 }
-.teacher .teacher-info .info2 .file {
-  color: #3C85D7;
+/* .teacher .teacher-info .info2 .file {
+  color: #1A4D7F;
   line-height:35px;
   font-weight: 400;
   margin-left: 20px;
+} */
+
+.teacher .teacher-info .info2 .teacher-title {
+  color: #1A4D7F;
+  line-height:35px;
+  font-weight: 400;
+  margin-left: 20px;
+  /* margin-top: 8px; */
 }
 
 .teacher .teacher-info .info2 .phone-number {
-  color: #3C85D7;
+  color: #1A4D7F;
   line-height:35px;
   font-weight: 400;
   margin-left: 75.5px;
