@@ -13,11 +13,15 @@
       </div>
       <div class="teacher-info">
         <div class ="info1">
-          <div class="teacher-name">{{ teacher.teacher_name }}</div>
+          <div class="teacher-name">{{teacher.teacherName}}</div>
         </div>
         <div class="info2">
-          <div class="teacher-title">教师职称：{{ teacher.teacher_title }}</div>
-          <div class="phone-number">电话：{{ teacher.teacher_tele }}</div>
+          <div class="teacher-title">教师职称：{{ teacher.teacherTitle }}</div>
+          <div class="teacher-tele">电话：{{ teacher.teacherTele }}</div>
+        </div>
+        <div class="info3">
+          <div class="teacher-sid">工号：{{ teacher.teacherSid }}</div>
+          <div class="teacher-email">邮箱：{{ teacher.teacherEmail }}</div>
         </div>
       </div>
     </div>
@@ -47,11 +51,11 @@ export default {
       id: "1581923146833891329",
 
       teacher: {
-        teacher_name: "AAA",
-        teacher_email: "w@w.ww",
-        teacher_sid: "20202107",
-        teacher_title: "副教授",
-        teacher_tele: "12345678901"
+        teacherName: "BBB",
+        teacherEmail: "w@w.ww",
+        teacherSid: "20202107",
+        teacherTitle: "副教授",
+        teacherTele: "12345678901"
       }
 
     }
@@ -64,7 +68,7 @@ export default {
 .teacher-header{
   display: flex;
   flex-direction: column;
-  height:200px;
+  height:235px;
   border-radius: 12px;
 }
 
@@ -72,17 +76,22 @@ export default {
   /* background-color: gainsboro; */
   width: 1200px;
   height: 120px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+
 }
 
 .bgpicture>img{
   width: 1200px;
   height: 153px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px
 }
 
 .teacher {
   display: flex;
   flex-direction: row;
-  height: 70px;
+  height: 300px;
   margin-bottom: 8px;
   background-color: #FFFFFF;
   border-radius: 12px;
@@ -103,33 +112,28 @@ export default {
 }
 
 .teacher .teacher-info {
+  margin-top: -10px;
   margin-left:150px;
 }
 
 .teacher .teacher-info .info1 {
-
   display: flex;
   flex-direction: row;
-
 }
+
 .teacher .teacher-info .info1 .teacher-name {
   color: #1A4D7F;
   font-size: 28px;
   line-height: 40px;
   font-weight: 550;
   margin-left: 20px;
+  margin-bottom: 5px;
 }
 
 .teacher .teacher-info .info2 {
   display: flex;
   flex-direction: row;
 }
-/* .teacher .teacher-info .info2 .file {
-  color: #1A4D7F;
-  line-height:35px;
-  font-weight: 400;
-  margin-left: 20px;
-} */
 
 .teacher .teacher-info .info2 .teacher-title {
   color: #1A4D7F;
@@ -139,11 +143,31 @@ export default {
   /* margin-top: 8px; */
 }
 
-.teacher .teacher-info .info2 .phone-number {
+.teacher .teacher-info .info2 .teacher-tele {
+  color: #1A4D7F;
+  line-height:35px;
+  font-weight: 400;
+  margin-left: 118.5px;
+}
+
+.teacher .teacher-info .info3 {
+  display: flex;
+  flex-direction: row;
+}
+
+.teacher .teacher-info .info3 .teacher-sid {
+  color: #1A4D7F;
+  line-height:35px;
+  font-weight: 400;
+  margin-left: 20px;
+}
+
+.teacher .teacher-info .info3 .teacher-email {
   color: #1A4D7F;
   line-height:35px;
   font-weight: 400;
   margin-left: 75.5px;
 }
+
 
 </style>
