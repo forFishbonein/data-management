@@ -25,8 +25,8 @@ public class CodeMsg {
     public static CodeMsg FILE_EXIST = new CodeMsg(500220, "文件已存在");
     //新闻模块 5003XX
     public static CodeMsg NEWS_NOT_EXIST = new CodeMsg(500300, "新闻不存在");
-
-
+    //竞赛模块 5004XX
+    public static CodeMsg CONTEST_NOT_EXIST = new CodeMsg(500400, "竞赛不存在");
 
 
     private CodeMsg() {

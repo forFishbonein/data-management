@@ -99,12 +99,10 @@ export default {
         alert('两次输入的密码不一致')
       } else {
         postRegisterTeacher(teacher).then(
-          response => (
-
-            alert('恭喜您注册成功')
-          )
+          response => {
+              alert('恭喜您注册成功')
+          }
         )
-
       }
     },
   }

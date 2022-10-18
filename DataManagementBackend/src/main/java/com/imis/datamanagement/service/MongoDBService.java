@@ -10,7 +10,7 @@ import com.alibaba.fastjson.JSON;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.domain.template.*;
 import com.imis.datamanagement.exception.GlobalException;
-import com.imis.datamanagement.utils.MongoUtil;
+import com.imis.datamanagement.redis.utils.MongoUtil;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;

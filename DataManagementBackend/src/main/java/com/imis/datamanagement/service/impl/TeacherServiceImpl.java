@@ -21,8 +21,8 @@ import com.imis.datamanagement.redis.RedisService;
 import com.imis.datamanagement.redis.TeacherKey;
 import com.imis.datamanagement.service.EmailService;
 import com.imis.datamanagement.service.TeacherService;
-import com.imis.datamanagement.utils.UUIDUtil;
-import com.imis.datamanagement.utils.ValidateCodeUtils;
+import com.imis.datamanagement.redis.utils.UUIDUtil;
+import com.imis.datamanagement.redis.utils.ValidateCodeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
