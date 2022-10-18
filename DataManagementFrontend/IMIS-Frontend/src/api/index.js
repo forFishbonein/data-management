@@ -25,7 +25,7 @@ export function test() {
 export function getByTeacherId(id) {
   return request({
     method: "get",
-    data: {id: this.id},
+    data: {"id": id},
     url: "/getByTeacherId.json"
   });
 }
