@@ -47,7 +47,7 @@ export default {
   data() {
     return {
         email:"256235478@qq.com"
-      
+
     }
 },methods: {
         turn(){
