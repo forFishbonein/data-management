@@ -35,7 +35,7 @@ public class ContestController {
     }
 
     //增加一条竞赛
-    @PutMapping("/insert")
+    @PutMapping
     public Result<String> insert(@RequestBody Contest contest){
         contestService.insert(contest);
         return Result.success("新增成功");
