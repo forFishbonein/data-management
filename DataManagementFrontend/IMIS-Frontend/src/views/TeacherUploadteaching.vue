@@ -2,22 +2,22 @@
     <div class="main">
       <div class="title">资料上传</div>
       <div class="content">
-        <form>
-            <div><span>选择模板&emsp;</span>
-                <select>
-                <option value="a1">科研项目</option>
-                <option value="a2">教研报告</option>
-                <option value="a3">各类荣誉</option>
-                <option value="a4">成果类</option>
-                <option value="a5">学生竞赛</option>
-                <option value="a6">交流访问</option>
-                <option value="a6">党支部</option>
-                <option value="a6">教研室</option>
-                <option value="a6">论文/期刊</option>
-                <option value="a6">其他</option>
-                </select>
+        <form >
+            <div class="choose"><span>选择模板&emsp;</span>
+
+                <button value="a1">科研项目</button>
+                <button value="a2">教研报告</button>
+                <button value="a3">各类荣誉</button>
+                <button value="a4">成果类</button>
+                <button value="a5">学生竞赛</button>
+                <button value="a6">交流访问</button>
+                <button value="a6">党支部</button>
+                <button value="a6">教研室</button>
+                <button value="a6">论文/期刊</button>
+                <button value="a6">其他</button>
+
             </div>
-            
+
             <div class="resources">
                 <span>
 资源名称&emsp;
@@ -71,7 +71,6 @@
 课题组成员
                 </span>
                 <div>
-
                                           <el-tag
                           :key="tag"
                           v-for="tag in dynamicTags"
@@ -90,24 +89,44 @@
                           @blur="handleInputConfirm"
                         >
                         </el-input>
-                        <el-button v-else type="button" class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
-
-
+                  <el-button v-else type="button" class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
                 </div>
             </div>
+          <div class="resources">
+                  <span>
+附件上传
+                  </span>
+            <div class="upload">
+              <el-upload
+                class="upload-demo"
+                action="https://jsonplaceholder.typicode.com/posts/"
+                :on-preview="handlePreview"
+                :on-remove="handleRemove"
+                :before-remove="beforeRemove"
+                multiple
+                :limit="3"
+                :on-exceed="handleExceed"
+                :file-list="fileList">
+                <el-button size="small" type="primary">点击选择</el-button>
+              </el-upload>
+            </div>
+          </div>
+
             <button type="submit">立即上传</button>
+
         </form>
       </div>
     </div></div>
   </template>
-  
+
   <script>
   export default {
     data() {
       return {
         dynamicTags: [],
         inputVisible: true,
-        inputValue: ''
+        inputValue: '',
+        fileList: []
       };
     },
     methods: {
@@ -122,7 +141,7 @@
           this.$refs.saveTagInput.$refs.input.focus();
           // this.$refs.saveTagInput.$refs.input.focus();
           console.log(_);
-          
+
         });
       },
 
@@ -130,17 +149,29 @@
         let inputValue = this.inputValue;
         if (inputValue) {
           this.dynamicTags.push(inputValue);
-          
+
         }
         this.inputVisible = false;
         this.inputValue = '';
-        // this.dynamicTags.push(_);
+        this.dynamicTags.push(_);
+      },
+      handleRemove(file, fileList) {
+        console.log(file, fileList);
+      },
+      handlePreview(file) {
+        console.log(file);
+      },
+      handleExceed(files, fileList) {
+        this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+      },
+      beforeRemove(file, fileList) {
+        return this.$confirm(`确定移除 ${ file.name }？`);
       }
     }
   }
-  
+
   </script>
-  
+
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
   /* * {
@@ -165,9 +196,14 @@
   }
   .content{
     font-size: 20px;
+    background-color: #FDFDFD;
   }
   .content div{
     margin: 10px 5px;
+  }
+  .upload{
+   width: 540px;
+    height: 200px;
   }
   button[type="submit"] {
     background-color: #2F51FF;
@@ -175,8 +211,26 @@
     width: 100px   ;
     height: 30px;
     font-size: 16px;
-  }
+    margin-left: 1000px;
 
+  }
+  .title{
+    color: #113355;
+  }
+span{
+  color: #1A4D7F;
+}
+.choose button{
+  height: 38px;
+  width: 80px;
+  background-color: #FFFFFF;
+  border: 1px solid #CACBCC;
+  margin-right: 10px;
+  border-radius: 5px;
+}
+.choose button:hover{
+  border: 1px solid #3C85D7;
+}
 
 
           .el-tag + .el-tag {
@@ -194,4 +248,4 @@
             margin-left: 10px;
             vertical-align: bottom;
           }
-  </style>  
+  </style>
