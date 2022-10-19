@@ -9,8 +9,8 @@
 <!--     <SearchResults></SearchResults>-->
 <!--    <test></test>-->
     <!-- <LoginFooter></LoginFooter> -->
-    <TeacherFile></TeacherFile>
-
+<!--    <TeacherFile></TeacherFile>-->
+<SearchResults></SearchResults>
   </div>
 </template>
 
