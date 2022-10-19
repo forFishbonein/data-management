@@ -4,10 +4,10 @@
     <div class="context">
       <div class="title">测试标题</div>
       <div class="createTime">2022-10-16 11:25:30</div>
-      <div class="introduction">
-        <TeacherDetail></TeacherDetail>
-      </div>
+      <div class="introduction">测试简介</div>
+      <TeacherDetail></TeacherDetail>
     </div>
+
 
 
 
@@ -26,7 +26,8 @@ export default {
   name: "TeacherFile",
   data() {
     return {
-      teacherFile : {
+
+      honor : {
         id: "",
         title: "",
         other: {

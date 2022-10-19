@@ -5,11 +5,7 @@
     <div class="name">{{name}}</div>
     <div class="type">{{type}}</div>
   </div>
-  <div class="img">
-    <img
-      src="../../static/img/img_1.png"
-      alt="pic">
-  </div>
+  <div></div>
 </div>
 </template>
 
