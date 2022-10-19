@@ -154,7 +154,12 @@ export default {
 }
 
 .container {
-  margin: 60px auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   padding: 50px;
   width: 1070px;
   height: 650px;
