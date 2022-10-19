@@ -7,7 +7,7 @@
       <div class="left">
 
       </div>
-      <form class="right">
+      <form class="right" :model="userForm">
         <div class="choice">
           <div class="abc">
             验证码登录
@@ -33,7 +33,7 @@
         <div>
 
         </div>
-        <button type="submit">登录</button>
+        <button type="submit" @click="login('userForm')">登录</button>
       </form>
     </div>
     <div class="footer">
@@ -45,10 +45,25 @@
 <script>
 export default {
   data() {
-    return {
-      email: "256235478@qq.com"
+      return {
+        userForm: {
+          account: '',
+          vcode: ''
+        }
+      }
+    },
+    methods: {
+      login(formName) {
+        let that = this
+        that.$store.dispatch('loginA', that.userForm).then(() => {
+          that.$router.push({path: '/TeacherIndex'})
+        }).catch((error) => {
+          if (error !== 'error') {
+            that.$message({message: error, type: 'error', showClose: true});
+          }
+        })
+      }
     }
-  }
 }
 </script>
 

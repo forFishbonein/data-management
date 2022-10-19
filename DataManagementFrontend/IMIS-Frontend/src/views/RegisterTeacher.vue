@@ -74,6 +74,11 @@ import {postRegisterTeacher} from "../api/register";
 export default {
   data() {
     return {
+      // userForm: {
+      //   account: '',
+      //   nickname: '',
+      //   password: ''
+      // },
       teacher: {
         mail: "",
         captcha: "",
@@ -98,11 +103,20 @@ export default {
       } else if (this.teacher.password !== this.teacher.repassword) {
         alert('两次输入的密码不一致')
       } else {
-        postRegisterTeacher(teacher).then(
-          response => {
-              alert('恭喜您注册成功')
+        // postRegisterTeacher(teacher).then(
+        //   response => {
+        //       alert('恭喜您注册成功')
+        //   }
+        // )
+
+        that.$store.dispatch('teacherRegister', that.teacher).then(() => {
+          that.$message({message: '注册成功！', type: 'success', showClose: true});
+          that.$router.push({path: '/'})
+        }).catch((error) => {
+          if (error !== 'error') {
+            that.$message({message: error, type: 'error', showClose: true});
           }
-        )
+        })
       }
     },
   }
