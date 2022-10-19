@@ -49,7 +49,6 @@ public class MongoDBService {
         List<Communication> communications = mongoTemplate.find(query, Communication.class);
         List<Honor> honors = mongoTemplate.find(query, Honor.class);
         List<Office> offices = mongoTemplate.find(query, Office.class);
-        List<Paper> papers = mongoTemplate.find(query, Paper.class);
         List<Party> parties = mongoTemplate.find(query, Party.class);
         List<StudentContest> studentContests = mongoTemplate.find(query, StudentContest.class);
         List<Teaching> teachings = mongoTemplate.find(query, Teaching.class);
@@ -60,7 +59,6 @@ public class MongoDBService {
         l.add(communications);
         l.add(honors);
         l.add(offices);
-        l.add(papers);
         l.add(parties);
         l.add(studentContests);
         l.add(teachings);
@@ -78,7 +76,6 @@ public class MongoDBService {
         List<Communication> communications = mongoTemplate.find(query, Communication.class);
         List<Honor> honors = mongoTemplate.find(query, Honor.class);
         List<Office> offices = mongoTemplate.find(query, Office.class);
-        List<Paper> papers = mongoTemplate.find(query, Paper.class);
         List<Party> parties = mongoTemplate.find(query, Party.class);
         List<StudentContest> studentContests = mongoTemplate.find(query, StudentContest.class);
         List<Teaching> teachings = mongoTemplate.find(query, Teaching.class);
@@ -89,7 +86,6 @@ public class MongoDBService {
         l.add(communications);
         l.add(honors);
         l.add(offices);
-        l.add(papers);
         l.add(parties);
         l.add(studentContests);
         l.add(teachings);
