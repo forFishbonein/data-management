@@ -27,7 +27,9 @@ export default {
       teacherFile : {
         id: "",
         title: "",
-        other: {},
+        other: {
+
+        },
         filePath: "",
         createTime: "",
         num: "",
@@ -56,7 +58,7 @@ export default {
 
 .context {
   width: 1200px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
 
   background-color: white;
