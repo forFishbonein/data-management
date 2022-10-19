@@ -67,10 +67,11 @@ export default {
   position: relative;
   width: 1100px;
   height: 160px;
-  margin: 16px auto;
+  margin: 0 auto;
+  margin-bottom: 16px;
   padding: 8px;
   background-color: #fafafa;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 2px 1px 8px 0px rgba(0, 0, 0, 0.10);
   border-radius: 5px;
   /* border-bottom: 1px solid #e5e5e5; */
 }

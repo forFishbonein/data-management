@@ -9,6 +9,7 @@
 <!--     <SearchResults></SearchResults>-->
 <!--    <test></test>-->
     <!-- <LoginFooter></LoginFooter> -->
+<!--    <TeacherFile></TeacherFile>-->
 
   </div>
 </template>
@@ -22,10 +23,12 @@ import Compete from "./views/Compete"
 import SearchResults from "./views/SearchResults"
 import TeacherIndex from "./views/TeacherIndex";
 import test from "./views/test.vue";
-
+import LoginIna from "./views/LoginIna.vue"
+import TeacherFile from "./views/TeacherFile";
 export default {
   name: 'App',
   components: {
+    TeacherFile,
     Compete,
     RegisterTeacher,
     RegisterStudent,

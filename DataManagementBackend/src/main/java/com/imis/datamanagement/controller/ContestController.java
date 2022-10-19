@@ -35,7 +35,7 @@ public class ContestController {
     }
 
     //增加一条竞赛
-    @PutMapping("/insert")
+    @PutMapping
     public Result<String> insert(@RequestBody Contest contest){
         contestService.insert(contest);
         return Result.success("新增成功");
@@ -49,9 +49,9 @@ public class ContestController {
     }
 
     //根据id修改
-    @PutMapping("/{contestId}")
-    public Result<String> updateById(@PathVariable("contestId") Long contestId){
-        contestService.updateById(contestId);
+    @PostMapping
+    public Result<String> update(@RequestBody Contest contest){
+        contestService.update(contest);
         return Result.success("修改成功");
     }
 
