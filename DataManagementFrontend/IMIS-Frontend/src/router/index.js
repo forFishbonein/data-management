@@ -6,12 +6,13 @@ import LoginInb from "../views/LoginInb.vue";
 import TeacherIndex from "../views/TeacherIndex.vue";
 import RegisterTeacher from "../views/RegisterTeacher.vue";
 import TeacherUploadteaching from "../views/TeacherUploadteaching.vue";
+import CodeLogin from "../views/CodeLogin.vue";
 
 export default new VueRouter({
   routes: [
     {
       path: "/",
-      component: LoginIna
+      component: CodeLogin
     },
     {
       path: "/loginina",
