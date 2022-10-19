@@ -11,25 +11,9 @@
 
 <script>
 export default {
-  name: "TeacherDetail",
+  name: "FilePath",
   data(){
-
-
   },
-  props:{
-    id: {
-      type: Number,
-      default: 1
-    },
-    name:{
-      type:String,
-      default: "名称"
-    },
-    type:{
-      type:String,
-      default:"docx"
-    }
-  }
 }
 </script>
 
