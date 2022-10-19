@@ -12,7 +12,7 @@
           <div class="abc">
             验证码登录
           </div>
-          <div>
+          <div @click="turnlogininb">
             密码登录
           </div>
         </div>
@@ -27,13 +27,13 @@
         </div>
         <div class="others">&emsp;
           <input type="checkbox" name="remember">
-          <div>记住我</div>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+          <div>记住我</div>&emsp;&emsp;&emsp;<div @click="turnregisterteacher">去注册</div>&emsp;&emsp;
           <div>忘记密码</div>
         </div>
         <div>
 
         </div>
-        <button type="submit">登录</button>
+        <button type="submit" @click="turn">登录</button>
       </form>
     </div>
     <div class="footer">
@@ -46,9 +46,23 @@
 export default {
   data() {
     return {
-      email: "256235478@qq.com"
+        email:"256235478@qq.com"
+      
     }
-  }
+},methods: {
+        turn(){
+          this.$router.replace(
+            name='person'
+          )
+        },turnlogininb(){
+          this.$router.replace(
+            name='logininb'
+          )},
+          turnregisterteacher(){
+            this.$router.replace(
+              name='registerteacher')
+        }
+      }
 }
 </script>
 

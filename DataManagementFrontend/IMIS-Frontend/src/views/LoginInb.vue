@@ -9,7 +9,7 @@
       </div>
       <form class="right">
         <div class="choice">
-          <div>
+          <div @click="turnloginina">
             验证码登录
           </div>
           <div class="abc">
@@ -18,12 +18,11 @@
         </div>
         <div class="email">
           <!-- 邮&emsp;箱 -->
-          <input type="email" placeholder="请输入邮箱">
+          <input type="email" placeholder="请输入账号">
         </div>
         <div class="yanzhengma">
           <!-- 验证码 -->
-          <input placeholder="请输入验证码"/>
-          <button>发送验证码</button>
+          <input placeholder="请输入密码" type="password">
         </div>
         <div class="others">&emsp;
           <input type="checkbox" name="remember">
@@ -48,7 +47,18 @@ export default {
     return {
       email: "256235478@qq.com"
     }
-  }
+  },methods: {
+        turnlogininb(){
+          this.$router.replace(
+            name='logininb'
+          )
+        },
+        turnloginina(){
+          this.$router.replace(
+            name='loginina'
+          )
+        }
+      }
 }
 </script>
 
@@ -106,20 +116,16 @@ export default {
 
 .choice {
   display: flex;
-  /* width: 250px; */
   justify-content: space-around;
   color: #0776f4;
   margin-bottom: 50px;
 }
 
 input {
-  /* width: 230px; */
   height: 30px;
   opacity: 1;
-  /* border-radius: 15px; */
   background: rgba(255, 255, 255, 1);
   margin: 10px 15px;
-
   border-radius: 10px;
   background: rgba(255, 255, 255, 1);
   padding-left: 10px;
@@ -128,22 +134,17 @@ input {
 
 .others {
   width: 355px;
-  /* height: 25px; */
   display: flex;
   margin: 10px 15px;
 }
 
-/* p{
-  width: 150px;
-  display: flex;
-} */
 input[type="checkbox"] {
   width: 15px;
   height: 15px;
   margin: 5px 5px;
 }
 
-input[type="email"] {
+input {
   width: 260px;
 }
 
@@ -168,8 +169,4 @@ button[type="submit"] {
 .abc {
   border-bottom: #0776f4 solid 2px;
 }
-
-/* .others>div{
-  width: 100px;
-} */
 </style>
