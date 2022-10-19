@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-   <TeacherIndex></TeacherIndex>
+<!--   <TeacherIndex></TeacherIndex>-->
 <!--     <RegisterTeacher></RegisterTeacher>-->
 <!--     <RegisterStudent></RegisterStudent>-->
 <!--     <StudentIndex></StudentIndex>-->
@@ -8,7 +8,7 @@
     <!-- <Compete></Compete> -->
 <!--     <SearchResults></SearchResults>-->
 <!--    <test></test>-->
-    <!-- <LoginFooter></LoginFooter> -->
+     <LoginFooter></LoginFooter>
 <!--    <TeacherFile></TeacherFile>-->
 
   </div>
@@ -25,9 +25,12 @@ import TeacherIndex from "./views/TeacherIndex";
 import test from "./views/test.vue";
 import LoginIna from "./views/LoginIna.vue"
 import TeacherFile from "./views/TeacherFile";
+import LoginFooter from "./components/LoginFooter";
+
 export default {
   name: 'App',
   components: {
+    LoginIna,
     TeacherFile,
     Compete,
     RegisterTeacher,
