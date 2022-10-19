@@ -4,7 +4,9 @@
     <div class="context">
       <div class="title">测试标题</div>
       <div class="createTime">2022-10-16 11:25:30</div>
-      <div class="introduction">测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段测试字段</div>
+      <div class="introduction">
+        <TeacherDetail></TeacherDetail>
+      </div>
     </div>
 
 
@@ -19,7 +21,7 @@
 import TeacherNav from "../components/TeacherNav";
 import TeacherHeader from "../components/TeacherHeader";
 import TeacherData from "../components/TeacherData";
-
+ import TeacherDetail from "../components/TeacherDetail";
 export default {
   name: "TeacherFile",
   data() {
@@ -42,8 +44,8 @@ export default {
   components: {
     TeacherNav,
     TeacherHeader,
-    TeacherData
-
+    TeacherData,
+    TeacherDetail
   },
 }
 
