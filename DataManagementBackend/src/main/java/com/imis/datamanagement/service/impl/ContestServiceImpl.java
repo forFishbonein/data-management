@@ -53,7 +53,7 @@ public class ContestServiceImpl extends ServiceImpl<ContestMapper, Contest> impl
         //判断id是否存在
         QueryWrapper<Contest> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(Contest::getContestId,contest.getContestId());
-        Contest contestInMysql = contestMapper.selectOne(QueryWrapper);
+        Contest contestInMysql = contestMapper.selectOne(queryWrapper);
         if (contestInMysql == null) {
             throw new GlobalException(CodeMsg.CONTEST_NOT_EXIST);
         }
