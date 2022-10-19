@@ -21,7 +21,7 @@
 import TeacherNav from "../components/TeacherNav";
 import TeacherHeader from "../components/TeacherHeader";
 import TeacherData from "../components/TeacherData";
- import TeacherDetail from "../components/TeacherDetail";
+import FilePath from "../components/FilePath";
 export default {
   name: "TeacherFile",
   data() {
