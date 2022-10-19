@@ -9,8 +9,6 @@ package com.imis.datamanagement.domain.template;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.List;
@@ -26,7 +24,6 @@ import java.util.Map;
         @JsonSubTypes.Type(value = Communication.class, name = Communication.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = Honor.class, name = Honor.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = Office.class, name = Office.TEMPLATE_TYPE),
-        @JsonSubTypes.Type(value = Paper.class, name = Paper.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = Party.class, name = Party.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = StudentContest.class, name = StudentContest.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = Teaching.class, name = Teaching.TEMPLATE_TYPE),
@@ -37,6 +34,9 @@ public abstract class AbstractTemplate {
     String TEMPLATE_TYPE;
 
     Integer id;
+
+    @Field("a_tittle")
+    String title;
 
     @Field("a_other")
     Map<String, String> other;

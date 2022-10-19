@@ -1,6 +1,5 @@
 package com.imis.datamanagement.service;
 
-
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.imis.datamanagement.common.vo.LoginVo;
 import com.imis.datamanagement.common.vo.RegisterVo;
@@ -13,6 +12,8 @@ public interface UserService extends IService<User> {
     User getById(long id);
 
     String codeLogin(HttpServletResponse response, LoginVo loginVo);
+
+    String passLogin(HttpServletResponse response, LoginVo loginVo);
 
     void addCookie(HttpServletResponse response, String token, User user);
 

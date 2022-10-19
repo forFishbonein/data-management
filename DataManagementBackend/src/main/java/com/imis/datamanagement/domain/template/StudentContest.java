@@ -11,13 +11,15 @@ import java.util.Map;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Document(collection = "contest")
+@Document(collection = "student_contest")
 public class StudentContest extends AbstractTemplate{
 
-    static final String TEMPLATE_TYPE = "contest";
+    static final String TEMPLATE_TYPE = "student_contest";
 
     @Id
     private Integer id;
+
+    private String title;
 
     private Long uploaderId;
 

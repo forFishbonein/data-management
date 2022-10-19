@@ -38,6 +38,17 @@ public class FileUploadController {
         return Result.success("删除成功");
     }
 
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Result<String> getById(@PathVariable("id") Long id) {
+        return Result.success(mongoDBService.getById(id));
+    }
+
+    @GetMapping
+    @ResponseBody
+    public Result<Object> getAll() {
+        return Result.success(mongoDBService.getAll());
+    }
 
     @Resource
     private FileUploadService fileUploadService;
@@ -48,10 +59,5 @@ public class FileUploadController {
         return Result.success(fileUploadService.upload(multipartFile));
     }
 
-    @GetMapping("/{id}")
-    @ResponseBody
-    public Result<String> getById(@PathVariable("id") Long id) {
-        return Result.success(mongoDBService.getById(id));
-    }
 
 }

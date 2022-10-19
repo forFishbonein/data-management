@@ -1,6 +1,5 @@
 package com.imis.datamanagement.domain;
 
-
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
@@ -19,7 +18,7 @@ public class Contest implements Serializable {
 
     private String contestLink;
 
-    private String creatTime;
+    private String createTime;
 
     private String updateTime;
 
