@@ -1,16 +1,24 @@
 import request from "@/request"
 
-export function postRegisterTeacher(teacher){
+export function postCodeTeacher(data){
   return request({
-    data: teacher,
+    data,
+    method: 'post',
+    url: 'http://localhost:8888/sendEmail',
+  })
+}
+
+export function postRegisterTeacher(data){
+  return request({
+    data,
     method: 'post',
     url: 'http://localhost:8888/t/register',
   })
 }
 
-export function postRegisterStudent(student){
+export function postRegisterStudent(data){
   return request({
-    data: student,
+    data,
     method: 'post',
     url: '/',
   })
