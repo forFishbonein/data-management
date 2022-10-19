@@ -10,7 +10,8 @@
 <!--    <test></test>-->
     <!-- <LoginFooter></LoginFooter> -->
 <!--    <TeacherFile></TeacherFile>-->
-<SearchResults></SearchResults>
+<!--<SearchResults></SearchResults>-->
+    <TeacherUploadteaching></TeacherUploadteaching>
   </div>
 </template>
 
@@ -25,6 +26,7 @@ import TeacherIndex from "./views/TeacherIndex";
 import test from "./views/test.vue";
 import LoginIna from "./views/LoginIna.vue"
 import TeacherFile from "./views/TeacherFile";
+import TeacherUploadteaching from "./views/TeacherUploadteaching";
 export default {
   name: 'App',
   components: {
@@ -36,7 +38,8 @@ export default {
     Manage,
     SearchResults,
     TeacherIndex,
-    test
+    test,
+    TeacherUploadteaching
   }
 }
 </script>
