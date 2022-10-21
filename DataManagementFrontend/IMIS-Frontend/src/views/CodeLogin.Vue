@@ -27,6 +27,7 @@ import {codeLogin} from "../api/login";
 
 
 export default {
+  name: 'CodeLogin',
 
 
   data() {

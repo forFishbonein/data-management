@@ -14,12 +14,12 @@
             <input type="checkbox" id="1" value="交流访问" v-model="picked" />交流访问
             <input type="checkbox" id="1" value="党支部" v-model="picked" />党支部
             <input type="checkbox" id="1" value="其他" v-model="picked" />其他
-  
+
             <ul>
               <li v-for="(item, index) in picked" :key="index">{{item}}</li>
             </ul>
           </div>
-  
+
           <!-- <TeacherSearch></TeacherSearch> -->
           <div v-for="(item, index) in materials" :key="index">
             <TeacherData :id="item.id" :title="item.title" :name="item.name" :desc="item.desc"
@@ -35,15 +35,17 @@
       </div>
     </div>
   </template>
-  
+
   <script>
   import TeacherNav from '../components/TeacherNav.vue'
   // import TeacherHeader from '../components/TeacherHeader.vue'
   // import TeacherSearch form '../components/TeacherSearch.vue'
   import TeacherData from '../components/TeacherData.vue'
   import {getMaterials} from '@/api'
-  
+
   export default {
+    name: 'Resource_',
+
     data() {
       return {
         materials: []
@@ -70,11 +72,11 @@
     mounted() {
       this.getMaterials();
     },
-    
-    
+
+
   }
   </script>
-  
+
   <style lang="scss" scoped>
   .container {
     width: 1200px;
@@ -85,14 +87,14 @@
     /* background-color: brown; */
     // margin-top: 50px;
     padding-bottom: 50px;
-  
+
     .tbody {
       display: flex;
       flex-direction: column;
       /* justify-content: center; */
       background-color: #f5f9ff;
       min-height: 800px;
-  
+
       .line {
         margin-top: 40px;
         margin-left: 30px;
@@ -103,7 +105,7 @@
         justify-content: space-between;
         align-items: center;
       }
-  
+
       .check{
         margin-left: 30px;
         margin-top: 5px;
@@ -113,15 +115,14 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-  
+
       }
     }
-  
+
     .apage {
       margin-top: 30px;
     }
   }
-  
-  
+
+
   </style>
-  

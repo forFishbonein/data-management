@@ -41,6 +41,8 @@ import TeacherData from '../components/TeacherData.vue'
 import {getMaterials} from '@/api'
 
 export default {
+  name: 'TeacherIndex',
+
   data() {
     return {
       materials: []

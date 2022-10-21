@@ -25,6 +25,9 @@
 import {codeLogin} from "../api/login";
 
 export default {
+  name: 'PassLogin',
+
+
   data() {
     return {
       login: {
