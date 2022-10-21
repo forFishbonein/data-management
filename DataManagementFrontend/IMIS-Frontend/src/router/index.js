@@ -7,12 +7,13 @@ import TeacherIndex from "../views/TeacherIndex.vue";
 import RegisterTeacher from "../views/RegisterTeacher.vue";
 import TeacherUploadteaching from "../views/TeacherUploadteaching.vue";
 import CodeLogin from "../views/CodeLogin.vue";
+import PassLogin from "../views/PassLogin.vue";
 
 export default new VueRouter({
   routes: [
     {
       path: "/",
-      component: CodeLogin
+      component: PassLogin
     },
     {
       path: "/loginina",

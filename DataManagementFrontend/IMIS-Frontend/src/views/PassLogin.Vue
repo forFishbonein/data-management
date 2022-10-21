@@ -6,16 +6,15 @@
         <div class="login-way">密码登录</div>
       </div>
       <div class="login-input-box">
-        <input type="text" class="login-input-box-email" placeholder="请输入邮箱">
-        <input type="text" class="login-input-box-code" placeholder="请输入验证码">
-        <span class="login-input-box-send">获取验证码</span>
+        <input type="text" placeholder="请输入邮箱">
+        <input type="password" placeholder="请输入密码">
       </div>
       <div class="login-check">
         <span><input type="checkbox">记住我</span>
         <span>注册账号</span>
         <span>忘记密码？</span>
       </div>
-      <button class="login-button">登录</button>
+      <button class="login-button">登 录</button>
 
     </form>
 
@@ -53,16 +52,23 @@ export default {
 }
 
 .main {
-  background-color: #dfc0f8;
+  position: relative;
+  height: 100vh;
+  background: url(../../static/img/register2.jpg) no-repeat center;
+  background-size: 100%;
 }
 
 .login-form {
+  position: absolute;
+  top: 120px;
+  left: 50%;
   margin: 0 auto;
+  margin-left: -180px;
   width: 360px;
   height: 480px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.3);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-
 .login-way-box {
   display: flex;
   justify-content: space-around;
@@ -71,27 +77,29 @@ export default {
 .login-way {
   display: inline-block;
   padding: 24px 40px;
-  color: #3C85D7;
+  color: #113355;
 }
 
 .login-input-box input {
   margin: 10px 20px;
-  height: 30px;
+  width: 320px;
+  height: 40px;
   border-radius: 6px;
   padding-left: 10px;
+  border: #97a5c3 solid 1px;
 }
 
-.login-input-box-email {
-  width: 320px;
+.login-input-box input:focus,
+.login-input-box input:hover {
+  border: #113355 solid 1.5px;
 }
 
-.login-input-box-code {
-  width: 200px;
-}
 
-.login-input-box-send {
-  vertical-align: baseline;
 
+
+.login-button:hover{
+  cursor: pointer;
+  background-color: #1a3f66;
 }
 
 .login-check {
@@ -99,7 +107,7 @@ export default {
 
 .login-check span {
   float: left;
-  color: #6b6a6a;
+  color: #113355;
   font-size: 12px;
   margin-top: 20px;
 }
@@ -119,11 +127,17 @@ export default {
 }
 
 .login-button {
-  width: 320px;
-  height: 30px;
   margin-top: 60px;
   margin-left: 20px;
+  width: 320px;
+  height: 50px;
   border-radius: 8px;
+  background-color: #113355;
+  color: white;
+  font-size: 18px;
+  letter-spacing: 1px;
+  word-spacing: 20px;
+  font-weight: 700;
 }
 
 
