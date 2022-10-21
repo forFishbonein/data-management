@@ -2,7 +2,7 @@
   <div id="container">
     <div class="context">
       <div class="title">{{ title }}</div>
-      <div class="introduction">{{ introduction }}</div>
+      <div class="introduction">{{ introductionManage(introduction) }}</div>
     </div>
     <span class="time">上传时间:{{ time }}&nbsp;</span>
     <span class="download" @click="dialogVisible = true" v-show="filePath.length">下载附件</span>
@@ -22,6 +22,13 @@ export default {
 
 
   methods: {
+    introductionManage(str) {
+      if(str.length > 250) {
+        console.log(str)
+        str = str.substr(0,247) + "...";
+      }
+      return str;
+    }
 
   },
 
