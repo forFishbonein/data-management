@@ -8,9 +8,10 @@ import "./assets/font/iconfont.css";
 // import "element-ui/lib/theme-chalk/index.css";
 // Vue.use(ElementUI);
 import store from "./store";
-import { Pagination, Message } from "element-ui";
+import { Pagination, Message, Prompt } from "element-ui";
 Vue.use(Pagination);
 Vue.prototype.$message = Message;
+Vue.prototype.$prompt = Prompt;
 // Vue.use(Message);
 
 Vue.config.productionTip = false;
