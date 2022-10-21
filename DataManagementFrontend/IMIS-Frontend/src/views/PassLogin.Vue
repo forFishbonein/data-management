@@ -2,8 +2,8 @@
   <div class="main">
     <form class="login-form" action="">
       <div class="login-way-box">
-        <div class="login-way">验证码登录</div>
-        <div class="login-way">密码登录</div>
+        <div class="login-way" @click="codeLogin">验证码登录</div>
+        <div class="login-way" @click="passLogin">密码登录</div>
       </div>
       <div class="login-input-box">
         <input type="text" placeholder="请输入邮箱">
@@ -22,24 +22,50 @@
 </template>
 
 <script>
+import {codeLogin} from "../api/login";
+
 export default {
   data() {
-    return {}
+    return {
+      login: {
+        email: "",
+        password: "",
+      },
+    }
   },
   methods: {
     turn() {
       this.$router.replace(
         name = 'person'
       )
-    }, turnlogininb() {
+    },
+    codeLogin() {
       this.$router.replace(
-        name = 'logininb'
+        name = 'codelogin'
       )
     },
-    turnregisterteacher() {
+    passLogin() {
+      this.$router.replace(
+        name = 'passlogin'
+      )
+    },
+    toRegister() {
       this.$router.replace(
         name = 'registerteacher')
-    }
+    },
+    sendEmail(data) {
+      postCodeTeacher(data).then(
+        response => {
+          response.data.data;
+        }
+      )
+    },
+    toLogin(data) {
+      passLogin(data).then(
+        response => {
+        }
+      )
+    },
   }
 }
 </script>

@@ -13,11 +13,16 @@ export default new VueRouter({
   routes: [
     {
       path: "/",
-      component: PassLogin
+      component: TeacherIndex
     },
     {
-      path: "/loginina",
-      component: LoginIna
+      path: "/codelogin",
+      component: CodeLogin
+    },
+
+    {
+      path: "/passlogin",
+      component: PassLogin
     },
     {
       path: "/registerteacher",

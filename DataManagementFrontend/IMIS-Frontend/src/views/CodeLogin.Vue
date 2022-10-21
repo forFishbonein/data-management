@@ -2,20 +2,20 @@
   <div class="main">
     <form class="login-form" action="">
       <div class="login-way-box">
-        <div class="login-way">验证码登录</div>
-        <div class="login-way">密码登录</div>
+        <div class="login-way" @click="codeLogin">验证码登录</div>
+        <div class="login-way" @click="passLogin">密码登录</div>
       </div>
       <div class="login-input-box">
-        <input type="text" class="login-input-box-email" placeholder="请输入邮箱">
-        <input type="text" class="login-input-box-code" placeholder="请输入验证码">
-        <span class="login-input-box-send">获取验证码</span>
+        <input type="text" class="login-input-box-email" placeholder="请输入邮箱" v-model="login.email">
+        <input type="text" class="login-input-box-code" placeholder="请输入验证码" v-model="login.code">
+        <span class="login-input-box-send" @click="sendEmail({ email: login.email })">获取验证码</span>
       </div>
       <div class="login-check">
         <span><input type="checkbox">记住我</span>
         <span>注册账号</span>
         <span>忘记密码？</span>
       </div>
-      <button class="login-button">登 录</button>
+      <button class="login-button" @click="toLogin(login)">登 录</button>
 
     </form>
 
@@ -23,24 +23,56 @@
 </template>
 
 <script>
+import {codeLogin} from "../api/login";
+
+
 export default {
+
+
   data() {
-    return {}
+    return {
+      login: {
+        email: "",
+        code: "",
+      },
+
+    }
   },
+
   methods: {
     turn() {
       this.$router.replace(
         name = 'person'
       )
-    }, turnlogininb() {
+    },
+    codeLogin() {
       this.$router.replace(
-        name = 'logininb'
+        name = 'codelogin'
       )
     },
-    turnregisterteacher() {
+    passLogin() {
+      this.$router.replace(
+        name = 'passlogin'
+      )
+    },
+    toRegister() {
       this.$router.replace(
         name = 'registerteacher')
-    }
+    },
+    sendEmail(data) {
+      postCodeTeacher(data).then(
+        response => {
+          response.data.data;
+        }
+      )
+    },
+    toLogin(data) {
+      codeLogin(data).then(
+        response => {
+
+        }
+      )
+    },
   }
 }
 </script>
@@ -70,6 +102,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
 .login-way-box {
   display: flex;
   justify-content: space-around;
@@ -116,7 +149,7 @@ export default {
 }
 
 .login-input-box-send:hover,
-.login-button:hover{
+.login-button:hover {
   cursor: pointer;
   background-color: #1a3f66;
 }
