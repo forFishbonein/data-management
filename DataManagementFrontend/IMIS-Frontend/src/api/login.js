@@ -1,41 +1,17 @@
-import request from "@/request";
+import request from "@/request"
 
-export function loginA(account, vcode) {
-  const data = {
-    account,
-    vcode
-  };
+export function codeLogin(data){
   return request({
-    url: "/logina",
-    method: "post",
-    data
-  });
+    data,
+    method: 'post',
+    url: 'http://localhost:8888/login',
+  })
 }
 
-export function loginB(account, password) {
-  const data = {
-    account,
-    password
-  };
+export function passLogin(data){
   return request({
-    url: "/loginb",
-    method: "post",
-    data
-  });
-}
-
-export function logout(token) {
-  return request({
-    headers: { Authorization: token },
-    url: "/logout",
-    method: "get"
-  });
-}
-
-export function getUserInfo(token) {
-  return request({
-    headers: { Authorization: token },
-    url: "/users/currentUser",
-    method: "get"
-  });
+    data,
+    method: 'post',
+    url: 'http://localhost:8888/passLogin',
+  })
 }

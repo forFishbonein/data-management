@@ -1,14 +1,33 @@
 import VueRouter from "vue-router";
 import FileManage from "../components/manage/FileManage.vue";
 import CompetitionManage from "../components/manage/CompetitionManage.vue";
-import store from "@/store";
-import Vue from "vue";
+import LoginIna from "../views/LoginIna.vue";
+import LoginInb from "../views/LoginInb.vue";
+import TeacherIndex from "../views/TeacherIndex.vue";
+import RegisterTeacher from "../views/RegisterTeacher.vue";
+import TeacherUploadteaching from "../views/TeacherUploadteaching.vue";
+import CodeLogin from "../views/CodeLogin.vue";
+import PassLogin from "../views/PassLogin.vue";
 
-Vue.use(VueRouter);
+export default new VueRouter({
+  routes: [
+    {
+      path: "/",
+      component: TeacherIndex
+    },
+    {
+      path: "/codelogin",
+      component: CodeLogin
+    },
 
-import { getToken } from "@/request/token";
-
-const routes = [
+    {
+      path: "/passlogin",
+      component: PassLogin
+    },
+    {
+      path: "/registerteacher",
+      component: RegisterTeacher
+    },
     {
       path: "/fileManage",
       component: FileManage
@@ -18,56 +37,20 @@ const routes = [
       component: CompetitionManage
     },
     {
-      path: "/login",
-      component: (r) =>
-        require.ensure([], () => r(require("@/views/LoginIna")), "login"),
+      path: "/person",
+      component:TeacherIndex
     },
     {
-      path: "/register",
-      component: (r) =>
-        require.ensure([], () => r(require("@/views/RegisterTeacher")), "register"),
+      path: "/logininb",
+      component:LoginInb
     },
+    {
+      path: "/resource",
+      component: CompetitionManage
+    },
+    {
+      path: "/upload",
+      component: TeacherUploadteaching
+    }
   ]
-
-const router = new VueRouter({
-  routes,
 });
-
-router.beforeEach((to, from, next) => {
-  if (getToken()) {
-    if (to.path === "/login") {
-      next({ path: "/" });
-    } else {
-      if (store.state.account.length === 0) {
-        store
-          .dispatch("getUserInfo")
-          .then((data) => {
-            //获取用户信息
-            next();
-          })
-          .catch(() => {
-            Message({
-              type: "warning",
-              showClose: true,
-              message: "登录已过期",
-            });
-            next({ path: "/" });
-          });
-      } else {
-        next();
-      }
-    }
-  } else {
-    if (to.matched.some((r) => r.meta.requireLogin)) {
-      Message({
-        type: "warning",
-        showClose: true,
-        message: "请先登录哦",
-      });
-    } else {
-      next();
-    }
-  }
-});
-
-export default router;

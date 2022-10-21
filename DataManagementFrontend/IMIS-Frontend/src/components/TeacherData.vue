@@ -2,12 +2,7 @@
   <div id="container">
     <div class="context">
       <div class="title">{{ title }}</div>
-      <div class="introduction">{{ introduction }}</div>
-    </div>
-    <div class="img">
-      <img
-        src="https://img-blog.csdnimg.cn/51f3f7c487314ec2b3f5c3f526987009.png"
-        alt="pic">
+      <div class="introduction">{{ introductionManage(introduction) }}</div>
     </div>
     <span class="time">上传时间:{{ time }}&nbsp;</span>
     <span class="download" @click="dialogVisible = true" v-show="filePath.length">下载附件</span>
@@ -22,8 +17,19 @@
 <script>
 export default {
   name: "TeacherData",
+  mounted() {
+  },
+
 
   methods: {
+    introductionManage(str) {
+      if(str.length > 250) {
+        console.log(str)
+        str = str.substr(0,247) + "...";
+      }
+      return str;
+    }
+
   },
 
   data() {
@@ -96,11 +102,10 @@ export default {
 
 .introduction {
   display: flex;
-  margin-top: 14px;
-  width: 800px;
+  padding: 15px;
+  width: 1100px;
   font-size: 16px;
-  margin-left:15px;
-  color: #3C85D7;
+  color: #666;
 }
 
 .time {

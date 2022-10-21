@@ -7,10 +7,6 @@
         <div class="line">
           <div class="decoration1"></div>
           <span class="title">资料</span>
-          <!-- <div class="right-search">
-            <div class="search-icon"><span class="iconfont">&#xe651;</span></div>
-            <input placeholder="搜索" class="tsearch"/>
-          </div> -->
         </div>
         <div class="data">
           <div class="notify" v-show="!materials.length">您还没有上传资源</div>
@@ -54,7 +50,6 @@ export default {
     getMaterials() {
       getMaterials().then(resp => {
         this.materials = resp.data.data;
-        this.materials = null;
       });
     }
   },
