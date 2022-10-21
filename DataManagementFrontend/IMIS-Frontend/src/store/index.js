@@ -1,7 +1,7 @@
 import Vuex from "vuex";
 import Vue from "vue";
 import { getToken, setToken, removeToken } from "@/request/token";
-import { loginA, loginB, getUserInfo, logout } from "@/api/login";
+import { codeLogin, passLogin, getUserInfo} from "@/api/login";
 import { postRegisterTeacher, postRegisterStudent } from "@/api/register";
 
 Vue.use(Vuex);
@@ -28,9 +28,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    loginA({ commit }, user) {
+    codeLogin({ commit }, user) {
       return new Promise((resolve, reject) => {
-        loginA(user.account, user.vcode)
+        codeLogin(user.account, user.vcode)
           .then(data => {
             if (data.success) {
               commit("SET_TOKEN", data.data);
@@ -45,9 +45,9 @@ export default new Vuex.Store({
           });
       });
     },
-    loginB({ commit }, user) {
+    passLogin({ commit }, user) {
       return new Promise((resolve, reject) => {
-        loginB(user.account, user.password)
+        passLogin(user.account, user.password)
           .then(data => {
             if (data.success) {
               commit("SET_TOKEN", data.data);
@@ -89,24 +89,24 @@ export default new Vuex.Store({
     //       });
     //   });
     // },
-    logout({ commit, state }) {
-      return new Promise((resolve, reject) => {
-        logout(state.token)
-          .then(data => {
-            if (data.success) {
-              commit("SET_TOKEN", "");
-              commit("SET_ACCOUNT", "");
-              commit("SET_NAME", "");
-              commit("SET_ID", "");
-              removeToken();
-              resolve();
-            }
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
-    },
+    // logout({ commit, state }) {
+    //   return new Promise((resolve, reject) => {
+    //     logout(state.token)
+    //       .then(data => {
+    //         if (data.success) {
+    //           commit("SET_TOKEN", "");
+    //           commit("SET_ACCOUNT", "");
+    //           commit("SET_NAME", "");
+    //           commit("SET_ID", "");
+    //           removeToken();
+    //           resolve();
+    //         }
+    //       })
+    //       .catch(error => {
+    //         reject(error);
+    //       });
+    //   });
+    // },
     // 前端 登出
     fedLogOut({ commit }) {
       return new Promise(resolve => {
