@@ -1,14 +1,15 @@
 <template>
   <div id="app">
 <!--   <TeacherIndex></TeacherIndex>-->
-<!--     <RegisterTeacher></RegisterTeacher>-->
+    <RegisterTeacher></RegisterTeacher>
 <!--     <RegisterStudent></RegisterStudent>-->
 <!--     <StudentIndex></StudentIndex>-->
 <!--     <Manage></Manage>-->
     <!-- <Compete></Compete> -->
 <!--     <SearchResults></SearchResults>-->
 <!--    <test></test>-->
-     <LoginFooter></LoginFooter>
+      <!-- <LoginIna></LoginIna> -->
+     <!-- <LoginFooter></LoginFooter> -->
 <!--    <TeacherFile></TeacherFile>-->
 
   </div>

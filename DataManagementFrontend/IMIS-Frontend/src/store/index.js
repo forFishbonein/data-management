@@ -120,11 +120,11 @@ export default new Vuex.Store({
         reject(error);
       });
     },
-    teacherRegister({ commit }, user) {
+    teacherRegister({ commit }, teacher) {
       return new Promise((resolve, reject) => {
-        postRegisterTeacher(user.account, user.nickname, user.password)
+        postRegisterTeacher(teacher)
           .then(data => {
-            if (data.success) {
+            if (data.data) {
               // commit("SET_TOKEN", data.data);
               // setToken(data.data);
               resolve();

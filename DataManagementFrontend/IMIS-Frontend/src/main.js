@@ -10,7 +10,8 @@ import "./assets/font/iconfont.css";
 import store from "./store";
 import { Pagination, Message } from "element-ui";
 Vue.use(Pagination);
-Vue.use(Message);
+Vue.prototype.$message = Message;
+// Vue.use(Message);
 
 Vue.config.productionTip = false;
 

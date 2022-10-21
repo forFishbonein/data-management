@@ -1,6 +1,7 @@
 import axios from "axios";
 import store from "@/store";
 import { getToken } from "@/request/token";
+import { Message } from "element-ui";
 
 const service = axios.create({
   baseURL: "/static/json",

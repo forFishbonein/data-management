@@ -96,7 +96,7 @@
 </template>
 
 <script>
-import {postRegisterTeacher} from "../api/register";
+// import {postRegisterTeacher} from "../api/register";
 import {postCodeTeacher} from "../api/register";
 
 export default {
@@ -121,53 +121,35 @@ export default {
   },
   methods: {
 
-    regHandle(teacher) {
-      if (
-        this.teacher.mail === '' ||
-        this.teacher.captcha === '' ||
-        this.teacher.username === '' ||
-        this.teacher.id === '' ||
-        this.teacher.password === '' ||
-        this.teacher.repassword === ''
-      ) {
-        alert('请您将信息填写完整')
-      } else if (this.teacher.password !== this.teacher.repassword) {
-        alert('两次输入的密码不一致')
-      } else {
-        // postRegisterTeacher(teacher).then(
-        //   response => {
-        //       alert('恭喜您注册成功')
-        //   }
-        // )
-
-        that.$store.dispatch('teacherRegister', that.teacher).then(() => {
-          that.$message({message: '注册成功！', type: 'success', showClose: true});
-          that.$router.push({path: '/'})
-        }).catch((error) => {
-          if (error !== 'error') {
-            that.$message({message: error, type: 'error', showClose: true});
-          }
-        })
-      }
-    },
-
     sendEmail(data) {
       postCodeTeacher(data).then(
         response => {
-          response.data.data;
+          console.log(response.data.data);
         }
       )
     },
-    regHandle(data) {
+    regHandle(teacher) {
       if (this.teacher.teacherPass !== '' && this.teacher.teacherRePass !== '') {
         if (this.teacher.teacherPass !== this.teacher.teacherRePass) {
           alert("两次输入的密码不一致！")
         } else {
-          postRegisterTeacher(data).then(
-            response => {
-              alert('恭喜您注册成功')
+          // postRegisterTeacher(data).then(
+          //   response => {
+          //     alert('恭喜您注册成功')
+          //   }
+          // )
+
+          this.$store.dispatch('teacherRegister', teacher).then(() => {
+            // alert('恭喜您注册成功')
+            this.$message({message: '注册成功！', type: 'success', showClose: true});
+            this.$router.push({path: '/'})
+          }).catch((error) => {
+            if (error !== 'error') {
+              // alert('注册失败')
+              this.$message({message: error, type: 'error', showClose: true});
             }
-          )
+          })
+
         }
 
       }
