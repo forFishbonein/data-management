@@ -5,18 +5,15 @@
         <img src="../../static/img/logo.png" alt="logo">
       </div>
       <div class="resource">
-        <!-- <span>资源广场</span> -->
         <router-link to="/resource">资源广场</router-link>
       </div>
       <div class="search">
         <NavSearch></NavSearch>
       </div>
       <div class="profile">
-        <!-- <span>个人中心</span> -->
         <router-link to="/person">个人中心</router-link>
       </div>
       <div class="upload">
-        <!-- <span>上传</span> -->
         <router-link to="/upload" class="upload"><span style="text-align: center">上传</span></router-link>
       </div>
     </nav>
