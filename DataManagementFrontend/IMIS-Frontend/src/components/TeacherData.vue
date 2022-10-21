@@ -105,7 +105,7 @@ export default {
   padding: 15px;
   width: 1100px;
   font-size: 16px;
-  color: #3C85D7;
+  color: #666;
 }
 
 .time {
