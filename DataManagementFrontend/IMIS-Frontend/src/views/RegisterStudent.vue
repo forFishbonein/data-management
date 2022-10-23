@@ -10,34 +10,48 @@
           <table>
             <tr>
               <td width="20%"><span>邮箱地址</span></td>
-              <td width="35%"><p class="underline"><input type="text"></p></td>
+              <td width="35%">
+                <p class="underline"><input type="text" v-model="teacher.teacherEmail" required
+                                            oninvalid="setCustomValidity('请填写邮箱')" oninput="setCustomValidity('')">
+                </p>
+              </td>
               <td width="35%"><p class="prompt">您的电子邮箱地址即为您的用户名</p></td>
             </tr>
             <tr>
+              <td width="20%"><span>验证码</span></td>
+              <td width="35%"><p class="underline">
+                <input type="text" v-model="teacher.code" required oninvalid="setCustomValidity('请填写验证码')"
+                       oninput="setCustomValidity('')"></p>
+              </td>
+              <td width="35%">
+                <p class="prompt">
+                  <button class="button" @click="sendEmail({ email: teacher.teacherEmail })">获取验证码</button>
+                </p>
+              </td>
+            </tr>
+            <tr>
               <td><span>密码</span></td>
-              <td width="35%"><p class="underline"><input type="text"></p></td>
+              <td width="35%"><p class="underline"><input type="text" v-model="teacher.teacherPass" required
+                                                          oninvalid="setCustomValidity('请填写密码')"
+                                                          oninput="setCustomValidity('')"></p></td>
               <td><p class="prompt">密码不能少于6位</p></td>
             </tr>
             <tr>
               <td><span>确认密码</span></td>
-              <td width="35%"><p class="underline"><input type="text"></p></td>
-            </tr>
-            <tr>
-              <td><span>姓名</span></td>
-              <td width="35%"><p class="underline"><input type="text"></p></td>
+              <td width="35%"><p class="underline"><input type="text" v-model="teacher.teacherRePass" required
+                                                          oninvalid="setCustomValidity('请再次输入密码')"
+                                                          oninput="setCustomValidity('')"></p></td>
             </tr>
             <tr>
               <td><span>学号</span></td>
-              <td width="35%"><p class="underline"><input type="text"></p></td>
-            </tr>
-            <tr>
-              <td></td>
-              <td><p class="warm"></p></td>
+              <td width="35%"><p class="underline"><input type="text" v-model="teacher.teacherSid" required
+                                                          oninvalid="setCustomValidity('请填写学号')"
+                                                          oninput="setCustomValidity('')"></p></td>
             </tr>
             <tr>
               <td></td>
               <td>
-                <div class="bottom">创建账户</div>
+                <input type="submit" value="创建账户" class="bottom" @click="regHandle(teacher)">
               </td>
             </tr>
 
@@ -50,46 +64,65 @@
 
 
   </div>
-
 </template>
 
 <script>
-import {postRegisterStudent} from "../api/register";
+import {postCodeStudent} from "../api/register";
 
 export default {
+  name: 'RegisterStudent',
+
   data() {
     return {
+      // userForm: {
+      //   account: '',
+      //   nickname: '',
+      //   password: ''
+      // },
       student: {
-        mail: "",
-        captcha: "",
-        username: "",
-        id: "",
-        password: "",
-        repassword: ""
-      }
+        studentEmail: "",
+        code: "",
+        studentPass: "",
+        studentRePass: "",
+        studentSid: "",
+      },
     }
   },
   methods: {
-    regHandle(student) {
-      if (
-        this.student.mail === '' ||
-        this.student.captcha === '' ||
-        this.student.username === '' ||
-        this.student.id === '' ||
-        this.student.password === '' ||
-        this.student.repassword === ''
-      ) {
-        alert('请您将信息填写完整')
-      } else if (this.student.password !== this.student.repassword) {
-        alert('两次输入的密码不一致')
-      } else {
-        postRegisterStudent(student).then(
-          response => {
-            alert('恭喜您注册成功')
-          }
-        )
-      }
+
+    sendEmail(data) {
+      postCodeStudent(data).then(
+        response => {
+          console.log(response.data.data);
+        }
+      )
     },
+    regHandle(student) {
+      if (this.student.studentPass !== '' && this.student.studentRePass !== '') {
+        if (this.student.studentPass !== this.student.studentRePass) {
+          alert("两次输入的密码不一致！")
+        } else {
+          // postRegisterTeacher(data).then(
+          //   response => {
+          //     alert('恭喜您注册成功')
+          //   }
+          // )
+
+          this.$store.dispatch('studentRegister', student).then(() => {
+            // alert('恭喜您注册成功')
+            this.$message({message: '注册成功！', type: 'success', showClose: true});
+            this.$router.push({path: '/'})
+          }).catch((error) => {
+            if (error !== 'error') {
+              // alert('注册失败')
+              this.$message({message: error, type: 'error', showClose: true});
+            }
+          })
+
+        }
+
+      }
+    }
   }
 }
 </script>
@@ -103,16 +136,25 @@ export default {
 }
 
 .main {
+  height: 100vh;
+  background: url("../../static/img/register1.jpg") no-repeat;
+  background-size: 100%;
 }
 
 .container {
-  margin: 60px auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
   padding: 50px;
   width: 1070px;
-  height: 600px;
+  height: 650px;
   background-color: #fcfbfa;
   border-radius: 10px;
 }
+
 .context h1 {
   color: #0a3261;
   text-align: center;
@@ -123,6 +165,7 @@ export default {
   text-align: center;
   padding: 8px 8px 24px 8px;
 }
+
 .context .login a {
   color: #947519;
 }
@@ -195,6 +238,17 @@ export default {
   text-align: center;
   letter-spacing: 1px;
   border-radius: 8px;
+  font-weight: 800;
+}
+
+.button {
+  padding: 4px 8px;
+  background-color: #3d3d3d;
+  font-size: 12px;
+  color: white;
+  text-align: center;
+  letter-spacing: 1px;
+  border-radius: 6px;
   font-weight: 800;
 }
 

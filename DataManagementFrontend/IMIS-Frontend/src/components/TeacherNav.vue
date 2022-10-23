@@ -5,16 +5,16 @@
         <img src="../../static/img/logo.png" alt="logo">
       </div>
       <div class="resource">
-        <span>资源广场</span>
+        <router-link to="/resource">资源广场</router-link>
       </div>
       <div class="search">
         <NavSearch></NavSearch>
       </div>
       <div class="profile">
-        <span>个人中心</span>
+        <router-link to="/person">个人中心</router-link>
       </div>
       <div class="upload">
-        <span>上传</span>
+        <router-link to="/upload" class="upload"><span style="text-align: center">上传</span></router-link>
       </div>
     </nav>
   </div>
@@ -23,7 +23,7 @@
 import NavSearch from '../components/NavSearch.vue'
 
 export default {
-  name: "TeacherNav_",
+  name: "TeacherNav",
   components: {
     NavSearch
   }
@@ -52,7 +52,8 @@ nav {
   line-height: 45px;
 }
 
-nav span:before {
+nav .resource a:before,
+nav .profile a:before{
   content: '';
   height: 2px;
   background-color: #7dc5e7;
@@ -64,7 +65,8 @@ nav span:before {
   transition: .3s;
 }
 
-nav span:hover:before {
+nav .resource a:hover:before,
+nav .profile a:hover:before{
   transform: scaleX(1);
 }
 
@@ -79,7 +81,6 @@ nav .logo img {
 }
 
 nav .resource {
-  color: #3C85D7;
   position: relative;
   text-align: center;
   display: flex;
