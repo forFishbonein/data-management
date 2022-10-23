@@ -8,12 +8,13 @@ import "./assets/font/iconfont.css";
 import store from "./store";
 import { Pagination, Message, MessageBox } from "element-ui";
 Vue.use(Pagination);
+Vue.use(VueRouter);
+
 Vue.prototype.$message = Message;
 Vue.prototype.$prompt = MessageBox;
-
 Vue.config.productionTip = false;
 
-Vue.use(VueRouter);
+
 
 new Vue({
   el: "#app",

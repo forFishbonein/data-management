@@ -31,14 +31,12 @@ public class TeacherController {
 
     @PostMapping("/login")
     public Result<String> codeLogin(HttpServletResponse response, @RequestBody LoginVo loginVo) {
-        teacherService.codeLogin(response, loginVo);
-        return Result.success("登陆成功");
+        return Result.success(teacherService.codeLogin(response, loginVo));
     }
 
     @PostMapping("/passLogin")
     public Result<String> passLogin(HttpServletResponse response, @RequestBody LoginVo loginVo) {
-        teacherService.passLogin(response, loginVo);
-        return Result.success("登陆成功");
+        return Result.success(teacherService.passLogin(response, loginVo));
     }
 
     @PostMapping("/register")
