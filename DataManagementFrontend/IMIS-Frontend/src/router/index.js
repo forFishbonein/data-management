@@ -1,18 +1,22 @@
 import VueRouter from "vue-router";
-import FileManage from "../components/manage/FileManage.vue";
-import CompetitionManage from "../components/manage/CompetitionManage.vue";
+
+
 import TeacherIndex from "../views/TeacherIndex.vue";
 import RegisterTeacher from "../views/RegisterTeacher.vue";
 import TeacherUploadteaching from "../views/TeacherUploadteaching.vue";
 import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
 
+import Manage from "../views/Manage.vue";
+import FileManage from "../components/manage/FileManage.vue";
+import AccountManage from "../components/manage/AccountManage.vue";
+import CompetitionManage from "../components/manage/CompetitionManage.vue";
 
 export default new VueRouter({
   routes: [
     {
       path: "/",
-      component: CodeLogin
+      component: TeacherIndex
     },
     {
       path: "/codelogin",
@@ -47,6 +51,17 @@ export default new VueRouter({
     {
       path: "/upload",
       component: TeacherUploadteaching
+    },
+    {
+      path: "/manage",
+      component: Manage,
+      children:[{
+        path:'filemange',
+        component:FileManage
+      },{
+        path:'accountmange',
+        component:AccountManage
+      }]
     }
   ]
 });

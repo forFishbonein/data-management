@@ -1,34 +1,77 @@
 <template>
   <div class="m-container">
-    <div class="m-header">
-      <ul>
-        <li>资料名</li>
-        <li>类型</li>
-        <li>上传日期</li>
-        <li>上传者</li>
-        <li>查看详情</li>
-        <li>编辑</li>
-        <li>删除</li>
-      </ul>
-    </div>
-    <div class="m-body">
-      <div class="m-item">
-        <ul>
-          <li>资料1</li>
-          <li>项目</li>
-          <li>2022/10/16</li>
-          <li>张三</li>
-          <li>查看详情</li>
-          <li><button>编辑</button></li>
-          <li><button>删除</button></li>
-        </ul>
-      </div>
-    </div>
+    <el-table
+      :data="tableData"
+      stripe
+      style="width: 100%">
+      <el-table-column
+        prop="name"
+        label="资料名"
+      >
+      </el-table-column>
+      <el-table-column
+        prop="type"
+        label="类型"
+        width="180"
+      >
+      </el-table-column>
+      <el-table-column
+        prop="date"
+        label="上传日期"
+        width="180"
+      >
+      </el-table-column>
+      <el-table-column
+        prop="people"
+        label="上传者" width="180"
+      >
+      </el-table-column>
+      <el-table-column
+        prop="detail"
+        label="操作"  width="240">
+        <el-link type="primary">查看详情</el-link>
+        <el-link type="primary">编辑</el-link>
+        <el-link type="primary">删除</el-link>
+      </el-table-column>
+
+    </el-table>
   </div>
 </template>
 
 <script>
   export default {
+    data() {
+      return {
+        tableData: [
+          {
+          name: '2016-05-02',
+          type: '王小虎',
+          date: '上海市普陀区金沙江路 1518 弄',
+          people: '上海市普陀1518 弄',
+
+        },
+          {
+            name: '2016-05-02',
+            type: '王小虎',
+            date: '上海市普陀区金沙江路 1518 弄',
+            people: '上海市普陀1518 弄',
+
+          }, {
+            name: '2016-05-02',
+            type: '王小虎',
+            date: '上海市普陀区金沙江路 1518 弄',
+            people: '上海市普陀1518 弄',
+
+          }, {
+            name: '2016-05-02',
+            type: '王小虎',
+            date: '上海市普陀区金沙江路 1518 弄',
+            people: '上海市普陀1518 弄',
+
+          }
+        ]
+      }
+    }
 
   }
 </script>
@@ -39,7 +82,7 @@
     // height: 800px;
     // border: 1px solid red;
     background-color: white;
-    padding: 20px 0;
+    padding: 0;
     .m-header{
       width: 95%;
       margin: 0 auto;
@@ -65,7 +108,7 @@
       width: 95%;
       margin: 0 auto;
       height: 700px;
-      margin-top: 20px;
+      //margin-top: 20px;
       // background-color: #F5F5F5;
       display: flex;
       flex-direction: column;
