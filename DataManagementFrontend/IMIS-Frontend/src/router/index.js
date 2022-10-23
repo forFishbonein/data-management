@@ -7,7 +7,6 @@ import TeacherUploadteaching from "../views/TeacherUploadteaching.vue";
 import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
 
-
 export default new VueRouter({
   routes: [
     {
@@ -47,6 +46,7 @@ export default new VueRouter({
     {
       path: "/upload",
       component: TeacherUploadteaching
-    }
+    },
+
   ]
 });

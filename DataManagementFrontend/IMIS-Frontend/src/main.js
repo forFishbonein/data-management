@@ -6,7 +6,7 @@ import "./assets/font/iconfont.css";
 
 
 import store from "./store";
-import { Pagination, Message, MessageBox } from "element-ui";
+import { Pagination, Message, MessageBox, Tag,Input,Upload,Button,Autocomplete} from "element-ui";
 Vue.use(Pagination);
 Vue.prototype.$message = Message;
 Vue.prototype.$prompt = MessageBox;
@@ -14,6 +14,11 @@ Vue.prototype.$prompt = MessageBox;
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
+Vue.use(Tag);
+Vue.use(Input);
+Vue.use(Upload);
+Vue.use(Button);
+Vue.use(Autocomplete)
 
 new Vue({
   el: "#app",

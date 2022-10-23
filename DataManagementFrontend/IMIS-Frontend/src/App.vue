@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+<!--    <router-view></router-view>-->
+    <TeacherUploadteaching></TeacherUploadteaching>
+<!--    <TeacherUpload></TeacherUpload>-->
   </div>
 </template>
 
 <script>
+import TeacherUploadteaching from "./views/TeacherUploadteaching";
+import TeacherUpload from "./views/TeacherUpload";
+
 export default {
   name: 'App',
+  components: {TeacherUpload, TeacherUploadteaching},
 }
 </script>
 
