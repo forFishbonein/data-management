@@ -18,7 +18,7 @@
                 <option value="a6">其他</option>
                 </select>
             </div>
-            
+
             <div class="resources">
                 <span>
 资源名称&emsp;
@@ -78,11 +78,13 @@
       </div>
     </div></div>
   </template>
-  
+
   <script>
   import TeacherNav from '../components/TeacherNav.vue'
 import TeacherNav from '../components/TeacherNav.vue';
   export default {
+    name: 'TeacherUpload',
+
     data() {
         return {};
     },
@@ -92,7 +94,7 @@ import TeacherNav from '../components/TeacherNav.vue';
     components: { TeacherNav }
 }
   </script>
-  
+
   <!-- Add "scoped" attribute to limit CSS to this component only -->
   <style scoped>
   * {
@@ -130,4 +132,4 @@ import TeacherNav from '../components/TeacherNav.vue';
   }
 
 
-  </style>  
+  </style>
