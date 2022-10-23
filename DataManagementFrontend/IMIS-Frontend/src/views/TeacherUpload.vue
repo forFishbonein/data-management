@@ -4,7 +4,7 @@
     <div class="main">
       <div class="title">科研项目</div>
       <div class="content">
-        <form >
+        <form>
           <div class="choose"><span>选择模板&emsp;</span>
             <a href="">
               <button value="a1">科研项目</button>
@@ -19,13 +19,13 @@
               <button value="a5">学生竞赛</button>
             </a><a href="">
               <button value="a6">交流访问</button>
-            </a>   <a href="">
+            </a> <a href="">
               <button value="a6">党支部</button>
-            </a>      <a href="">
+            </a> <a href="">
               <button value="a6">教研室</button>
-            </a>        <a href="">
+            </a> <a href="">
               <button value="a6">论文/期刊</button>
-            </a>          <a href="">
+            </a> <a href="">
               <button value="a6">其他</button>
             </a>
           </div>
@@ -34,33 +34,33 @@
                 <span>
 项目名称&emsp;
                 </span>
-            <input type="text" placeholder="请输入文字">
+            <input placeholder="请输入文字" type="text">
           </div>
           <div class="resources">
                 <span>
 项目简介&emsp;
                 </span>
-            <textarea type="text" style="width:450px ;height:125px;" placeholder="请输入文字"/>
+            <textarea placeholder="请输入文字" style="width:450px ;height:125px;" type="text"/>
           </div>
           <div class="resources">
                 <span>
 项目来源&emsp;
                 </span>
-            <input type="text" placeholder="请输入文字">
+            <input placeholder="请输入文字" type="text">
           </div>
           <div class="resources">
                 <span>
 项目类型&emsp;
                 </span>
             <el-autocomplete
-              popper-class="my-autocomplete"
               v-model="state"
               :fetch-suggestions="querySearch"
               placeholder="请输入文字"
+              popper-class="my-autocomplete"
               @select="handleSelect">
               <i
-                class="el-icon-edit el-input__icon"
                 slot="suffix"
+                class="el-icon-edit el-input__icon"
                 @click="handleIconClick">
               </i>
               <template slot-scope="{ item }">
@@ -72,25 +72,25 @@
                 <span>
 项目级别&emsp;
                 </span>
-            <input type="text" placeholder="请输入文字">
+            <input placeholder="请输入文字" type="text">
           </div>
           <div class="resources">
                 <span>
 立项时间&emsp;
                 </span>
-            <input type="date" placeholder="请输入时间">
+            <input placeholder="请输入时间" type="date">
           </div>
           <div class="resources">
                 <span>
 结项时间&emsp;
                 </span>
-            <input type="date" placeholder="请输入时间">
+            <input placeholder="请输入时间" type="date">
           </div>
           <div class="resources">
                 <span>
 经&emsp;&emsp;费&emsp;
                 </span>
-            <input type="number" placeholder="请输入数字">
+            <input placeholder="请输入数字" type="number">
           </div>
           <div class="resources">
                 <span>
@@ -98,24 +98,24 @@
                 </span>
             <!--                <div class="teammate">-->
             <el-tag
-              :key="tag"
               v-for="tag in dynamicTags"
-              closable
+              :key="tag"
               :disable-transitions="false"
+              closable
               @close="handleClose(tag)">
-              {{tag}}
+              {{ tag }}
             </el-tag>
             <el-input
-              class="input-new-tag"
               v-if="inputVisible"
-              v-model="inputValue"
               ref="saveTagInput"
+              v-model="inputValue"
+              class="input-new-tag"
               size="small"
-              @keyup.enter.native="handleInputConfirm"
               @blur="handleInputConfirm"
+              @keyup.enter.native="handleInputConfirm"
             >
             </el-input>
-            <el-button v-else type="button" class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+            <el-button v-else class="button-new-tag" size="small" type="button" @click="showInput">+ New Tag</el-button>
             <!--                </div>-->
           </div>
           <div class="resources">
@@ -124,31 +124,33 @@
                   </span>
             <div class="upload">
               <el-upload
-                class="upload-demo"
-                action="https://jsonplaceholder.typicode.com/posts/"
-                :on-preview="handlePreview"
-                :on-remove="handleRemove"
                 :before-remove="beforeRemove"
-                multiple
+                :file-list="fileList"
                 :limit="3"
                 :on-exceed="handleExceed"
-                :file-list="fileList">
+                :on-preview="handlePreview"
+                :on-remove="handleRemove"
+                action="https://jsonplaceholder.typicode.com/posts/"
+                class="upload-demo"
+                multiple>
                 <el-button size="small" type="primary">点击选择</el-button>
               </el-upload>
             </div>
           </div>
-<span>
+          <span>
 
 </span>
           <button type="submit">立即上传</button>
 
         </form>
       </div>
-    </div></div>
+    </div>
+  </div>
 </template>
 
 <script>
 import TeacherNav from "../components/TeacherNav";
+
 export default {
   name: 'TeacherUploadteaching',
   components: {TeacherNav},
@@ -198,7 +200,7 @@ export default {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
     },
     beforeRemove(file, fileList) {
-      return this.$confirm(`确定移除 ${ file.name }？`);
+      return this.$confirm(`确定移除 ${file.name}？`);
     },
     querySearch(queryString, cb) {
       var restaurants = this.restaurants;
@@ -213,8 +215,8 @@ export default {
     },
     loadAll() {
       return [
-        { "value": "教研" },
-        { "value": "" },
+        {"value": "教研"},
+        {"value": ""},
       ];
     },
     handleSelect(item) {
@@ -227,8 +229,7 @@ export default {
   mounted() {
     this.restaurants = this.loadAll();
   }
-  }
-
+}
 
 
 </script>
@@ -241,10 +242,12 @@ export default {
 } */
 .my-autocomplete {
 }
+
 li {
   line-height: normal;
   padding: 7px;
 }
+
 .name {
   text-overflow: ellipsis;
   overflow: hidden;
@@ -258,58 +261,66 @@ li {
 
 el-input--suffix .el-input__inner {
   padding-right: 30px;
-  height:35px;
+  height: 35px;
 }
 
-.background{
+.background {
   background-color: #EAF2FB;
   /*padding: 20px 30px;*/
 }
-.main{
+
+.main {
   border-radius: 10px;
   width: 1200px;
   color: #3C85D7;
-  margin:auto;
+  margin: auto;
   padding: 30px 50px;
   background-color: #FDFDFD;
 }
-.title{
+
+.title {
   font-size: 30px;
   font-weight: bold;
   margin-bottom: 10px;
 }
-.content{
+
+.content {
   font-size: 20px;
   background-color: #FDFDFD;
 
 }
-.content div{
+
+.content div {
   margin-bottom: 10px;
   margin-left: 15px;
 }
-.upload{
+
+.upload {
   /*float:right;*/
   margin-top: 2px;
   width: 950px;
   height: 200px;
 }
+
 button[type="submit"] {
   background-color: #104A85;
-  color:white;
-  width: 100px   ;
+  color: white;
+  width: 100px;
   height: 30px;
   font-size: 16px;
   margin-left: 1000px;
 
 }
-.title{
+
+.title {
   color: #113355;
 }
-span{
+
+span {
   color: #1A4D7F;
 }
 
-input{
+input {
   height: 40px;
   padding: 12px 20px;
   margin: 1px 15px;
@@ -319,10 +330,12 @@ input{
   outline: none;
   border-radius: 5px;
 }
+
 input:focus {
   border: 2px solid #3C85D7;
 }
-textarea[type="text"]{
+
+textarea[type="text"] {
   padding: 12px 20px;
   margin: 8px 15px;
   box-sizing: border-box;
@@ -331,10 +344,12 @@ textarea[type="text"]{
   outline: none;
   border-radius: 5px;
 }
+
 textarea[type="text"]:focus {
   border: 2px solid #3C85D7;
 }
-.choose button{
+
+.choose button {
   height: 38px;
   width: 80px;
   background-color: #FFFFFF;
@@ -342,7 +357,8 @@ textarea[type="text"]:focus {
   margin-right: 10px;
   border-radius: 5px;
 }
-.choose button:hover{
+
+.choose button:hover {
   border: 1px solid #3C85D7;
 }
 
@@ -363,9 +379,11 @@ textarea[type="text"]:focus {
   box-sizing: border-box;
   white-space: nowrap;
 }
+
 .el-tag + .el-tag {
   margin-left: 10px;
 }
+
 .button-new-tag {
   margin-left: 10px;
   height: 32px;
@@ -373,10 +391,14 @@ textarea[type="text"]:focus {
   padding-top: 0;
   padding-bottom: 0;
 }
+
 .input-new-tag {
   width: 90px;
   margin-left: 10px;
   vertical-align: bottom;
 }
-.resources{display: flex}
+
+.resources {
+  display: flex
+}
 </style>

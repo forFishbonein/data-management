@@ -6,19 +6,18 @@
       style="width: 100%">
       <el-table-column
         prop="name"
-        label="姓名"
-      >
+        label="姓名">
       </el-table-column>
       <el-table-column
         prop="date"
         label="创建时间"
-        width="180"
-      ></el-table-column>
+        width="180">
+      </el-table-column>
         <el-table-column
         prop="email"
         label="邮箱"
-        width="180"
-      ></el-table-column>
+        width="180">
+        </el-table-column>
 
       <el-table-column
         prop="detail"
@@ -34,6 +33,8 @@
 
 <script>
 export default {
+  name: 'AccountManage',
+
   data() {
     return {
       tableData: [

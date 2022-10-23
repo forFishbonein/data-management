@@ -9,14 +9,14 @@
           <span class="title">资料</span>
         </div>
         <div class="data">
-          <div class="notify" v-show="!materials.length">您还没有上传资源</div>
-          <div class="data-container" v-for="(item, index) in materials" :key="index">
+          <div v-show="!materials.length" class="notify">您还没有上传资源</div>
+          <div v-for="(item, index) in materials" :key="index" class="data-container">
             <TeacherData :id="item.id"
-                         :title="item.title"
-                         :name="item.name"
-                         :introduction="item.introduction"
                          :createTime="item.createTime"
-                         :filePath="item.filePath">
+                         :filePath="item.filePath"
+                         :introduction="item.introduction"
+                         :name="item.name"
+                         :title="item.title">
             </TeacherData>
           </div>
 
@@ -24,11 +24,11 @@
 
       </div>
       <el-pagination
-        background
-        layout="prev, pager, next"
         :total="1000"
         align="center"
-        class="apage">
+        background
+        class="apage"
+        layout="prev, pager, next">
       </el-pagination>
     </div>
   </div>
@@ -120,6 +120,7 @@ export default {
   .apage {
     margin-top: 30px;
   }
+
   .data {
     min-height: 35vh;
     background-color: white;

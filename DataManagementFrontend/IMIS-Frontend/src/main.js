@@ -6,14 +6,16 @@ import "./assets/font/iconfont.css";
 
 
 import store from "./store";
-import { Pagination, Message, MessageBox } from "element-ui";
+import { Pagination, Message, MessageBox, Submenu, Menu, MenuItem, MenuItemGroup, Table, Link, TableColumn} from "element-ui";
 Vue.use(Pagination);
 Vue.use(Submenu);
 Vue.use(Menu);
-Vue.use(Table);Vue.use(Link);
-Vue.use(TableColumn)
 Vue.use(MenuItem);
 Vue.use(MenuItemGroup);
+Vue.use(Table);
+Vue.use(Link);
+Vue.use(TableColumn)
+
 Vue.use(VueRouter);
 Vue.use(Message);
 

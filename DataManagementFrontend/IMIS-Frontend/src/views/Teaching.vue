@@ -3,24 +3,24 @@
     <TeacherNav></TeacherNav>
     <div class="context">
       <div class="Teaching">
-        <div class="title">资源名称：{{Teaching.title}}</div>
-        <div class="introduction">{{Teaching.introduction}}</div>
+        <div class="title">资源名称：{{ Teaching.title }}</div>
+        <div class="introduction">{{ Teaching.introduction }}</div>
         <div class="details">
-          <div v-show="this.Teaching.name" class="name">项目名称：{{Teaching.name}}</div>
+          <div v-show="this.Teaching.name" class="name">项目名称：{{ Teaching.name }}</div>
           <div class="uploader">上传者：</div>
-          <div class="createTime">上传时间：{{Teaching.createTime}}</div>
-          <div class="source">项目来源：{{Teaching.source}}</div>
-          <div class="type">项目类型：{{Teaching.type}}</div>
-          <div class="level">项目级别：{{Teaching.level}}</div>
-          <div class="project_time">立项时间：{{Teaching.projectTime}}</div>
-          <div class="post_project_time">结项时间：{{Teaching.postprojectTime}}</div>
-          <div class="fund">项目经费：{{Teaching.fund}}</div>
-          <div class="member">课题组成员：{{Teaching.member}}</div>
+          <div class="createTime">上传时间：{{ Teaching.createTime }}</div>
+          <div class="source">项目来源：{{ Teaching.source }}</div>
+          <div class="type">项目类型：{{ Teaching.type }}</div>
+          <div class="level">项目级别：{{ Teaching.level }}</div>
+          <div class="project_time">立项时间：{{ Teaching.projectTime }}</div>
+          <div class="post_project_time">结项时间：{{ Teaching.postprojectTime }}</div>
+          <div class="fund">项目经费：{{ Teaching.fund }}</div>
+          <div class="member">课题组成员：{{ Teaching.member }}</div>
           <div class="add">
-            <p v-for="(val, key) in Teaching.other">{{ key }} : {{val}}</p>
+            <p v-for="(val, key) in Teaching.other">{{ key }} : {{ val }}</p>
           </div>
-          
-          
+
+
         </div>
 
       </div>
@@ -29,8 +29,8 @@
         <button class="button1">删除</button>
         <button class="button2">编辑</button>
       </div>
+    </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -38,6 +38,7 @@ import TeacherNav from "../components/TeacherNav";
 import TeacherHeader from "../components/TeacherHeader";
 import TeacherData from "../components/TeacherData";
 import FilePath from "../components/FilePath";
+
 export default {
   name: "Teaching",
   data() {
@@ -247,25 +248,25 @@ export default {
   padding: 20px;
   padding-left: 30px;
   background-color: #FDFDFD;
-  color: #113355;  
+  color: #113355;
   /* border-radius: 16px; */
 }
 
-.details{
+.details {
   margin: 20px;
   padding: 20px;
   padding-left: 30px;
   background-color: #FDFDFD;
-  color: #113355; 
-  line-height:35px;
+  color: #113355;
+  line-height: 35px;
 }
 
-.button{
+.button {
   height: 80px;
 
 }
 
-.button2{
+.button2 {
   margin: 20px;
   padding: 20px;
   float: right;
@@ -277,7 +278,7 @@ export default {
   color: #fff;
 }
 
-.button1{
+.button1 {
   margin: 20px;
   padding: 20px;
   float: right;

@@ -6,31 +6,31 @@
       <div class="tbody">
         <div class="line"><h2>搜索结果</h2></div>
         <div class="check">
-          <input type="checkbox" id="1" value="科研项目" v-model="picked" />科研项目
-          <input type="checkbox" id="1" value="教研项目" v-model="picked" />教研项目
-          <input type="checkbox" id="1" value="荣誉" v-model="picked" />荣誉
-          <input type="checkbox" id="1" value="成果" v-model="picked" />成果
-          <input type="checkbox" id="1" value="学生竞赛" v-model="picked" />学生竞赛
-          <input type="checkbox" id="1" value="交流访问" v-model="picked" />交流访问
-          <input type="checkbox" id="1" value="党支部" v-model="picked" />党支部
-          <input type="checkbox" id="1" value="其他" v-model="picked" />其他
+          <input id="1" v-model="picked" type="checkbox" value="科研项目"/>科研项目
+          <input id="1" v-model="picked" type="checkbox" value="教研项目"/>教研项目
+          <input id="1" v-model="picked" type="checkbox" value="荣誉"/>荣誉
+          <input id="1" v-model="picked" type="checkbox" value="成果"/>成果
+          <input id="1" v-model="picked" type="checkbox" value="学生竞赛"/>学生竞赛
+          <input id="1" v-model="picked" type="checkbox" value="交流访问"/>交流访问
+          <input id="1" v-model="picked" type="checkbox" value="党支部"/>党支部
+          <input id="1" v-model="picked" type="checkbox" value="其他"/>其他
 
           <ul>
-            <li v-for="(item, index) in picked" :key="index">{{item}}</li>
+            <li v-for="(item, index) in picked" :key="index">{{ item }}</li>
           </ul>
         </div>
 
         <!-- <TeacherSearch></TeacherSearch> -->
         <div v-for="(item, index) in materials" :key="index">
-          <TeacherData :id="item.id" :title="item.title" :name="item.name" :desc="item.desc"
-                       :time="item.time"></TeacherData>
+          <TeacherData :id="item.id" :desc="item.desc" :name="item.name" :time="item.time"
+                       :title="item.title"></TeacherData>
         </div>
       </div>
       <el-pagination
-        background
-        layout="prev, pager, next"
         :total="1000"
-        class="apage">
+        background
+        class="apage"
+        layout="prev, pager, next">
       </el-pagination>
     </div>
   </div>
@@ -106,7 +106,7 @@ export default {
       align-items: center;
     }
 
-    .check{
+    .check {
       margin-left: 30px;
       margin-top: 5px;
       color: black;

@@ -1,13 +1,17 @@
 <template>
   <div class="main">
-    <form class="login-form" action="">
+    <form action="" class="login-form">
       <div class="login-way-box">
-        <div class="codeLogin"><router-link to="/codeLogin">验证码登录</router-link></div>
-        <div class="passLogin"><router-link to="/passLogin">密码登录</router-link></div>
+        <div class="codeLogin">
+          <router-link to="/codeLogin">验证码登录</router-link>
+        </div>
+        <div class="passLogin">
+          <router-link to="/passLogin">密码登录</router-link>
+        </div>
       </div>
       <div class="login-input-box">
-        <input type="text" placeholder="请输入邮箱">
-        <input type="password" placeholder="请输入密码">
+        <input placeholder="请输入邮箱" type="text">
+        <input placeholder="请输入密码" type="password">
       </div>
       <div class="login-check">
         <span><input type="checkbox">记住我</span>
@@ -20,7 +24,6 @@
 </template>
 
 <script>
-import {codeLogin} from "../api/login";
 
 export default {
   name: 'PassLogin',
@@ -96,6 +99,7 @@ export default {
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+
 .login-way-box {
   display: flex;
   justify-content: space-around;
@@ -156,9 +160,7 @@ export default {
 }
 
 
-
-
-.login-button:hover{
+.login-button:hover {
   cursor: pointer;
   background-color: #1a3f66;
 }
