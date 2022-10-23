@@ -40,17 +40,11 @@
                 <div class="bottom">创建账户</div>
               </td>
             </tr>
-
           </table>
         </form>
       </div>
-
-
     </div>
-
-
   </div>
-
 </template>
 
 <script>
@@ -58,7 +52,6 @@ import {postRegisterStudent} from "../api/register";
 
 export default {
   name: 'RegisterStudent',
-
 
   data() {
     return {

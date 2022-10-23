@@ -31,9 +31,13 @@
             </tr>
             <tr>
               <td><span>密码</span></td>
-              <td width="35%"><p class="underline"><input type="text" v-model="teacher.teacherPass" required
+              <td width="35%">
+                <p class="underline">
+                  <input type="text" v-model="teacher.teacherPass" required
                                                           oninvalid="setCustomValidity('请填写密码')"
-                                                          oninput="setCustomValidity('')"></p></td>
+                                                          oninput="setCustomValidity('')">
+                </p>
+              </td>
               <td><p class="prompt">密码不能少于6位</p></td>
             </tr>
             <tr>
@@ -96,7 +100,6 @@
 </template>
 
 <script>
-// import {postRegisterTeacher} from "../api/register";
 import {postCodeTeacher} from "../api/register";
 
 export default {
@@ -104,11 +107,6 @@ export default {
 
   data() {
     return {
-      // userForm: {
-      //   account: '',
-      //   nickname: '',
-      //   password: ''
-      // },
       teacher: {
         teacherEmail: "",
         code: "",
@@ -133,27 +131,17 @@ export default {
     regHandle(teacher) {
       if (this.teacher.teacherPass !== '' && this.teacher.teacherRePass !== '') {
         if (this.teacher.teacherPass !== this.teacher.teacherRePass) {
-          alert("两次输入的密码不一致！")
+          this.$message({message: '两次输入的密码不一致！', type: 'error', showClose: true});
         } else {
-          // postRegisterTeacher(data).then(
-          //   response => {
-          //     alert('恭喜您注册成功')
-          //   }
-          // )
-
           this.$store.dispatch('teacherRegister', teacher).then(() => {
-            // alert('恭喜您注册成功')
             this.$message({message: '注册成功！', type: 'success', showClose: true});
             this.$router.push({path: '/'})
           }).catch((error) => {
             if (error !== 'error') {
-              // alert('注册失败')
               this.$message({message: error, type: 'error', showClose: true});
             }
           })
-
         }
-
       }
     }
     }

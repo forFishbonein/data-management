@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
 <!--   <TeacherIndex></TeacherIndex>-->
-<!--    <RegisterTeacher></RegisterTeacher>-->
+   <RegisterTeacher></RegisterTeacher>
 <!--     <RegisterStudent></RegisterStudent>-->
 <!--     <StudentIndex></StudentIndex>-->
 <!--     <Manage></Manage>-->
@@ -16,8 +16,13 @@
 </template>
 
 <script>
+import RegisterTeacher from './views/RegisterTeacher'
 export default {
   name: 'App',
+  components:{
+
+    RegisterTeacher
+  }
 }
 </script>
 
