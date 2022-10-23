@@ -75,6 +75,14 @@
             <version>2.2.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.github.yulichang/mybatis-plus-join -->
+        <dependency>
+            <groupId>com.github.yulichang</groupId>
+            <artifactId>mybatis-plus-join</artifactId>
+            <version>1.2.4</version>
+        </dependency>
+
+
         <!--mybatis-plus-->
         <dependency>
             <groupId>com.baomidou</groupId>
