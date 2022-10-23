@@ -22,14 +22,17 @@ import TeacherNav from "../components/TeacherNav";
 import TeacherHeader from "../components/TeacherHeader";
 import TeacherData from "../components/TeacherData";
 import FilePath from "../components/FilePath";
+
 export default {
+  name: 'TeacherFile',
+
   components: {
     TeacherNav,
     TeacherHeader,
     TeacherData,
     FilePath
   },
-  name: "TeacherFile",
+
   data() {
     return {
 

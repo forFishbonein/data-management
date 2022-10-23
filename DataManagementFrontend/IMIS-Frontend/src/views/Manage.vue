@@ -107,6 +107,9 @@
 <script>
 // import FileManage from '../components/manage/FileManage.vue'
   export default {
+    name: 'Manage',
+
+
     methods:{
       displayInfo(){
         const status1 = document.getElementById('info').style.display === '' ? 'none' : document.getElementById('info').style.display

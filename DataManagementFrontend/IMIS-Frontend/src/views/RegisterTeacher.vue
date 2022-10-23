@@ -100,6 +100,8 @@
 import {postCodeTeacher} from "../api/register";
 
 export default {
+  name: 'RegisterTeacher',
+
   data() {
     return {
       // userForm: {

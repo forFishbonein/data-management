@@ -43,6 +43,8 @@ import TeacherNav from '../components/TeacherNav.vue'
 import TeacherData from '../components/TeacherData.vue'
 
 export default {
+  name: 'SearchResult',
+
   data:{
     result:[],
     picked:[]
@@ -60,19 +62,19 @@ export default {
     }
   },
   mounted() {
-    
+
     this.$bus.$on('searchResult',this.getResult)
 
     if(picked === null){
 
     }
-    
+
   },
   beforeDestroy(){
     this.$bus.$off('searchResult')
   }
-  
-  
+
+
 }
 </script>
 

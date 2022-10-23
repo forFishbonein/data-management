@@ -35,6 +35,7 @@
 import {getByTeacherId} from '@/api'
 
 export default {
+  name: "TeacherHeader",
   mounted() {
     console.log(this)
     this.getById(this.id);
