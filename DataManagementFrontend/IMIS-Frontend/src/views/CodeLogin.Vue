@@ -2,8 +2,8 @@
   <div class="main">
     <form class="login-form" action="">
       <div class="login-way-box">
-        <div class="login-way" @click="codeLogin">验证码登录</div>
-        <div class="login-way" @click="passLogin">密码登录</div>
+        <div class="codeLogin"><router-link to="/codeLogin">验证码登录</router-link></div>
+        <div class="passLogin"><router-link to="/passLogin">密码登录</router-link></div>
       </div>
       <div class="login-input-box">
         <input type="text" class="login-input-box-email" placeholder="请输入邮箱" v-model="login.email">
@@ -36,7 +36,6 @@ export default {
         email: "",
         code: "",
       },
-
     }
   },
 
@@ -109,10 +108,44 @@ export default {
   justify-content: space-around;
 }
 
-.login-way {
+.codeLogin {
   display: inline-block;
   padding: 24px 40px;
   color: #113355;
+  font-weight: bolder;
+}
+
+.passLogin {
+  display: inline-block;
+  padding: 24px 40px;
+  color: #113355;
+  font-weight: bolder;
+}
+
+.codeLogin a,
+.passLogin a {
+  position: relative;
+}
+
+.codeLogin a:before,
+.passLogin a:before {
+  content: '';
+  height: 5px;
+  background-color: #1a3f66;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+}
+
+.passLogin a:before {
+  transform: scaleX(0);
+  transition: .3s;
+}
+
+.codeLogin a:hover:before,
+.passLogin a:hover:before {
+  transform: scaleX(1);
 }
 
 .login-input-box input {
