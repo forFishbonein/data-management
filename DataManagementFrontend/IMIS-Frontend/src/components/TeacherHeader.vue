@@ -15,14 +15,16 @@
         <div class ="info1">
           <div class="teacher-name">{{teacher.teacherName}}</div>
         </div>
-        <div class="info2">
-          <div class="teacher-title">教师职称：{{ teacher.teacherTitle }}</div>
-          <div class="teacher-tele">电话：{{ teacher.teacherTele }}</div>
-        </div>
-        <div class="info3">
-          <div class="teacher-sid">工号：{{ teacher.teacherSid }}</div>
-          <div class="teacher-email">邮箱：{{ teacher.teacherEmail }}</div>
-        </div>
+        <table>
+          <tr>
+            <td width="250px" height="30px">教师职称：{{ teacher.teacherTitle }}</td>
+            <td>电话：{{ teacher.teacherTele }}</td>
+          </tr>
+          <tr>
+            <td>工号：{{ teacher.teacherSid }}</td>
+            <td>邮箱：{{ teacher.teacherEmail }}</td>
+          </tr>
+        </table>
       </div>
     </div>
   </div>
@@ -33,6 +35,7 @@
 import {getByTeacherId} from '@/api'
 
 export default {
+  name: "TeacherHeader",
   mounted() {
     console.log(this)
     this.getById(this.id);
@@ -73,7 +76,6 @@ export default {
 }
 
 .bgpicture {
-  /* background-color: gainsboro; */
   width: 1200px;
   height: 120px;
   border-top-left-radius: 12px;
@@ -116,12 +118,6 @@ export default {
   margin-left:150px;
 }
 
-.teacher .teacher-info .info1 {
-  display: flex;
-  flex-direction: row;
-
-}
-
 .teacher .teacher-info .info1 .teacher-name {
   color: #1A4D7F;
   font-size: 26px;
@@ -131,49 +127,8 @@ export default {
   margin-bottom: 5px;
 }
 
-.teacher .teacher-info .info2 {
-  display: flex;
-  flex-direction: row;
-}
-
-.teacher .teacher-info .info2 .teacher-title {
-  font-size: 16px;
-  color: #1A4D7F;
-  line-height:35px;
-  font-weight: 400;
+.teacher .teacher-info table {
   margin-left: 20px;
-
-  /* margin-top: 8px; */
-}
-
-.teacher .teacher-info .info2 .teacher-tele {
-  font-size: 16px;
-  color: #1A4D7F;
-  line-height:35px;
-  font-weight: 400;
-  margin-left: 118.5px;
-}
-
-.teacher .teacher-info .info3 {
-  display: flex;
-  flex-direction: row;
-}
-
-.teacher .teacher-info .info3 .teacher-sid {
-  font-size: 16px;
-  color: #1A4D7F;
-  line-height:35px;
-  font-weight: 400;
-  margin-left: 20px;
-}
-
-
-.teacher .teacher-info .info3 .teacher-email {
-  font-size: 16px;
-  color: #1A4D7F;
-  line-height:35px;
-  font-weight: 400;
-  margin-left: 75px;
 }
 
 

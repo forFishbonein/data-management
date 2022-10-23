@@ -57,6 +57,9 @@
 import {postRegisterStudent} from "../api/register";
 
 export default {
+  name: 'RegisterStudent',
+
+
   data() {
     return {
       student: {

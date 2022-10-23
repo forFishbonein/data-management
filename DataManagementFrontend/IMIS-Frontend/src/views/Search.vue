@@ -44,6 +44,8 @@ import TeacherData from '../components/TeacherData.vue'
 import {getMaterials} from '@/api'
 
 export default {
+  name: 'Search',
+
   data() {
     return {
       materials: []
@@ -70,8 +72,8 @@ export default {
   mounted() {
     this.getMaterials();
   },
-  
-  
+
+
 }
 </script>
 

@@ -85,6 +85,9 @@
 import StudentNav from "../components/StudentNav";
 
 export default {
+  name: 'Compete',
+
+
   data() {
     return {
       classify: ['全部分类','分类一','分类二','分类三','分类四'],

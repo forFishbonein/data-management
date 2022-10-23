@@ -121,6 +121,8 @@
 
   <script>
   export default {
+    name: 'TeacherUploadteaching',
+
     data() {
       return {
         dynamicTags: [],
