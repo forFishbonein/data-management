@@ -202,7 +202,7 @@
     margin: 10px 5px;
   }
   .upload{
-   width: 540px;
+   width: 1100px;
     height: 200px;
   }
   button[type="submit"] {
