@@ -2,7 +2,7 @@
   <div class="background">
     <TeacherNav/>
     <div class="main">
-      <div class="title">教研项目</div>
+      <div class="title">科研项目</div>
       <div class="content">
         <form >
           <div class="choose"><span>选择模板&emsp;</span>
@@ -32,7 +32,7 @@
 
           <div class="resources">
                 <span>
-资源名称&emsp;
+项目名称&emsp;
                 </span>
             <input type="text" placeholder="请输入文字">
           </div>
@@ -378,6 +378,5 @@ textarea[type="text"]:focus {
   margin-left: 10px;
   vertical-align: bottom;
 }
-/*.input-new-tag{margin:0}*/
 .resources{display: flex}
 </style>

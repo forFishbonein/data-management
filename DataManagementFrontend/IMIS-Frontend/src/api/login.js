@@ -1,17 +1,25 @@
-import request from "@/request"
+import request from "@/request";
 
-export function codeLogin(data){
+export function codeLogin(data) {
   return request({
     data,
-    method: 'post',
-    url: 'http://localhost:8888/login',
-  })
+    method: "post",
+    url: "http://localhost:8888/login"
+  });
 }
 
-export function passLogin(data){
+export function passLogin(data) {
   return request({
     data,
-    method: 'post',
-    url: 'http://localhost:8888/passLogin',
-  })
+    method: "post",
+    url: "http://localhost:8888/passLogin"
+  });
+}
+
+export function getUserInfo(token ,id) {
+  return request({
+    headers: { Authorization: token },
+    url: `/users/${id}`,
+    method: "get"
+  });
 }

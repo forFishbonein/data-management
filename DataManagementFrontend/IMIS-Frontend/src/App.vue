@@ -1,12 +1,28 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
+<!--   <TeacherIndex></TeacherIndex>-->
+   <RegisterTeacher></RegisterTeacher>
+<!--     <RegisterStudent></RegisterStudent>-->
+<!--     <StudentIndex></StudentIndex>-->
+<!--     <Manage></Manage>-->
+    <!-- <Compete></Compete> -->
+<!--     <SearchResults></SearchResults>-->
+<!--    <test></test>-->
+      <!-- <LoginIna></LoginIna> -->
+     <!-- <LoginFooter></LoginFooter> -->
+<!--    <TeacherFile></TeacherFile>-->
   </div>
 </template>
 
 <script>
+import RegisterTeacher from './views/RegisterTeacher'
 export default {
   name: 'App',
+  components:{
+
+    RegisterTeacher
+  }
 }
 </script>
 

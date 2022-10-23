@@ -27,6 +27,8 @@ public class CodeMsg {
     public static CodeMsg NEWS_NOT_EXIST = new CodeMsg(500300, "新闻不存在");
     //竞赛模块 5004XX
     public static CodeMsg CONTEST_NOT_EXIST = new CodeMsg(500400, "竞赛不存在");
+    //竞赛经验 5005XX
+    public static CodeMsg Experience_NOT_EXIST = new CodeMsg(500500, "竞赛经验不存在");
 
 
     private CodeMsg() {
