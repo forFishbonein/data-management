@@ -24,26 +24,26 @@ const routes = [
     component: CodeLogin
   },
 
-    {
-      path: "/passlogin",
-      component: PassLogin
-    },
-    {
-      path: "/registerteacher",
-      component: RegisterTeacher
-    },
-    {
-      path: "/fileManage",
-      component: FileManage
-    },
-    {
-      path: "/competitionManage",
-      component: CompetitionManage
-    },
-    {
-      path: "/person",
-      component:TeacherIndex
-    },
+  {
+    path: "/passlogin",
+    component: PassLogin
+  },
+  {
+    path: "/registerteacher",
+    component: RegisterTeacher
+  },
+  {
+    path: "/fileManage",
+    component: FileManage
+  },
+  {
+    path: "/competitionManage",
+    component: CompetitionManage
+  },
+  {
+    path: "/person",
+    component:TeacherIndex
+  },
 
   {
     path: "/resource",
@@ -60,7 +60,7 @@ const routes = [
       path:'filemange',
       component:FileManage
     }
-]},
+    ]},
   {
     path:'accountmange',
     component:AccountManage
@@ -96,24 +96,6 @@ router.beforeEach((to, from, next) => {
       } else {
         next();
       }
-    {
-      path: "/resource",
-      component: CompetitionManage
-    },
-    {
-      path: "/upload",
-      component: TeacherUploadteaching
-    },
-    {
-      path: "/manage",
-      component: Manage,
-      children:[{
-        path:'filemange',
-        component:FileManage
-      },{
-        path:'accountmange',
-        component:AccountManage
-      }]
     }
   } else {
     if (to.matched.some(r => r.meta.requireLogin)) {
