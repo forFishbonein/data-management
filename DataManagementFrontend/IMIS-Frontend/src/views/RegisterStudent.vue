@@ -54,15 +54,10 @@
                 <input type="submit" value="创建账户" class="bottom" @click="regHandle(teacher)">
               </td>
             </tr>
-
           </table>
         </form>
       </div>
-
-
     </div>
-
-
   </div>
 </template>
 

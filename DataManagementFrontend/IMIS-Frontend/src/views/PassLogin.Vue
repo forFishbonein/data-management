@@ -15,9 +15,7 @@
         <span>忘记密码？</span>
       </div>
       <button class="login-button">登 录</button>
-
     </form>
-
   </div>
 </template>
 
