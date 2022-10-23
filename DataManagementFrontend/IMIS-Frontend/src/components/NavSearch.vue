@@ -1,6 +1,6 @@
 <template>
   <div class="search">
-    <input v-model="keyword" type="text" class="searchInput" placeholder="请输入搜索内容 ">
+    <input v-model="keyword" class="searchInput" placeholder="请输入搜索内容 " type="text">
     <div class="search-icon" @click="getSearchResults(keyword)"><span class="iconfont">&#xe651;</span></div>
 
   </div>
@@ -69,7 +69,6 @@ nav .search-icon {
 }
 
 
-
 nav .searchInput {
   width: 550px;
   position: relative;
@@ -92,7 +91,7 @@ nav .searchInput {
 .search-icon:hover ~ .searchInput,
 .searchInput:hover ~ .search-icon,
 .searchInput:focus,
-.searchInput:focus ~ .search-icon{
+.searchInput:focus ~ .search-icon {
   border-top: #3c85d7 2px solid;
   border-bottom: #3c85d7 2px solid;
 }

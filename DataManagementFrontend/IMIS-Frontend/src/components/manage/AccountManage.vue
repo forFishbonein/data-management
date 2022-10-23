@@ -5,23 +5,23 @@
       stripe
       style="width: 100%">
       <el-table-column
-        prop="name"
-        label="姓名">
+        label="姓名"
+        prop="name">
       </el-table-column>
       <el-table-column
-        prop="date"
         label="创建时间"
+        prop="date"
         width="180">
       </el-table-column>
-        <el-table-column
-        prop="email"
+      <el-table-column
         label="邮箱"
+        prop="email"
         width="180">
-        </el-table-column>
+      </el-table-column>
 
       <el-table-column
-        prop="detail"
-        label="操作"  width="240">
+        label="操作"
+        prop="detail" width="240">
         <el-link type="primary">查看详情</el-link>
         <el-link type="primary">编辑</el-link>
         <el-link type="primary">删除</el-link>
@@ -43,12 +43,12 @@ export default {
           date: '王小虎',
           email: '上海市普陀区金沙江路 1518 弄'
 
-        },{
+        }, {
           name: '2016-05-02',
           date: '王小虎',
           email: '上海市普陀区金沙江路 1518 弄'
 
-        },{
+        }, {
           name: '2016-05-02',
           date: '王小虎',
           email: '上海市普陀区金沙江路 1518 弄'
@@ -62,13 +62,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.m-container{
+.m-container {
   width: 100%;
   // height: 800px;
   // border: 1px solid red;
   background-color: white;
   padding: 0;
-  .m-header{
+
+  .m-header {
     width: 95%;
     margin: 0 auto;
     height: 50px;
@@ -76,11 +77,13 @@ export default {
     align-items: center;
     background-color: #F5F5F5;
     border-radius: 15px;
-    ul{
+
+    ul {
       float: left;
       display: flex;
       justify-content: space-around;
-      li{
+
+      li {
         float: left;
         width: 126px;
         font-size: 17px;
@@ -89,7 +92,8 @@ export default {
       }
     }
   }
-  .m-body{
+
+  .m-body {
     width: 95%;
     margin: 0 auto;
     height: 700px;
@@ -99,25 +103,29 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     border-radius: 15px;
-    .m-item{
+
+    .m-item {
       background-color: #FDFDFD;
       width: 100%;
       border-bottom: 3px solid #efefef;
-      ul{
+
+      ul {
         float: left;
         display: flex;
         justify-content: space-around;
         align-items: center;
         height: 50px;
-        li{
+
+        li {
           float: left;
           width: 126px;
           font-size: 17px;
           color: #3C85D7;
           text-align: center;
         }
-        &>li:nth-last-child(2){
-          button{
+
+        & > li:nth-last-child(2) {
+          button {
             font-size: 15px;
             color: white;
             background-color: #0E4687;
@@ -126,8 +134,9 @@ export default {
             border-radius: 8px;
           }
         }
-        &>li:last-child{
-          button{
+
+        & > li:last-child {
+          button {
             font-size: 15px;
             color: white;
             background-color: #DF2060;
