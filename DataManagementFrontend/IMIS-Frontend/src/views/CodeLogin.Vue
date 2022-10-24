@@ -1,13 +1,17 @@
 <template>
   <div class="main">
-    <form class="login-form" action="">
+    <form action="" class="login-form">
       <div class="login-way-box">
-        <div class="codeLogin"><router-link to="/codeLogin">验证码登录</router-link></div>
-        <div class="passLogin"><router-link to="/passLogin">密码登录</router-link></div>
+        <div class="codeLogin">
+          <router-link to="/codeLogin">验证码登录</router-link>
+        </div>
+        <div class="passLogin">
+          <router-link to="/passLogin">密码登录</router-link>
+        </div>
       </div>
       <div class="login-input-box">
-        <input type="text" class="login-input-box-email" placeholder="请输入邮箱" v-model="login.email">
-        <input type="text" class="login-input-box-code" placeholder="请输入验证码" v-model="login.code">
+        <input v-model="login.email" class="login-input-box-email" placeholder="请输入邮箱" type="text">
+        <input v-model="login.code" class="login-input-box-code" placeholder="请输入验证码" type="text">
         <span class="login-input-box-send" @click="sendEmail({ email: login.email })">获取验证码</span>
       </div>
       <div class="login-check">

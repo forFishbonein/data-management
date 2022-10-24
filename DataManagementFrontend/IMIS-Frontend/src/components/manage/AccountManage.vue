@@ -5,27 +5,20 @@
       stripe
       style="width: 100%">
       <el-table-column
-        label="资料名"
-        prop="name"
-      >
+        label="姓名"
+        prop="name">
       </el-table-column>
       <el-table-column
-        label="类型"
-        prop="type"
-        width="180"
-      >
-      </el-table-column>
-      <el-table-column
-        label="上传日期"
+        label="创建时间"
         prop="date"
-        width="180"
-      >
+        width="180">
       </el-table-column>
       <el-table-column
-        label="上传者"
-        prop="people" width="180"
-      >
+        label="邮箱"
+        prop="email"
+        width="180">
       </el-table-column>
+
       <el-table-column
         label="操作"
         prop="detail" width="240">
@@ -40,33 +33,25 @@
 
 <script>
 export default {
+  name: 'AccountManage',
+
   data() {
     return {
       tableData: [
         {
           name: '2016-05-02',
-          type: '王小虎',
-          date: '上海市普陀区金沙江路 1518 弄',
-          people: '上海市普陀1518 弄',
-
-        },
-        {
-          name: '2016-05-02',
-          type: '王小虎',
-          date: '上海市普陀区金沙江路 1518 弄',
-          people: '上海市普陀1518 弄',
+          date: '王小虎',
+          email: '上海市普陀区金沙江路 1518 弄'
 
         }, {
           name: '2016-05-02',
-          type: '王小虎',
-          date: '上海市普陀区金沙江路 1518 弄',
-          people: '上海市普陀1518 弄',
+          date: '王小虎',
+          email: '上海市普陀区金沙江路 1518 弄'
 
         }, {
           name: '2016-05-02',
-          type: '王小虎',
-          date: '上海市普陀区金沙江路 1518 弄',
-          people: '上海市普陀1518 弄',
+          date: '王小虎',
+          email: '上海市普陀区金沙江路 1518 弄'
 
         }
       ]

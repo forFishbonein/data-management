@@ -1,9 +1,13 @@
 <template>
   <div class="main">
-    <form class="login-form" action="">
+    <form action="" class="login-form">
       <div class="login-way-box">
-        <div class="codeLogin"><router-link to="/codeLogin">验证码登录</router-link></div>
-        <div class="passLogin"><router-link to="/passLogin">密码登录</router-link></div>
+        <div class="codeLogin">
+          <router-link to="/codeLogin">验证码登录</router-link>
+        </div>
+        <div class="passLogin">
+          <router-link to="/passLogin">密码登录</router-link>
+        </div>
       </div>
       <div class="login-input-box">
         <input type="text" placeholder="请输入邮箱" v-model="login.email">
@@ -20,6 +24,7 @@
 </template>
 
 <script>
+
 
 export default {
   name: 'PassLogin',
@@ -166,9 +171,7 @@ export default {
 }
 
 
-
-
-.login-button:hover{
+.login-button:hover {
   cursor: pointer;
   background-color: #1a3f66;
 }

@@ -2,34 +2,45 @@
   <div class="container">
     <TeacherNav></TeacherNav>
     <div class="context">
-      <div class="title">测试标题</div>
-      <div class="createTime">2022-10-16 11:25:30</div>
-      <div class="introduction">测试简介</div>
+      <div class="Teaching">
+        <div class="title">资源名称：{{ Teaching.title }}</div>
+        <div class="introduction">{{ Teaching.introduction }}</div>
+        <div class="details">
+          <div v-show="this.Teaching.name" class="name">项目名称：{{ Teaching.name }}</div>
+          <div class="uploader">上传者：</div>
+          <div class="createTime">上传时间：{{ Teaching.createTime }}</div>
+          <div class="source">项目来源：{{ Teaching.source }}</div>
+          <div class="type">项目类型：{{ Teaching.type }}</div>
+          <div class="level">项目级别：{{ Teaching.level }}</div>
+          <div class="project_time">立项时间：{{ Teaching.projectTime }}</div>
+          <div class="post_project_time">结项时间：{{ Teaching.postprojectTime }}</div>
+          <div class="fund">项目经费：{{ Teaching.fund }}</div>
+          <div class="member">课题组成员：{{ Teaching.member }}</div>
+          <div class="add">
+            <p v-for="(val, key) in Teaching.other">{{ key }} : {{ val }}</p>
+          </div>
+
+
+        </div>
+
+      </div>
       <FilePath></FilePath>
+      <div class="button">
+        <button class="button1">删除</button>
+        <button class="button2">编辑</button>
+      </div>
     </div>
-
-
   </div>
 </template>
 
 <script>
-
-
 import TeacherNav from "../components/TeacherNav";
 import TeacherHeader from "../components/TeacherHeader";
 import TeacherData from "../components/TeacherData";
 import FilePath from "../components/FilePath";
 
 export default {
-  name: 'TeacherFile',
-
-  components: {
-    TeacherNav,
-    TeacherHeader,
-    TeacherData,
-    FilePath
-  },
-
+  name: "Teaching",
   data() {
     return {
 
@@ -165,17 +176,22 @@ export default {
         id: "",
         title: "",
         num: "",
-        introduction: "",
+        introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
 
         name: "",
         source: "",
         type: "",
         level: "",
         projectTime: "",
+        postprojectTime: "",
         fund: "",
         member: "",
 
-        other: {},
+        other: {
+          "条目1": "内容1",
+          "条目2": "内容2"
+        },
+
         filePath: "",
         createTime: "",
       },
@@ -194,7 +210,12 @@ export default {
     }
 
   },
-
+  components: {
+    TeacherNav,
+    TeacherHeader,
+    TeacherData,
+    FilePath
+  },
 }
 
 
@@ -202,7 +223,7 @@ export default {
 
 <style scoped>
 .container {
-  height: 100vh;
+  /* height: 100vh; */
   background-color: #eaf2fb;
 }
 
@@ -210,28 +231,64 @@ export default {
   width: 1200px;
   margin: 20px auto;
   padding: 20px;
-
   background-color: white;
   border-radius: 16px;
 }
 
 .title {
-  padding: 40px;
+  padding: 10px;
   color: #113355;
   font-size: 28px;
+  padding-left: 30px;
 
-}
-
-.createTime {
-  padding-left: 40px;
 }
 
 .introduction {
-  margin: 40px;
-  padding: 40px;
-  background-color: #f5e3e3;
+  margin: 20px;
+  padding: 20px;
+  padding-left: 30px;
+  background-color: #FDFDFD;
   color: #113355;
-  border-radius: 16px;
+  /* border-radius: 16px; */
 }
+
+.details {
+  margin: 20px;
+  padding: 20px;
+  padding-left: 30px;
+  background-color: #FDFDFD;
+  color: #113355;
+  line-height: 35px;
+}
+
+.button {
+  height: 80px;
+
+}
+
+.button2 {
+  margin: 20px;
+  padding: 20px;
+  float: right;
+  padding-right: 30px;
+  width: 100px;
+  height: 70px;
+  background: #104A85;
+  text-align: center;
+  color: #fff;
+}
+
+.button1 {
+  margin: 20px;
+  padding: 20px;
+  float: right;
+  padding-right: 30px;
+  width: 100px;
+  height: 70px;
+  background: #EB8C2D;
+  text-align: center;
+  color: #fff;
+}
+
 
 </style>

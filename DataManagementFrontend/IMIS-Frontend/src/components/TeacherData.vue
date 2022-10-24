@@ -5,9 +5,9 @@
       <div class="introduction">{{ introductionManage(introduction) }}</div>
     </div>
     <span class="time">上传时间:{{ time }}&nbsp;</span>
-    <span class="download" @click="dialogVisible = true" v-show="filePath.length">下载附件</span>
+    <span v-show="filePath.length" class="download" @click="dialogVisible = true">下载附件</span>
 
-    <span class="download-box" v-show="dialogVisible">
+    <span v-show="dialogVisible" class="download-box">
         <div class="download-box-close" @click="dialogVisible = false">X</div>
         <p v-for="(file,index) in filePath" :key="index">{{ file }}</p>
       </span>
@@ -23,9 +23,9 @@ export default {
 
   methods: {
     introductionManage(str) {
-      if(str.length > 250) {
+      if (str.length > 250) {
         console.log(str)
-        str = str.substr(0,247) + "...";
+        str = str.substr(0, 247) + "...";
       }
       return str;
     }
@@ -86,7 +86,7 @@ export default {
   float: left;
 }
 
-.img img{
+.img img {
   width: 210px;
   height: 140px;
   float: right;
@@ -96,8 +96,8 @@ export default {
   font-size: 18px;
   font-weight: bold;
   color: #1a4d7f;
-  margin-top:8px;
-  margin-left:15px;
+  margin-top: 8px;
+  margin-left: 15px;
 }
 
 .introduction {
@@ -113,9 +113,9 @@ export default {
   left: 0;
   bottom: 0;
   margin-bottom: 10px;
-  margin-left:23px;
+  margin-left: 23px;
   font-size: 14px;
-  color:#595959;
+  color: #595959;
 
 }
 
@@ -126,7 +126,7 @@ export default {
   font-size: 14px;
   color: #6ca6f5;
   margin-bottom: 10px;
-  margin-left:30px;
+  margin-left: 30px;
 }
 
 .download:hover {

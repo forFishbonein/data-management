@@ -4,9 +4,11 @@ import FileManage from "../components/manage/FileManage.vue";
 import CompetitionManage from "../components/manage/CompetitionManage.vue";
 import TeacherIndex from "../views/TeacherIndex.vue";
 import RegisterTeacher from "../views/RegisterTeacher.vue";
-import TeacherUploadteaching from "../views/TeacherUploadteaching.vue";
+import TeacherUploadteaching from "../views/upload/Teaching.vue";
 import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
+import Manage from "../views/Manage.vue";
+import AccountManage from "../components/manage/AccountManage.vue";
 
 Vue.use(VueRouter);
 
@@ -42,7 +44,7 @@ const routes = [
   },
   {
     path: "/person",
-    component: TeacherIndex
+    component:TeacherIndex
   },
 
   {
@@ -52,8 +54,20 @@ const routes = [
   {
     path: "/upload",
     component: TeacherUploadteaching
-  }
-];
+  },
+  {
+    path: "/manage",
+    component: Manage,
+    children:[{
+      path:'filemange',
+      component:FileManage
+    }
+    ]},
+  {
+    path:'accountmange',
+    component:AccountManage
+  }]
+;
 
 const router = new VueRouter({
   routes

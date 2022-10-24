@@ -11,8 +11,8 @@
             <tr>
               <td width="20%"><span>邮箱地址</span></td>
               <td width="35%">
-                <p class="underline"><input type="text" v-model="teacher.teacherEmail" required
-                                            oninvalid="setCustomValidity('请填写邮箱')" oninput="setCustomValidity('')">
+                <p class="underline"><input v-model="teacher.teacherEmail" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写邮箱')"
+                                            required type="text">
                 </p>
               </td>
               <td width="35%"><p class="prompt">您的电子邮箱地址即为您的用户名</p></td>
@@ -20,8 +20,8 @@
             <tr>
               <td width="20%"><span>验证码</span></td>
               <td width="35%"><p class="underline">
-                <input type="text" v-model="teacher.code" required oninvalid="setCustomValidity('请填写验证码')"
-                       oninput="setCustomValidity('')"></p>
+                <input v-model="teacher.code" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写验证码')" required
+                       type="text"></p>
               </td>
               <td width="35%">
                 <p class="prompt">
@@ -33,42 +33,42 @@
               <td><span>密码</span></td>
               <td width="35%">
                 <p class="underline">
-                  <input type="text" v-model="teacher.teacherPass" required
-                                                          oninvalid="setCustomValidity('请填写密码')"
-                                                          oninput="setCustomValidity('')">
+                  <input v-model="teacher.teacherPass" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写密码')"
+                         required
+                         type="text">
                 </p>
               </td>
               <td><p class="prompt">密码不能少于6位</p></td>
             </tr>
             <tr>
               <td><span>确认密码</span></td>
-              <td width="35%"><p class="underline"><input type="text" v-model="teacher.teacherRePass" required
-                                                          oninvalid="setCustomValidity('请再次输入密码')"
-                                                          oninput="setCustomValidity('')"></p></td>
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherRePass" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请再次输入密码')"
+                                                          required
+                                                          type="text"></p></td>
             </tr>
             <tr>
               <td><span>姓名</span></td>
-              <td width="35%"><p class="underline"><input type="text" v-model="teacher.teacherName" required
-                                                          oninvalid="setCustomValidity('请填写姓名')"
-                                                          oninput="setCustomValidity('')"></p></td>
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherName" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写姓名')"
+                                                          required
+                                                          type="text"></p></td>
             </tr>
             <tr>
               <td><span>职位</span></td>
-              <td width="35%"><p class="underline"><input type="text" v-model="teacher.teacherTittle" required
-                                                          oninvalid="setCustomValidity('请填写职位')"
-                                                          oninput="setCustomValidity('')"></p></td>
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherTittle" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写职位')"
+                                                          required
+                                                          type="text"></p></td>
             </tr>
             <tr>
               <td><span>教工号</span></td>
-              <td width="35%"><p class="underline"><input type="text" v-model="teacher.teacherSid" required
-                                                          oninvalid="setCustomValidity('请填写教工号')"
-                                                          oninput="setCustomValidity('')"></p></td>
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherSid" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写教工号')"
+                                                          required
+                                                          type="text"></p></td>
             </tr>
             <tr>
               <td><span>电话</span></td>
-              <td width="35%"><p class="underline"><input type="text" v-model="teacher.teacherTele" required
-                                                          oninvalid="setCustomValidity('请填写电话')"
-                                                          oninput="setCustomValidity('')"></p></td>
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherTele" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写电话')"
+                                                          required
+                                                          type="text"></p></td>
             </tr>
             <tr>
               <td></td>
@@ -78,13 +78,13 @@
             <tr>
               <td></td>
               <td>
-                <div class="warm-box"><input type="checkbox" class="warm-check" required><i>我已知晓</i></div>
+                <div class="warm-box"><input class="warm-check" required type="checkbox"><i>我已知晓</i></div>
               </td>
             </tr>
             <tr>
               <td></td>
               <td>
-                <input type="submit" value="创建账户" class="bottom" @click="regHandle(teacher)">
+                <input class="bottom" type="submit" value="创建账户" @click="regHandle(teacher)">
               </td>
             </tr>
 
@@ -144,8 +144,8 @@ export default {
         }
       }
     }
-    }
   }
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

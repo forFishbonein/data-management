@@ -4,10 +4,11 @@
     <div class="hasBg">
       <div class="container">
         <div class="competitionSort">
-          <div class="competitionSearch el-input el-input--medium el-input-group el-input-group--append el-input--suffix">
-            <input type="text" autocomplete="off" placeholder="搜索竞赛名称" maxlength="20" class="el-input__inner">
+          <div
+            class="competitionSearch el-input el-input--medium el-input-group el-input-group--append el-input--suffix">
+            <input autocomplete="off" class="el-input__inner" maxlength="20" placeholder="搜索竞赛名称" type="text">
             <div class="el-input-group__append">
-              <button type="button" class="el-button el-button--default el-button--small">
+              <button class="el-button el-button--default el-button--small" type="button">
                 <i class="el-icon-search"></i>
               </button>
             </div>
@@ -17,7 +18,8 @@
           <div class="hd mt30">
             <ul>
               <li v-for="(item,index) in classify" :key="item.index"
-                  @click="addClass(index)" :class="{'active':position === index}">{{item}}</li>
+                  :class="{'active':position === index}" @click="addClass(index)">{{ item }}
+              </li>
             </ul>
           </div>
           <div class="bd mt30">
@@ -59,7 +61,7 @@
             </ul>
             <div class="pageSize">
               <div class="el-pagination is-background">
-                <button type="button" disabled="disabled" class="btn-prev"><i class="el-icon el-icon-arrow-left"></i>
+                <button class="btn-prev" disabled="disabled" type="button"><i class="el-icon el-icon-arrow-left"></i>
                 </button>
                 <ul class="el-pager">
                   <li class="number active">1</li>
@@ -71,7 +73,7 @@
                   <li class="el-icon more btn-quicknext el-icon-more"></li>
                   <li class="number">8</li>
                 </ul>
-                <button type="button" class="btn-next"><i class="el-icon el-icon-arrow-right"></i></button>
+                <button class="btn-next" type="button"><i class="el-icon el-icon-arrow-right"></i></button>
               </div>
             </div>
           </div>
@@ -90,7 +92,7 @@ export default {
 
   data() {
     return {
-      classify: ['全部分类','分类一','分类二','分类三','分类四'],
+      classify: ['全部分类', '分类一', '分类二', '分类三', '分类四'],
       position: ''
     }
   },

@@ -2,7 +2,7 @@
   <div class="con">
     <nav>
       <div class="logo">
-        <img src="../../static/img/logo.png" alt="logo">
+        <img alt="logo" src="../../static/img/logo.png">
       </div>
       <div class="resource">
         <router-link to="/resource">资源广场</router-link>
@@ -14,7 +14,7 @@
         <router-link to="/person">个人中心</router-link>
       </div>
       <div class="upload">
-        <router-link to="/upload" class="upload"><span style="text-align: center">上传</span></router-link>
+        <router-link class="upload" to="/upload"><span style="text-align: center">上传</span></router-link>
       </div>
     </nav>
   </div>
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style scoped>
-.con{
+.con {
   position: sticky;
   top: 0;
   z-index: 999;
@@ -53,7 +53,7 @@ nav {
 }
 
 nav .resource a:before,
-nav .profile a:before{
+nav .profile a:before {
   content: '';
   height: 2px;
   background-color: #7dc5e7;
@@ -66,7 +66,7 @@ nav .profile a:before{
 }
 
 nav .resource a:hover:before,
-nav .profile a:hover:before{
+nav .profile a:hover:before {
   transform: scaleX(1);
 }
 
@@ -105,7 +105,7 @@ nav .upload {
   border-radius: 8px;
   transition: 0.25s;
   background-color: #3C85D7;
-  margin-top:2px;
+  margin-top: 2px;
 }
 
 nav .upload:hover {
@@ -117,8 +117,6 @@ nav .upload span {
   width: 100px;
   text-align: center;
 }
-
-
 
 
 </style>

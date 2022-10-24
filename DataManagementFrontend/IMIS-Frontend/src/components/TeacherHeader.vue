@@ -1,23 +1,23 @@
 <template>
   <div class="teacher-header">
     <div class="bgpicture">
-      <img  alt="背景"
-              src="https://img.tukuppt.com/bg_grid/00/09/63/Si1rs8A7Di.jpg!/fh/350"
-              >
+      <img alt="背景"
+           src="https://img.tukuppt.com/bg_grid/00/09/63/Si1rs8A7Di.jpg!/fh/350"
+      >
     </div>
     <div class="teacher">
       <div class="teacher-pic">
-        <img  alt="头像"
-              src="https://ts2.cn.mm.bing.net/th?id=OIP-C.19LPGfyiWw_LZodJOolXSAHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.25&pid=3.1&rm=2"
-              >
+        <img alt="头像"
+             src="https://ts2.cn.mm.bing.net/th?id=OIP-C.19LPGfyiWw_LZodJOolXSAHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.25&pid=3.1&rm=2"
+        >
       </div>
       <div class="teacher-info">
-        <div class ="info1">
-          <div class="teacher-name">{{teacher.teacherName}}</div>
+        <div class="info1">
+          <div class="teacher-name">{{ teacher.teacherName }}</div>
         </div>
         <table>
           <tr>
-            <td width="250px" height="30px">教师职称：{{ teacher.teacherTitle }}</td>
+            <td height="30px" width="250px">教师职称：{{ teacher.teacherTitle }}</td>
             <td>电话：{{ teacher.teacherTele }}</td>
           </tr>
           <tr>
@@ -68,10 +68,10 @@ export default {
 
 <style scoped>
 
-.teacher-header{
+.teacher-header {
   display: flex;
   flex-direction: column;
-  height:250px;
+  height: 250px;
   border-radius: 12px;
 }
 
@@ -83,7 +83,7 @@ export default {
 
 }
 
-.bgpicture>img{
+.bgpicture > img {
   width: 1200px;
   height: 153px;
   border-top-left-radius: 12px;
@@ -107,7 +107,7 @@ export default {
   margin: -40px 0 0 30px;
 }
 
-.teacher-pic>img{
+.teacher-pic > img {
   width: 110px;
   height: 110px;
   border-radius: 100%;
@@ -115,7 +115,7 @@ export default {
 
 .teacher .teacher-info {
   margin-top: -10px;
-  margin-left:150px;
+  margin-left: 150px;
 }
 
 .teacher .teacher-info .info1 .teacher-name {
