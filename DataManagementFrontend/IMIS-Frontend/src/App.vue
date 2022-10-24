@@ -1,19 +1,34 @@
 <template>
   <div id="app">
 <!--     <router-view></router-view>-->
-  <TeacherStudying></TeacherStudying>
+<!--  <Teaching></Teaching>-->
+<!--    <TeacherStudying></TeacherStudying>-->
+<!--<PartyUpload></PartyUpload>-->
+    <AchievementUpload></AchievementUpload>
   </div>
 </template>
 
 <script>
 import RegisterTeacher from './views/RegisterTeacher'
-import TeacherStudying from "./views/upload/TeacherStudying";
+import TeacherStudying from "./views/upload/StudyingUpload";
+import Teaching from "./views/upload/TeachingUpload";
+import PartyUpload from "./views/upload/PartyUpload";
+import OfficeUpload from "./views/upload/OfficeUpload";
+import ContestUpload from "./views/upload/ContestUpload";
+import CommunicationUpload from "./views/upload/CommunicationUpload";
+import AchievementUpload from "./views/upload/AchievementUpload";
+
 export default {
   name: 'App',
   components:{
+    AchievementUpload,
+    CommunicationUpload,
+    Teaching,
     TeacherStudying,
-    RegisterTeacher
-  }
+    RegisterTeacher,
+    PartyUpload,
+    ContestUpload
+}
 }
 </script>
 
