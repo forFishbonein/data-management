@@ -31,27 +31,19 @@
           </div>
 
           <div class="resources">
-                <span>
-资源名称&emsp;
-                </span>
+            <span>资源名称</span>
             <input placeholder="请输入文字" type="text">
           </div>
           <div class="resources">
-                <span>
-项目简介&emsp;
-                </span>
+            <span>项目简介</span>
             <textarea placeholder="请输入文字" style="width:450px ;height:125px;" type="text"/>
           </div>
           <div class="resources">
-                <span>
-项目来源&emsp;
-                </span>
+            <span>项目来源</span>
             <input placeholder="请输入文字" type="text">
           </div>
           <div class="resources">
-                <span>
-项目类型&emsp;
-                </span>
+            <span>项目类型</span>
             <el-autocomplete
               v-model="state"
               :fetch-suggestions="querySearch"
@@ -69,34 +61,23 @@
             </el-autocomplete>
           </div>
           <div class="resources">
-                <span>
-项目级别&emsp;
-                </span>
+            <span>项目级别</span>
             <input placeholder="请输入文字" type="text">
           </div>
           <div class="resources">
-                <span>
-立项时间&emsp;
-                </span>
+            <span>立项时间</span>
             <input placeholder="请输入时间" type="date">
           </div>
           <div class="resources">
-                <span>
-结项时间&emsp;
-                </span>
+            <span>结项时间</span>
             <input placeholder="请输入时间" type="date">
           </div>
           <div class="resources">
-                <span>
-经&emsp;&emsp;费&emsp;
-                </span>
+            <span>经费</span>
             <input placeholder="请输入数字" type="number">
           </div>
           <div class="resources">
-                <span>
-课题组成员
-                </span>
-            <!--                <div class="teammate">-->
+            <span>课题组成员</span>
             <el-tag
               v-for="tag in dynamicTags"
               :key="tag"
