@@ -13,6 +13,7 @@ import FileManage from "../components/manage/FileManage.vue";
 
 //template
 import Achievement from "../views/template/Achievement.vue";
+import Teaching from "../views/template/Teaching.vue";
 
 //upload
 import Upload from "../views/Upload.vue";
@@ -58,10 +59,10 @@ const routes = [
       path: "/resource",
       component: CompetitionManage
     },
-    {
-      path: "/upload",
-      component: Upload
-    },
+  {
+    path: "/teaching",
+    component: Teaching
+  },
     {
       path: "/achievement",
       component: Achievement

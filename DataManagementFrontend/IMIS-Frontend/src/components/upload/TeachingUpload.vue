@@ -127,20 +127,20 @@
             </td>
           </tr>
 
-          <tr v-for="(key,value) in Teaching.other" :key="key">
-            <td>
-              <el-input
-                v-model="key"
-                clearable>
-              </el-input>
-            </td>
-            <td>
-              <el-input
-                v-model="value"
-                clearable>
-              </el-input>
-            </td>
-          </tr>
+<!--          <tr v-for="(key,value) in Teaching.other">{{ key }}-->
+<!--            <td>-->
+<!--              <el-input-->
+<!--                v-model="key"-->
+<!--                clearable>-->
+<!--              </el-input>-->
+<!--            </td>-->
+<!--            <td>-->
+<!--              <el-input-->
+<!--                v-model="value"-->
+<!--                clearable>-->
+<!--              </el-input>-->
+<!--            </td>-->
+<!--          </tr>-->
           <tr>
             <td>
               <el-input
@@ -284,7 +284,14 @@ export default {
   margin: 0 auto;
   margin-top: 10px;
   width: 1200px;
-  background-color: white;
+
+  .content {
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #fdfdfd;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+  }
 
   table {
 
