@@ -4,8 +4,8 @@ import { getToken } from "@/request/token";
 import { Message } from "element-ui";
 
 const service = axios.create({
-  baseURL: "/static/json",
-  // baseURL: "http://localhost:8888",
+  // baseURL: "/static/json",
+  baseURL: "http://localhost:8888",
   timeout: 10000
 });
 
@@ -29,22 +29,22 @@ service.interceptors.response.use(
 
     const res = response.data;
 
-    if (res.code !== 200) {
-      //90001 Session超时
-      if (res.code === 90001) {
-        return Promise.reject("error");
-      }
+    if (res.code !== 0) {
+      // //90001 Session超时
+      // if (res.code === 90001) {
+      //   return Promise.reject("error");
+      // }
 
-      //90002 用户未登录
-      if (res.code === 90002) {
-        Message({
-          type: "warning",
-          showClose: true,
-          message: "未登录或登录超时，请重新登录哦~"
-        });
+      // //90002 用户未登录
+      // if (res.code === 90002) {
+      //   Message({
+      //     type: "warning",
+      //     showClose: true,
+      //     message: "未登录或登录超时，请重新登录哦~"
+      //   });
 
-        return Promise.reject("error");
-      }
+      //   return Promise.reject("error");
+      // }
 
       return Promise.reject(res.msg);
     } else {

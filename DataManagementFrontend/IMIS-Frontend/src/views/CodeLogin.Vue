@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import {codeLogin} from "../api/login";
+// import {codeLogin} from "../api/login";
 
 
 export default {
