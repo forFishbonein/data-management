@@ -97,12 +97,9 @@
             >
             </el-input>
             <el-button v-else class="button-new-tag" size="small" type="button" @click="showInput">+ New Tag</el-button>
-            <!--                </div>-->
           </div>
           <div class="resources">
-                  <span>
-附件上传
-                  </span>
+                  <span>附件上传</span>
             <div class="upload">
               <el-upload
                 :before-remove="beforeRemove"
