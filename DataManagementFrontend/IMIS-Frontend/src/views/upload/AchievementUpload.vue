@@ -136,7 +136,7 @@ export default {
       dynamicTags: [],
       inputVisible: true,
       inputValue: '',
-      fileList: [{}],
+      fileList: [],
       restaurants: [],
       state: ''
     };

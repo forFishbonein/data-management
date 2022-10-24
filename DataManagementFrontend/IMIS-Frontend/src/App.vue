@@ -1,10 +1,10 @@
 <template>
   <div id="app">
 <!--     <router-view></router-view>-->
-<!--  <Teaching></Teaching>-->
+  <Teaching></Teaching>
 <!--    <TeacherStudying></TeacherStudying>-->
 <!--<PartyUpload></PartyUpload>-->
-    <AchievementUpload></AchievementUpload>
+<!--    <AchievementUpload></AchievementUpload>-->
   </div>
 </template>
 
