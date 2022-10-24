@@ -5,13 +5,9 @@
 </template>
 
 <script>
-import RegisterTeacher from './views/RegisterTeacher'
 export default {
   name: 'App',
-  components:{
-
-    RegisterTeacher
-  }
+  components:{}
 }
 </script>
 
