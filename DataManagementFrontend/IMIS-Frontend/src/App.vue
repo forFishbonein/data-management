@@ -1,15 +1,17 @@
 <template>
   <div id="app">
-     <router-view></router-view>
+<!--     <router-view></router-view>-->
+  <TeacherStudying></TeacherStudying>
   </div>
 </template>
 
 <script>
 import RegisterTeacher from './views/RegisterTeacher'
+import TeacherStudying from "./views/upload/TeacherStudying";
 export default {
   name: 'App',
   components:{
-
+    TeacherStudying,
     RegisterTeacher
   }
 }
