@@ -4,7 +4,7 @@ import FileManage from "../components/manage/FileManage.vue";
 import CompetitionManage from "../components/manage/CompetitionManage.vue";
 import TeacherIndex from "../views/TeacherIndex.vue";
 import RegisterTeacher from "../views/RegisterTeacher.vue";
-import TeacherUploadteaching from "../views/TeacherUploadteaching.vue";
+import TeacherUploadteaching from "../views/upload/Teaching.vue";
 import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
 import Manage from "../views/Manage.vue";

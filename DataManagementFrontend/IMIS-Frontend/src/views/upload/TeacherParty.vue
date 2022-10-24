@@ -149,7 +149,7 @@
 </template>
 
 <script>
-import TeacherNav from "../components/TeacherNav";
+import TeacherNav from "../../components/TeacherNav";
 
 export default {
   name: 'TeacherUploadteaching',
