@@ -11,7 +11,8 @@
             <tr>
               <td width="20%"><span>邮箱地址</span></td>
               <td width="35%">
-                <p class="underline"><input v-model="teacher.teacherEmail" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写邮箱')"
+                <p class="underline"><input v-model="teacher.teacherEmail" oninput="setCustomValidity('')"
+                                            oninvalid="setCustomValidity('请填写邮箱')"
                                             required type="text">
                 </p>
               </td>
@@ -20,7 +21,8 @@
             <tr>
               <td width="20%"><span>验证码</span></td>
               <td width="35%"><p class="underline">
-                <input v-model="teacher.code" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写验证码')" required
+                <input v-model="teacher.code" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写验证码')"
+                       required
                        type="text"></p>
               </td>
               <td width="35%">
@@ -33,7 +35,8 @@
               <td><span>密码</span></td>
               <td width="35%">
                 <p class="underline">
-                  <input v-model="teacher.teacherPass" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写密码')"
+                  <input v-model="teacher.teacherPass" oninput="setCustomValidity('')"
+                         oninvalid="setCustomValidity('请填写密码')"
                          required
                          type="text">
                 </p>
@@ -42,31 +45,38 @@
             </tr>
             <tr>
               <td><span>确认密码</span></td>
-              <td width="35%"><p class="underline"><input v-model="teacher.teacherRePass" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请再次输入密码')"
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherRePass"
+                                                          oninput="setCustomValidity('')"
+                                                          oninvalid="setCustomValidity('请再次输入密码')"
                                                           required
                                                           type="text"></p></td>
             </tr>
             <tr>
               <td><span>姓名</span></td>
-              <td width="35%"><p class="underline"><input v-model="teacher.teacherName" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写姓名')"
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherName" oninput="setCustomValidity('')"
+                                                          oninvalid="setCustomValidity('请填写姓名')"
                                                           required
                                                           type="text"></p></td>
             </tr>
             <tr>
               <td><span>职位</span></td>
-              <td width="35%"><p class="underline"><input v-model="teacher.teacherTittle" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写职位')"
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherTittle"
+                                                          oninput="setCustomValidity('')"
+                                                          oninvalid="setCustomValidity('请填写职位')"
                                                           required
                                                           type="text"></p></td>
             </tr>
             <tr>
               <td><span>教工号</span></td>
-              <td width="35%"><p class="underline"><input v-model="teacher.teacherSid" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写教工号')"
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherSid" oninput="setCustomValidity('')"
+                                                          oninvalid="setCustomValidity('请填写教工号')"
                                                           required
                                                           type="text"></p></td>
             </tr>
             <tr>
               <td><span>电话</span></td>
-              <td width="35%"><p class="underline"><input v-model="teacher.teacherTele" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写电话')"
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherTele" oninput="setCustomValidity('')"
+                                                          oninvalid="setCustomValidity('请填写电话')"
                                                           required
                                                           type="text"></p></td>
             </tr>
