@@ -1,17 +1,6 @@
 <template>
   <div id="app">
-    <!-- <router-view></router-view> -->
-<!--   <TeacherIndex></TeacherIndex>-->
-   <RegisterTeacher></RegisterTeacher>
-<!--     <RegisterStudent></RegisterStudent>-->
-<!--     <StudentIndex></StudentIndex>-->
-<!--     <Manage></Manage>-->
-    <!-- <Compete></Compete> -->
-<!--     <SearchResults></SearchResults>-->
-<!--    <test></test>-->
-      <!-- <LoginIna></LoginIna> -->
-     <!-- <LoginFooter></LoginFooter> -->
-<!--    <TeacherFile></TeacherFile>-->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -23,8 +12,6 @@ export default {
 </script>
 
 <style>
-/* #app {
-} */
 
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, legend, input, textarea, button, p, blockquote, th, td {
   margin: 0;

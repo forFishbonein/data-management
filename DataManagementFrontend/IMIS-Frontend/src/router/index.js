@@ -8,7 +8,7 @@ import TeacherUploadteaching from "../views/upload/Teaching.vue";
 import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
 
-import Achievement from "../views/Achievement.vue";
+import Achievement from "../views/template/Achievement.vue";
 
 import Manage from "../views/Manage.vue";
 import AccountManage from "../components/manage/AccountManage.vue";
