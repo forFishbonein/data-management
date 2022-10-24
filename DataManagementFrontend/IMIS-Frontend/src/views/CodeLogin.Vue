@@ -134,7 +134,7 @@ export default {
 .codeLogin a:before,
 .passLogin a:before {
   content: '';
-  height: 5px;
+  height: 3px;
   background-color: #1a3f66;
   width: 100%;
   position: absolute;
@@ -147,8 +147,8 @@ export default {
   transition: .3s;
 }
 
-.codeLogin a:hover:before,
 .passLogin a:hover:before {
+  background-color: #2464a7;
   transform: scaleX(1);
 }
 

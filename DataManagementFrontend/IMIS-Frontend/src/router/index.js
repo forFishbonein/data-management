@@ -1,79 +1,124 @@
 import VueRouter from "vue-router";
 import Vue from "vue";
-import FileManage from "../components/manage/FileManage.vue";
 import CompetitionManage from "../components/manage/CompetitionManage.vue";
 import TeacherIndex from "../views/TeacherIndex.vue";
 import RegisterTeacher from "../views/RegisterTeacher.vue";
-import TeacherUploadteaching from "../views/upload/TeachingUpload.vue";
 import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
 
-import Achievement from "../views/template/Achievement.vue";
-
+//manage
 import Manage from "../views/Manage.vue";
 import AccountManage from "../components/manage/AccountManage.vue";
+import FileManage from "../components/manage/FileManage.vue";
+
+//template
+import Achievement from "../views/template/Achievement.vue";
+
+//upload
+import Upload from "../views/Upload.vue";
+import AchievementUpload from "../components/upload/AchievementUpload";
+import CommunicationUpload from "../components/upload/CommunicationUpload";
+import ContestUpload from "../components/upload/ContestUpload";
+import HonorUpload from "../components/upload/HonorUpload";
+import OfficeUpload from "../components/upload/OfficeUpload";
+import PartyUpload from "../components/upload/PartyUpload";
+import StudyingUpload from "../components/upload/StudyingUpload";
+import TeachingUpload from "../components/upload/TeachingUpload";
 
 Vue.use(VueRouter);
 
-import store from "@/store";
-
-import { getToken } from "@/request/token";
-
 const routes = [
-  {
-    path: "/",
-    component: CodeLogin
-  },
-  {
-    path: "/codelogin",
-    component: CodeLogin
-  },
+    {
+      path: "/",
+      component: CodeLogin
+    },
+    {
+      path: "/codelogin",
+      component: CodeLogin
+    },
 
-  {
-    path: "/passlogin",
-    component: PassLogin
-  },
-  {
-    path: "/registerteacher",
-    component: RegisterTeacher
-  },
-  {
-    path: "/fileManage",
-    component: FileManage
-  },
-  {
-    path: "/competitionManage",
-    component: CompetitionManage
-  },
-  {
-    path: "/person",
-    component:TeacherIndex
-  },
+    {
+      path: "/passlogin",
+      component: PassLogin
+    },
+    {
+      path: "/registerteacher",
+      component: RegisterTeacher
+    },
+    {
+      path: "/competitionManage",
+      component: CompetitionManage
+    },
+    {
+      path: "/profile",
+      component: TeacherIndex
+    },
 
-  {
-    path: "/resource",
-    component: CompetitionManage
-  },
+    {
+      path: "/resource",
+      component: CompetitionManage
+    },
+    {
+      path: "/upload",
+      component: Upload
+    },
+    {
+      path: "/achievement",
+      component: Achievement
+    },
+    {
+      path: "/manage",
+      component: Manage,
+      children: [
+        {
+          path: 'filemange',
+          component: FileManage
+        },
+        {
+          path: 'accountmange',
+          component: AccountManage
+        }
+      ]
+    },
   {
     path: "/upload",
-    component: TeacherUploadteaching
-  },
-  {
-    path: "/achievement",
-    component: Achievement
-  },
-  {
-    path: "/manage",
-    component: Manage,
-    children:[{
-      path:'filemange',
-      component:FileManage
-    }
-    ]},
-  {
-    path:'accountmange',
-    component:AccountManage
-  }]
+    component: Upload,
+    children: [
+      {
+        path: 'teaching',
+        component: TeachingUpload
+      },
+      {
+        path: 'achievementupload',
+        component: AchievementUpload
+      },
+      {
+        path: 'communicationupload',
+        component: CommunicationUpload
+      },
+      {
+        path: 'contestupload',
+        component: ContestUpload
+      },
+      {
+        path: 'honorupload',
+        component: HonorUpload
+      },
+      {
+        path: 'officeupload',
+        component: OfficeUpload
+      },
+      {
+        path: 'partyupload',
+        component: PartyUpload
+      },
+      {
+        path: 'studyingupload',
+        component: StudyingUpload
+      }
+    ]
+  }
+  ]
 ;
 
 const router = new VueRouter({

@@ -2,10 +2,10 @@
   <div class="background">
     <TeacherNav/>
     <div class="main">
-      <div class="title">教研项目</div>
+      <div class="title">科研项目</div>
       <div class="content">
         <form>
-          <div class="choose"><span>选择模板</span>
+          <div class="choose"><span>选择模板&emsp;</span>
             <a href="">
               <button value="a1">科研项目</button>
             </a>
@@ -116,7 +116,6 @@
               </el-upload>
             </div>
           </div>
-
           <button type="submit">立即上传</button>
 
         </form>
@@ -126,10 +125,10 @@
 </template>
 
 <script>
-import TeacherNav from "../../components/TeacherNav";
+import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeacherUploadteaching',
+  name: 'HonorUpload',
   components: {TeacherNav},
   data() {
     return {
@@ -177,7 +176,7 @@ export default {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
     },
     beforeRemove(file, fileList) {
-      return this.$confirm(`确定移除 ${ file.name }？`);
+      return this.$confirm(`确定移除 ${file.name}？`);
     },
     querySearch(queryString, cb) {
       var restaurants = this.restaurants;
@@ -219,12 +218,7 @@ export default {
 } */
 .my-autocomplete {
 }
-.el-autocomplete[data-v-5e76e5f2] {
-  height: 32px;
-  position: relative;
-  display: inline-block;
-  margin-left: 30px;
-}
+
 li {
   line-height: normal;
   padding: 7px;
@@ -235,17 +229,18 @@ li {
   overflow: hidden;
 }
 
-.el-autocomplete {
+.el-autocomplete[data-v-d55b5612] {
   height: 32px;
   position: relative;
   display: inline-block;
+  margin-left: 30px;
 }
 
 el-input--suffix .el-input__inner {
   padding-right: 30px;
   height: 35px;
 }
-.choose button[data-v-5e76e5f2] {
+.choose button[data-v-221be311] {
   height: 38px;
   width: 80px;
   background-color: #FFFFFF;
@@ -254,7 +249,6 @@ el-input--suffix .el-input__inner {
   margin-right: -15px;
   border-radius: 5px;
 }
-
 .background {
   background-color: #EAF2FB;
   /*padding: 20px 30px;*/
@@ -389,7 +383,6 @@ textarea[type="text"]:focus {
   vertical-align: bottom;
 }
 
-/*.input-new-tag{margin:0}*/
 .resources {
   display: flex
 }

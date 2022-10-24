@@ -154,6 +154,30 @@ export default {
         filePath: "",
         createTime: "",
       },
+      Search: {
+        TEMPLATE_TYPE: "teaching",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
+
+        name: "",
+        source: "",
+        type: "",
+        level: "",
+        projectTime: "",
+        postprojectTime: "",
+        fund: "",
+        member: "",
+
+        other: {
+          "条目1": "内容1",
+          "条目2": "内容2"
+        },
+
+        filePath: "",
+        createTime: "",
+      },
       StudentContest: {
         TEMPLATE_TYPE: "studentContest",
         id: "",

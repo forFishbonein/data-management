@@ -25,6 +25,7 @@ import java.util.Map;
         @JsonSubTypes.Type(value = Honor.class, name = Honor.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = Office.class, name = Office.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = Party.class, name = Party.TEMPLATE_TYPE),
+        @JsonSubTypes.Type(value = Research.class, name = Research.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = StudentContest.class, name = StudentContest.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = Teaching.class, name = Teaching.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = UserDefined.class, name = UserDefined.TEMPLATE_TYPE)

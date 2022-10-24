@@ -2,7 +2,7 @@
   <div class="background">
     <TeacherNav/>
     <div class="main">
-      <div class="title">各类荣誉</div>
+      <div class="title">科研项目</div>
       <div class="content">
         <form>
           <div class="choose"><span>选择模板&emsp;</span>
@@ -116,7 +116,6 @@
               </el-upload>
             </div>
           </div>
-
           <button type="submit">立即上传</button>
 
         </form>
@@ -126,10 +125,10 @@
 </template>
 
 <script>
-import TeacherNav from "../../components/TeacherNav";
+import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeacherAchievement',
+  name: 'PartyUpload',
   components: {TeacherNav},
   data() {
     return {
@@ -230,7 +229,7 @@ li {
   overflow: hidden;
 }
 
-.el-autocomplete[data-v-0e615308] {
+.el-autocomplete[data-v-065c4f1a]{
   height: 32px;
   position: relative;
   display: inline-block;
@@ -250,6 +249,7 @@ el-input--suffix .el-input__inner {
   margin-right: -15px;
   border-radius: 5px;
 }
+
 .background {
   background-color: #EAF2FB;
   /*padding: 20px 30px;*/

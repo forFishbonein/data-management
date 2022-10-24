@@ -2,7 +2,7 @@
   <div class="background">
     <TeacherNav/>
     <div class="main">
-      <div class="title">科研项目</div>
+      <div class="title">各类荣誉</div>
       <div class="content">
         <form>
           <div class="choose"><span>选择模板&emsp;</span>
@@ -126,10 +126,10 @@
 </template>
 
 <script>
-import TeacherNav from "../../components/TeacherNav";
+import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeacherUploadteaching',
+  name: 'AchievementUpload',
   components: {TeacherNav},
   data() {
     return {
@@ -230,7 +230,7 @@ li {
   overflow: hidden;
 }
 
-.el-autocomplete[data-v-d55b5612] {
+.el-autocomplete[data-v-0e615308] {
   height: 32px;
   position: relative;
   display: inline-block;

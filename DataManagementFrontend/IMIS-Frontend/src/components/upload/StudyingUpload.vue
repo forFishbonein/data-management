@@ -2,7 +2,7 @@
   <div class="background">
     <TeacherNav/>
     <div class="main">
-      <div class="title">科研项目</div>
+      <div class="title">教研项目</div>
       <div class="content">
         <form>
           <div class="choose"><span>选择模板&emsp;</span>
@@ -73,7 +73,7 @@
             <input placeholder="请输入时间" type="date">
           </div>
           <div class="resources">
-            <span>项目经费</span>
+            <span>经费</span>
             <input placeholder="请输入数字" type="number">
           </div>
           <div class="resources">
@@ -116,7 +116,9 @@
               </el-upload>
             </div>
           </div>
+          <span>
 
+</span>
           <button type="submit">立即上传</button>
 
         </form>
@@ -126,10 +128,10 @@
 </template>
 
 <script>
-import TeacherNav from "../../components/TeacherNav";
+import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeacherUploadteaching',
+  name: 'StudyingUpload',
   components: {TeacherNav},
   data() {
     return {
@@ -230,7 +232,7 @@ li {
   overflow: hidden;
 }
 
-.el-autocomplete[data-v-3bd1e53a] {
+.el-autocomplete[data-v-4cd4291e] {
   height: 32px;
   position: relative;
   display: inline-block;
@@ -241,13 +243,13 @@ el-input--suffix .el-input__inner {
   padding-right: 30px;
   height: 35px;
 }
-.choose button[data-v-221be311] {
+.choose button[data-v-4cd4291e] {
   height: 38px;
   width: 80px;
   background-color: #FFFFFF;
   border: 1px solid #CACBCC;
-  margin-left: 22px;
-  margin-right: -15px;
+  margin: 3px;
+
   border-radius: 5px;
 }
 .background {

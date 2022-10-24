@@ -116,6 +116,7 @@
               </el-upload>
             </div>
           </div>
+
           <button type="submit">立即上传</button>
 
         </form>
@@ -125,10 +126,10 @@
 </template>
 
 <script>
-import TeacherNav from "../../components/TeacherNav";
+import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeacherUploadteaching',
+  name: 'CommunicationUpload',
   components: {TeacherNav},
   data() {
     return {
@@ -229,7 +230,7 @@ li {
   overflow: hidden;
 }
 
-.el-autocomplete[data-v-d55b5612] {
+.el-autocomplete[data-v-3bd1e53a] {
   height: 32px;
   position: relative;
   display: inline-block;
