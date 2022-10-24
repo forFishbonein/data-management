@@ -8,6 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/logout")
 public class LogoutController {
 
+    @Resource
+    TeacherService teacherService;
+
+    @PostMapping
+    public Result<String> logout(String token) {
+        return Result.success(teacherService.logout(token));
+    }
+
 
 
 }

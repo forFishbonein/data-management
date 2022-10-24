@@ -87,7 +87,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
 
     @Override
     public String logout(String token) {
-        return null;
+        redisService.delete(TeacherKey.token, token);
     }
 
     @Override
