@@ -31,25 +31,19 @@
           </div>
 
           <div class="resources">
-                <span>
-项目名称&emsp;
-                </span>
+            <span>资源名称</span>
             <input placeholder="请输入文字" type="text">
           </div>
           <div class="resources">
-                <span>
-项目简介&emsp;
-                </span>
+            <span>项目简介</span>
             <textarea placeholder="请输入文字" style="width:450px ;height:125px;" type="text"/>
           </div>
           <div class="resources">
-                <span>
-项目来源&emsp;
-                </span>
+            <span>项目来源</span>
             <input placeholder="请输入文字" type="text">
           </div>
           <div class="resources">
-            <span>项目类型&emsp;</span>
+            <span>项目类型</span>
             <el-autocomplete
               v-model="state"
               :fetch-suggestions="querySearch"
@@ -67,19 +61,19 @@
             </el-autocomplete>
           </div>
           <div class="resources">
-            <span>项目级别&emsp;</span>
+            <span>项目级别</span>
             <input placeholder="请输入文字" type="text">
           </div>
           <div class="resources">
-            <span>立项时间&emsp;</span>
+            <span>立项时间</span>
             <input placeholder="请输入时间" type="date">
           </div>
           <div class="resources">
-            <span>结项时间&emsp;</span>
+            <span>结项时间</span>
             <input placeholder="请输入时间" type="date">
           </div>
           <div class="resources">
-            <span>经&emsp;&emsp;费&emsp;</span>
+            <span>项目经费</span>
             <input placeholder="请输入数字" type="number">
           </div>
           <div class="resources">
@@ -106,9 +100,7 @@
             <!--                </div>-->
           </div>
           <div class="resources">
-                  <span>
-附件上传
-                  </span>
+            <span>附件上传</span>
             <div class="upload">
               <el-upload
                 :before-remove="beforeRemove"
@@ -124,9 +116,6 @@
               </el-upload>
             </div>
           </div>
-          <span>
-
-</span>
           <button type="submit">立即上传</button>
 
         </form>
@@ -240,15 +229,25 @@ li {
   overflow: hidden;
 }
 
-.el-autocomplete {
+.el-autocomplete[data-v-065c4f1a]{
   height: 32px;
   position: relative;
   display: inline-block;
+  margin-left: 30px;
 }
 
 el-input--suffix .el-input__inner {
   padding-right: 30px;
   height: 35px;
+}
+.choose button[data-v-221be311] {
+  height: 38px;
+  width: 80px;
+  background-color: #FFFFFF;
+  border: 1px solid #CACBCC;
+  margin-left: 22px;
+  margin-right: -15px;
+  border-radius: 5px;
 }
 
 .background {
@@ -310,7 +309,7 @@ span {
 input {
   height: 40px;
   padding: 12px 20px;
-  margin: 1px 15px;
+  margin: 1px 30px;
   box-sizing: border-box;
   border: 1px solid #DCDFE6;
   /*border: 1px solid #CACBCC;*/
@@ -324,7 +323,7 @@ input:focus {
 
 textarea[type="text"] {
   padding: 12px 20px;
-  margin: 8px 15px;
+  margin: 8px 30px;
   box-sizing: border-box;
   border: 1px solid #DCDFE6;
   /*border: 1px solid #CACBCC;*/
