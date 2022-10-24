@@ -10,20 +10,21 @@
         </div>
       </div>
       <div class="login-input-box">
-        <input placeholder="请输入邮箱" type="text">
-        <input placeholder="请输入密码" type="password">
+        <input type="text" placeholder="请输入邮箱" v-model="login.email">
+        <input type="password" placeholder="请输入密码" v-model="login.password">
       </div>
       <div class="login-check">
         <span><input type="checkbox">记住我</span>
         <span>注册账号</span>
         <span>忘记密码？</span>
       </div>
-      <button class="login-button">登 录</button>
+      <button class="login-button" @click="passLogin(login)">登 录</button>
     </form>
   </div>
 </template>
 
 <script>
+
 
 export default {
   name: 'PassLogin',
@@ -48,10 +49,21 @@ export default {
         name = 'codelogin'
       )
     },
-    passLogin() {
-      this.$router.replace(
-        name = 'passlogin'
-      )
+    passLogin(login) {
+      // this.$router.replace(
+      //   name = 'passlogin'
+      // )
+      this.$store.dispatch('passLogin', login).then( res => {
+            this.$message({message: '登录成功！', type: 'success', showClose: true});
+            // console.log(res)
+            // alert("登陆成功");
+            this.$router.push({path: '/'})
+          }).catch((error) => {
+            console.log(error);
+            if (error !== 'error') {
+              this.$message({message: error, type: 'error', showClose: true});
+            }
+          })
     },
     toRegister() {
       this.$router.replace(
@@ -99,7 +111,6 @@ export default {
   background-color: rgba(255, 255, 255, 0.3);
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
-
 .login-way-box {
   display: flex;
   justify-content: space-around;

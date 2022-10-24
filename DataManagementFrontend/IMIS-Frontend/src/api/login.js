@@ -2,21 +2,22 @@ import request from "@/request";
 
 export function codeLogin(data) {
   return request({
-    data,
+    data: data,
     method: "post",
-    url: "http://localhost:8888/login"
+    url: "/t/login"
   });
 }
 
-export function passLogin(data) {
+export function passLogin(login) {
+  // console.log(login);
   return request({
-    data,
+    data: login,
     method: "post",
-    url: "http://localhost:8888/passLogin"
+    url: "/t/passLogin"
   });
 }
 
-export function getUserInfo(token ,id) {
+export function getUserInfo(token, id) {
   return request({
     headers: { Authorization: token },
     url: `/users/${id}`,

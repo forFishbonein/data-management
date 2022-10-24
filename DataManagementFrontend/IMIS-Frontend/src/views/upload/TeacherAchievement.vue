@@ -2,7 +2,7 @@
   <div class="background">
     <TeacherNav/>
     <div class="main">
-      <div class="title">教研项目</div>
+      <div class="title">各类荣誉</div>
       <div class="content">
         <form>
           <div class="choose"><span>选择模板&emsp;</span>
@@ -32,7 +32,7 @@
 
           <div class="resources">
                 <span>
-资源名称&emsp;
+项目名称&emsp;
                 </span>
             <input placeholder="请输入文字" type="text">
           </div>
@@ -94,7 +94,7 @@
           </div>
           <div class="resources">
                 <span>
-课题组成员
+成员
                 </span>
             <!--                <div class="teammate">-->
             <el-tag
@@ -149,10 +149,10 @@
 </template>
 
 <script>
-import TeacherNav from "../components/TeacherNav";
+import TeacherNav from "../../components/TeacherNav";
 
 export default {
-  name: 'TeacherUploadteaching',
+  name: 'TeacherAchievement',
   components: {TeacherNav},
   data() {
     return {
@@ -398,7 +398,6 @@ textarea[type="text"]:focus {
   vertical-align: bottom;
 }
 
-/*.input-new-tag{margin:0}*/
 .resources {
   display: flex
 }
