@@ -57,19 +57,23 @@ export default new Vuex.Store({
           });
       });
     },
-    passLogin({ commit }, user) {
+    passLogin({ commit }, login) {
       return new Promise((resolve, reject) => {
-        passLogin(user.email, user.password)
-          .then(data => {
-            if (data.success) {
-              commit("SET_TOKEN", data.data);
-              setToken(data.data);
-              resolve();
-            } else {
-              reject(data.msg);
-            }
+        passLogin(login)
+          .then(res => {
+            console.log(res);
+            // alert("1111");
+            // if (res.success) {
+            console.log(res.data.data);
+            commit("SET_TOKEN", res.data.data);
+            setToken(res.data.data);
+            resolve();
+            // } else {
+            //   reject(res.msg);
+            // }
           })
           .catch(error => {
+            console.log(error);
             reject(error);
           });
       });
@@ -160,7 +164,7 @@ export default new Vuex.Store({
             reject(error);
           });
       });
-    },
+    }
     // studentRegister({ commit }, user) {
     //   return new Promise((resolve, reject) => {
     //     postRegisterStudent(user.account, user.nickname, user.password)
