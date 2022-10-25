@@ -15,8 +15,8 @@
       </div>
       <div class="login-check">
         <span><input type="checkbox">记住我</span>
-        <span>注册账号</span>
-        <span>忘记密码？</span>
+        <router-link to="/register">注册账号</router-link>
+        <router-link to="/register">忘记密码？</router-link>
       </div>
       <button class="login-button" @click="passLogin(login)">登 录</button>
     </form>
@@ -180,24 +180,25 @@ export default {
 .login-check {
 }
 
-.login-check span {
+.login-check span,
+.login-check a{
   float: left;
   color: #113355;
   font-size: 12px;
   margin-top: 20px;
 }
 
-.login-check span:nth-child(1) {
+.login-check span {
   margin-left: 20px;
 
 }
 
-.login-check span:nth-child(2) {
+.login-check a:nth-child(2) {
   margin-left: 140px;
 
 }
 
-.login-check span:nth-child(3) {
+.login-check a:nth-child(3) {
   margin-left: 20px;
 }
 

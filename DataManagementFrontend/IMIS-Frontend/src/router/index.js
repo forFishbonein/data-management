@@ -43,7 +43,7 @@ const routes = [
       component: PassLogin
     },
     {
-      path: "/registerteacher",
+      path: "/register",
       component: RegisterTeacher
     },
     {
