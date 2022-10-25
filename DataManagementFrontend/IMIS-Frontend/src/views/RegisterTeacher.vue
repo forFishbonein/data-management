@@ -4,7 +4,7 @@
       <div class="context">
         <h1>创建账户</h1>
         <div class="login"><span>已有账户？</span>
-          <a href="#"><span>登录</span></a>
+          <router-link to="/login"><span>登录</span></router-link>
         </div>
         <form action="">
           <table>
