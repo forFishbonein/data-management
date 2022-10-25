@@ -126,28 +126,31 @@
               <el-button v-else class="button-new-tag" size="small" @click="showInput">+添加成员</el-button>
             </td>
           </tr>
-
+        </table>
           <!-- <tr v-for="(key,value) in Teaching.other" :key="key"> -->
-          <div  style="width:300px" v-model="number"
+          <!-- <div  style="width:300px" v-model="number"
                 :key="index"
-                v-for="(i,index) in number">
-            <tr>
-              <td>
-                <el-input
-                  v-model="m.key"
-                  clearable>
-                </el-input>
-              </td>
-              <td>
-                <el-input
-                  v-model="m.value"
-                  clearable>
-                </el-input>
-              </td>
-              <td style="align='right'">
-                <el-button type="primary" plain @click="addInput()">主要按钮</el-button>
-              </td>
-            </tr>
+                v-for="(i,index) in number"> -->
+          <div style="width:300px">
+            <table id="change-table">
+              <tr>
+                <td>
+                  <el-input
+                    v-model="m.key"
+                    clearable>
+                  </el-input>
+                </td>
+                <td>
+                  <el-input
+                    v-model="m.value"
+                    clearable>
+                  </el-input>
+                </td>
+                <td style="align='right'">
+                  <el-button type="primary" plain @click="addInput()">主要按钮</el-button>
+                </td>
+              </tr>
+            </table>
           </div>
           <!-- <tr>
             <td>
@@ -163,7 +166,7 @@
               </el-input>
             </td>
           </tr> -->
-        </table>
+
         <!-- <div @click="dayin()">123456789</div> -->
 
 
@@ -222,15 +225,25 @@ export default {
     dayin() {
       console.log(this.Teaching)
     },
-
+    Template(key , value){
+      this.key = key;
+      this.value = value
+    },
     addInput(){
-      this.number.push(0);
-      // var n = new Object();   //声明构造函数
-      // m.set();  //赋值
-      // var name =  this.m.key;
-      // n.key = this.m.value;
-      // console.log(n);
-      // this.Teaching.other
+      // document.getElementById("change-table").style.display = "none"
+      // var trHtml = '<td>' + '你好啊啊啊' + '</td>'
+
+      // this.number.push(0);
+      let kv = new this.Template(this.m.key , this.m.value);
+      this.Teaching.other.push(kv)
+      console.log(this.Teaching.other)
+      var trHtml = `<td>${this.Teaching.other[this.Teaching.other.length-1].key}</td> <td>${this.Teaching.other[this.Teaching.other.length-1].value}</td>`
+      var tr = document.createElement('tr');
+      tr.innerHTML = trHtml
+      document.getElementById("change-table").appendChild(tr)
+      this.m.key = ""
+      this.m.value = ""
+      console.log(this.m)
 
     },
 
