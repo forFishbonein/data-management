@@ -29,6 +29,7 @@ import TeachingUpload from "../components/upload/TeachingUpload";
 Vue.use(VueRouter);
 
 const routes = [
+
     {
       path: "/",
       component: CodeLogin
@@ -118,6 +119,7 @@ const routes = [
 ;
 
 const router = new VueRouter({
+  mode:'history',
   routes
 });
 
