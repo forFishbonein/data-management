@@ -43,19 +43,6 @@
             <version>2.9.0</version>
         </dependency>
 
-
-<!--        &lt;!&ndash;缓存&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-cache</artifactId>-->
-<!--        </dependency>-->
-
-<!--        &lt;!&ndash;redis缓存&ndash;&gt;-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--        </dependency>-->
-
         <!--mongodb-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
