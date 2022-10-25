@@ -4,8 +4,8 @@ import { getToken } from "@/request/token";
 import { Message } from "element-ui";
 
 const service = axios.create({
-  // baseURL: "/static/json",
-  baseURL: "http://localhost:8888",
+  baseURL: "/static/json",
+  // baseURL: "http://localhost:8888",
   timeout: 10000
 });
 

@@ -43,7 +43,6 @@ Vue.use(Button);
 Vue.use(Upload);
 Vue.use(Autocomplete);
 Vue.use(VueRouter);
-Vue.use(Message);
 Vue.use(Dialog);
 Vue.use(Form);
 Vue.use(FormItem);
