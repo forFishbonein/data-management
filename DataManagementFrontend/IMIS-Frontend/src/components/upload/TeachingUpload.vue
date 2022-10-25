@@ -131,15 +131,20 @@
             <td>
               <el-upload
                 class="upload-demo"
-                action="https://jsonplaceholder.typicode.com/posts/"
+                ref="upload"
+                action="http://localhost:8888/file/upload"
                 :on-preview="handlePreview"
                 :on-remove="handleRemove"
+                :auto-upload="false"
                 :before-remove="beforeRemove"
                 multiple
                 :on-exceed="handleExceed"
                 :file-list="this.Teaching.filePath">
-                <el-button size="small" type="primary">点击上传</el-button>
+                <el-button size="small" type="primary">选择文件</el-button>
               </el-upload>
+            </td>
+            <td>
+              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
             </td>
           </tr>
 
@@ -295,6 +300,9 @@ export default {
     },
     handlePreview(file) {
       console.log(file);
+    },
+    submitUpload(){
+      this.$refs.upload.submit();
     },
     handleExceed(files, filePath) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);

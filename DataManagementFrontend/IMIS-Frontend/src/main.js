@@ -23,7 +23,9 @@ import {
   Table,
   TableColumn,
   Tag,
-  Upload
+  Upload,
+  Form,
+  FormItem,
 } from "element-ui";
 
 Vue.use(Pagination);
@@ -43,6 +45,8 @@ Vue.use(Autocomplete);
 Vue.use(VueRouter);
 Vue.use(Message);
 Vue.use(Dialog);
+Vue.use(Form);
+Vue.use(FormItem);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox;
