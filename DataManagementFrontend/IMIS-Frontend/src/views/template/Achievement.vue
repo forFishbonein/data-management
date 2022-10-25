@@ -13,13 +13,13 @@
           <div class="publicYear">发表年：{{ Achievememnt.publicYear }}</div>
           <div class="paper">论文或专著：{{ Achievememnt.paper }}</div>
           <div class="type">论文类型：{{ Achievememnt.type }}</div>
-          <div class="ppress">出版社/期刊名称：{{ Achievememnt.press }}</div>
+          <div class="press">出版社/期刊名称：{{ Achievememnt.press }}</div>
           <div class="journalGrade">期刊等级：{{ Achievememnt.journalGrade }}</div>
           <div class="schoolGrade">民大认定级别：{{ Achievememnt.schoolGrade }}</div>
           <div class="publicationTime">出版时间/期卷号:{{ Achievememnt.publicationTime }}</div>
           <div class="authorRank">作者排序：{{ Achievememnt.authorRank }}</div>
           <div class="add">
-            <p v-for="(val, key) in Teaching.other">{{ key }} : {{ val }}</p>
+            <p v-for="(val, key) in Achievememnt.other">{{ key }} : {{ val }}</p>
           </div>
 
 
