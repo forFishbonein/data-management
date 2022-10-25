@@ -127,21 +127,29 @@
             </td>
           </tr>
 
-<!--          <tr v-for="(key,value) in Teaching.other">{{ key }}-->
-<!--            <td>-->
-<!--              <el-input-->
-<!--                v-model="key"-->
-<!--                clearable>-->
-<!--              </el-input>-->
-<!--            </td>-->
-<!--            <td>-->
-<!--              <el-input-->
-<!--                v-model="value"-->
-<!--                clearable>-->
-<!--              </el-input>-->
-<!--            </td>-->
-<!--          </tr>-->
-          <tr>
+          <!-- <tr v-for="(key,value) in Teaching.other" :key="key"> -->
+          <div  style="width:300px" v-model="number"
+                :key="index"
+                v-for="(i,index) in number">
+            <tr>
+              <td>
+                <el-input
+                  v-model="m.key"
+                  clearable>
+                </el-input>
+              </td>
+              <td>
+                <el-input
+                  v-model="m.value"
+                  clearable>
+                </el-input>
+              </td>
+              <td style="align='right'">
+                <el-button type="primary" plain @click="addInput()">主要按钮</el-button>
+              </td>
+            </tr>
+          </div>
+          <!-- <tr>
             <td>
               <el-input
                 v-model="otherKey"
@@ -154,15 +162,9 @@
                 clearable>
               </el-input>
             </td>
-          </tr>
-          <tr>
-            <td align="right">
-              <el-button type="primary" plain @click="addInput()">主要按钮</el-button>
-            </td>
-            <td></td>
-          </tr>
+          </tr> -->
         </table>
-        <div @click="dayin()">123456789</div>
+        <!-- <div @click="dayin()">123456789</div> -->
 
 
       </div>
@@ -185,7 +187,6 @@ export default {
         title: "",
         num: "",
         introduction: "",
-
         name: "",
         source: "",
         type: "",
@@ -194,12 +195,10 @@ export default {
         postprojectTime: "",
         fund: "",
         member: [],
-
-        other: {
-          "k1":"v1",
-          "k2":"v2",
-        },
-
+        other: []
+          // "k1":"v1",
+          // "k2":"v2",
+        ,
         filePath: "",
         createTime: "",
       },
@@ -208,7 +207,14 @@ export default {
       otherValue: "请输入属性",
 
       inputVisible: false,
-      inputValue: ''
+      inputValue: '',
+      m:{
+        key: "",
+        value: "",
+      },
+      // key: "",
+      // value: "",
+      number: [0],
     };
 
   },
@@ -218,10 +224,13 @@ export default {
     },
 
     addInput(){
-      var m = new Map();   //声明构造函数
-      m.set(name , '张三');  //赋值
-      this.Teaching.other
-
+      this.number.push(0);
+      // var n = new Object();   //声明构造函数
+      // m.set();  //赋值
+      // var name =  this.m.key;
+      // n.key = this.m.value;
+      // console.log(n);
+      // this.Teaching.other
 
     },
 
@@ -284,14 +293,7 @@ export default {
   margin: 0 auto;
   margin-top: 10px;
   width: 1200px;
-
-  .content {
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #fdfdfd;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-
-  }
+  background-color: white;
 
   table {
 
