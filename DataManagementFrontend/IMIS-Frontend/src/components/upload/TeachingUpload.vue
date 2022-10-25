@@ -126,11 +126,27 @@
               <el-button v-else class="button-new-tag" size="small" @click="showInput">+添加成员</el-button>
             </td>
           </tr>
+          <tr>
+            <td class="label">上传文件</td>
+            <td>
+              <el-upload
+                class="upload-demo"
+                action="https://jsonplaceholder.typicode.com/posts/"
+                :on-preview="handlePreview"
+                :on-remove="handleRemove"
+                :before-remove="beforeRemove"
+                multiple
+                :on-exceed="handleExceed"
+                :file-list="this.Teaching.filePath">
+                <el-button size="small" type="primary">点击上传</el-button>
+              </el-upload>
+            </td>
+          </tr>
+
+
+
         </table>
-          <!-- <tr v-for="(key,value) in Teaching.other" :key="key"> -->
-          <!-- <div  style="width:300px" v-model="number"
-                :key="index"
-                v-for="(i,index) in number"> -->
+
           <div style="width:300px">
             <table id="change-table">
               <tr>
@@ -146,28 +162,15 @@
                     clearable>
                   </el-input>
                 </td>
-                <td style="align='right'">
+                <td style="align:'right'">
                   <el-button type="primary" plain @click="addInput()">主要按钮</el-button>
                 </td>
               </tr>
             </table>
           </div>
-          <!-- <tr>
-            <td>
-              <el-input
-                v-model="otherKey"
-                clearable>
-              </el-input>
-            </td>
-            <td>
-              <el-input
-                v-model="otherValue"
-                clearable>
-              </el-input>
-            </td>
-          </tr> -->
 
-        <!-- <div @click="dayin()">123456789</div> -->
+
+         <div @click="dayin()">123456789</div>
 
 
       </div>
@@ -202,7 +205,7 @@ export default {
           // "k1":"v1",
           // "k2":"v2",
         ,
-        filePath: "",
+        filePath: [],
         createTime: "",
       },
 
@@ -286,6 +289,18 @@ export default {
     handleSelect(item) {
     },
     handleIconClick(ev) {
+    },
+    handleRemove(file, filePath) {
+      console.log(file, filePath);
+    },
+    handlePreview(file) {
+      console.log(file);
+    },
+    handleExceed(files, filePath) {
+      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+    },
+    beforeRemove(file, filePath) {
+      return this.$confirm(`确定移除 ${ file.name }？`);
     }
   },
   mounted() {
