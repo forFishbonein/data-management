@@ -21,7 +21,7 @@
 
         <router-link to="#">论文/期刊</router-link>
 
-        <router-link to="#">自定义</router-link>
+        <router-link class="ud" to="#">自定义</router-link>
 
       </div>
       <div class="context">
@@ -77,6 +77,10 @@ export default {
 
   .active {
     color: #2d76cb;
+  }
+
+  .ud {
+    color: #dccb00;
   }
 
   a {
