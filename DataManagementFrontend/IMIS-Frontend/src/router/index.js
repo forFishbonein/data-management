@@ -34,7 +34,7 @@ const routes = [
       component: CodeLogin
     },
     {
-      path: "/codelogin",
+      path: "/login",
       component: CodeLogin
     },
 
@@ -54,15 +54,10 @@ const routes = [
       path: "/profile",
       component: TeacherIndex
     },
-
     {
-      path: "/resource",
-      component: CompetitionManage
+      path: "/teaching",
+      component: Teaching
     },
-  {
-    path: "/teaching",
-    component: Teaching
-  },
     {
       path: "/achievement",
       component: Achievement
@@ -81,44 +76,44 @@ const routes = [
         }
       ]
     },
-  {
-    path: "/upload",
-    component: Upload,
-    children: [
-      {
-        path: 'teaching',
-        component: TeachingUpload
-      },
-      {
-        path: 'achievementupload',
-        component: AchievementUpload
-      },
-      {
-        path: 'communicationupload',
-        component: CommunicationUpload
-      },
-      {
-        path: 'contestupload',
-        component: ContestUpload
-      },
-      {
-        path: 'honorupload',
-        component: HonorUpload
-      },
-      {
-        path: 'officeupload',
-        component: OfficeUpload
-      },
-      {
-        path: 'partyupload',
-        component: PartyUpload
-      },
-      {
-        path: 'studyingupload',
-        component: StudyingUpload
-      }
-    ]
-  }
+    {
+      path: "/upload",
+      component: Upload,
+      children: [
+        {
+          path: 'teaching',
+          component: TeachingUpload
+        },
+        {
+          path: 'achievementupload',
+          component: AchievementUpload
+        },
+        {
+          path: 'communicationupload',
+          component: CommunicationUpload
+        },
+        {
+          path: 'contestupload',
+          component: ContestUpload
+        },
+        {
+          path: 'honorupload',
+          component: HonorUpload
+        },
+        {
+          path: 'officeupload',
+          component: OfficeUpload
+        },
+        {
+          path: 'partyupload',
+          component: PartyUpload
+        },
+        {
+          path: 'studyingupload',
+          component: StudyingUpload
+        }
+      ]
+    }
   ]
 ;
 

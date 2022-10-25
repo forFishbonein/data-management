@@ -3,7 +3,7 @@
     <form action="" class="login-form">
       <div class="login-way-box">
         <div class="codeLogin">
-          <router-link to="/codeLogin">验证码登录</router-link>
+          <router-link to="/login">验证码登录</router-link>
         </div>
         <div class="passLogin">
           <router-link to="/passLogin">密码登录</router-link>
