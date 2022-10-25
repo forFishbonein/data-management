@@ -14,6 +14,14 @@ import FileManage from "../components/manage/FileManage.vue";
 //template
 import Achievement from "../views/template/Achievement.vue";
 import Teaching from "../views/template/Teaching.vue";
+import Communication from  "../views/template/Communication.vue";
+import Honor from "../views/template/Honor.vue";
+import Office from "../views/template/Office.vue";
+import Paper from "../views/template/Paper.vue";
+import Party from "../views/template/Party.vue";
+import Search from "../views/template/Search.vue";
+import StudentContest from "../views/template/StudentContest.vue";
+import UserDefined from "../views/template/UserDefined.vue";
 
 //upload
 import Upload from "../views/Upload.vue";
@@ -25,6 +33,7 @@ import OfficeUpload from "../components/upload/OfficeUpload";
 import PartyUpload from "../components/upload/PartyUpload";
 import StudyingUpload from "../components/upload/StudyingUpload";
 import TeachingUpload from "../components/upload/TeachingUpload";
+
 
 Vue.use(VueRouter);
 
@@ -55,13 +64,47 @@ const routes = [
       path: "/profile",
       component: TeacherIndex
     },
+
     {
       path: "/teaching",
       component: Teaching
     },
+    
     {
       path: "/achievement",
       component: Achievement
+    },
+    {
+      path: "/communication",
+      component: Communication
+    },
+    {
+      path: "/honor",
+      component: Honor
+    },
+    {
+      path: "/office",
+      component: Office
+    },
+    {
+      path: "/paper",
+      component: Paper
+    },
+    {
+      path: "/party",
+      component: Party
+    },
+    {
+      path: "/search",
+      component: Search
+    },
+    {
+      path: "/studentContest",
+      component: StudentContest
+    },
+    {
+      path: "/userDefined",
+      component: UserDefined
     },
     {
       path: "/manage",
