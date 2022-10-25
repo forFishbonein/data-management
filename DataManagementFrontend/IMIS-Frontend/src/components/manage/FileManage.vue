@@ -5,70 +5,115 @@
       stripe
       style="width: 100%">
       <el-table-column
-        label="资料名"
-        prop="name"
+        label="资源名称"
+        prop="title"
+        align="center"
       >
       </el-table-column>
       <el-table-column
-        label="类型"
-        prop="type"
+        label="资源类型"
         width="180"
-      >
+        align="center">
+        教研项目
       </el-table-column>
       <el-table-column
         label="上传日期"
-        prop="date"
+        prop="createTime"
         width="180"
+        align="center"
       >
       </el-table-column>
       <el-table-column
         label="上传者"
-        prop="people" width="180"
+        prop="uploaderId"
+        width="180"
+        align="center"
       >
       </el-table-column>
       <el-table-column
+        type="expand"
+        label="简介">
+        <template slot-scope="props">
+          <span>简介：{{ props.row.introduction }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
         label="操作"
-        prop="detail" width="240">
+        width="240"
+        align="center">
         <el-link type="primary">查看详情</el-link>
         <el-link type="primary">编辑</el-link>
         <el-link type="primary">删除</el-link>
       </el-table-column>
+
 
     </el-table>
   </div>
 </template>
 
 <script>
+import { getAllResource } from '@/api/manage'
+
 export default {
+  name: 'FileManage',
+
+  methods: {
+    getAllResource() {
+      getAllResource().then(resp => {
+        this.tableData = resp.data[4];
+        console.log(this.tableData);
+        console.log(resp)
+      });
+    }
+
+  },
+
+  mounted() {
+    this.getAllResource();
+
+
+  },
+
   data() {
     return {
       tableData: [
-        {
-          name: '2016-05-02',
-          type: '王小虎',
-          date: '上海市普陀区金沙江路 1518 弄',
-          people: '上海市普陀1518 弄',
-
-        },
-        {
-          name: '2016-05-02',
-          type: '王小虎',
-          date: '上海市普陀区金沙江路 1518 弄',
-          people: '上海市普陀1518 弄',
-
-        }, {
-          name: '2016-05-02',
-          type: '王小虎',
-          date: '上海市普陀区金沙江路 1518 弄',
-          people: '上海市普陀1518 弄',
-
-        }, {
-          name: '2016-05-02',
-          type: '王小虎',
-          date: '上海市普陀区金沙江路 1518 弄',
-          people: '上海市普陀1518 弄',
-
-        }
+        // {
+        //   name: '2016-05-02',
+        //   type: '王小虎',
+        //   date: '上海市普陀区金沙江路 1518 弄',
+        //   people: '上海市普陀1518 弄',
+        //
+        // },
+        // {
+        //   name: '2016-05-02',
+        //   type: '王小虎',
+        //   date: '上海市普陀区金沙江路 1518 弄',
+        //   people: '上海市普陀1518 弄',
+        // },
+        // {
+        //   name: '2016-05-02',
+        //   type: '王小虎',
+        //   date: '上海市普陀区金沙江路 1518 弄',
+        //   people: '上海市普陀1518 弄',
+        // },
+        // {
+        //   name: '2016-05-02',
+        //   type: '王小虎',
+        //   date: '上海市普陀区金沙江路 1518 弄',
+        //   people: '上海市普陀1518 弄',
+        // },
+        // {
+        //   name: '2016-05-02',
+        //   type: '王小虎',
+        //   date: '上海市普陀区金沙江路 1518 弄',
+        //   people: '上海市普陀1518 弄',
+        // },
+        // {
+        //   name: '2016-05-02',
+        //   type: '王小虎',
+        //   date: '上海市普陀区金沙江路 1518 弄',
+        //   people: '上海市普陀1518 弄',
+        // }
       ]
     }
   }
