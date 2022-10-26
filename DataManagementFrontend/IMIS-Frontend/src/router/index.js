@@ -35,6 +35,7 @@ import OfficeUpload from "../components/upload/OfficeUpload";
 import PartyUpload from "../components/upload/PartyUpload";
 import TeachingingUpload from "../components/upload/TeachingUpload";
 import StudyingUpload from "../components/upload/StudyingUpload";
+import TeachingUpload from "../components/upload/TeachingUpload";
 
 
 Vue.use(VueRouter);
