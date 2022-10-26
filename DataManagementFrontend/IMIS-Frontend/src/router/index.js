@@ -95,8 +95,8 @@ const routes = [
       component: Party
     },
     {
-      path: "/search",
-      component: Search
+      path: "/research",
+      component: Research
     },
     {
       path: "/studentContest",
