@@ -53,8 +53,6 @@ public class FileUploadService {
                 + "/" + dateTime.toString("MM") + "/"
                 + dateTime.toString("dd") + "/" + System.currentTimeMillis() +
                 RandomUtils.nextInt(100, 9999) + "." + sourceFileName ;
-//                +
-//                StringUtils.substringAfterLast(sourceFileName, ".")
     }
 
 }
