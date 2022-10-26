@@ -52,7 +52,7 @@ public class Achievememnt extends AbstractTemplate{
     private String authorRank;
 
     //------------------
-    private Map<String, String> other;
+    private List<Map<String, String>> other;
 
     private List<String> filePath;
 

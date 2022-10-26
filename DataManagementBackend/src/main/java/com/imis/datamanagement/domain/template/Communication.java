@@ -46,7 +46,7 @@ public class Communication extends AbstractTemplate {
     private String whetherParticipate;
 
     //------------------
-    private Map<String, String> other;
+    private List<Map<String, String>> other;
 
     private List<String> filePath;
 

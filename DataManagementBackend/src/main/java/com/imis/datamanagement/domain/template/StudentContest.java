@@ -39,7 +39,7 @@ public class StudentContest extends AbstractTemplate{
     private String time;
 
     //------------------
-    private Map<String, String> other;
+    private List<Map<String, String>> other;
 
     private List<String> filePath;
 

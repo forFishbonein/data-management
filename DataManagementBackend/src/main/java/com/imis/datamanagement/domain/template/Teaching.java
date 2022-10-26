@@ -46,10 +46,10 @@ public class Teaching extends AbstractTemplate {
 
     private String fund;
 
-    private String member;
+    private List<String> member;
 
     //------------------
-    private Map<String, String> other;
+    private List<Map<String, String>> other;
 
     private List<String> filePath;
 
