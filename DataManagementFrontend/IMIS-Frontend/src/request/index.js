@@ -6,11 +6,23 @@ import { Message } from "element-ui";
 const service = axios.create({
   // baseURL: "/static/json",
   baseURL: "http://localhost:8888",
-  timeout: 10000
+  headers: { "Content-Type": "application/json;charset=UTF-8" },
+  transformRequest: [
+    function(data) {
+      // Do whatever you want to transform the data
+      let ret = "";
+      for (let it in data) {
+        ret +=
+          encodeURIComponent(it) + "=" + encodeURIComponent(data[it]) + "&";
+      }
+      return ret;
+    }
+  ]
 });
 
 service.interceptors.request.use(
   config => {
+    // config.headers['Content-Type'] = 'application/json;charset=utf-8';
     if (store.state.token) {
       config.headers["Authorization"] = getToken();
     }

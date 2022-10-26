@@ -7,6 +7,6 @@ export function insertTeacherFile(data) {
   return request({
     data,
     method: "post",
-    url: "/file"
+    url: "/file",
   });
 }
