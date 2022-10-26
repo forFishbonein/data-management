@@ -41,7 +41,7 @@ public class Office extends AbstractTemplate {
     private String participant;
 
     //------------------
-    private Map<String, String> other;
+    private List<Map<String, String>> other;
 
     private List<String> filePath;
 

@@ -17,12 +17,15 @@ import {
   MenuItemGroup,
   Message,
   MessageBox,
+  Dialog,
   Pagination,
   Submenu,
   Table,
   TableColumn,
   Tag,
-  Upload
+  Upload,
+  Form,
+  FormItem,
 } from "element-ui";
 
 Vue.use(Pagination);
@@ -40,10 +43,16 @@ Vue.use(Button);
 Vue.use(Upload);
 Vue.use(Autocomplete);
 Vue.use(VueRouter);
-// Vue.use(Message);
+Vue.use(Dialog);
+Vue.use(Form);
+Vue.use(FormItem);
 
 Vue.prototype.$message = Message;
-Vue.prototype.$prompt = MessageBox;
+Vue.prototype.$confirm = MessageBox;
+
+
+
+
 Vue.config.productionTip = false;
 
 

@@ -40,7 +40,7 @@ public abstract class AbstractTemplate {
     String title;
 
     @Field("a_other")
-    Map<String, String> other;
+    List<Map<String, String>> other;
 
     @Field("a_filePath")
     List<String> filePath;

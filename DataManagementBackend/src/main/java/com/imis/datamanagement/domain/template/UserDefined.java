@@ -28,7 +28,7 @@ public class UserDefined extends AbstractTemplate{
 
     private String introduction;
 
-    private Map<String, String> other;
+    private List<Map<String, String>> other;
 
     private List<String> filePath;
 
