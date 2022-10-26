@@ -4,7 +4,12 @@
       <div class="content">
         <table>
           <tr>
-            <td class="label">资源名称</td>
+            <td class="template-title" colspan="3">
+              科研项目模板
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">资源名称</td>
             <td>
               <el-input
                 class="property"
@@ -15,7 +20,7 @@
             </td>
           </tr>
           <tr>
-            <td class="label">项目简介</td>
+            <td class="label required">项目简介</td>
             <td>
               <el-input
                 class="property"
@@ -25,7 +30,13 @@
               >
               </el-input>
             </td>
+            <td class="required-prompt">!简介为必填信息</td>
           </tr>
+        </table>
+        <div class="prompt">以上内容用于区分不同项目，为必填字段</div>
+        <div class="prompt-line"></div>
+        <div class="prompt">以下为选填字段</div>
+        <table>
           <tr>
             <td class="label">项目来源</td>
             <td>
@@ -139,43 +150,53 @@
                 :before-remove="beforeRemove"
                 multiple
                 :on-exceed="handleExceed"
-                :file-list="this.Teaching.filePath">
+                :file-list="this.fileList">
                 <el-button size="small" type="primary">选择文件</el-button>
               </el-upload>
             </td>
+          </tr>
+        </table>
+        <table id="change-table" class="other">
+          <tr>
+            <td class="label">自定义字段</td>
             <td>
-              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+              <el-input
+                v-model="m.key"
+                clearable
+                placeholder="请输入key">
+              </el-input>
+            </td>
+            <td>:</td>
+            <td>
+              <el-input
+                v-model="m.value"
+                clearable
+                placeholder="请输入value">
+              </el-input>
+            </td>
+            <td>
+              <el-button type="primary" size="small" @click="addInput()">添加</el-button>
+            </td>
+            <td class="prompt2">
+              此处可自定义需要的字段并输入其内容。
+              <br>
+              温馨提示：自定义字段一旦添加无法更改或删除
             </td>
           </tr>
 
-
-
         </table>
 
-          <div style="width:300px">
-            <table id="change-table">
-              <tr>
-                <td>
-                  <el-input
-                    v-model="m.key"
-                    clearable>
-                  </el-input>
-                </td>
-                <td>
-                  <el-input
-                    v-model="m.value"
-                    clearable>
-                  </el-input>
-                </td>
-                <td style="align:'right'">
-                  <el-button type="primary" plain @click="addInput()">主要按钮</el-button>
-                </td>
-              </tr>
-            </table>
-          </div>
+        <table>
+          <tr>
+            <td class="label">
+              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+            </td>
+
+          </tr>
+        </table>
 
 
-         <div @click="dayin()">123456789</div>
+        <div @click="dayin()">123456789</div>
 
 
       </div>
@@ -206,20 +227,18 @@ export default {
         postprojectTime: "",
         fund: "",
         member: [],
-        other: []
-          // "k1":"v1",
-          // "k2":"v2",
-        ,
+        other: [],
+
+        //TODO 资源名称记录
         filePath: [],
         createTime: "",
       },
 
-      otherKey: "请输入标签",
-      otherValue: "请输入属性",
+      fileList: [],
 
       inputVisible: false,
       inputValue: '',
-      m:{
+      m: {
         key: "",
         value: "",
       },
@@ -233,26 +252,24 @@ export default {
     dayin() {
       console.log(this.Teaching)
     },
-    Template(key , value){
+    Template(key, value) {
       this.key = key;
       this.value = value
     },
-    addInput(){
-      // document.getElementById("change-table").style.display = "none"
-      // var trHtml = '<td>' + '你好啊啊啊' + '</td>'
-
-      // this.number.push(0);
-      let kv = new this.Template(this.m.key , this.m.value);
+    addInput() {
+      let kv = new this.Template(this.m.key, this.m.value);
       this.Teaching.other.push(kv)
       console.log(this.Teaching.other)
-      var trHtml = `<td>${this.Teaching.other[this.Teaching.other.length-1].key}</td> <td>${this.Teaching.other[this.Teaching.other.length-1].value}</td>`
+      var trHtml = `<td></td>
+                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].key}</td>
+                    <td>:</td>
+                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].value}</td>`
       var tr = document.createElement('tr');
       tr.innerHTML = trHtml
       document.getElementById("change-table").appendChild(tr)
       this.m.key = ""
       this.m.value = ""
       console.log(this.m)
-
     },
 
     handleClose(tag) {
@@ -295,20 +312,20 @@ export default {
     },
     handleIconClick(ev) {
     },
-    handleRemove(file, filePath) {
-      console.log(file, filePath);
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
     },
     handlePreview(file) {
       console.log(file);
     },
-    submitUpload(){
+    submitUpload() {
       this.$refs.upload.submit();
     },
-    handleExceed(files, filePath) {
+    handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
     },
-    beforeRemove(file, filePath) {
-      return this.$confirm(`确定移除 ${ file.name }？`);
+    beforeRemove(file, fileList) {
+      return this.$confirm(`确定移除 ${file.name}？`);
     }
   },
   mounted() {
@@ -329,7 +346,18 @@ export default {
   margin: 0 auto;
   margin-top: 10px;
   width: 1200px;
-  background-color: white;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+  .template-title {
+    padding: 16px;
+    padding-left: 115px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #0E4687;
+
+  }
 
   table {
 
@@ -341,12 +369,61 @@ export default {
 
     }
 
+
+    .required {
+      position: relative;
+    }
+
+    .required-prompt {
+      padding-left: 8px;
+      vertical-align: bottom;
+      font-size: 12px;
+      color: #BB501C;
+    }
+
+    .required::after {
+      position: absolute;
+      right: 5px;
+      content: "*";
+      color: #BB501C;
+      display: inline-block;
+      font-size: 20px;
+    }
+
     .property {
       width: 400px;
+    }
+  }
+
+  .other {
+
+    .el-input {
+      padding: 4px;
+      width: 140px;
     }
 
   }
 
+  .prompt {
+    padding: 8px 0;
+    padding-left: 115px;
+    font-size: 12px;
+    color: #949393;
+  }
+
+  .prompt2 {
+    padding: 8px;
+    font-size: 12px;
+    color: #949393;
+  }
+
+  .prompt-line {
+    display: block;
+    margin-left: 115px;
+    width: 970px;
+    height: 2px;
+    border-bottom: 2px dashed #949393;
+  }
 }
 
 .el-tag + .el-tag {
