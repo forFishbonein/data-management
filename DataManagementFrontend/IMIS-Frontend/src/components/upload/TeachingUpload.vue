@@ -244,7 +244,6 @@ export default {
       this.m.key = ""
       this.m.value = ""
       console.log(this.m)
-
     },
 
     handleClose(tag) {

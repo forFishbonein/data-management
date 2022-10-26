@@ -40,7 +40,7 @@ Vue.use(Button);
 Vue.use(Upload);
 Vue.use(Autocomplete);
 Vue.use(VueRouter);
-Vue.use(Message);
+// Vue.use(Message);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$prompt = MessageBox;
