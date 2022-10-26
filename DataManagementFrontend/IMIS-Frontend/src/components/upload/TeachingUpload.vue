@@ -5,7 +5,7 @@
         <table>
           <tr>
             <td class="template-title" colspan="3">
-              科研项目模板
+              教研项目模板
             </td>
           </tr>
           <tr>
@@ -305,7 +305,7 @@ export default {
     },
     loadAll() {
       return [
-        {"value": "教研"},
+        {"value": "一般项目"},
       ];
     },
     handleSelect(item) {

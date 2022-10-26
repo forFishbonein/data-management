@@ -1,184 +1,285 @@
 <template>
-  <div class="background">
-    <TeacherNav/>
+  <div class="container">
     <div class="main">
-      <div class="title">科研项目</div>
       <div class="content">
-        <form>
-          <div class="choose"><span>选择模板&emsp;</span>
-            <a href="">
-              <button value="a1">科研项目</button>
-            </a>
-            <button value="a2">教研项目</button>
-            <a href="">
-              <button value="a3">各类荣誉</button>
-            </a>
-            <a href="">
-              <button value="a4">成果类</button>
-            </a><a href="">
-              <button value="a5">学生竞赛</button>
-            </a><a href="">
-              <button value="a6">交流访问</button>
-            </a> <a href="">
-              <button value="a6">党支部</button>
-            </a> <a href="">
-              <button value="a6">教研室</button>
-            </a> <a href="">
-              <button value="a6">论文/期刊</button>
-            </a> <a href="">
-              <button value="a6">其他</button>
-            </a>
-          </div>
-
-          <div class="resources">
-            <span>资源名称</span>
-            <input placeholder="请输入文字" type="text">
-          </div>
-          <div class="resources">
-            <span>项目简介</span>
-            <textarea placeholder="请输入文字" style="width:450px ;height:125px;" type="text"/>
-          </div>
-          <div class="resources">
-            <span>项目来源</span>
-            <input placeholder="请输入文字" type="text">
-          </div>
-          <div class="resources">
-            <span>项目类型</span>
-            <el-autocomplete
-              v-model="state"
-              :fetch-suggestions="querySearch"
-              placeholder="请输入文字"
-              popper-class="my-autocomplete"
-              @select="handleSelect">
-              <i
-                slot="suffix"
-                class="el-icon-edit el-input__icon"
-                @click="handleIconClick">
-              </i>
-              <template slot-scope="{ item }">
-                <div class="name">{{ item.value }}</div>
-              </template>
-            </el-autocomplete>
-          </div>
-          <div class="resources">
-            <span>项目级别</span>
-            <input placeholder="请输入文字" type="text">
-          </div>
-          <div class="resources">
-            <span>立项时间</span>
-            <input placeholder="请输入时间" type="date">
-          </div>
-          <div class="resources">
-            <span>结项时间</span>
-            <input placeholder="请输入时间" type="date">
-          </div>
-          <div class="resources">
-            <span>项目经费</span>
-            <input placeholder="请输入数字" type="number">
-          </div>
-          <div class="resources">
-            <span>课题组成员</span>
-            <el-tag
-              v-for="tag in dynamicTags"
-              :key="tag"
-              :disable-transitions="false"
-              closable
-              @close="handleClose(tag)">
-              {{ tag }}
-            </el-tag>
-            <el-input
-              v-if="inputVisible"
-              ref="saveTagInput"
-              v-model="inputValue"
-              class="input-new-tag"
-              size="small"
-              @blur="handleInputConfirm"
-              @keyup.enter.native="handleInputConfirm"
-            >
-            </el-input>
-            <el-button v-else class="button-new-tag" size="small" type="button" @click="showInput">+ New Tag</el-button>
-            <!--                </div>-->
-          </div>
-          <div class="resources">
-            <span>附件上传</span>
-            <div class="upload">
+        <table>
+          <tr>
+            <td class="template-title" colspan="3">
+              交流访问模板
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">活动(会议)名称</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入活动名称"
+                v-model="Teaching.title"
+                clearable>
+              </el-input>
+            </td>
+            <td class="required-prompt">!简介为必填信息</td>
+          </tr>
+        </table>
+        <div class="prompt">以上内容用于区分不同项目，为必填字段</div>
+        <div class="prompt-line"></div>
+        <div class="prompt">以下为选填字段</div>
+        <table>
+          <tr>
+            <td class="label">主办机构</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入主办机构名称"
+                v-model="Teaching.source"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">交流类型</td>
+            <td>
+              <el-autocomplete
+                class="property"
+                v-model="Teaching.type"
+                :fetch-suggestions="querySearch"
+                placeholder="请选择类型或直接输入"
+                popper-class="my-autocomplete"
+                @select="handleSelect">
+                <i
+                  slot="suffix"
+                  class="el-icon-edit el-input__icon"
+                  @click="handleIconClick">
+                </i>
+                <template slot-scope="{ item }">
+                  <div class="name">{{ item.value }}</div>
+                </template>
+              </el-autocomplete>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">地点</td>
+            <td>
+              <el-input
+                class="property"
+                v-model="Teaching.level"
+                placeholder="请输入地点"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">起始时间</td>
+            <td>
+              <el-date-picker
+                class="property"
+                v-model="Teaching.projectTime"
+                type="date"
+                placeholder="选择起始时间">
+              </el-date-picker>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">终止时间</td>
+            <td>
+              <el-date-picker
+                v-model="Teaching.postprojectTime"
+                class="property"
+                type="date"
+                placeholder="选择终止时间">
+              </el-date-picker>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">项目经费</td>
+            <td>
+              <el-input
+                v-model="Teaching.fund"
+                class="property"
+                placeholder="请输入项目经费"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">课题组成员</td>
+            <td>
+              <el-tag
+                v-model="Teaching.member"
+                :key="tag"
+                v-for="tag in Teaching.member"
+                closable
+                :disable-transitions="false"
+                @close="handleClose(tag)">
+                {{ tag }}
+              </el-tag>
+              <el-input
+                class="input-new-tag"
+                v-if="inputVisible"
+                v-model="inputValue"
+                ref="saveTagInput"
+                size="small"
+                @keyup.enter.native="handleInputConfirm"
+                @blur="handleInputConfirm">
+              </el-input>
+              <el-button v-else class="button-new-tag" size="small" @click="showInput">+添加成员</el-button>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">上传文件</td>
+            <td>
               <el-upload
-                :before-remove="beforeRemove"
-                :file-list="fileList"
-                :limit="3"
-                :on-exceed="handleExceed"
+                class="upload-demo"
+                ref="upload"
+                action="http://localhost:8888/file/upload"
                 :on-preview="handlePreview"
                 :on-remove="handleRemove"
-                action="https://jsonplaceholder.typicode.com/posts/"
-                class="upload-demo"
-                multiple>
-                <el-button size="small" type="primary">点击选择</el-button>
+                :auto-upload="false"
+                :before-remove="beforeRemove"
+                multiple
+                :on-exceed="handleExceed"
+                :file-list="this.fileList">
+                <el-button size="small" type="primary">选择文件</el-button>
               </el-upload>
-            </div>
-          </div>
+            </td>
+          </tr>
+        </table>
+        <table id="change-table" class="other">
+          <tr>
+            <td class="label">自定义字段</td>
+            <td>
+              <el-input
+                v-model="m.key"
+                clearable
+                placeholder="请输入key">
+              </el-input>
+            </td>
+            <td>:</td>
+            <td>
+              <el-input
+                v-model="m.value"
+                clearable
+                placeholder="请输入value">
+              </el-input>
+            </td>
+            <td>
+              <el-button type="primary" size="small" @click="addInput()">添加</el-button>
+            </td>
+            <td class="prompt2">
+              此处可自定义需要的字段并输入其内容。
+              <br>
+              温馨提示：自定义字段一旦添加无法更改或删除
+            </td>
+          </tr>
 
-          <button type="submit">立即上传</button>
+        </table>
 
-        </form>
+        <table>
+          <tr>
+            <td class="label">
+              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+            </td>
+
+          </tr>
+        </table>
+
+
+        <div @click="dayin()">123456789</div>
+
+
       </div>
     </div>
   </div>
+
 </template>
 
 <script>
 import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'CommunicationUpload',
+  name: 'TeachingUpload',
   components: {TeacherNav},
   data() {
     return {
-      dynamicTags: [],
-      inputVisible: true,
-      inputValue: '',
+      Teaching: {
+        TEMPLATE_TYPE: "teaching",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "",
+        name: "",
+        source: "",
+        type: "",
+        level: "",
+        projectTime: "",
+        postprojectTime: "",
+        fund: "",
+        member: [],
+        other: [],
+
+        //TODO 资源名称记录
+        filePath: [],
+        createTime: "",
+      },
+
       fileList: [],
-      restaurants: [],
-      state: ''
+
+      inputVisible: false,
+      inputValue: '',
+      m: {
+        key: "",
+        value: "",
+      },
+      // key: "",
+      // value: "",
+      number: [0],
     };
+
   },
   methods: {
+    dayin() {
+      console.log(this.Teaching)
+    },
+    Template(key, value) {
+      this.key = key;
+      this.value = value
+    },
+    addInput() {
+      let kv = new this.Template(this.m.key, this.m.value);
+      this.Teaching.other.push(kv)
+      console.log(this.Teaching.other)
+      var trHtml = `<td></td>
+                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].key}</td>
+                    <td>:</td>
+                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].value}</td>`
+      var tr = document.createElement('tr');
+      tr.innerHTML = trHtml
+      document.getElementById("change-table").appendChild(tr)
+      this.m.key = ""
+      this.m.value = ""
+      console.log(this.m)
+    },
+
     handleClose(tag) {
-      this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+      this.Teaching.member.splice(this.Teaching.member.indexOf(tag), 1);
     },
 
     showInput() {
       this.inputVisible = true;
       this.$nextTick(_ => {
-        // this.dynamicTags.push(_);
         this.$refs.saveTagInput.$refs.input.focus();
-        // this.$refs.saveTagInput.$refs.input.focus();
-        console.log(_);
-
       });
     },
 
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.dynamicTags.push(inputValue);
-
+        this.Teaching.member.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
-      this.dynamicTags.push(_);
     },
-    handleRemove(file, fileList) {
-      console.log(file, fileList);
-    },
-    handlePreview(file) {
-      console.log(file);
-    },
-    handleExceed(files, fileList) {
-      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
-    },
-    beforeRemove(file, fileList) {
-      return this.$confirm(`确定移除 ${file.name}？`);
-    },
+
     querySearch(queryString, cb) {
       var restaurants = this.restaurants;
       var results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
@@ -192,15 +293,30 @@ export default {
     },
     loadAll() {
       return [
-        {"value": "教研"},
-        {"value": ""},
+        {"value": "学术会议"},
+        {"value": "师资教培"},
+        {"value": "教学研讨"},
+        {"value": "参观调研"}
       ];
     },
     handleSelect(item) {
-      console.log(item);
     },
     handleIconClick(ev) {
-      console.log(ev);
+    },
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePreview(file) {
+      console.log(file);
+    },
+    submitUpload() {
+      this.$refs.upload.submit();
+    },
+    handleExceed(files, fileList) {
+      this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+    },
+    beforeRemove(file, fileList) {
+      return this.$confirm(`确定移除 ${file.name}？`);
     }
   },
   mounted() {
@@ -211,159 +327,94 @@ export default {
 
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-/* * {
-  margin: 0;
-  padding: 0;
-} */
-.my-autocomplete {
-}
+<style lang="scss" scoped>
 
-li {
-  line-height: normal;
-  padding: 7px;
-}
+.container {
 
-.name {
-  text-overflow: ellipsis;
-  overflow: hidden;
-}
-
-.el-autocomplete[data-v-3bd1e53a] {
-  height: 32px;
-  position: relative;
-  display: inline-block;
-  margin-left: 30px;
-}
-
-el-input--suffix .el-input__inner {
-  padding-right: 30px;
-  height: 35px;
-}
-.choose button[data-v-221be311] {
-  height: 38px;
-  width: 80px;
-  background-color: #FFFFFF;
-  border: 1px solid #CACBCC;
-  margin-left: 22px;
-  margin-right: -15px;
-  border-radius: 5px;
-}
-.background {
-  background-color: #EAF2FB;
-  /*padding: 20px 30px;*/
 }
 
 .main {
-  border-radius: 10px;
+  margin: 0 auto;
+  margin-top: 10px;
   width: 1200px;
-  color: #3C85D7;
-  margin: auto;
-  padding: 30px 50px;
-  background-color: #FDFDFD;
-}
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
-.title {
-  font-size: 30px;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
+  .template-title {
+    padding: 16px;
+    padding-left: 115px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #0E4687;
 
-.content {
-  font-size: 20px;
-  background-color: #FDFDFD;
+  }
 
-}
+  table {
 
-.content div {
-  margin-bottom: 10px;
-  margin-left: 15px;
-}
+    .label {
+      padding: 16px;
+      width: 200px;
+      text-align: right;
+      font-size: 18px;
 
-.upload {
-  /*float:right;*/
-  margin-top: 2px;
-  width: 950px;
-  height: 200px;
-}
+    }
 
-button[type="submit"] {
-  background-color: #104A85;
-  color: white;
-  width: 100px;
-  height: 30px;
-  font-size: 16px;
-  margin-left: 1000px;
 
-}
+    .required {
+      position: relative;
+    }
 
-.title {
-  color: #113355;
-}
+    .required-prompt {
+      padding-left: 8px;
+      vertical-align: bottom;
+      font-size: 12px;
+      color: #BB501C;
+    }
 
-span {
-  color: #1A4D7F;
-}
+    .required::after {
+      position: absolute;
+      right: 5px;
+      content: "*";
+      color: #BB501C;
+      display: inline-block;
+      font-size: 20px;
+    }
 
-input {
-  height: 40px;
-  padding: 12px 20px;
-  margin: 1px 30px;
-  box-sizing: border-box;
-  border: 1px solid #DCDFE6;
-  /*border: 1px solid #CACBCC;*/
-  outline: none;
-  border-radius: 5px;
-}
+    .property {
+      width: 400px;
+    }
+  }
 
-input:focus {
-  border: 2px solid #3C85D7;
-}
+  .other {
 
-textarea[type="text"] {
-  padding: 12px 20px;
-  margin: 8px 30px;
-  box-sizing: border-box;
-  border: 1px solid #DCDFE6;
-  /*border: 1px solid #CACBCC;*/
-  outline: none;
-  border-radius: 5px;
-}
+    .el-input {
+      padding: 4px;
+      width: 140px;
+    }
 
-textarea[type="text"]:focus {
-  border: 2px solid #3C85D7;
-}
+  }
 
-.choose button {
-  height: 38px;
-  width: 80px;
-  background-color: #FFFFFF;
-  border: 1px solid #CACBCC;
-  margin-right: 10px;
-  border-radius: 5px;
-}
+  .prompt {
+    padding: 8px 0;
+    padding-left: 115px;
+    font-size: 12px;
+    color: #949393;
+  }
 
-.choose button:hover {
-  border: 1px solid #3C85D7;
-}
+  .prompt2 {
+    padding: 8px;
+    font-size: 12px;
+    color: #949393;
+  }
 
-.el-tag {
-  background-color: #ecf5ff;
-  border-color: #d9ecff;
-  display: inline-block;
-  height: 32px;
-  padding: 0 10px;
-  line-height: 30px;
-  font-size: 12px;
-  color: #409EFF;
-  margin-left: 10px;
-  border-width: 1px;
-  border-style: solid;
-  border-radius: 4px;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-  white-space: nowrap;
+  .prompt-line {
+    display: block;
+    margin-left: 115px;
+    width: 970px;
+    height: 2px;
+    border-bottom: 2px dashed #949393;
+  }
 }
 
 .el-tag + .el-tag {
@@ -371,7 +422,7 @@ textarea[type="text"]:focus {
 }
 
 .button-new-tag {
-  margin-left: 10px;
+
   height: 32px;
   line-height: 30px;
   padding-top: 0;
@@ -380,11 +431,9 @@ textarea[type="text"]:focus {
 
 .input-new-tag {
   width: 90px;
-  margin-left: 10px;
+
   vertical-align: bottom;
 }
 
-.resources {
-  display: flex
-}
+
 </style>
