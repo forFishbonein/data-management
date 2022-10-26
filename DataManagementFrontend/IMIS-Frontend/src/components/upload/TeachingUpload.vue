@@ -21,12 +21,13 @@
           </tr>
           <tr>
             <td class="label required" >项目简介</td>
-            <td colspan="3">
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="Teaching.introduction"
-                :autosize="{ minRows: 4, maxRows: 6}"
+                :autosize="{ minRows: 6, maxRows: 8}"
               >
               </el-input>
             </td>
@@ -378,6 +379,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
+      vertical-align: top;
 
     }
 
