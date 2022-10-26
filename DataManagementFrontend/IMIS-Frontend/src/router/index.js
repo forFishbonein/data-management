@@ -5,6 +5,8 @@ import TeacherIndex from "../views/TeacherIndex.vue";
 import RegisterTeacher from "../views/RegisterTeacher.vue";
 import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
+import Search from "../views/Search.vue";
+
 
 //manage
 import Manage from "../views/Manage.vue";
