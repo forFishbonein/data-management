@@ -5,19 +5,19 @@
       <div class="choose">
         <router-link to="/upload/teaching">科研项目</router-link>
 
-        <router-link to="#">教研项目</router-link>
+        <router-link to="/upload/teaching">教研项目</router-link>
 
-        <router-link to="#">各类荣誉</router-link>
+        <router-link to="/upload/honorupload">各类荣誉</router-link>
 
-        <router-link to="#">成果类</router-link>
+        <router-link to="/upload/achievementupload">成果类</router-link>
 
-        <router-link to="#">学生竞赛</router-link>
+        <router-link to="/upload/contestupload">学生竞赛</router-link>
 
-        <router-link to="#">交流访问</router-link>
+        <router-link to="/upload/communicationupload">交流访问</router-link>
 
-        <router-link to="#">党支部</router-link>
+        <router-link to="/upload/partyupload">党支部</router-link>
 
-        <router-link to="#">教研室</router-link>
+        <router-link to="/upload/studyingupload">教研室</router-link>
 
         <router-link to="#">论文/期刊</router-link>
 

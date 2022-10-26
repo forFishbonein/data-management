@@ -33,8 +33,8 @@ import ContestUpload from "../components/upload/ContestUpload";
 import HonorUpload from "../components/upload/HonorUpload";
 import OfficeUpload from "../components/upload/OfficeUpload";
 import PartyUpload from "../components/upload/PartyUpload";
-import StudyingUpload from "../components/upload/TeachingUpload";
-import TeachingUpload from "../components/upload/StudyingUpload";
+import TeachingingUpload from "../components/upload/TeachingUpload";
+import StudyingUpload from "../components/upload/StudyingUpload";
 
 
 Vue.use(VueRouter);
