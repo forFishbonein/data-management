@@ -20,13 +20,13 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="3">
               <el-input
                 class="property"
                 type="textarea"
                 v-model="Teaching.introduction"
-                :autosize="{ minRows: 2, maxRows: 4}"
+                :autosize="{ minRows: 4, maxRows: 6}"
               >
               </el-input>
             </td>
