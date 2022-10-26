@@ -50,7 +50,7 @@ public class Honor extends AbstractTemplate{
     private String member;
 
     //------------------
-    private Map<String, String> other;
+    private List<Map<String, String>> other;
 
     private List<String> filePath;
 

@@ -4,7 +4,6 @@ import com.aliyun.oss.OSSClient;
 import com.imis.datamanagement.common.vo.PicUploadResult;
 import com.imis.datamanagement.config.AliyunConfig;
 import org.apache.commons.lang3.RandomUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,8 +52,6 @@ public class FileUploadService {
                 + "/" + dateTime.toString("MM") + "/"
                 + dateTime.toString("dd") + "/" + System.currentTimeMillis() +
                 RandomUtils.nextInt(100, 9999) + "." + sourceFileName ;
-//                +
-//                StringUtils.substringAfterLast(sourceFileName, ".")
     }
 
 }

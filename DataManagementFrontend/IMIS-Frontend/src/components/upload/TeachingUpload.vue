@@ -150,6 +150,7 @@
                 :before-remove="beforeRemove"
                 multiple
                 :on-exceed="handleExceed"
+                :on-success="onSuccess"
                 :file-list="this.fileList">
                 <el-button size="small" type="primary">选择文件</el-button>
               </el-upload>
@@ -207,6 +208,8 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
+
+import { insertTeacherFile } from '@/api/file.js'
 
 export default {
   name: 'TeachingUpload',
@@ -315,11 +318,20 @@ export default {
     handleRemove(file, fileList) {
       console.log(file, fileList);
     },
+
     handlePreview(file) {
       console.log(file);
     },
+    onSuccess(response, file, fileList) {
+      this.Teaching.filePath.push(response.data.name)
+    },
     submitUpload() {
       this.$refs.upload.submit();
+
+      insertTeacherFile(this.Teaching).then(resp => {
+        console.log(resp.data)
+      });
+
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
