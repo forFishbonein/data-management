@@ -196,11 +196,6 @@
 
           </tr>
         </table>
-
-
-        <div @click="dayin()">123456789</div>
-
-
       </div>
     </div>
   </div>
@@ -232,8 +227,6 @@ export default {
         fund: "",
         member: [],
         other: [],
-
-        //TODO 资源名称记录
         filePath: [],
         createTime: "",
       },
@@ -253,9 +246,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.Teaching)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value
@@ -331,6 +321,7 @@ export default {
 
       insertTeacherFile(this.Teaching).then(resp => {
         console.log(resp.data)
+
       });
 
     },
