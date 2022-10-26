@@ -14,12 +14,12 @@ import FileManage from "../components/manage/FileManage.vue";
 //template
 import Achievement from "../views/template/Achievement.vue";
 import Teaching from "../views/template/Teaching.vue";
-import Communication from  "../views/template/Communication.vue";
+import Communication from "../views/template/Communication.vue";
 import Honor from "../views/template/Honor.vue";
 import Office from "../views/template/Office.vue";
 import Paper from "../views/template/Paper.vue";
 import Party from "../views/template/Party.vue";
-import Search from "../views/template/Search.vue";
+import Research from "../views/template/Research.vue";
 import StudentContest from "../views/template/StudentContest.vue";
 import UserDefined from "../views/template/UserDefined.vue";
 
@@ -64,7 +64,10 @@ const routes = [
       path: "/profile",
       component: TeacherIndex
     },
-
+    {
+      path: "/search",
+      component: Search
+    },
     {
       path: "/teaching",
       component: Teaching
@@ -162,7 +165,7 @@ const routes = [
 ;
 
 const router = new VueRouter({
-  mode:'history',
+  mode: 'history',
   routes
 });
 
