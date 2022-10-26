@@ -3,9 +3,9 @@
     <TeacherNav></TeacherNav>
     <div class="container">
       <div class="choose">
-        <router-link class="active" to="/upload/teaching">科研项目</router-link>
+        <router-link to="/upload/teaching">科研项目</router-link>
 
-        <router-link to="#">教研项目</router-link>
+        <router-link to="/upload/teaching">教研项目</router-link>
 
         <router-link to="#">各类荣誉</router-link>
 

@@ -16,10 +16,10 @@
             <div class="add">
               <p v-for="(val, key) in StudentContest.other">{{ key }} : {{val}}</p>
             </div>
-            
-            
+
+
           </div>
-  
+
         </div>
         <FilePath></FilePath>
         <div class="button">
@@ -29,7 +29,7 @@
     </div>
   </div>
   </template>
-  
+
   <script>
 import TeacherNav from "../../components/TeacherNav";
 import TeacherHeader from "../../components/TeacherHeader";
@@ -39,14 +39,14 @@ import FilePath from "../../components/FilePath";
     name: "StudentContest",
     data() {
       return {
-  
+
         Achievememnt: {
           TEMPLATE_TYPE: "achievememnt",
           id: "",
           title: "",
           num: "",
           introduction: "",
-  
+
           name: "",
           author: "",
           publicYear: "",
@@ -57,7 +57,7 @@ import FilePath from "../../components/FilePath";
           schoolGrade: "",
           publicationTime: "",
           authorRank: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -68,7 +68,7 @@ import FilePath from "../../components/FilePath";
           title: "",
           num: "",
           introduction: "",
-  
+
           startTime: "",
           lastTime: "",
           type: "",
@@ -78,7 +78,7 @@ import FilePath from "../../components/FilePath";
           member: "",
           whetherSpeak: "",
           whetherParticipate: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -89,7 +89,7 @@ import FilePath from "../../components/FilePath";
           title: "",
           num: "",
           introduction: "",
-  
+
           award_name: "",
           time: "",
           type: "",
@@ -98,7 +98,7 @@ import FilePath from "../../components/FilePath";
           name: "",
           approval_num: "",
           member: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -109,14 +109,14 @@ import FilePath from "../../components/FilePath";
           title: "",
           num: "",
           introduction: "",
-  
+
           time: "",
           type: "",
           topic: "",
           content: "",
           address: "",
           participant: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -127,7 +127,7 @@ import FilePath from "../../components/FilePath";
           title: "",
           num: "",
           introduction: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -138,20 +138,20 @@ import FilePath from "../../components/FilePath";
           title: "",
           num: "",
           introduction: "",
-  
+
           time: "",
           type: "",
           topic: "",
           content: "",
           address: "",
           participant: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
         },
-        Search: {
-        TEMPLATE_TYPE: "teaching",
+        Research: {
+        TEMPLATE_TYPE: "research",
         id: "",
         title: "",
         num: "",
@@ -180,13 +180,13 @@ import FilePath from "../../components/FilePath";
           title: "",
           num: "",
           introduction: "",
-  
+
           name: "",
           gameName: "",
           grade: "",
           instructor: "",
           time: "",
-  
+
           other: {
             "条目1": "内容1",
           "条目2": "内容2"
@@ -200,7 +200,7 @@ import FilePath from "../../components/FilePath";
           title: "",
           num: "",
           introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
-  
+
           name: "",
           source: "",
           type: "",
@@ -209,12 +209,12 @@ import FilePath from "../../components/FilePath";
           postprojectTime: "",
           fund: "",
           member: "",
-  
+
           other: {
             "条目1": "内容1",
             "条目2": "内容2"
           },
-  
+
           filePath: "",
           createTime: "",
         },
@@ -224,14 +224,14 @@ import FilePath from "../../components/FilePath";
           title: "",
           num: "",
           introduction: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
         },
-  
+
       }
-  
+
     },
     components: {
       TeacherNav,
@@ -240,16 +240,16 @@ import FilePath from "../../components/FilePath";
       FilePath
     },
   }
-  
-  
+
+
   </script>
-  
+
   <style scoped>
   .container {
     /* height: 100vh; */
     background-color: #eaf2fb;
   }
-  
+
   .context {
     width: 1200px;
     margin: 20px auto;
@@ -257,38 +257,38 @@ import FilePath from "../../components/FilePath";
     background-color: white;
     border-radius: 16px;
   }
-  
+
   .title {
     padding: 10px;
     color: #113355;
     font-size: 28px;
     padding-left: 30px;
-  
+
   }
-  
+
   .introduction {
     margin: 20px;
     padding: 20px;
     padding-left: 30px;
     background-color: #FDFDFD;
-    color: #113355;  
+    color: #113355;
     /* border-radius: 16px; */
   }
-  
+
   .details{
     margin: 20px;
     padding: 20px;
     padding-left: 30px;
     background-color: #FDFDFD;
-    color: #113355; 
+    color: #113355;
     line-height:35px;
   }
-  
+
   .button{
     height: 80px;
-  
+
   }
-  
+
   .button2{
     margin: 20px;
     padding: 20px;
@@ -300,7 +300,7 @@ import FilePath from "../../components/FilePath";
     text-align: center;
     color: #fff;
   }
-  
+
   .button1{
     margin: 20px;
     padding: 20px;
@@ -312,7 +312,6 @@ import FilePath from "../../components/FilePath";
     text-align: center;
     color: #fff;
   }
-  
-  
+
+
   </style>
-  

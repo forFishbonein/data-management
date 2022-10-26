@@ -152,8 +152,8 @@ export default {
         filePath: "",
         createTime: "",
       },
-      Search: {
-        TEMPLATE_TYPE: "teaching",
+      Research: {
+        TEMPLATE_TYPE: "research",
         id: "",
         title: "",
         num: "",

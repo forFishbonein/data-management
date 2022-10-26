@@ -19,10 +19,10 @@
             <div class="add">
               <p v-for="(val, key) in Search.other">{{ key }} : {{ val }}</p>
             </div>
-  
-  
+
+
           </div>
-  
+
         </div>
         <FilePath></FilePath>
         <div class="button">
@@ -32,25 +32,25 @@
       </div>
     </div>
   </template>
-  
+
   <script>
   import TeacherNav from "../../components/TeacherNav";
   import TeacherHeader from "../../components/TeacherHeader";
   import TeacherData from "../../components/TeacherData";
   import FilePath from "../../components/FilePath";
-  
+
   export default {
-    name: "Search",
+    name: "Research",
     data() {
       return {
-  
+
         Achievememnt: {
           TEMPLATE_TYPE: "achievememnt",
           id: "",
           title: "",
           num: "",
           introduction: "",
-  
+
           name: "",
           author: "",
           publicYear: "",
@@ -61,7 +61,7 @@
           schoolGrade: "",
           publicationTime: "",
           authorRank: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -72,7 +72,7 @@
           title: "",
           num: "",
           introduction: "",
-  
+
           startTime: "",
           lastTime: "",
           type: "",
@@ -82,7 +82,7 @@
           member: "",
           whetherSpeak: "",
           whetherParticipate: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -93,7 +93,7 @@
           title: "",
           num: "",
           introduction: "",
-  
+
           award_name: "",
           time: "",
           type: "",
@@ -102,7 +102,7 @@
           name: "",
           approval_num: "",
           member: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -113,14 +113,14 @@
           title: "",
           num: "",
           introduction: "",
-  
+
           time: "",
           type: "",
           topic: "",
           content: "",
           address: "",
           participant: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -131,7 +131,7 @@
           title: "",
           num: "",
           introduction: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -142,25 +142,25 @@
           title: "",
           num: "",
           introduction: "",
-  
+
           time: "",
           type: "",
           topic: "",
           content: "",
           address: "",
           participant: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
         },
-        Search: {
-          TEMPLATE_TYPE: "teaching",
+        Research: {
+          TEMPLATE_TYPE: "research",
           id: "",
           title: "",
           num: "",
           introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
-  
+
           name: "",
           source: "",
           type: "",
@@ -169,12 +169,12 @@
           postprojectTime: "",
           fund: "",
           member: "",
-  
+
           other: {
             "条目1": "内容1",
             "条目2": "内容2"
           },
-  
+
           filePath: "",
           createTime: "",
         },
@@ -184,13 +184,13 @@
           title: "",
           num: "",
           introduction: "",
-  
+
           name: "",
           gameName: "",
           grade: "",
           instructor: "",
           time: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
@@ -201,7 +201,7 @@
           title: "",
           num: "",
           introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
-  
+
           name: "",
           source: "",
           type: "",
@@ -210,12 +210,12 @@
           postprojectTime: "",
           fund: "",
           member: "",
-  
+
           other: {
             "条目1": "内容1",
             "条目2": "内容2"
           },
-  
+
           filePath: "",
           createTime: "",
         },
@@ -225,14 +225,14 @@
           title: "",
           num: "",
           introduction: "",
-  
+
           other: {},
           filePath: "",
           createTime: "",
         },
-  
+
       }
-  
+
     },
     components: {
       TeacherNav,
@@ -241,16 +241,16 @@
       FilePath
     },
   }
-  
-  
+
+
   </script>
-  
+
   <style scoped>
   .container {
     /* height: 100vh; */
     background-color: #eaf2fb;
   }
-  
+
   .context {
     width: 1200px;
     margin: 20px auto;
@@ -258,15 +258,15 @@
     background-color: white;
     border-radius: 16px;
   }
-  
+
   .title {
     padding: 10px;
     color: #113355;
     font-size: 28px;
     padding-left: 30px;
-  
+
   }
-  
+
   .introduction {
     margin: 20px;
     padding: 20px;
@@ -275,7 +275,7 @@
     color: #113355;
     /* border-radius: 16px; */
   }
-  
+
   .details {
     margin: 20px;
     padding: 20px;
@@ -284,12 +284,12 @@
     color: #113355;
     line-height: 35px;
   }
-  
+
   .button {
     height: 80px;
-  
+
   }
-  
+
   .button2 {
     margin: 20px;
     padding: 20px;
@@ -301,7 +301,7 @@
     text-align: center;
     color: #fff;
   }
-  
+
   .button1 {
     margin: 20px;
     padding: 20px;
@@ -313,7 +313,6 @@
     text-align: center;
     color: #fff;
   }
-  
-  
+
+
   </style>
-  
