@@ -275,11 +275,8 @@ export default {
         publicationTime: "",
         authorRank: "",
 
-        other: {
-          "条目1": "内容1",
-          "条目2": "内容2"
-        },
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
 
