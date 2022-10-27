@@ -40,8 +40,8 @@ import FilePath from "../../components/FilePath";
     data() {
       return {
 
-        Achievememnt: {
-          TEMPLATE_TYPE: "achievememnt",
+        Achievement: {
+          TEMPLATE_TYPE: "achievement",
           id: "",
           title: "",
           num: "",
@@ -121,17 +121,6 @@ import FilePath from "../../components/FilePath";
           filePath: "",
           createTime: "",
         },
-        Paper: {
-          TEMPLATE_TYPE: "paper",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "",
-
-          other: {},
-          filePath: "",
-          createTime: "",
-        },
         Party: {
           TEMPLATE_TYPE: "party",
           id: "",
@@ -150,8 +139,8 @@ import FilePath from "../../components/FilePath";
           filePath: "",
           createTime: "",
         },
-        Research: {
-        TEMPLATE_TYPE: "research",
+        Studying: {
+        TEMPLATE_TYPE: "studying",
         id: "",
         title: "",
         num: "",

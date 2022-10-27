@@ -9,23 +9,23 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">获奖名称</td>
+            <td class="label required">编号</td>
             <td>
               <el-input
                 class="property"
-                placeholder="请输入获奖名称"
-                v-model="Teaching.title"
+                placeholder="请输入项目编号"
+                v-model="Honor.id"
                 clearable>
               </el-input>
             </td>
           </tr>
           <tr>
-            <td class="label required">项目名称</td>
+            <td class="label required">资源名称</td>
             <td>
               <el-input
                 class="property"
-                placeholder="请输入项目名称"
-                v-model="Teaching.title"
+                placeholder="请输入资源名称"
+                v-model="Honor.title"
                 clearable>
               </el-input>
             </td>
@@ -36,8 +36,8 @@
               <el-input
                 class="property"
                 type="textarea"
-                v-model="Teaching.introduction"
-                :autosize="{ minRows: 2, maxRows: 4}"
+                v-model="Honor.introduction"
+                :autosize="{ minRows: 6, maxRows: 8}"
               >
               </el-input>
             </td>
@@ -49,12 +49,23 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
+            <td class="label required">获奖名称</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入获奖名称"
+                v-model="Honor.award_name"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <td class="label">获奖等级</td>
             <td>
               <el-input
                 class="property"
                 placeholder="请输入获奖等级"
-                v-model="Teaching.source"
+                v-model="Honor.level"
                 clearable>
               </el-input>
             </td>
@@ -64,7 +75,7 @@
             <td>
               <el-autocomplete
                 class="property"
-                v-model="Teaching.type"
+                v-model="Honor.type"
                 :fetch-suggestions="querySearch"
                 placeholder="请选择类型或直接输入"
                 popper-class="my-autocomplete"
@@ -81,22 +92,11 @@
             </td>
           </tr>
           <tr>
-            <td class="label">项目级别</td>
-            <td>
-              <el-input
-                class="property"
-                v-model="Teaching.level"
-                placeholder="请输入项目级别"
-                clearable>
-              </el-input>
-            </td>
-          </tr>
-          <tr>
             <td class="label">批文号</td>
             <td>
               <el-input
                 class="property"
-                v-model="Teaching.level"
+                v-model="Honor.approval_num"
                 placeholder="请输入批文号"
                 clearable>
               </el-input>
@@ -106,9 +106,9 @@
             <td class="label">课题组成员</td>
             <td>
               <el-tag
-                v-model="Teaching.member"
+                v-model="Honor.member"
                 :key="tag"
-                v-for="tag in Teaching.member"
+                v-for="tag in Honor.member"
                 closable
                 :disable-transitions="false"
                 @close="handleClose(tag)">
@@ -198,28 +198,28 @@
 import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeachingUpload',
+  name: 'HonorUpload',
   components: {TeacherNav},
   data() {
     return {
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
+      Honor: {
+        TEMPLATE_TYPE: "honor",
         id: "",
         title: "",
         num: "",
         introduction: "",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-        other: [],
 
-        //TODO 资源名称记录
-        filePath: [],
+        award_name: "",
+        time: "",
+        type: "",
+        garde: "",
+        level: "",
+        name: "",
+        approval_num: "",
+        member: "",
+
+        other: {},
+        filePath: "",
         createTime: "",
       },
 
@@ -239,7 +239,7 @@ export default {
   },
   methods: {
     dayin() {
-      console.log(this.Teaching)
+      console.log(this.Honor)
     },
     Template(key, value) {
       this.key = key;
@@ -247,12 +247,12 @@ export default {
     },
     addInput() {
       let kv = new this.Template(this.m.key, this.m.value);
-      this.Teaching.other.push(kv)
-      console.log(this.Teaching.other)
+      this.Honor.other.push(kv)
+      console.log(this.Honor.other)
       var trHtml = `<td></td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].key}</td>
+                    <td align="center">${this.Honor.other[this.Honor.other.length - 1].key}</td>
                     <td>:</td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].value}</td>`
+                    <td align="center">${this.Honor.other[this.Honor.other.length - 1].value}</td>`
       var tr = document.createElement('tr');
       tr.innerHTML = trHtml
       document.getElementById("change-table").appendChild(tr)
@@ -262,7 +262,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Teaching.member.splice(this.Teaching.member.indexOf(tag), 1);
+      this.Honor.member.splice(this.Honor.member.indexOf(tag), 1);
     },
 
     showInput() {
@@ -275,7 +275,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Teaching.member.push(inputValue);
+        this.Honor.member.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';

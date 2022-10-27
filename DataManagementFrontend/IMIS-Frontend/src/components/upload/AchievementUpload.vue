@@ -9,13 +9,36 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">成果名称</td>
+            <td class="label required">编号</td>
             <td>
               <el-input
                 class="property"
-                placeholder="请输入成果名称"
-                v-model="Teaching.title"
+                placeholder="请输入项目编号"
+                v-model="Achievement.id"
                 clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">资源名称</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入资源名称"
+                v-model="Achievement.title"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">项目简介</td>
+            <td>
+              <el-input
+                class="property"
+                type="textarea"
+                v-model="Achievement.introduction"
+                :autosize="{ minRows: 6, maxRows: 8}"
+              >
               </el-input>
             </td>
             <td class="required-prompt">!简介为必填信息</td>
@@ -26,12 +49,23 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
+            <td class="label">成果名称</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入成果名称"
+                v-model="Achievement.name"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
           <td class="label">作者</td>
           <td>
             <el-input
               class="property"
               placeholder="请输入作者姓名"
-              v-model="Teaching.source"
+              v-model="Achievement.author"
               clearable>
             </el-input>
           </td>
@@ -42,7 +76,18 @@
               <el-input
                 class="property"
                 placeholder="请输入出版社名称"
-                v-model="Teaching.source"
+                v-model="Achievement.press"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">论文或专著</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入出版社名称"
+                v-model="Achievement.paper"
                 clearable>
               </el-input>
             </td>
@@ -52,7 +97,7 @@
             <td>
               <el-autocomplete
                 class="property"
-                v-model="Teaching.type"
+                v-model="Achievement.type"
                 :fetch-suggestions="querySearch"
                 placeholder="请选择类型或直接输入"
                 popper-class="my-autocomplete"
@@ -73,7 +118,7 @@
             <td>
               <el-input
                 class="property"
-                v-model="Teaching.level"
+                v-model="Achievement.journalGrade"
                 placeholder="请输入期刊级别"
                 clearable>
               </el-input>
@@ -84,20 +129,20 @@
             <td>
               <el-input
                 class="property"
-                v-model="Teaching.level"
+                v-model="Achievement.schoolGrade"
                 placeholder="请输入认定级别"
                 clearable>
               </el-input>
             </td>
           </tr>
           <tr>
-            <td class="label">获奖年</td>
+            <td class="label">发表年</td>
             <td>
               <el-date-picker
                 class="property"
-                v-model="Teaching.projectTime"
-                type="date"
-                placeholder="选择获奖年份">
+                v-model="Achievement.publicYear"
+                type="year"
+                placeholder="选择发表年份">
               </el-date-picker>
             </td>
           </tr>
@@ -105,7 +150,7 @@
             <td class="label">出版时间/卷期号</td>
             <td>
               <el-date-picker
-                v-model="Teaching.postprojectTime"
+                v-model="Achievement.publicationTime"
                 class="property"
                 type="date"
                 placeholder="选择出版时间">
@@ -113,23 +158,12 @@
             </td>
           </tr>
           <tr>
-            <td class="label">项目经费</td>
-            <td>
-              <el-input
-                v-model="Teaching.fund"
-                class="property"
-                placeholder="请输入项目经费"
-                clearable>
-              </el-input>
-            </td>
-          </tr>
-          <tr>
             <td class="label">作者排序</td>
             <td>
               <el-tag
-                v-model="Teaching.member"
+                v-model="Achievement.authorRank"
                 :key="tag"
-                v-for="tag in Teaching.member"
+                v-for="tag in Achievement.authorRank"
                 closable
                 :disable-transitions="false"
                 @close="handleClose(tag)">
@@ -219,24 +253,26 @@
 import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeachingUpload',
+  name: 'AchievementUpload',
   components: {TeacherNav},
   data() {
     return {
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
+      Achievement: {
+        TEMPLATE_TYPE: "Achievement",
         id: "",
         title: "",
-        num: "",
+        paper: "",
         introduction: "",
         name: "",
-        source: "",
+        press: "",
         type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
+        journalGrade: "",
+        creatTime: "",
+        publicationTime: "",
+        author: "",
+        publicYear:"",
+        schoolGrade: "",
+        authorRank: [],
         other: [],
 
         //TODO 资源名称记录
@@ -260,7 +296,7 @@ export default {
   },
   methods: {
     dayin() {
-      console.log(this.Teaching)
+      console.log(this.Achievement)
     },
     Template(key, value) {
       this.key = key;
@@ -268,12 +304,12 @@ export default {
     },
     addInput() {
       let kv = new this.Template(this.m.key, this.m.value);
-      this.Teaching.other.push(kv)
-      console.log(this.Teaching.other)
+      this.Achievement.other.push(kv)
+      console.log(this.Achievement.other)
       var trHtml = `<td></td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].key}</td>
+                    <td align="center">${this.Achievement.other[this.Achievement.other.length - 1].key}</td>
                     <td>:</td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].value}</td>`
+                    <td align="center">${this.Achievement.other[this.Achievement.other.length - 1].value}</td>`
       var tr = document.createElement('tr');
       tr.innerHTML = trHtml
       document.getElementById("change-table").appendChild(tr)
@@ -283,7 +319,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Teaching.member.splice(this.Teaching.member.indexOf(tag), 1);
+      this.Achievement.member.splice(this.Achievement.member.indexOf(tag), 1);
     },
 
     showInput() {
@@ -296,7 +332,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Teaching.member.push(inputValue);
+        this.Achievement.member.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';

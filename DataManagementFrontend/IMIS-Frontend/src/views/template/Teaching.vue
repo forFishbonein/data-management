@@ -44,8 +44,8 @@ export default {
   data() {
     return {
 
-      Achievememnt: {
-        TEMPLATE_TYPE: "achievememnt",
+      Achievement: {
+        TEMPLATE_TYPE: "achievement",
         id: "",
         title: "",
         num: "",
@@ -120,17 +120,6 @@ export default {
         content: "",
         address: "",
         participant: "",
-
-        other: {},
-        filePath: "",
-        createTime: "",
-      },
-      Paper: {
-        TEMPLATE_TYPE: "paper",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
 
         other: {},
         filePath: "",

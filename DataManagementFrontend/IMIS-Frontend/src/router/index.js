@@ -19,9 +19,8 @@ import Teaching from "../views/template/Teaching.vue";
 import Communication from "../views/template/Communication.vue";
 import Honor from "../views/template/Honor.vue";
 import Office from "../views/template/Office.vue";
-import Paper from "../views/template/Paper.vue";
 import Party from "../views/template/Party.vue";
-import Research from "../views/template/Research.vue";
+import Studying from "../views/template/Studying";
 import StudentContest from "../views/template/StudentContest.vue";
 import UserDefined from "../views/template/UserDefined.vue";
 
@@ -33,9 +32,9 @@ import ContestUpload from "../components/upload/ContestUpload";
 import HonorUpload from "../components/upload/HonorUpload";
 import OfficeUpload from "../components/upload/OfficeUpload";
 import PartyUpload from "../components/upload/PartyUpload";
-import TeachingingUpload from "../components/upload/TeachingUpload";
 import StudyingUpload from "../components/upload/StudyingUpload";
 import TeachingUpload from "../components/upload/TeachingUpload";
+
 
 
 Vue.use(VueRouter);
@@ -93,17 +92,13 @@ const routes = [
       component: Office
     },
     {
-      path: "/paper",
-      component: Paper
-    },
-    {
       path: "/party",
       component: Party
     },
-    {
-      path: "/research",
-      component: Research
-    },
+  {
+    path: "/study",
+    component: Studying
+  },
     {
       path: "/studentContest",
       component: StudentContest
@@ -149,6 +144,10 @@ const routes = [
         {
           path: 'honorupload',
           component: HonorUpload
+        },
+        {
+          path: "studyingupload",
+          component: StudyingUpload
         },
         {
           path: 'officeupload',
