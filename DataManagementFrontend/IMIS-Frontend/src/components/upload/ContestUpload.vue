@@ -204,8 +204,8 @@ export default {
         instructor: "",
         time: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
 

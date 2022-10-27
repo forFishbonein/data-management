@@ -7,3 +7,17 @@ export function insertTeacherFile(data) {
     url: "/file",
   });
 }
+
+export function getById() {
+  return request({
+    method: "get",
+    url: "/file"
+  });
+}
+
+export function getAll() {
+  return request({
+    method: "get",
+    url: "/file"
+  });
+}

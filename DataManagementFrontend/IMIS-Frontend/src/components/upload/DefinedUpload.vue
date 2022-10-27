@@ -128,8 +128,8 @@ export default {
         num: "",
         introduction: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       fileList: [],

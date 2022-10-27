@@ -217,10 +217,10 @@ export default {
         level: "",
         name: "",
         approval_num: "",
-        member: "",
+        member: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
 

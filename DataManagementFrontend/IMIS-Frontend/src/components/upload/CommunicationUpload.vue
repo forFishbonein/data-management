@@ -263,8 +263,8 @@ export default {
         whetherSpeak: "",
         whetherParticipate: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
 
