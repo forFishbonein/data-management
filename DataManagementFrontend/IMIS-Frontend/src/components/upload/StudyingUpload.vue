@@ -14,7 +14,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目编号"
-                v-model="studying.num"
+                v-model="Studying.num"
                 clearable>
               </el-input>
             </td>
@@ -31,10 +31,11 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="Studying.introduction"
                 :autosize="{ minRows: 6, maxRows: 8}"
@@ -218,14 +219,14 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-import { insertStudyingFile } from '@/api/file.js'
+import { insertTeacherFile } from '@/api/file.js'
 export default {
   name: 'StudyingUpload',
   components: {TeacherNav},
   data() {
     return {
       Studying: {
-        TEMPLATE_TYPE: "Studying",
+        TEMPLATE_TYPE: "studying",
         id: "",
         title: "",
         num: "",
@@ -331,7 +332,7 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
-      insertStudyingFile(this.Studying).then(resp => {
+      insertTeacherFile(this.Studying).then(resp => {
         console.log(resp.data)
       });
     },
@@ -381,7 +382,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
-
+      vertical-align: top;
     }
 
 

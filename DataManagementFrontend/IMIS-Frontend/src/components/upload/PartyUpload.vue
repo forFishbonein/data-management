@@ -31,10 +31,11 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="Party.introduction"
                 :autosize="{ minRows: 6, maxRows: 8}"
@@ -49,7 +50,7 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
-            <td class="label required">活动主题</td>
+            <td class="label">活动主题</td>
             <td>
               <el-input
                 class="property"
@@ -60,7 +61,7 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">学习内容</td>
+            <td class="label">学习内容</td>
             <td>
               <el-input
                 class="property"
@@ -208,7 +209,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-import { insertPartyFile } from '@/api/file.js'
+import { insertTeacherFile } from '@/api/file.js'
 export default {
   name: 'PartyUpload',
   components: {TeacherNav},
@@ -323,7 +324,7 @@ export default {
     submitUpload() {
       this.$refs.upload.submit();
 
-      insertPartyFile(this.Party).then(resp => {
+      insertTeacherFile(this.Party).then(resp => {
         console.log(resp.data)
       });
     },
@@ -373,7 +374,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
-
+      vertical-align: top;
     }
 
 

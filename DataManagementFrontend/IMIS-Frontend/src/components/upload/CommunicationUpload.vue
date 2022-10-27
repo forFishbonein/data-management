@@ -31,14 +31,17 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="Communication.introduction"
                 :autosize="{ minRows: 6, maxRows: 8}"
               >
+              </el-input>
+            </td>
               </el-input>
             </td>
             <td class="required-prompt">!简介为必填信息</td>
@@ -240,7 +243,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-import { insertCommunicationFile } from '@/api/file.js'
+import { insertTeacherFile } from '@/api/file.js'
 export default {
   name: 'CommunicationUpload',
   components: {TeacherNav},
@@ -357,7 +360,7 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
-      insertCommunicationFile(this.Communication).then(resp => {
+      insertTeacherFile(this.Communication).then(resp => {
           console.log(resp.data)
       });
     },
@@ -407,7 +410,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
-
+      vertical-align: top;
     }
 
 
