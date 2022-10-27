@@ -31,10 +31,11 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="Honor.introduction"
                 :autosize="{ minRows: 6, maxRows: 8}"
@@ -49,7 +50,7 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
-            <td class="label required">获奖名称</td>
+            <td class="label">获奖名称</td>
             <td>
               <el-input
                 class="property"
@@ -184,10 +185,6 @@
           </tr>
         </table>
 
-
-
-
-
       </div>
     </div>
   </div>
@@ -197,7 +194,7 @@
 <script>
 import TeacherNav from "../TeacherNav";
 
-import { insertHonorFile } from '@/api/file.js'
+import { insertTeacherFile } from '@/api/file.js'
 export default {
   name: 'HonorUpload',
   components: {TeacherNav},
@@ -315,7 +312,7 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
-      insertHonorFile(this.Honor).then(resp => {
+      insertTeacherFile(this.Honor).then(resp => {
         console.log(resp.data)
       });
     },
@@ -365,7 +362,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
-
+      vertical-align: top;
     }
 
 

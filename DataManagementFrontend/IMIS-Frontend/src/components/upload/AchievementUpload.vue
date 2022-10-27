@@ -31,10 +31,11 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="Achievement.introduction"
                 :autosize="{ minRows: 6, maxRows: 8}"
@@ -251,7 +252,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertTeacherFile } from '@/api/file.js'
 export default {
   name: 'AchievementUpload',
   components: {TeacherNav},
@@ -365,6 +366,10 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+      insertTeacherFile(this.Achievement).then(resp => {
+        console.log(resp.data)
+
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
@@ -412,7 +417,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
-
+      vertical-align: top;
     }
 
 

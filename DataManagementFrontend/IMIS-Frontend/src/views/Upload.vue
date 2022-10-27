@@ -21,7 +21,7 @@
 
 
 
-        <router-link class="ud" to="#">自定义</router-link>
+        <router-link class="ud" to="/upload/defined">自定义</router-link>
 
       </div>
       <div class="context">
