@@ -202,7 +202,7 @@ export default {
         name: "",
         gameName: "",
         grade: "",
-        instructor: "",
+        instructor: [],
         time: "",
 
         other: [],
@@ -249,7 +249,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.StudentContest.member.splice(this.StudentContest.member.indexOf(tag), 1);
+      this.StudentContest.instructor.splice(this.StudentContest.instructor.indexOf(tag), 1);
     },
 
     showInput() {
@@ -262,7 +262,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.StudentContest.member.push(inputValue);
+        this.StudentContest.instructor.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
