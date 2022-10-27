@@ -2,22 +2,22 @@
     <div class="container">
       <TeacherNav></TeacherNav>
       <div class="context">
-        <div class="Search">
-          <div class="title">资源名称：{{ Search.title }}</div>
-          <div class="introduction">{{ Search.introduction }}</div>
+        <div class="Studying">
+          <div class="title">资源名称：{{ Studying.title }}</div>
+          <div class="introduction">{{ Studying.introduction }}</div>
           <div class="details">
-            <div v-show="this.Search.name" class="name">项目名称：{{ Search.name }}</div>
+            <div v-show="this.Studying.name" class="name">项目名称：{{ Studying.name }}</div>
             <div class="uploader">上传者：</div>
-            <div class="createTime">上传时间：{{ Search.createTime }}</div>
-            <div class="source">项目来源：{{ Search.source }}</div>
-            <div class="type">项目类型：{{ Search.type }}</div>
-            <div class="level">项目级别：{{ Search.level }}</div>
-            <div class="project_time">立项时间：{{ Search.projectTime }}</div>
-            <div class="post_project_time">结项时间：{{ Search.postprojectTime }}</div>
-            <div class="fund">项目经费：{{ Search.fund }}</div>
-            <div class="member">课题组成员：{{ Search.member }}</div>
+            <div class="createTime">上传时间：{{ Studying.createTime }}</div>
+            <div class="source">项目来源：{{ Studying.source }}</div>
+            <div class="type">项目类型：{{ Studying.type }}</div>
+            <div class="level">项目级别：{{ Studying.level }}</div>
+            <div class="project_time">立项时间：{{ Studying.projectTime }}</div>
+            <div class="post_project_time">结项时间：{{ Studying.postprojectTime }}</div>
+            <div class="fund">项目经费：{{ Studying.fund }}</div>
+            <div class="member">课题组成员：{{ Studying.member }}</div>
             <div class="add">
-              <p v-for="(val, key) in Search.other">{{ key }} : {{ val }}</p>
+              <p v-for="(val, key) in Studying.other">{{ key }} : {{ val }}</p>
             </div>
 
 
@@ -40,12 +40,12 @@
   import FilePath from "../../components/FilePath";
 
   export default {
-    name: "Research",
+    name: "ReStudying",
     data() {
       return {
 
-        Achievememnt: {
-          TEMPLATE_TYPE: "achievememnt",
+        Achievement: {
+          TEMPLATE_TYPE: "achievement",
           id: "",
           title: "",
           num: "",
@@ -125,17 +125,6 @@
           filePath: "",
           createTime: "",
         },
-        Paper: {
-          TEMPLATE_TYPE: "paper",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "",
-
-          other: {},
-          filePath: "",
-          createTime: "",
-        },
         Party: {
           TEMPLATE_TYPE: "party",
           id: "",
@@ -154,8 +143,8 @@
           filePath: "",
           createTime: "",
         },
-        Research: {
-          TEMPLATE_TYPE: "research",
+        Studying: {
+          TEMPLATE_TYPE: "Studying",
           id: "",
           title: "",
           num: "",

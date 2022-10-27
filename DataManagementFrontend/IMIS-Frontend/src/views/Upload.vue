@@ -19,7 +19,7 @@
 
         <router-link to="/upload/studyingupload">教研室</router-link>
 
-        <router-link to="#">论文/期刊</router-link>
+
 
         <router-link class="ud" to="#">自定义</router-link>
 

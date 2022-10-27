@@ -9,6 +9,17 @@
             </td>
           </tr>
           <tr>
+            <td class="label required">编号</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入项目编号"
+                v-model="Teaching.id"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <td class="label required">资源名称</td>
             <td>
               <el-input
@@ -222,7 +233,8 @@ export default {
         id: "",
         title: "",
         num: "",
-        introduction: "",
+        introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
+
         name: "",
         source: "",
         type: "",
@@ -230,11 +242,14 @@ export default {
         projectTime: "",
         postprojectTime: "",
         fund: "",
-        member: [],
-        other: [],
+        member: "",
 
-        //TODO 资源名称记录
-        filePath: [],
+        other: {
+          "条目1": "内容1",
+          "条目2": "内容2"
+        },
+
+        filePath: "",
         createTime: "",
       },
 
