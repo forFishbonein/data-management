@@ -258,25 +258,28 @@ export default {
   data() {
     return {
       Achievement: {
-        TEMPLATE_TYPE: "Achievement",
+        TEMPLATE_TYPE: "achievement",
         id: "",
         title: "",
-        paper: "",
+        num: "",
         introduction: "",
-        name: "",
-        press: "",
-        type: "",
-        journalGrade: "",
-        creatTime: "",
-        publicationTime: "",
-        author: "",
-        publicYear:"",
-        schoolGrade: "",
-        authorRank: [],
-        other: [],
 
-        //TODO 资源名称记录
-        filePath: [],
+        name: "",
+        author: "",
+        publicYear: "",
+        paper: "",
+        type: "",
+        press: "",
+        journalGrade: "",
+        schoolGrade: "",
+        publicationTime: "",
+        authorRank: "",
+
+        other: {
+          "条目1": "内容1",
+          "条目2": "内容2"
+        },
+        filePath: "",
         createTime: "",
       },
 

@@ -228,8 +228,8 @@ export default {
         address: "",
         participant: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
 
