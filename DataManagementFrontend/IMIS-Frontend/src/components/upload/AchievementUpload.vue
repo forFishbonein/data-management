@@ -86,7 +86,7 @@
             <td>
               <el-input
                 class="property"
-                placeholder="请输入出版社名称"
+                placeholder="请选择论文或专著"
                 v-model="Achievement.paper"
                 clearable>
               </el-input>
@@ -261,7 +261,6 @@ export default {
         TEMPLATE_TYPE: "achievement",
         id: "",
         title: "",
-        paper: "",
         introduction: "",
 
         name: "",
