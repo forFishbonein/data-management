@@ -3,23 +3,23 @@
     <TeacherNav></TeacherNav>
     <div class="context">
       <div class="Achievement">
-        <div class="title">资源名称：{{ Achievememnt.title }}</div>
-        <div class="introduction">{{ Achievememnt.introduction }}</div>
+        <div class="title">资源名称：{{ Achievement.title }}</div>
+        <div class="introduction">{{ Achievement.introduction }}</div>
         <div class="details">
-          <div v-show="this.Achievememnt.name" class="name">成果名称：{{ Achievememnt.name }}</div>
+          <div v-show="this.Achievement.name" class="name">成果名称：{{ Achievement.name }}</div>
           <div class="uploader">上传者：</div>
-          <div class="createTime">上传时间：{{ Achievememnt.createTime }}</div>
-          <div class="author">作者：{{ Achievememnt.author }}</div>
-          <div class="publicYear">发表年：{{ Achievememnt.publicYear }}</div>
-          <div class="paper">论文或专著：{{ Achievememnt.paper }}</div>
-          <div class="type">论文类型：{{ Achievememnt.type }}</div>
-          <div class="press">出版社/期刊名称：{{ Achievememnt.press }}</div>
-          <div class="journalGrade">期刊等级：{{ Achievememnt.journalGrade }}</div>
-          <div class="schoolGrade">民大认定级别：{{ Achievememnt.schoolGrade }}</div>
-          <div class="publicationTime">出版时间/期卷号:{{ Achievememnt.publicationTime }}</div>
-          <div class="authorRank">作者排序：{{ Achievememnt.authorRank }}</div>
+          <div class="createTime">上传时间：{{ Achievement.createTime }}</div>
+          <div class="author">作者：{{ Achievement.author }}</div>
+          <div class="publicYear">发表年：{{ Achievement.publicYear }}</div>
+          <div class="paper">论文或专著：{{ Achievement.paper }}</div>
+          <div class="type">论文类型：{{ Achievement.type }}</div>
+          <div class="press">出版社/期刊名称：{{ Achievement.press }}</div>
+          <div class="journalGrade">期刊等级：{{ Achievement.journalGrade }}</div>
+          <div class="schoolGrade">民大认定级别：{{ Achievement.schoolGrade }}</div>
+          <div class="publicationTime">出版时间/期卷号:{{ Achievement.publicationTime }}</div>
+          <div class="authorRank">作者排序：{{ Achievement.authorRank }}</div>
           <div class="add">
-            <p v-for="(val, key) in Achievememnt.other">{{ key }} : {{ val }}</p>
+            <p v-for="(val, key) in Achievement.other">{{ key }} : {{ val }}</p>
           </div>
 
 
@@ -47,8 +47,8 @@ export default {
   data() {
     return {
 
-      Achievememnt: {
-        TEMPLATE_TYPE: "achievememnt",
+      Achievement: {
+        TEMPLATE_TYPE: "achievement",
         id: "",
         title: "",
         num: "",
@@ -131,17 +131,6 @@ export default {
         filePath: "",
         createTime: "",
       },
-      Paper: {
-        TEMPLATE_TYPE: "paper",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        other: {},
-        filePath: "",
-        createTime: "",
-      },
       Party: {
         TEMPLATE_TYPE: "party",
         id: "",
@@ -160,8 +149,8 @@ export default {
         filePath: "",
         createTime: "",
       },
-      Search: {
-        TEMPLATE_TYPE: "teaching",
+      Studying: {
+        TEMPLATE_TYPE: "Studying",
         id: "",
         title: "",
         num: "",

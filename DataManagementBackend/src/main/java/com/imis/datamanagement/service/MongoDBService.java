@@ -16,6 +16,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Field;
@@ -101,7 +102,7 @@ public class MongoDBService {
 
     //TODO 根据条件获取用户资源（资源广场）
 
-    public void insertTemplate(AbstractTemplate abstractTemplate) {
+    public void insertTemplate(@RequestBody AbstractTemplate abstractTemplate) {
         abstractTemplate.setId(getMongoId(abstractTemplate));
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -112,13 +113,13 @@ public class MongoDBService {
     }
 
     //如果传入是null，也会被改为null
-    public void updateTemplate(AbstractTemplate abstractTemplate) {
+    public void updateTemplate(@RequestBody AbstractTemplate abstractTemplate) {
         Query query = new Query(Criteria.where("_id").is(abstractTemplate.getId()));
         AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());
         if (at != null) {
             throw new GlobalException(CodeMsg.FILE_EXIST);
         }
-        if (at.getDeleted() == null | at.getDeleted().equals("1")) {
+        if (at.getDeleted() == null || at.getDeleted().equals("1")) {
             throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
         }
 

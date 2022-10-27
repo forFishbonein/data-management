@@ -9,24 +9,35 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">活动主题</td>
+            <td class="label required">编号</td>
             <td>
               <el-input
                 class="property"
-                placeholder="请输入活动名称"
-                v-model="Teaching.title"
+                placeholder="请输入项目编号"
+                v-model="Party.id"
                 clearable>
               </el-input>
             </td>
           </tr>
           <tr>
-            <td class="label required">学习内容</td>
+            <td class="label required">资源名称</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入资源名称"
+                v-model="Party.title"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">项目简介</td>
             <td>
               <el-input
                 class="property"
                 type="textarea"
-                v-model="Teaching.introduction"
-                :autosize="{ minRows: 2, maxRows: 4}"
+                v-model="Party.introduction"
+                :autosize="{ minRows: 6, maxRows: 8}"
               >
               </el-input>
             </td>
@@ -38,11 +49,34 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
+            <td class="label required">活动主题</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入活动主题"
+                v-model="Party.topic"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">学习内容</td>
+            <td>
+              <el-input
+                class="property"
+                type="textarea"
+                v-model="Party.content"
+                :autosize="{ minRows: 6, maxRows: 8}"
+              >
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <td class="label">活动类型</td>
             <td>
               <el-autocomplete
                 class="property"
-                v-model="Teaching.type"
+                v-model="Party.type"
                 :fetch-suggestions="querySearch"
                 placeholder="请选择类型或直接输入"
                 popper-class="my-autocomplete"
@@ -63,7 +97,7 @@
             <td>
               <el-input
                 class="property"
-                v-model="Teaching.level"
+                v-model="Party.address"
                 placeholder="请输入活动地点"
                 clearable>
               </el-input>
@@ -74,9 +108,9 @@
             <td>
               <el-date-picker
                 class="property"
-                v-model="Teaching.projectTime"
+                v-model="Party.time"
                 type="date"
-                placeholder="选择立项时间">
+                placeholder="选择时间">
               </el-date-picker>
             </td>
           </tr>
@@ -84,9 +118,9 @@
             <td class="label">参与人</td>
             <td>
               <el-tag
-                v-model="Teaching.member"
+                v-model="Party.participant"
                 :key="tag"
-                v-for="tag in Teaching.member"
+                v-for="tag in Party.participant"
                 closable
                 :disable-transitions="false"
                 @close="handleClose(tag)">
@@ -176,27 +210,25 @@
 import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeachingUpload',
+  name: 'PartyUpload',
   components: {TeacherNav},
   data() {
     return {
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
+      Party: {
+        TEMPLATE_TYPE: "party",
         id: "",
         title: "",
         num: "",
         introduction: "",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-        other: [],
 
-        //TODO 资源名称记录
+        time: "",
+        type: "",
+        topic: "",
+        content: "",
+        address: "",
+        participant: "",
+
+        other: [],
         filePath: [],
         createTime: "",
       },
@@ -217,7 +249,7 @@ export default {
   },
   methods: {
     dayin() {
-      console.log(this.Teaching)
+      console.log(this.Party)
     },
     Template(key, value) {
       this.key = key;
@@ -225,12 +257,12 @@ export default {
     },
     addInput() {
       let kv = new this.Template(this.m.key, this.m.value);
-      this.Teaching.other.push(kv)
-      console.log(this.Teaching.other)
+      this.Party.other.push(kv)
+      console.log(this.Party.other)
       var trHtml = `<td></td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].key}</td>
+                    <td align="center">${this.Party.other[this.Party.other.length - 1].key}</td>
                     <td>:</td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].value}</td>`
+                    <td align="center">${this.Party.other[this.Party.other.length - 1].value}</td>`
       var tr = document.createElement('tr');
       tr.innerHTML = trHtml
       document.getElementById("change-table").appendChild(tr)
@@ -240,7 +272,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Teaching.member.splice(this.Teaching.member.indexOf(tag), 1);
+      this.Party.member.splice(this.Party.member.indexOf(tag), 1);
     },
 
     showInput() {
@@ -253,7 +285,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Teaching.member.push(inputValue);
+        this.Party.member.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
@@ -272,7 +304,10 @@ export default {
     },
     loadAll() {
       return [
-        {"value": "教研"},
+        {"value": "主题党日"},
+        {"value": "集体活动"},
+        {"value": "书记讲党课"},
+        {"value": "党员讲党课"}
       ];
     },
     handleSelect(item) {
@@ -315,6 +350,7 @@ export default {
   width: 1200px;
   border-radius: 8px;
   background-color: #fdfdfd;
+  background-image: url("../../../static/img/temple.svg");
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   .template-title {

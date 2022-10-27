@@ -9,12 +9,12 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">竞赛名称</td>
+            <td class="label required">编号</td>
             <td>
               <el-input
                 class="property"
-                placeholder="请输入资源名称"
-                v-model="Teaching.title"
+                placeholder="请输入项目编号"
+                v-model="StudentContest.id"
                 clearable>
               </el-input>
             </td>
@@ -25,7 +25,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目名称"
-                v-model="Teaching.title"
+                v-model="StudentContest.title"
                 clearable>
               </el-input>
             </td>
@@ -36,8 +36,8 @@
               <el-input
                 class="property"
                 type="textarea"
-                v-model="Teaching.introduction"
-                :autosize="{ minRows: 2, maxRows: 4}"
+                v-model="StudentContest.introduction"
+                :autosize="{ minRows: 6, maxRows: 8}"
               >
               </el-input>
             </td>
@@ -49,14 +49,35 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
-            <td class="label">获奖级别</td>
+            <td class="label">竞赛名称</td>
             <td>
               <el-input
                 class="property"
-                v-model="Teaching.level"
-                placeholder="请输入项目级别"
+                placeholder="请输入竞赛名称"
+                v-model="StudentContest.gameName"
                 clearable>
               </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">获奖级别</td>
+            <td>
+              <el-autocomplete
+                class="property"
+                v-model="StudentContest.grade"
+                :fetch-suggestions="querySearch"
+                placeholder="请选择类型或直接输入"
+                popper-class="my-autocomplete"
+                @select="handleSelect">
+                <i
+                  slot="suffix"
+                  class="el-icon-edit el-input__icon"
+                  @click="handleIconClick">
+                </i>
+                <template slot-scope="{ item }">
+                  <div class="name">{{ item.value }}</div>
+                </template>
+              </el-autocomplete>
             </td>
           </tr>
           <tr>
@@ -64,7 +85,7 @@
             <td>
               <el-date-picker
                 class="property"
-                v-model="Teaching.projectTime"
+                v-model="StudentContest.time"
                 type="date"
                 placeholder="选择立项时间">
               </el-date-picker>
@@ -74,9 +95,9 @@
             <td class="label">指导老师</td>
             <td>
               <el-tag
-                v-model="Teaching.member"
+                v-model="StudentContest.instructor"
                 :key="tag"
-                v-for="tag in Teaching.member"
+                v-for="tag in StudentContest.instructor"
                 closable
                 :disable-transitions="false"
                 @close="handleClose(tag)">
@@ -166,27 +187,24 @@
 import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeachingUpload',
+  name: 'StudentContestUpload',
   components: {TeacherNav},
   data() {
     return {
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
+      StudentContest: {
+        TEMPLATE_TYPE: "studentContest",
         id: "",
         title: "",
         num: "",
         introduction: "",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-        other: [],
 
-        //TODO 资源名称记录
+        name: "",
+        gameName: "",
+        grade: "",
+        instructor: "",
+        time: "",
+
+        other: [],
         filePath: [],
         createTime: "",
       },
@@ -207,7 +225,7 @@ export default {
   },
   methods: {
     dayin() {
-      console.log(this.Teaching)
+      console.log(this.StudentContest)
     },
     Template(key, value) {
       this.key = key;
@@ -215,12 +233,12 @@ export default {
     },
     addInput() {
       let kv = new this.Template(this.m.key, this.m.value);
-      this.Teaching.other.push(kv)
-      console.log(this.Teaching.other)
+      this.StudentContest.other.push(kv)
+      console.log(this.StudentContest.other)
       var trHtml = `<td></td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].key}</td>
+                    <td align="center">${this.StudentContest.other[this.StudentContest.other.length - 1].key}</td>
                     <td>:</td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].value}</td>`
+                    <td align="center">${this.StudentContest.other[this.StudentContest.other.length - 1].value}</td>`
       var tr = document.createElement('tr');
       tr.innerHTML = trHtml
       document.getElementById("change-table").appendChild(tr)
@@ -230,7 +248,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Teaching.member.splice(this.Teaching.member.indexOf(tag), 1);
+      this.StudentContest.member.splice(this.StudentContest.member.indexOf(tag), 1);
     },
 
     showInput() {
@@ -243,7 +261,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Teaching.member.push(inputValue);
+        this.StudentContest.member.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
@@ -262,7 +280,12 @@ export default {
     },
     loadAll() {
       return [
-        {"value": "教研"},
+        {"value": "国家级一等奖"},
+        {"value": "国家级二等奖"},
+        {"value": "国家级三等奖"},
+        {"value": "省级一等奖"},
+        {"value": "省级二等奖"},
+        {"value": "省级三等奖"},
       ];
     },
     handleSelect(item) {
@@ -305,6 +328,7 @@ export default {
   width: 1200px;
   border-radius: 8px;
   background-color: #fdfdfd;
+  background-image: url("../../../static/img/temple.svg");
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   .template-title {

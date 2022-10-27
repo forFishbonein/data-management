@@ -3,23 +3,23 @@
     <TeacherNav></TeacherNav>
     <div class="container">
       <div class="choose">
-        <router-link class="active" to="/upload/teaching">科研项目</router-link>
+        <router-link to="/upload/studying">科研项目</router-link>
 
-        <router-link to="#">教研项目</router-link>
+        <router-link to="/upload/teaching">教研项目</router-link>
 
-        <router-link to="#">各类荣誉</router-link>
+        <router-link to="/upload/honor">各类荣誉</router-link>
 
-        <router-link to="#">成果类</router-link>
+        <router-link to="/upload/achievement">成果类</router-link>
 
-        <router-link to="#">学生竞赛</router-link>
+        <router-link to="/upload/contest">学生竞赛</router-link>
 
-        <router-link to="#">交流访问</router-link>
+        <router-link to="/upload/communication">交流访问</router-link>
 
-        <router-link to="#">党支部</router-link>
+        <router-link to="/upload/party">党支部</router-link>
 
-        <router-link to="#">教研室</router-link>
+        <router-link to="/upload/office">教研室</router-link>
 
-        <router-link to="#">论文/期刊</router-link>
+
 
         <router-link class="ud" to="#">自定义</router-link>
 
@@ -72,6 +72,7 @@ export default {
   border-bottom: #97a5c3 solid 0.5px;
   border-radius: 8px;
   background-color: #fdfdfd;
+  background-image: url("../../static/img/temple.svg");
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   transition: .3s;
 

@@ -9,13 +9,36 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">活动(会议)名称</td>
+            <td class="label required">编号</td>
             <td>
               <el-input
                 class="property"
-                placeholder="请输入活动名称"
-                v-model="Teaching.title"
+                placeholder="请输入项目编号"
+                v-model="Communication.id"
                 clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">资源名称</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入资源名称"
+                v-model="Communication.title"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">项目简介</td>
+            <td>
+              <el-input
+                class="property"
+                type="textarea"
+                v-model="Communication.introduction"
+                :autosize="{ minRows: 6, maxRows: 8}"
+              >
               </el-input>
             </td>
             <td class="required-prompt">!简介为必填信息</td>
@@ -26,12 +49,23 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
+            <td class="label">活动名称</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入活动名称"
+                v-model="Communication.name"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <td class="label">主办机构</td>
             <td>
               <el-input
                 class="property"
                 placeholder="请输入主办机构名称"
-                v-model="Teaching.source"
+                v-model="Communication.organizer"
                 clearable>
               </el-input>
             </td>
@@ -41,7 +75,7 @@
             <td>
               <el-autocomplete
                 class="property"
-                v-model="Teaching.type"
+                v-model="Communication.type"
                 :fetch-suggestions="querySearch"
                 placeholder="请选择类型或直接输入"
                 popper-class="my-autocomplete"
@@ -62,7 +96,7 @@
             <td>
               <el-input
                 class="property"
-                v-model="Teaching.level"
+                v-model="Communication.address"
                 placeholder="请输入地点"
                 clearable>
               </el-input>
@@ -73,7 +107,7 @@
             <td>
               <el-date-picker
                 class="property"
-                v-model="Teaching.projectTime"
+                v-model="Communication.startTime"
                 type="date"
                 placeholder="选择起始时间">
               </el-date-picker>
@@ -83,7 +117,7 @@
             <td class="label">终止时间</td>
             <td>
               <el-date-picker
-                v-model="Teaching.postprojectTime"
+                v-model="Communication.lastTime"
                 class="property"
                 type="date"
                 placeholder="选择终止时间">
@@ -91,23 +125,34 @@
             </td>
           </tr>
           <tr>
-            <td class="label">项目经费</td>
+            <td class="label">是否发言</td>
             <td>
               <el-input
-                v-model="Teaching.fund"
+                v-model="Communication.whetherSpeak"
                 class="property"
-                placeholder="请输入项目经费"
+                placeholder="请选择是否"
                 clearable>
               </el-input>
             </td>
           </tr>
           <tr>
-            <td class="label">课题组成员</td>
+            <td class="label">学生是否参与</td>
+            <td>
+              <el-input
+                v-model="Communication.whetherParticipate"
+                class="property"
+                placeholder="请选择是否"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">参会人员</td>
             <td>
               <el-tag
-                v-model="Teaching.member"
+                v-model="Communication.member"
                 :key="tag"
-                v-for="tag in Teaching.member"
+                v-for="tag in Communication.member"
                 closable
                 :disable-transitions="false"
                 @close="handleClose(tag)">
@@ -197,27 +242,28 @@
 import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeachingUpload',
+  name: 'CommunicationUpload',
   components: {TeacherNav},
   data() {
     return {
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
+      Communication: {
+        TEMPLATE_TYPE: "communication",
         id: "",
         title: "",
         num: "",
         introduction: "",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-        other: [],
 
-        //TODO 资源名称记录
+        startTime: "",
+        lastTime: "",
+        type: "",
+        name: "",
+        organizer: "",
+        address: "",
+        member: "",
+        whetherSpeak: "",
+        whetherParticipate: "",
+
+        other: [],
         filePath: [],
         createTime: "",
       },
@@ -238,7 +284,7 @@ export default {
   },
   methods: {
     dayin() {
-      console.log(this.Teaching)
+      console.log(this.Communication)
     },
     Template(key, value) {
       this.key = key;
@@ -246,12 +292,12 @@ export default {
     },
     addInput() {
       let kv = new this.Template(this.m.key, this.m.value);
-      this.Teaching.other.push(kv)
-      console.log(this.Teaching.other)
+      this.Communication.other.push(kv)
+      console.log(this.Communication.other)
       var trHtml = `<td></td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].key}</td>
+                    <td align="center">${this.Communication.other[this.Communication.other.length - 1].key}</td>
                     <td>:</td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].value}</td>`
+                    <td align="center">${this.Communication.other[this.Communication.other.length - 1].value}</td>`
       var tr = document.createElement('tr');
       tr.innerHTML = trHtml
       document.getElementById("change-table").appendChild(tr)
@@ -261,7 +307,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Teaching.member.splice(this.Teaching.member.indexOf(tag), 1);
+      this.Communication.member.splice(this.Communication.member.indexOf(tag), 1);
     },
 
     showInput() {
@@ -274,7 +320,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Teaching.member.push(inputValue);
+        this.Communication.member.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
@@ -339,6 +385,7 @@ export default {
   width: 1200px;
   border-radius: 8px;
   background-color: #fdfdfd;
+  background-image: url("../../../static/img/temple.svg");
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   .template-title {

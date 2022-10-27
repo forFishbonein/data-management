@@ -9,12 +9,23 @@
             </td>
           </tr>
           <tr>
+            <td class="label required">编号</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入项目编号"
+                v-model="studying.id"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <td class="label required">资源名称</td>
             <td>
               <el-input
                 class="property"
                 placeholder="请输入资源名称"
-                v-model="Teaching.title"
+                v-model="Studying.title"
                 clearable>
               </el-input>
             </td>
@@ -25,8 +36,8 @@
               <el-input
                 class="property"
                 type="textarea"
-                v-model="Teaching.introduction"
-                :autosize="{ minRows: 2, maxRows: 4}"
+                v-model="Studying.introduction"
+                :autosize="{ minRows: 6, maxRows: 8}"
               >
               </el-input>
             </td>
@@ -43,7 +54,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目来源"
-                v-model="Teaching.source"
+                v-model="Studying.source"
                 clearable>
               </el-input>
             </td>
@@ -53,7 +64,7 @@
             <td>
               <el-autocomplete
                 class="property"
-                v-model="Teaching.type"
+                v-model="Studying.type"
                 :fetch-suggestions="querySearch"
                 placeholder="请选择类型或直接输入"
                 popper-class="my-autocomplete"
@@ -74,7 +85,7 @@
             <td>
               <el-input
                 class="property"
-                v-model="Teaching.level"
+                v-model="Studying.level"
                 placeholder="请输入项目级别"
                 clearable>
               </el-input>
@@ -85,7 +96,7 @@
             <td>
               <el-date-picker
                 class="property"
-                v-model="Teaching.projectTime"
+                v-model="Studying.projectTime"
                 type="date"
                 placeholder="选择立项时间">
               </el-date-picker>
@@ -95,7 +106,7 @@
             <td class="label">结项时间</td>
             <td>
               <el-date-picker
-                v-model="Teaching.postprojectTime"
+                v-model="Studying.postprojectTime"
                 class="property"
                 type="date"
                 placeholder="选择结项时间">
@@ -106,7 +117,7 @@
             <td class="label">项目经费</td>
             <td>
               <el-input
-                v-model="Teaching.fund"
+                v-model="Studying.fund"
                 class="property"
                 placeholder="请输入项目经费"
                 clearable>
@@ -117,9 +128,9 @@
             <td class="label">课题组成员</td>
             <td>
               <el-tag
-                v-model="Teaching.member"
+                v-model="Studying.member"
                 :key="tag"
-                v-for="tag in Teaching.member"
+                v-for="tag in Studying.member"
                 closable
                 :disable-transitions="false"
                 @close="handleClose(tag)">
@@ -209,16 +220,17 @@
 import TeacherNav from "../TeacherNav";
 
 export default {
-  name: 'TeachingUpload',
+  name: 'StudyingUpload',
   components: {TeacherNav},
   data() {
     return {
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
+      Studying: {
+        TEMPLATE_TYPE: "Studying",
         id: "",
         title: "",
         num: "",
         introduction: "",
+
         name: "",
         source: "",
         type: "",
@@ -227,9 +239,9 @@ export default {
         postprojectTime: "",
         fund: "",
         member: [],
+
         other: [],
 
-        //TODO 资源名称记录
         filePath: [],
         createTime: "",
       },
@@ -242,15 +254,14 @@ export default {
         key: "",
         value: "",
       },
-      // key: "",
-      // value: "",
+
       number: [0],
     };
 
   },
   methods: {
     dayin() {
-      console.log(this.Teaching)
+      console.log(this.Studying)
     },
     Template(key, value) {
       this.key = key;
@@ -258,12 +269,12 @@ export default {
     },
     addInput() {
       let kv = new this.Template(this.m.key, this.m.value);
-      this.Teaching.other.push(kv)
-      console.log(this.Teaching.other)
+      this.Studying.other.push(kv)
+      console.log(this.Studying.other)
       var trHtml = `<td></td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].key}</td>
+                    <td align="center">${this.Studying.other[this.Studying.other.length - 1].key}</td>
                     <td>:</td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].value}</td>`
+                    <td align="center">${this.Studying.other[this.Studying.other.length - 1].value}</td>`
       var tr = document.createElement('tr');
       tr.innerHTML = trHtml
       document.getElementById("change-table").appendChild(tr)
@@ -273,7 +284,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Teaching.member.splice(this.Teaching.member.indexOf(tag), 1);
+      this.Studying.member.splice(this.Studying.member.indexOf(tag), 1);
     },
 
     showInput() {
@@ -286,7 +297,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Teaching.member.push(inputValue);
+        this.Studying.member.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
@@ -348,6 +359,7 @@ export default {
   width: 1200px;
   border-radius: 8px;
   background-color: #fdfdfd;
+  background-image: url("../../../static/img/temple.svg");
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   .template-title {

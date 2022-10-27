@@ -5,6 +5,8 @@ import TeacherIndex from "../views/TeacherIndex.vue";
 import RegisterTeacher from "../views/RegisterTeacher.vue";
 import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
+import Search from "../views/Search.vue";
+
 
 //manage
 import Manage from "../views/Manage.vue";
@@ -14,12 +16,11 @@ import FileManage from "../components/manage/FileManage.vue";
 //template
 import Achievement from "../views/template/Achievement.vue";
 import Teaching from "../views/template/Teaching.vue";
-import Communication from  "../views/template/Communication.vue";
+import Communication from "../views/template/Communication.vue";
 import Honor from "../views/template/Honor.vue";
 import Office from "../views/template/Office.vue";
-import Paper from "../views/template/Paper.vue";
 import Party from "../views/template/Party.vue";
-import Search from "../views/template/Search.vue";
+import Studying from "../views/template/Studying";
 import StudentContest from "../views/template/StudentContest.vue";
 import UserDefined from "../views/template/UserDefined.vue";
 
@@ -31,8 +32,10 @@ import ContestUpload from "../components/upload/ContestUpload";
 import HonorUpload from "../components/upload/HonorUpload";
 import OfficeUpload from "../components/upload/OfficeUpload";
 import PartyUpload from "../components/upload/PartyUpload";
-import StudyingUpload from "../components/upload/TeachingUpload";
-import TeachingUpload from "../components/upload/StudyingUpload";
+import StudyingUpload from "../components/upload/StudyingUpload";
+import TeachingUpload from "../components/upload/TeachingUpload";
+import DefinedUpload from "../components/upload/DefinedUpload";
+
 
 
 Vue.use(VueRouter);
@@ -64,7 +67,10 @@ const routes = [
       path: "/profile",
       component: TeacherIndex
     },
-
+    {
+      path: "/search",
+      component: Search
+    },
     {
       path: "/teaching",
       component: Teaching
@@ -87,17 +93,13 @@ const routes = [
       component: Office
     },
     {
-      path: "/paper",
-      component: Paper
-    },
-    {
       path: "/party",
       component: Party
     },
-    {
-      path: "/search",
-      component: Search
-    },
+  {
+    path: "/study",
+    component: Studying
+  },
     {
       path: "/studentContest",
       component: StudentContest
@@ -129,40 +131,44 @@ const routes = [
           component: TeachingUpload
         },
         {
-          path: 'achievementupload',
+          path: 'achievement',
           component: AchievementUpload
         },
         {
-          path: 'communicationupload',
+          path: 'communication',
           component: CommunicationUpload
         },
         {
-          path: 'contestupload',
+          path: 'contest',
           component: ContestUpload
         },
         {
-          path: 'honorupload',
+          path: 'honor',
           component: HonorUpload
         },
         {
-          path: 'officeupload',
+          path: "studying",
+          component: StudyingUpload
+        },
+        {
+          path: 'office',
           component: OfficeUpload
         },
         {
-          path: 'partyupload',
+          path: 'party',
           component: PartyUpload
         },
         {
-          path: 'studyingupload',
-          component: StudyingUpload
-        }
+          path: 'defined',
+          component: DefinedUpload
+        },
       ]
     }
   ]
 ;
 
 const router = new VueRouter({
-  mode:'history',
+  mode: 'history',
   routes
 });
 
