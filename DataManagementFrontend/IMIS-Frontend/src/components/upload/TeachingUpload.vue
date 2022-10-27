@@ -9,6 +9,17 @@
             </td>
           </tr>
           <tr>
+            <td class="label required">编号</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入项目编号"
+                v-model="Teaching.num"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <td class="label required">资源名称</td>
             <td>
               <el-input

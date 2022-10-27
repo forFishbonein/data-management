@@ -14,7 +14,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目编号"
-                v-model="Achievement.id"
+                v-model="Achievement.num"
                 clearable>
               </el-input>
             </td>

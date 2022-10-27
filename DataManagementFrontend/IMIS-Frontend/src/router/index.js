@@ -34,6 +34,7 @@ import OfficeUpload from "../components/upload/OfficeUpload";
 import PartyUpload from "../components/upload/PartyUpload";
 import StudyingUpload from "../components/upload/StudyingUpload";
 import TeachingUpload from "../components/upload/TeachingUpload";
+import DefinedUpload from "../components/upload/DefinedUpload";
 
 
 
@@ -130,37 +131,37 @@ const routes = [
           component: TeachingUpload
         },
         {
-          path: 'achievementupload',
+          path: 'achievement',
           component: AchievementUpload
         },
         {
-          path: 'communicationupload',
+          path: 'communication',
           component: CommunicationUpload
         },
         {
-          path: 'contestupload',
+          path: 'contest',
           component: ContestUpload
         },
         {
-          path: 'honorupload',
+          path: 'honor',
           component: HonorUpload
         },
         {
-          path: "studyingupload",
+          path: "studying",
           component: StudyingUpload
         },
         {
-          path: 'officeupload',
+          path: 'office',
           component: OfficeUpload
         },
         {
-          path: 'partyupload',
+          path: 'party',
           component: PartyUpload
         },
         {
-          path: 'studyingupload',
-          component: StudyingUpload
-        }
+          path: 'defined',
+          component: DefinedUpload
+        },
       ]
     }
   ]
