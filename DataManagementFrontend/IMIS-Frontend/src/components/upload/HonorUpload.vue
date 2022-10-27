@@ -14,7 +14,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目编号"
-                v-model="Honor.id"
+                v-model="Honor.num"
                 clearable>
               </el-input>
             </td>
@@ -185,7 +185,7 @@
         </table>
 
 
-        <div @click="dayin()">123456789</div>
+
 
 
       </div>
@@ -197,6 +197,7 @@
 <script>
 import TeacherNav from "../TeacherNav";
 
+import { insertHonorFile } from '@/api/file.js'
 export default {
   name: 'HonorUpload',
   components: {TeacherNav},
@@ -314,6 +315,9 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+      insertHonorFile(this.Honor).then(resp => {
+        console.log(resp.data)
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);

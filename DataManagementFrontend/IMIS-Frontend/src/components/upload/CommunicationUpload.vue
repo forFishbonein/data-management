@@ -14,7 +14,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目编号"
-                v-model="Communication.id"
+                v-model="Communication.num"
                 clearable>
               </el-input>
             </td>
@@ -240,7 +240,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertCommunicationFile } from '@/api/file.js'
 export default {
   name: 'CommunicationUpload',
   components: {TeacherNav},
@@ -357,6 +357,9 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+      insertCommunicationFile(this.Communication).then(resp => {
+          console.log(resp.data)
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);

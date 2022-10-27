@@ -14,7 +14,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目编号"
-                v-model="StudentContest.id"
+                v-model="StudentContest.num"
                 clearable>
               </el-input>
             </td>
@@ -87,7 +87,7 @@
                 class="property"
                 v-model="StudentContest.time"
                 type="date"
-                placeholder="选择立项时间">
+                placeholder="选择获奖时间">
               </el-date-picker>
             </td>
           </tr>
@@ -185,7 +185,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertStudentContestFile } from '@/api/file.js'
 export default {
   name: 'StudentContestUpload',
   components: {TeacherNav},
@@ -300,6 +300,9 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+      insertStudentContestFile(this.StudentContest).then(resp => {
+        console.log(resp.data)
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);

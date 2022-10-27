@@ -240,7 +240,7 @@
         </table>
 
 
-        <div @click="dayin()">123456789</div>
+
 
 
       </div>
@@ -252,31 +252,36 @@
 <script>
 import TeacherNav from "../TeacherNav";
 
+import { insertAchievementFile } from '@/api/file.js'
+
 export default {
   name: 'AchievementUpload',
   components: {TeacherNav},
   data() {
     return {
       Achievement: {
-        TEMPLATE_TYPE: "Achievement",
+        TEMPLATE_TYPE: "achievement",
         id: "",
         title: "",
-        paper: "",
+        num: "",
         introduction: "",
-        name: "",
-        press: "",
-        type: "",
-        journalGrade: "",
-        creatTime: "",
-        publicationTime: "",
-        author: "",
-        publicYear:"",
-        schoolGrade: "",
-        authorRank: [],
-        other: [],
 
-        //TODO 资源名称记录
-        filePath: [],
+        name: "",
+        author: "",
+        publicYear: "",
+        paper: "",
+        type: "",
+        press: "",
+        journalGrade: "",
+        schoolGrade: "",
+        publicationTime: "",
+        authorRank: "",
+
+        other: {
+          "条目1": "内容1",
+          "条目2": "内容2"
+        },
+        filePath: "",
         createTime: "",
       },
 
@@ -366,6 +371,10 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+
+      insertAchievementFile(this.Achievement).then(resp => {
+          console.log(resp.data)
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);

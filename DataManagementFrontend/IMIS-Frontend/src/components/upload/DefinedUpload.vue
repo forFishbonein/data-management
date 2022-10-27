@@ -3,6 +3,51 @@
     <div class="main">
       <div class="content">
         <table>
+          <tr>
+            <td class="template-title" colspan="3">
+              自定义模板
+            </td>
+          </tr>
+        <tr>
+          <td class="label required">编号</td>
+          <td>
+            <el-input
+              class="property"
+              placeholder="请输入项目编号"
+              v-model="UserDefined.num"
+              clearable>
+            </el-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="label required">项目名称</td>
+          <td>
+            <el-input
+              class="property"
+              placeholder="请输入项目名称"
+              v-model="UserDefined.title"
+              clearable>
+            </el-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="label required">项目简介</td>
+          <td>
+            <el-input
+              class="property"
+              type="textarea"
+              v-model="UserDefined.introduction"
+              :autosize="{ minRows: 6, maxRows: 8}"
+            >
+            </el-input>
+          </td>
+          <td class="required-prompt">!简介为必填信息</td>
+        </tr>
+        </table>
+        <div class="prompt">以上内容用于区分不同项目，为必填字段</div>
+        <div class="prompt-line"></div>
+        <div class="prompt">以下为选填字段</div>
+        <table>
 
           <tr>
             <td class="label">上传文件</td>
@@ -70,14 +115,14 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertUserDefinedFile } from '@/api/file.js'
 export default {
   name: "Defined",
   components: {TeacherNav},
   data() {
     return {
       UserDefined: {
-        TEMPLATE_TYPE: "teaching",
+        TEMPLATE_TYPE: "user_defined",
         id: "",
         title: "",
         num: "",
@@ -176,7 +221,7 @@ export default {
     submitUpload() {
       this.$refs.upload.submit();
 
-      insertTeacherFile(this.Teaching).then(resp => {
+      insertUserDefinedFile(this.UserDefined).then(resp => {
         console.log(resp.data)
 
       });

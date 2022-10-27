@@ -14,7 +14,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目编号"
-                v-model="studying.id"
+                v-model="studying.num"
                 clearable>
               </el-input>
             </td>
@@ -218,7 +218,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertStudyingFile } from '@/api/file.js'
 export default {
   name: 'StudyingUpload',
   components: {TeacherNav},
@@ -335,6 +335,9 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+      insertStudyingFile(this.Studying).then(resp => {
+        console.log(resp.data)
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);

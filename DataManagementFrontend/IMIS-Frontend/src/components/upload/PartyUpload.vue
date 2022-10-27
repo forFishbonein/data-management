@@ -14,7 +14,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目编号"
-                v-model="Party.id"
+                v-model="Party.num"
                 clearable>
               </el-input>
             </td>
@@ -208,7 +208,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertPartyFile } from '@/api/file.js'
 export default {
   name: 'PartyUpload',
   components: {TeacherNav},
@@ -322,6 +322,10 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+
+      insertPartyFile(this.Party).then(resp => {
+        console.log(resp.data)
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
