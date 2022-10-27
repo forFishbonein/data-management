@@ -9,6 +9,17 @@
             </td>
           </tr>
           <tr>
+            <td class="label required">编号</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入项目编号"
+                v-model="Teaching.num"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <td class="label required">资源名称</td>
             <td>
               <el-input
@@ -20,13 +31,14 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="Teaching.introduction"
-                :autosize="{ minRows: 2, maxRows: 4}"
+                :autosize="{ minRows: 6, maxRows: 8}"
               >
               </el-input>
             </td>
@@ -195,11 +207,6 @@
 
           </tr>
         </table>
-
-
-        <div @click="dayin()">123456789</div>
-
-
       </div>
     </div>
   </div>
@@ -231,8 +238,6 @@ export default {
         fund: "",
         member: [],
         other: [],
-
-        //TODO 资源名称记录
         filePath: [],
         createTime: "",
       },
@@ -252,9 +257,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.Teaching)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value
@@ -330,6 +332,7 @@ export default {
 
       insertTeacherFile(this.Teaching).then(resp => {
         console.log(resp.data)
+
       });
 
     },
@@ -360,6 +363,7 @@ export default {
   width: 1200px;
   border-radius: 8px;
   background-color: #fdfdfd;
+  background-image: url("../../../static/img/temple.svg");
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   .template-title {
@@ -378,6 +382,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
+      vertical-align: top;
 
     }
 

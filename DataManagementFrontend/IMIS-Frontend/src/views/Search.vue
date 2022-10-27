@@ -6,14 +6,14 @@
       <div class="tbody">
         <div class="line"><h2>搜索结果</h2></div>
         <div class="check">
-          <input id="1" v-model="picked" type="checkbox" value="科研项目"/>科研项目
-          <input id="1" v-model="picked" type="checkbox" value="教研项目"/>教研项目
-          <input id="1" v-model="picked" type="checkbox" value="荣誉"/>荣誉
-          <input id="1" v-model="picked" type="checkbox" value="成果"/>成果
-          <input id="1" v-model="picked" type="checkbox" value="学生竞赛"/>学生竞赛
-          <input id="1" v-model="picked" type="checkbox" value="交流访问"/>交流访问
-          <input id="1" v-model="picked" type="checkbox" value="党支部"/>党支部
-          <input id="1" v-model="picked" type="checkbox" value="其他"/>其他
+          <input v-model="picked" type="checkbox" value="科研项目"/>科研项目
+          <input v-model="picked" type="checkbox" value="教研项目"/>教研项目
+          <input v-model="picked" type="checkbox" value="荣誉"/>荣誉
+          <input v-model="picked" type="checkbox" value="成果"/>成果
+          <input v-model="picked" type="checkbox" value="学生竞赛"/>学生竞赛
+          <input v-model="picked" type="checkbox" value="交流访问"/>交流访问
+          <input v-model="picked" type="checkbox" value="党支部"/>党支部
+          <input v-model="picked" type="checkbox" value="其他"/>其他
 
           <ul>
             <li v-for="(item, index) in picked" :key="index">{{ item }}</li>

@@ -1,12 +1,23 @@
 import request from "@/request";
 
 export function insertTeacherFile(data) {
-  console.log("--------data")
-  console.log(data);
-  console.log("--------data")
   return request({
     data,
-    method: "post",
+    method: "put",
     url: "/file",
+  });
+}
+
+export function getById() {
+  return request({
+    method: "get",
+    url: "/file"
+  });
+}
+
+export function getAll() {
+  return request({
+    method: "get",
+    url: "/file"
   });
 }

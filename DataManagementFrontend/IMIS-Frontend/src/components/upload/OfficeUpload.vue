@@ -9,24 +9,35 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">活动名称</td>
+            <td class="label required">编号</td>
             <td>
               <el-input
                 class="property"
-                placeholder="请输入活动名称"
-                v-model="Teaching.title"
+                placeholder="请输入项目编号"
+                v-model="Office.num"
                 clearable>
               </el-input>
             </td>
           </tr>
           <tr>
-            <td class="label required">活动内容</td>
+            <td class="label required">资源名称</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入资源名称"
+                v-model="Office.title"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">项目简介</td>
             <td>
               <el-input
                 class="property"
                 type="textarea"
-                v-model="Teaching.introduction"
-                :autosize="{ minRows: 2, maxRows: 4}"
+                v-model="Office.introduction"
+                :autosize="{ minRows: 6, maxRows: 8}"
               >
               </el-input>
             </td>
@@ -38,11 +49,34 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
+            <td class="label">活动主题</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入活动主题"
+                v-model="Office.topic"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">学习内容</td>
+            <td>
+              <el-input
+                class="property"
+                type="textarea"
+                v-model="Office.content"
+                :autosize="{ minRows: 6, maxRows: 8}"
+              >
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <td class="label">活动类型</td>
             <td>
               <el-autocomplete
                 class="property"
-                v-model="Teaching.type"
+                v-model="Office.type"
                 :fetch-suggestions="querySearch"
                 placeholder="请选择类型或直接输入"
                 popper-class="my-autocomplete"
@@ -59,34 +93,34 @@
             </td>
           </tr>
           <tr>
-            <td class="label">时间</td>
+            <td class="label">活动时间</td>
             <td>
               <el-date-picker
                 class="property"
-                v-model="Teaching.projectTime"
+                v-model="Office.time"
                 type="date"
                 placeholder="选择时间">
               </el-date-picker>
             </td>
           </tr>
           <tr>
-            <td class="label">地点</td>
+            <td class="label">活动地点</td>
             <td>
               <el-input
                 class="property"
-                v-model="Teaching.level"
+                v-model="Office.address"
                 placeholder="请输入活动地点"
                 clearable>
               </el-input>
             </td>
           </tr>
           <tr>
-            <td class="label">课题组成员</td>
+            <td class="label">参与人</td>
             <td>
               <el-tag
-                v-model="Teaching.member"
+                v-model="Office.participant"
                 :key="tag"
-                v-for="tag in Teaching.member"
+                v-for="tag in Office.participant"
                 closable
                 :disable-transitions="false"
                 @close="handleClose(tag)">
@@ -174,29 +208,27 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertOfficeFile } from '@/api/file.js'
 export default {
-  name: 'TeachingUpload',
+  name: 'OfficeUpload',
   components: {TeacherNav},
   data() {
     return {
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
+      Office: {
+        TEMPLATE_TYPE: "office",
         id: "",
         title: "",
         num: "",
         introduction: "",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-        other: [],
 
-        //TODO 资源名称记录
+        time: "",
+        type: "",
+        topic: "",
+        content: "",
+        address: "",
+        participant: "",
+
+        other: [],
         filePath: [],
         createTime: "",
       },
@@ -217,7 +249,7 @@ export default {
   },
   methods: {
     dayin() {
-      console.log(this.Teaching)
+      console.log(this.Office)
     },
     Template(key, value) {
       this.key = key;
@@ -225,12 +257,12 @@ export default {
     },
     addInput() {
       let kv = new this.Template(this.m.key, this.m.value);
-      this.Teaching.other.push(kv)
-      console.log(this.Teaching.other)
+      this.Office.other.push(kv)
+      console.log(this.Office.other)
       var trHtml = `<td></td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].key}</td>
+                    <td align="center">${this.Office.other[this.Office.other.length - 1].key}</td>
                     <td>:</td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].value}</td>`
+                    <td align="center">${this.Office.other[this.Office.other.length - 1].value}</td>`
       var tr = document.createElement('tr');
       tr.innerHTML = trHtml
       document.getElementById("change-table").appendChild(tr)
@@ -240,7 +272,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Teaching.member.splice(this.Teaching.member.indexOf(tag), 1);
+      this.Office.member.splice(this.Office.member.indexOf(tag), 1);
     },
 
     showInput() {
@@ -253,7 +285,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Teaching.member.push(inputValue);
+        this.Office.member.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
@@ -290,6 +322,10 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+
+      insertOfficeFile(this.Office).then(resp => {
+        console.log(resp.data)
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
@@ -318,6 +354,7 @@ export default {
   width: 1200px;
   border-radius: 8px;
   background-color: #fdfdfd;
+  background-image: url("../../../static/img/temple.svg");
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
   .template-title {
