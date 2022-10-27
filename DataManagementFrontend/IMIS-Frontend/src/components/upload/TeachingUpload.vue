@@ -9,17 +9,6 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">编号</td>
-            <td>
-              <el-input
-                class="property"
-                placeholder="请输入项目编号"
-                v-model="Teaching.id"
-                clearable>
-              </el-input>
-            </td>
-          </tr>
-          <tr>
             <td class="label required">资源名称</td>
             <td>
               <el-input
@@ -207,11 +196,6 @@
 
           </tr>
         </table>
-
-
-        <div @click="dayin()">123456789</div>
-
-
       </div>
     </div>
   </div>
@@ -233,8 +217,7 @@ export default {
         id: "",
         title: "",
         num: "",
-        introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
-
+        introduction: "",
         name: "",
         source: "",
         type: "",
@@ -242,14 +225,9 @@ export default {
         projectTime: "",
         postprojectTime: "",
         fund: "",
-        member: "",
-
-        other: {
-          "条目1": "内容1",
-          "条目2": "内容2"
-        },
-
-        filePath: "",
+        member: [],
+        other: [],
+        filePath: [],
         createTime: "",
       },
 
@@ -268,9 +246,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.Teaching)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value
@@ -346,6 +321,7 @@ export default {
 
       insertTeacherFile(this.Teaching).then(resp => {
         console.log(resp.data)
+
       });
 
     },
