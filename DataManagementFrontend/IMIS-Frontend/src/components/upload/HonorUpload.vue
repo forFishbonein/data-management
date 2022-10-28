@@ -179,7 +179,7 @@
         <table>
           <tr>
             <td class="label">
-              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
@@ -236,9 +236,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.Honor)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value

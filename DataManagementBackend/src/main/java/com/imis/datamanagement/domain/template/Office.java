@@ -38,7 +38,7 @@ public class Office extends AbstractTemplate {
 
     private String address;
 
-    private String participant;
+    private List<String> participant;
 
     //------------------
     private List<Map<String, String>> other;

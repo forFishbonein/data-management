@@ -26,6 +26,7 @@ import {
   Upload,
   Form,
   FormItem,
+  Row,
 } from "element-ui";
 
 Vue.use(Pagination);
@@ -46,6 +47,7 @@ Vue.use(VueRouter);
 Vue.use(Dialog);
 Vue.use(Form);
 Vue.use(FormItem);
+Vue.use(Row);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox;

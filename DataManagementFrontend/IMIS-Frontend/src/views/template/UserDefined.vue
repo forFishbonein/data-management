@@ -133,32 +133,8 @@
           filePath: "",
           createTime: "",
         },
-        Research: {
-          TEMPLATE_TYPE: "research",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
-
-          name: "",
-          source: "",
-          type: "",
-          level: "",
-          projectTime: "",
-          postprojectTime: "",
-          fund: "",
-          member: "",
-
-          other: {
-            "条目1": "内容1",
-            "条目2": "内容2"
-          },
-
-          filePath: "",
-          createTime: "",
-        },
         StudentContest: {
-          TEMPLATE_TYPE: "studentContest",
+          TEMPLATE_TYPE: "studentcontest",
           id: "",
           title: "",
           num: "",
@@ -199,7 +175,7 @@
           createTime: "",
         },
         UserDefined: {
-          TEMPLATE_TYPE: "teaching",
+          TEMPLATE_TYPE: "userdefined",
           id: "",
           title: "",
           num: "",

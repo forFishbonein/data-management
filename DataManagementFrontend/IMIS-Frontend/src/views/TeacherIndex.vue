@@ -50,8 +50,14 @@ export default {
   },
   methods: {
     getMaterials() {
-      getMaterials().then(resp => {
-        this.materials = resp.data.data;
+      let id = store.state.userId
+      getMaterials(id).then(res => {
+        console.log(res.data.data)
+        this.materials = res.data.data;
+      }).catch((error) => {
+        if (error !== 'error') {
+          this.$message({message: error, type: 'error', showClose: true});
+        }
       });
     }
   },

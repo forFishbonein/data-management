@@ -191,16 +191,11 @@
         <table>
           <tr>
             <td class="label">
-              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
         </table>
-
-
-        <div @click="dayin()">123456789</div>
-
-
       </div>
     </div>
   </div>
@@ -227,7 +222,7 @@ export default {
         topic: "",
         content: "",
         address: "",
-        participant: "",
+        participant: [],
 
         other: [],
         filePath: [],
@@ -249,9 +244,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.Office)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value
@@ -273,7 +265,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Office.member.splice(this.Office.member.indexOf(tag), 1);
+      this.Office.participant.splice(this.Office.participant.indexOf(tag), 1);
     },
 
     showInput() {
@@ -286,7 +278,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Office.member.push(inputValue);
+        this.Office.participant.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';

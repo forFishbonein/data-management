@@ -3,7 +3,7 @@ import request from "@/request";
 export function getAllResource() {
   return request({
     method: "get",
-    url: "/getAllResource.json"
+    url: "/file"
   });
 }
 
@@ -12,13 +12,6 @@ export function getSearchResults(keyword) {
     method: "get",
     data: keyword,
     url: "/results.json"
-  });
-}
-
-export function test() {
-  return request({
-    method: "get",
-    url: "/file"
   });
 }
 

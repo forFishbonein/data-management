@@ -80,7 +80,7 @@ export default new Vuex.Store({
     },
     getUserInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
-        getUserInfo(state.token, state.userId)
+        getUserInfo(state.token)
           .then(data => {
             if (data.success) {
               commit("SET_USEREMAIL", data.data.userEmail);

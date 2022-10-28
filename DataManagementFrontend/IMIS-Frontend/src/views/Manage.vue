@@ -39,7 +39,7 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="3-1">
-                <router-link to="/manage">竞赛管理</router-link>
+                <router-link to="#">竞赛管理</router-link>
               </el-menu-item>
               <el-menu-item index="3-2">
                 <router-link to="#">经验管理</router-link>
@@ -52,7 +52,7 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="4-1">
-                <router-link to="/manage/filemange">新闻管理</router-link>
+                <router-link to="#">新闻管理</router-link>
               </el-menu-item>
               <el-menu-item index="4-2">
                 <router-link to="#">新闻发布</router-link>
@@ -93,16 +93,19 @@ export default {
 
 .body .menu {
   width: 201px;
+  background-color: #545C64;
+  min-height: 1000px;
 }
 
 .body .context {
-  height: 100vh;
-  width: 100%;
+  // height: 100%;
+  // width: 100%;
+
 }
 
 .body .menu ul {
-  width: 201px;
-  height: 100vh;
+  // width: 201px;
+  // height: 100%;
 }
 
 

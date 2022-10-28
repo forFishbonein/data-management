@@ -1,7 +1,61 @@
 <template>
   <div class="m-container">
+    <!--Studying科研项目-->
     <el-table
-      :data="tableData"
+      :data="Studying"
+      stripe
+      style="width: 100%">
+      <el-table-column
+        label="资源名称"
+        prop="title"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="资源类型"
+        width="180"
+        align="center">
+        科研项目
+      </el-table-column>
+      <el-table-column
+        label="上传日期"
+        prop="createTime"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="上传者"
+        prop="uploaderId"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        type="expand"
+        label="简介">
+        <template slot-scope="props">
+          <span>简介：{{ props.row.introduction }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        width="240"
+        align="center">
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
+      </el-table-column>
+
+
+    </el-table>
+    <!--Teaching教研项目-->
+    <el-table
+      :data="Teaching"
       stripe
       style="width: 100%">
       <el-table-column
@@ -41,18 +95,395 @@
         label="操作"
         width="240"
         align="center">
-        <el-link type="primary">查看详情</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="primary">删除</el-link>
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
       </el-table-column>
 
 
     </el-table>
+    <!--Honor各类荣誉-->
+    <el-table
+      :data="Honor"
+      stripe
+      style="width: 100%">
+      <el-table-column
+        label="资源名称"
+        prop="title"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="资源类型"
+        width="180"
+        align="center">
+        各类荣誉
+      </el-table-column>
+      <el-table-column
+        label="上传日期"
+        prop="createTime"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="上传者"
+        prop="uploaderId"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        type="expand"
+        label="简介">
+        <template slot-scope="props">
+          <span>简介：{{ props.row.introduction }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        width="240"
+        align="center">
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
+      </el-table-column>
+
+
+    </el-table>
+    <!--Achievement成果类-->
+    <el-table
+      :data="Achievement"
+      stripe
+      style="width: 100%">
+      <el-table-column
+        label="资源名称"
+        prop="title"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="资源类型"
+        width="180"
+        align="center">
+        成果类
+      </el-table-column>
+      <el-table-column
+        label="上传日期"
+        prop="createTime"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="上传者"
+        prop="uploaderId"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        type="expand"
+        label="简介">
+        <template slot-scope="props">
+          <span>简介：{{ props.row.introduction }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        width="240"
+        align="center">
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
+      </el-table-column>
+
+
+    </el-table>
+    <!--Contest学生竞赛-->
+    <el-table
+      :data="Contest"
+      stripe
+      style="width: 100%">
+      <el-table-column
+        label="资源名称"
+        prop="title"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="资源类型"
+        width="180"
+        align="center">
+        学生竞赛
+      </el-table-column>
+      <el-table-column
+        label="上传日期"
+        prop="createTime"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="上传者"
+        prop="uploaderId"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        type="expand"
+        label="简介">
+        <template slot-scope="props">
+          <span>简介：{{ props.row.introduction }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        width="240"
+        align="center">
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
+      </el-table-column>
+
+
+    </el-table>
+    <!--Communication交流访问-->
+    <el-table
+      :data="Communication"
+      stripe
+      style="width: 100%">
+      <el-table-column
+        label="资源名称"
+        prop="title"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="资源类型"
+        width="180"
+        align="center">
+        交流访问
+      </el-table-column>
+      <el-table-column
+        label="上传日期"
+        prop="createTime"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="上传者"
+        prop="uploaderId"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        type="expand"
+        label="简介">
+        <template slot-scope="props">
+          <span>简介：{{ props.row.introduction }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        width="240"
+        align="center">
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
+      </el-table-column>
+
+
+    </el-table>
+    <!--Party党支部-->
+    <el-table
+      :data="Party"
+      stripe
+      style="width: 100%">
+      <el-table-column
+        label="资源名称"
+        prop="title"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="资源类型"
+        width="180"
+        align="center">
+        党支部
+      </el-table-column>
+      <el-table-column
+        label="上传日期"
+        prop="createTime"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="上传者"
+        prop="uploaderId"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        type="expand"
+        label="简介">
+        <template slot-scope="props">
+          <span>简介：{{ props.row.introduction }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        width="240"
+        align="center">
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
+      </el-table-column>
+
+
+    </el-table>
+    <!--Office教研室-->
+    <el-table
+      :data="Office"
+      stripe
+      style="width: 100%">
+      <el-table-column
+        label="资源名称"
+        prop="title"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="资源类型"
+        width="180"
+        align="center">
+        教研室
+      </el-table-column>
+      <el-table-column
+        label="上传日期"
+        prop="createTime"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="上传者"
+        prop="uploaderId"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        type="expand"
+        label="简介">
+        <template slot-scope="props">
+          <span>简介：{{ props.row.introduction }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        width="240"
+        align="center">
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
+      </el-table-column>
+
+
+    </el-table>
+    <!--Defined自定义-->
+    <el-table
+      :data="Defined"
+      stripe
+      style="width: 100%">
+      <el-table-column
+        label="资源名称"
+        prop="title"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="资源类型"
+        width="180"
+        align="center">
+        自定义
+      </el-table-column>
+      <el-table-column
+        label="上传日期"
+        prop="createTime"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        label="上传者"
+        prop="uploaderId"
+        width="180"
+        align="center"
+      >
+      </el-table-column>
+      <el-table-column
+        type="expand"
+        label="简介">
+        <template slot-scope="props">
+          <span>简介：{{ props.row.introduction }}</span>
+        </template>
+      </el-table-column>
+      <el-table-column
+        label="操作"
+        width="240"
+        align="center">
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
+      </el-table-column>
+
+
+    </el-table>
+
   </div>
 </template>
 
 <script>
 import { getAllResource } from '@/api/manage'
+import { getOneFile } from '@/api/file'
 
 export default {
   name: 'FileManage',
@@ -60,11 +491,36 @@ export default {
   methods: {
     getAllResource() {
       getAllResource().then(resp => {
-        this.tableData = resp.data[4];
-        console.log(this.tableData);
+        this.Studying = resp.data[0];
+        this.Teaching = resp.data[1];
+        this.Honor = resp.data[2];
+        this.Achievement = resp.data[3];
+        this.Contest = resp.data[4];
+        this.Communication = resp.data[5];
+        this.Party = resp.data[6];
+        this.Office = resp.data[7];
+        this.Defined = resp.data[8];
+      });
+    },
+
+    getOneFile(row) {
+      this.Query.TEMPLATE_TYPE = row.template_TYPE;
+      this.Query.id = row.id;
+      console.log("---")
+      console.log(this.Query);
+      console.log("---")
+      getOneFile(this.Query).then(resp => {
         console.log(resp)
       });
-    }
+    },
+
+    updateById(row) {
+
+    },
+
+    deleteById(row) {
+
+    },
 
   },
 
@@ -76,45 +532,19 @@ export default {
 
   data() {
     return {
-      tableData: [
-        // {
-        //   name: '2016-05-02',
-        //   type: '王小虎',
-        //   date: '上海市普陀区金沙江路 1518 弄',
-        //   people: '上海市普陀1518 弄',
-        //
-        // },
-        // {
-        //   name: '2016-05-02',
-        //   type: '王小虎',
-        //   date: '上海市普陀区金沙江路 1518 弄',
-        //   people: '上海市普陀1518 弄',
-        // },
-        // {
-        //   name: '2016-05-02',
-        //   type: '王小虎',
-        //   date: '上海市普陀区金沙江路 1518 弄',
-        //   people: '上海市普陀1518 弄',
-        // },
-        // {
-        //   name: '2016-05-02',
-        //   type: '王小虎',
-        //   date: '上海市普陀区金沙江路 1518 弄',
-        //   people: '上海市普陀1518 弄',
-        // },
-        // {
-        //   name: '2016-05-02',
-        //   type: '王小虎',
-        //   date: '上海市普陀区金沙江路 1518 弄',
-        //   people: '上海市普陀1518 弄',
-        // },
-        // {
-        //   name: '2016-05-02',
-        //   type: '王小虎',
-        //   date: '上海市普陀区金沙江路 1518 弄',
-        //   people: '上海市普陀1518 弄',
-        // }
-      ]
+      Studying: [],
+      Teaching: [],
+      Honor: [],
+      Achievement: [],
+      Contest: [],
+      Communication: [],
+      Party: [],
+      Office: [],
+      Defined: [],
+      Query: {
+        TEMPLATE_TYPE: "",
+        id: ""
+      }
     }
   }
 
@@ -124,8 +554,6 @@ export default {
 <style lang="scss" scoped>
 .m-container {
   width: 100%;
-  // height: 800px;
-  // border: 1px solid red;
   background-color: white;
   padding: 0;
 
@@ -157,8 +585,6 @@ export default {
     width: 95%;
     margin: 0 auto;
     height: 700px;
-    //margin-top: 20px;
-    // background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

@@ -168,16 +168,11 @@
         <table>
           <tr>
             <td class="label">
-              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
         </table>
-
-
-        <div @click="dayin()">123456789</div>
-
-
       </div>
     </div>
   </div>
@@ -193,7 +188,7 @@ export default {
   data() {
     return {
       StudentContest: {
-        TEMPLATE_TYPE: "student_contest",
+        TEMPLATE_TYPE: "studentcontest",
         id: "",
         title: "",
         num: "",
@@ -202,7 +197,7 @@ export default {
         name: "",
         gameName: "",
         grade: "",
-        instructor: "",
+        instructor: [],
         time: "",
 
         other: [],
@@ -225,9 +220,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.StudentContest)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value
@@ -249,7 +241,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.StudentContest.member.splice(this.StudentContest.member.indexOf(tag), 1);
+      this.StudentContest.instructor.splice(this.StudentContest.instructor.indexOf(tag), 1);
     },
 
     showInput() {
@@ -262,7 +254,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.StudentContest.member.push(inputValue);
+        this.StudentContest.instructor.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';

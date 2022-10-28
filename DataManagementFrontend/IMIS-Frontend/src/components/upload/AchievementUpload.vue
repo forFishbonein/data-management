@@ -234,16 +234,11 @@
         <table>
           <tr>
             <td class="label">
-              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
         </table>
-
-
-        <div @click="dayin()">123456789</div>
-
-
       </div>
     </div>
   </div>
@@ -273,7 +268,7 @@ export default {
         journalGrade: "",
         schoolGrade: "",
         publicationTime: "",
-        authorRank: "",
+        authorRank: [],
 
         other: [],
         filePath: [],
@@ -295,9 +290,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.Achievement)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value
