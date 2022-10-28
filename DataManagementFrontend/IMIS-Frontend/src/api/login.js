@@ -17,10 +17,10 @@ export function passLogin(login) {
   });
 }
 
-export function getUserInfo(token, id) {
+export function getUserInfo(token) {
   return request({
     headers: { Authorization: token },
-    url: `/users/${id}`,
+    url: "/user",
     method: "get"
   });
 }

@@ -42,9 +42,13 @@
         label="操作"
         width="240"
         align="center">
-        <el-link type="primary">查看详情</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="primary">删除</el-link>
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
       </el-table-column>
 
 
@@ -91,9 +95,13 @@
         label="操作"
         width="240"
         align="center">
-        <el-link type="primary">查看详情</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="primary">删除</el-link>
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
       </el-table-column>
 
 
@@ -140,9 +148,13 @@
         label="操作"
         width="240"
         align="center">
-        <el-link type="primary">查看详情</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="primary">删除</el-link>
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
       </el-table-column>
 
 
@@ -189,9 +201,13 @@
         label="操作"
         width="240"
         align="center">
-        <el-link type="primary">查看详情</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="primary">删除</el-link>
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
       </el-table-column>
 
 
@@ -238,9 +254,13 @@
         label="操作"
         width="240"
         align="center">
-        <el-link type="primary">查看详情</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="primary">删除</el-link>
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
       </el-table-column>
 
 
@@ -287,9 +307,13 @@
         label="操作"
         width="240"
         align="center">
-        <el-link type="primary">查看详情</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="primary">删除</el-link>
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
       </el-table-column>
 
 
@@ -336,9 +360,13 @@
         label="操作"
         width="240"
         align="center">
-        <el-link type="primary">查看详情</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="primary">删除</el-link>
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
       </el-table-column>
 
 
@@ -385,9 +413,13 @@
         label="操作"
         width="240"
         align="center">
-        <el-link type="primary">查看详情</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="primary">删除</el-link>
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
       </el-table-column>
 
 
@@ -434,9 +466,13 @@
         label="操作"
         width="240"
         align="center">
-        <el-link type="primary">查看详情</el-link>
-        <el-link type="primary">编辑</el-link>
-        <el-link type="primary">删除</el-link>
+        <template slot-scope="scope">
+          <el-row>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
+            <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
+          </el-row>
+        </template>
       </el-table-column>
 
 
@@ -447,6 +483,7 @@
 
 <script>
 import { getAllResource } from '@/api/manage'
+import { getOneFile } from '@/api/file'
 
 export default {
   name: 'FileManage',
@@ -464,7 +501,26 @@ export default {
         this.Office = resp.data[7];
         this.Defined = resp.data[8];
       });
-    }
+    },
+
+    getOneFile(row) {
+      this.Query.TEMPLATE_TYPE = row.template_TYPE;
+      this.Query.id = row.id;
+      console.log("---")
+      console.log(this.Query);
+      console.log("---")
+      getOneFile(this.Query).then(resp => {
+        console.log(resp)
+      });
+    },
+
+    updateById(row) {
+
+    },
+
+    deleteById(row) {
+
+    },
 
   },
 
@@ -476,9 +532,6 @@ export default {
 
   data() {
     return {
-      tableData: [
-      ]
-,
       Studying: [],
       Teaching: [],
       Honor: [],
@@ -488,6 +541,10 @@ export default {
       Party: [],
       Office: [],
       Defined: [],
+      Query: {
+        TEMPLATE_TYPE: "",
+        id: ""
+      }
     }
   }
 
@@ -497,8 +554,6 @@ export default {
 <style lang="scss" scoped>
 .m-container {
   width: 100%;
-  // height: 800px;
-  // border: 1px solid red;
   background-color: white;
   padding: 0;
 
@@ -530,8 +585,6 @@ export default {
     width: 95%;
     margin: 0 auto;
     height: 700px;
-    //margin-top: 20px;
-    // background-color: #F5F5F5;
     display: flex;
     flex-direction: column;
     align-items: flex-start;

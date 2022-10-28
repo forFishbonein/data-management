@@ -15,7 +15,7 @@ import java.util.Map;
 public class UserDefined extends AbstractTemplate{
 
 
-    static final String TEMPLATE_TYPE = "user_defined";
+    static final String TEMPLATE_TYPE = "userdefined";
 
     @Id
     private Integer id;

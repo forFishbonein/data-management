@@ -19,9 +19,8 @@
           <div class="publicationTime">出版时间/期卷号:{{ Achievement.publicationTime }}</div>
           <div class="authorRank">作者排序：{{ Achievement.authorRank }}</div>
           <div class="add">
-            <p v-for="(val, key) in Achievement.other">{{ key }} : {{ val }}</p>
+            <p v-for="item in Achievement.other">{{ item.key }} : {{ item.value }}</p>
           </div>
-
 
         </div>
 
@@ -46,7 +45,6 @@ export default {
   name: "Achievement",
   data() {
     return {
-
       Achievement: {
         TEMPLATE_TYPE: "achievement",
         id: "",
@@ -65,10 +63,7 @@ export default {
         publicationTime: "",
         authorRank: "",
 
-        other: {
-          "条目1": "内容1",
-          "条目2": "内容2"
-        },
+        other: [],
         filePath: "",
         createTime: "",
       },
@@ -174,7 +169,7 @@ export default {
         createTime: "",
       },
       StudentContest: {
-        TEMPLATE_TYPE: "studentContest",
+        TEMPLATE_TYPE: "studentcontest",
         id: "",
         title: "",
         num: "",
@@ -215,7 +210,7 @@ export default {
         createTime: "",
       },
       UserDefined: {
-        TEMPLATE_TYPE: "teaching",
+        TEMPLATE_TYPE: "userdefined",
         id: "",
         title: "",
         num: "",

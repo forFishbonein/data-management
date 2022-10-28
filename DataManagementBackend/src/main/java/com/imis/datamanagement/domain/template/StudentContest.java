@@ -14,7 +14,7 @@ import java.util.Map;
 @Document(collection = "student_contest")
 public class StudentContest extends AbstractTemplate{
 
-    static final String TEMPLATE_TYPE = "student_contest";
+    static final String TEMPLATE_TYPE = "studentcontest";
 
     @Id
     private Integer id;

@@ -188,7 +188,7 @@ export default {
   data() {
     return {
       StudentContest: {
-        TEMPLATE_TYPE: "student_contest",
+        TEMPLATE_TYPE: "studentcontest",
         id: "",
         title: "",
         num: "",

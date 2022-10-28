@@ -59,7 +59,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     /**
-     * TODO 验证码登录，发送验证码功能
+     * 验证码登录，发送验证码功能
      */
     public void sendEmail(LoginVo loginVo) {
 
@@ -98,7 +98,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     /*
-     * TODO 登录校验
+     * 登录校验
      * 分成两种login
      * 由于会对User邮箱进行判断，为了和Teacher类进行区分，登录的验证功能写在各Service内部
      */
