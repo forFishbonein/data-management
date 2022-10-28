@@ -43,7 +43,6 @@ public class MongoDBService {
     }
 
     public AbstractTemplate getOneFile(AbstractTemplate abstractTemplate) {
-        System.out.println("abstractTemplate = " + abstractTemplate);
         Integer id = abstractTemplate.getId();
         Query query = new Query(Criteria.where("id").is(id));
         AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());

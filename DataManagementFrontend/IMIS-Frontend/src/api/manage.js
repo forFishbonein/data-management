@@ -15,13 +15,6 @@ export function getSearchResults(keyword) {
   });
 }
 
-export function test() {
-  return request({
-    method: "get",
-    url: "/file"
-  });
-}
-
 export function getByTeacherId(id) {
   return request({
     method: "get",

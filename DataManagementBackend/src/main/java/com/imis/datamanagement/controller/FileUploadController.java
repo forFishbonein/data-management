@@ -19,7 +19,7 @@ public class FileUploadController {
     @Resource
     MongoDBService mongoDBService;
 
-    @GetMapping("/detail")
+    @PostMapping("/detail")
     @ResponseBody
     public Result<AbstractTemplate> getOneFile(@RequestBody AbstractTemplate abstractTemplate) {
         return Result.success(mongoDBService.getOneFile(abstractTemplate));

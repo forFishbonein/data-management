@@ -44,7 +44,7 @@
         align="center">
         <template slot-scope="scope">
           <el-row>
-            <el-link type="primary" @click="getById(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
             <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
             <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
           </el-row>
@@ -97,7 +97,7 @@
         align="center">
         <template slot-scope="scope">
           <el-row>
-            <el-link type="primary" @click="getById(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
             <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
             <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
           </el-row>
@@ -150,7 +150,7 @@
         align="center">
         <template slot-scope="scope">
           <el-row>
-            <el-link type="primary" @click="getById(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
             <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
             <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
           </el-row>
@@ -203,7 +203,7 @@
         align="center">
         <template slot-scope="scope">
           <el-row>
-            <el-link type="primary" @click="getById(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
             <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
             <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
           </el-row>
@@ -256,7 +256,7 @@
         align="center">
         <template slot-scope="scope">
           <el-row>
-            <el-link type="primary" @click="getById(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
             <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
             <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
           </el-row>
@@ -309,7 +309,7 @@
         align="center">
         <template slot-scope="scope">
           <el-row>
-            <el-link type="primary" @click="getById(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
             <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
             <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
           </el-row>
@@ -362,7 +362,7 @@
         align="center">
         <template slot-scope="scope">
           <el-row>
-            <el-link type="primary" @click="getById(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
             <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
             <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
           </el-row>
@@ -415,7 +415,7 @@
         align="center">
         <template slot-scope="scope">
           <el-row>
-            <el-link type="primary" @click="getById(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
             <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
             <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
           </el-row>
@@ -468,7 +468,7 @@
         align="center">
         <template slot-scope="scope">
           <el-row>
-            <el-link type="primary" @click="getById(scope.row)">查看详情</el-link>
+            <el-link type="primary" @click="getOneFile(scope.row)">查看详情</el-link>
             <el-link type="primary" @click="updateById(scope.row)">修改</el-link>
             <el-link type="primary" @click="deleteById(scope.row)">删除</el-link>
           </el-row>
@@ -483,7 +483,7 @@
 
 <script>
 import { getAllResource } from '@/api/manage'
-import { getById } from '@/api/file'
+import { getOneFile } from '@/api/file'
 
 export default {
   name: 'FileManage',
@@ -503,8 +503,13 @@ export default {
       });
     },
 
-    getById(row) {
-      getById(row.id).then(resp => {
+    getOneFile(row) {
+      this.Query.TEMPLATE_TYPE = row.template_TYPE;
+      this.Query.id = row.id;
+      console.log("---")
+      console.log(this.Query);
+      console.log("---")
+      getOneFile(this.Query).then(resp => {
         console.log(resp)
       });
     },
@@ -537,7 +542,8 @@ export default {
       Office: [],
       Defined: [],
       Query: {
-        
+        TEMPLATE_TYPE: "",
+        id: ""
       }
     }
   }
