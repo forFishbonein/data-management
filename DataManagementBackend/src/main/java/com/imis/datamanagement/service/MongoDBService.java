@@ -72,7 +72,7 @@ public class MongoDBService {
         return json;
     }
 
-    //TODO 获取所有用户的所有资源（资源广场）
+    //获取所有用户的所有资源（资源广场）
     public List<Object> getAll() {
         Query query = new Query();
         List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
@@ -100,7 +100,7 @@ public class MongoDBService {
         return l;
     }
 
-    //TODO 根据条件获取用户资源（资源广场）
+    //根据条件获取用户资源（资源广场）
 
     public void insertTemplate(@RequestBody AbstractTemplate abstractTemplate) {
         abstractTemplate.setId(getMongoId(abstractTemplate));
