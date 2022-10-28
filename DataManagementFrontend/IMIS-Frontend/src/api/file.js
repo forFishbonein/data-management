@@ -8,10 +8,12 @@ export function insertTeacherFile(data) {
   });
 }
 
-export function getById(id) {
+export function getOneFile(data) {
+  console.log(data);
   return request({
-    method: "get",
-    url: "/file/"
+    data: data,
+    method: "post",
+    url: "/file/detail"
   });
 }
 
