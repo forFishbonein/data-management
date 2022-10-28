@@ -169,7 +169,7 @@ export default {
         createTime: "",
       },
       StudentContest: {
-        TEMPLATE_TYPE: "studentContest",
+        TEMPLATE_TYPE: "studentcontest",
         id: "",
         title: "",
         num: "",
@@ -210,7 +210,7 @@ export default {
         createTime: "",
       },
       UserDefined: {
-        TEMPLATE_TYPE: "teaching",
+        TEMPLATE_TYPE: "userdefined",
         id: "",
         title: "",
         num: "",

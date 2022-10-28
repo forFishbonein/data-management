@@ -164,7 +164,7 @@ import FilePath from "../../components/FilePath";
         createTime: "",
       },
         StudentContest: {
-          TEMPLATE_TYPE: "studentContest",
+          TEMPLATE_TYPE: "studentcontest",
           id: "",
           title: "",
           num: "",
@@ -208,7 +208,7 @@ import FilePath from "../../components/FilePath";
           createTime: "",
         },
         UserDefined: {
-          TEMPLATE_TYPE: "teaching",
+          TEMPLATE_TYPE: "userdefined",
           id: "",
           title: "",
           num: "",
