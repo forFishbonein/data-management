@@ -14,7 +14,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目编号"
-                v-model="Party.id"
+                v-model="Party.num"
                 clearable>
               </el-input>
             </td>
@@ -31,10 +31,11 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="Party.introduction"
                 :autosize="{ minRows: 6, maxRows: 8}"
@@ -49,7 +50,7 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
-            <td class="label required">活动主题</td>
+            <td class="label">活动主题</td>
             <td>
               <el-input
                 class="property"
@@ -60,7 +61,7 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">学习内容</td>
+            <td class="label">学习内容</td>
             <td>
               <el-input
                 class="property"
@@ -190,16 +191,11 @@
         <table>
           <tr>
             <td class="label">
-              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
         </table>
-
-
-        <div @click="dayin()">123456789</div>
-
-
       </div>
     </div>
   </div>
@@ -208,7 +204,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertTeacherFile } from '@/api/file.js'
 export default {
   name: 'PartyUpload',
   components: {TeacherNav},
@@ -248,9 +244,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.Party)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value
@@ -322,6 +315,10 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+
+      insertTeacherFile(this.Party).then(resp => {
+        console.log(resp.data)
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
@@ -369,7 +366,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
-
+      vertical-align: top;
     }
 
 

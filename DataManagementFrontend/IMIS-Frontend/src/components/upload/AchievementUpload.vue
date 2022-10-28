@@ -31,10 +31,11 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="Achievement.introduction"
                 :autosize="{ minRows: 6, maxRows: 8}"
@@ -86,7 +87,7 @@
             <td>
               <el-input
                 class="property"
-                placeholder="请输入出版社名称"
+                placeholder="请选择论文或专著"
                 v-model="Achievement.paper"
                 clearable>
               </el-input>
@@ -233,16 +234,11 @@
         <table>
           <tr>
             <td class="label">
-              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
         </table>
-
-
-        <div @click="dayin()">123456789</div>
-
-
       </div>
     </div>
   </div>
@@ -251,7 +247,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertTeacherFile } from '@/api/file.js'
 export default {
   name: 'AchievementUpload',
   components: {TeacherNav},
@@ -261,7 +257,6 @@ export default {
         TEMPLATE_TYPE: "achievement",
         id: "",
         title: "",
-        num: "",
         introduction: "",
 
         name: "",
@@ -273,7 +268,7 @@ export default {
         journalGrade: "",
         schoolGrade: "",
         publicationTime: "",
-        authorRank: "",
+        authorRank: [],
 
         other: [],
         filePath: [],
@@ -295,9 +290,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.Achievement)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value
@@ -366,6 +358,10 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+      insertTeacherFile(this.Achievement).then(resp => {
+        console.log(resp.data)
+
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
@@ -413,7 +409,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
-
+      vertical-align: top;
     }
 
 

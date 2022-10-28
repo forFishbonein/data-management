@@ -49,7 +49,7 @@ public class Achievememnt extends AbstractTemplate{
 
     private String publicationTime;
 
-    private String authorRank;
+    private List<String> authorRank;
 
     //------------------
     private List<Map<String, String>> other;

@@ -8,16 +8,10 @@ export function insertTeacherFile(data) {
   });
 }
 
-export function getById() {
+export function getById(id) {
   return request({
     method: "get",
-    url: "/file"
+    url: "/file/"
   });
 }
 
-export function getAll() {
-  return request({
-    method: "get",
-    url: "/file"
-  });
-}

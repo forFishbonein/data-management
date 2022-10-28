@@ -47,7 +47,7 @@ public class Honor extends AbstractTemplate{
 
     private String approval_num;
 
-    private String member;
+    private List<String> member;
 
     //------------------
     private List<Map<String, String>> other;

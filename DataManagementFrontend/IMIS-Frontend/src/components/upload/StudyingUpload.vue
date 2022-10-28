@@ -14,7 +14,7 @@
               <el-input
                 class="property"
                 placeholder="请输入项目编号"
-                v-model="studying.id"
+                v-model="Studying.num"
                 clearable>
               </el-input>
             </td>
@@ -31,10 +31,11 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="Studying.introduction"
                 :autosize="{ minRows: 6, maxRows: 8}"
@@ -200,16 +201,11 @@
         <table>
           <tr>
             <td class="label">
-              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
         </table>
-
-
-        <div @click="dayin()">123456789</div>
-
-
       </div>
     </div>
   </div>
@@ -218,14 +214,14 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertTeacherFile } from '@/api/file.js'
 export default {
   name: 'StudyingUpload',
   components: {TeacherNav},
   data() {
     return {
       Studying: {
-        TEMPLATE_TYPE: "Studying",
+        TEMPLATE_TYPE: "studying",
         id: "",
         title: "",
         num: "",
@@ -260,9 +256,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.Studying)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value
@@ -331,6 +324,9 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
+      insertTeacherFile(this.Studying).then(resp => {
+        console.log(resp.data)
+      });
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
@@ -378,7 +374,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
-
+      vertical-align: top;
     }
 
 

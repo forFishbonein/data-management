@@ -42,6 +42,24 @@ public class MongoDBService {
         return id;
     }
 
+    public AbstractTemplate getOneFile(AbstractTemplate abstractTemplate) {
+        System.out.println("abstractTemplate = " + abstractTemplate);
+        Integer id = abstractTemplate.getId();
+        Query query = new Query(Criteria.where("id").is(id));
+        AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());
+        if (abstractTemplate.getId() == null) {
+            throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
+        }
+        if (at == null) {
+            throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
+        }
+        if (at.getDeleted() == null || at.getDeleted().equals("1")) {
+            throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
+        }
+
+        return at;
+    }
+
     //获取当前用户的所有资源（个人详情）
     public String getById(Long id) {
         System.out.println("id = " + id);
@@ -51,7 +69,7 @@ public class MongoDBService {
         List<Honor> honors = mongoTemplate.find(query, Honor.class);
         List<Office> offices = mongoTemplate.find(query, Office.class);
         List<Party> parties = mongoTemplate.find(query, Party.class);
-        List<Research> research = mongoTemplate.find(query, Research.class);
+        List<Studying> studyings = mongoTemplate.find(query, Studying.class);
         List<StudentContest> studentContests = mongoTemplate.find(query, StudentContest.class);
         List<Teaching> teachings = mongoTemplate.find(query, Teaching.class);
         List<UserDefined> userDefineds = mongoTemplate.find(query, UserDefined.class);
@@ -62,7 +80,7 @@ public class MongoDBService {
         l.add(honors);
         l.add(offices);
         l.add(parties);
-        l.add(research);
+        l.add(studyings);
         l.add(studentContests);
         l.add(teachings);
         l.add(userDefineds);
@@ -72,7 +90,7 @@ public class MongoDBService {
         return json;
     }
 
-    //TODO 获取所有用户的所有资源（资源广场）
+    //获取所有用户的所有资源（资源广场）
     public List<Object> getAll() {
         Query query = new Query();
         List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
@@ -80,29 +98,29 @@ public class MongoDBService {
         List<Honor> honors = mongoTemplate.find(query, Honor.class);
         List<Office> offices = mongoTemplate.find(query, Office.class);
         List<Party> parties = mongoTemplate.find(query, Party.class);
-        List<Research> research = mongoTemplate.find(query, Research.class);
+        List<Studying> studyings = mongoTemplate.find(query, Studying.class);
         List<StudentContest> studentContests = mongoTemplate.find(query, StudentContest.class);
         List<Teaching> teachings = mongoTemplate.find(query, Teaching.class);
         List<UserDefined> userDefineds = mongoTemplate.find(query, UserDefined.class);
 
         List<Object> l = new ArrayList<>();
-        l.add(achievememnts);
-        l.add(communications);
-        l.add(honors);
-        l.add(offices);
-        l.add(parties);
-        l.add(research);
-        l.add(studentContests);
-        l.add(teachings);
-        l.add(userDefineds);
 
+        l.add(studyings);
+        l.add(teachings);
+        l.add(honors);
+        l.add(achievememnts);
+        l.add(studentContests);
+        l.add(communications);
+        l.add(parties);
+        l.add(offices);
+        l.add(userDefineds);
 
         return l;
     }
 
-    //TODO 根据条件获取用户资源（资源广场）
 
     public void insertTemplate(@RequestBody AbstractTemplate abstractTemplate) {
+        abstractTemplate.setTEMPLATE_TYPE(abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
         abstractTemplate.setId(getMongoId(abstractTemplate));
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
@@ -112,7 +130,6 @@ public class MongoDBService {
         mongoTemplate.insert(abstractTemplate);
     }
 
-    //如果传入是null，也会被改为null
     public void updateTemplate(@RequestBody AbstractTemplate abstractTemplate) {
         Query query = new Query(Criteria.where("_id").is(abstractTemplate.getId()));
         AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());
