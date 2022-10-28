@@ -98,5 +98,7 @@ export default {
 
 }
 
-
+.router-link-active {
+  color: red;
+}
 </style>
