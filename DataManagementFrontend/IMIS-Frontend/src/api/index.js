@@ -1,9 +1,9 @@
 import request from "@/request";
 
-export function getMaterials() {
+export function getMaterials(id) {
   return request({
     method: "get",
-    url: "/materials.json"
+    url: `/file/${id}`
   });
 }
 
