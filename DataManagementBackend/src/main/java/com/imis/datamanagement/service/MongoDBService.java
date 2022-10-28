@@ -42,6 +42,24 @@ public class MongoDBService {
         return id;
     }
 
+    public AbstractTemplate getOneFile(AbstractTemplate abstractTemplate) {
+        System.out.println("abstractTemplate = " + abstractTemplate);
+        Integer id = abstractTemplate.getId();
+        Query query = new Query(Criteria.where("id").is(id));
+        AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());
+        if (abstractTemplate.getId() == null) {
+            throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
+        }
+        if (at == null) {
+            throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
+        }
+        if (at.getDeleted() == null || at.getDeleted().equals("1")) {
+            throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
+        }
+
+        return at;
+    }
+
     //获取当前用户的所有资源（个人详情）
     public String getById(Long id) {
         System.out.println("id = " + id);
@@ -103,6 +121,7 @@ public class MongoDBService {
     //根据条件获取用户资源（资源广场）
 
     public void insertTemplate(@RequestBody AbstractTemplate abstractTemplate) {
+        abstractTemplate.setTEMPLATE_TYPE(abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
         abstractTemplate.setId(getMongoId(abstractTemplate));
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
