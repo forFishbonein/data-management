@@ -151,13 +151,13 @@ public class MongoDBService {
             }
             for (Field f : fields) {
                 String field = f.toString().substring(f.toString().lastIndexOf(".") + 1);
-                update = new Update().set(field, f.get(abstractTemplate));
-                mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
+                update = new Update();
+                update.set(field, f.get(abstractTemplate));
             }
             Date date = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
             abstractTemplate.setUpdateTime(dateFormat.format(date));
-            update = new Update().set("updateTime", abstractTemplate.getUpdateTime());
+            update.set("updateTime", abstractTemplate.getUpdateTime());
             mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
         } catch (ClassNotFoundException | IllegalAccessException e) {
             e.printStackTrace();
