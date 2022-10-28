@@ -12,6 +12,7 @@ import Search from "../views/Search.vue";
 import Manage from "../views/Manage.vue";
 import AccountManage from "../components/manage/AccountManage.vue";
 import FileManage from "../components/manage/FileManage.vue";
+import TeacherManage from "../components/manage/TeacherManage.vue";
 
 //template
 import Achievement from "../views/template/Achievement.vue";
@@ -113,12 +114,16 @@ const routes = [
       component: Manage,
       children: [
         {
-          path: 'filemange',
+          path: 'filemanage',
           component: FileManage
         },
         {
-          path: 'accountmange',
+          path: 'accountmanage',
           component: AccountManage
+        },
+        {
+          path: 'teachermanage',
+          component: TeacherManage
         }
       ]
     },
