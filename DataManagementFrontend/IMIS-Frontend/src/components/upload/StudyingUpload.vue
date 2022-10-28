@@ -50,6 +50,17 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
+            <td class="label">项目名称</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入项目名称"
+                v-model="Studying.name"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <td class="label">项目来源</td>
             <td>
               <el-input

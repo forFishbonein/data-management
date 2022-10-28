@@ -268,7 +268,7 @@ export default {
         journalGrade: "",
         schoolGrade: "",
         publicationTime: "",
-        authorRank: [],
+        authorRank:[],
 
         other: [],
         filePath: [],
@@ -311,7 +311,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Achievement.member.splice(this.Achievement.member.indexOf(tag), 1);
+      this.Achievement.authorRank.splice(this.Achievement.authorRank.indexOf(tag), 1);
     },
 
     showInput() {
@@ -324,7 +324,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Achievement.member.push(inputValue);
+        this.Achievement.authorRank.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
