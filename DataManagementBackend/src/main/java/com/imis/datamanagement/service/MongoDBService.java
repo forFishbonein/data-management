@@ -118,7 +118,6 @@ public class MongoDBService {
         return l;
     }
 
-    //根据条件获取用户资源（资源广场）
 
     public void insertTemplate(@RequestBody AbstractTemplate abstractTemplate) {
         abstractTemplate.setTEMPLATE_TYPE(abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
@@ -131,7 +130,6 @@ public class MongoDBService {
         mongoTemplate.insert(abstractTemplate);
     }
 
-    //如果传入是null，也会被改为null
     public void updateTemplate(@RequestBody AbstractTemplate abstractTemplate) {
         Query query = new Query(Criteria.where("_id").is(abstractTemplate.getId()));
         AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());
