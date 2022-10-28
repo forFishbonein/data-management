@@ -50,8 +50,6 @@
           </el-row>
         </template>
       </el-table-column>
-
-
     </el-table>
     <!--Teaching教研项目-->
     <el-table
@@ -483,11 +481,26 @@
 
 <script>
 import { getAllResource } from '@/api/manage'
-import { getOneFile } from '@/api/file'
 
 export default {
   name: 'FileManage',
-
+  data() {
+    return {
+      Studying: [],
+      Teaching: [],
+      Honor: [],
+      Achievement: [],
+      Contest: [],
+      Communication: [],
+      Party: [],
+      Office: [],
+      Defined: [],
+      // Query: {
+      //   TEMPLATE_TYPE: "",
+      //   id: ""
+      // }
+    }
+  },
   methods: {
     getAllResource() {
       getAllResource().then(resp => {
@@ -504,14 +517,20 @@ export default {
     },
 
     getOneFile(row) {
-      this.Query.TEMPLATE_TYPE = row.template_TYPE;
-      this.Query.id = row.id;
-      console.log("---")
-      console.log(this.Query);
-      console.log("---")
-      getOneFile(this.Query).then(resp => {
-        console.log(resp)
-      });
+      console.log(row)
+      this.$router.push({
+          name:'jiaoyan',
+          query:{
+              templateType:row.template_TYPE,
+              id:row.id
+          }
+      })
+      // console.log("---")
+      // console.log(this.Query);
+      // console.log("---")
+      // getOneFile(this.Query).then(resp => {
+      //   console.log(resp)
+      // });
     },
 
     updateById(row) {
@@ -530,23 +549,6 @@ export default {
 
   },
 
-  data() {
-    return {
-      Studying: [],
-      Teaching: [],
-      Honor: [],
-      Achievement: [],
-      Contest: [],
-      Communication: [],
-      Party: [],
-      Office: [],
-      Defined: [],
-      Query: {
-        TEMPLATE_TYPE: "",
-        id: ""
-      }
-    }
-  }
 
 }
 </script>

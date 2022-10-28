@@ -7,7 +7,6 @@ import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
 import Search from "../views/Search.vue";
 
-
 //manage
 import Manage from "../views/Manage.vue";
 import AccountManage from "../components/manage/AccountManage.vue";
@@ -36,139 +35,141 @@ import StudyingUpload from "../components/upload/StudyingUpload";
 import TeachingUpload from "../components/upload/TeachingUpload";
 import DefinedUpload from "../components/upload/DefinedUpload";
 
-
-
 Vue.use(VueRouter);
 
 const routes = [
-
-    {
-      path: "/",
-      component: CodeLogin
-    },
-    {
-      path: "/login",
-      component: CodeLogin
-    },
-
-    {
-      path: "/passlogin",
-      component: PassLogin
-    },
-    {
-      path: "/register",
-      component: RegisterTeacher
-    },
-    {
-      path: "/competitionManage",
-      component: CompetitionManage
-    },
-    {
-      path: "/profile",
-      component: TeacherIndex
-    },
-    {
-      path: "/search",
-      component: Search
-    },
-    {
-      path: "/teaching",
-      component: Teaching
-    },
-
-    {
-      path: "/achievement",
-      component: Achievement
-    },
-    {
-      path: "/communication",
-      component: Communication
-    },
-    {
-      path: "/honor",
-      component: Honor
-    },
-    {
-      path: "/office",
-      component: Office
-    },
-    {
-      path: "/party",
-      component: Party
-    },
   {
-    path: "/study",
-    component: Studying
+    path: "/",
+    component: CodeLogin
   },
-    {
-      path: "/studentContest",
-      component: StudentContest
-    },
-    {
-      path: "/userDefined",
-      component: UserDefined
-    },
-    {
-      path: "/manage",
-      component: Manage,
-      children: [
-        {
-          path: 'filemange',
-          component: FileManage
-        },
-        {
-          path: 'accountmange',
-          component: AccountManage
-        }
-      ]
-    },
-    {
-      path: "/upload",
-      component: Upload,
-      children: [
-        {
-          path: 'teaching',
-          component: TeachingUpload
-        },
-        {
-          path: 'achievement',
-          component: AchievementUpload
-        },
-        {
-          path: 'communication',
-          component: CommunicationUpload
-        },
-        {
-          path: 'contest',
-          component: ContestUpload
-        },
-        {
-          path: 'honor',
-          component: HonorUpload
-        },
-        {
-          path: "studying",
-          component: StudyingUpload
-        },
-        {
-          path: 'office',
-          component: OfficeUpload
-        },
-        {
-          path: 'party',
-          component: PartyUpload
-        },
-        {
-          path: 'defined',
-          component: DefinedUpload
-        },
-      ]
-    }
-  ]
-;
+  {
+    path: "/login",
+    component: CodeLogin
+  },
 
+  {
+    path: "/passlogin",
+    component: PassLogin
+  },
+  {
+    path: "/register",
+    component: RegisterTeacher
+  },
+  {
+    path: "/competitionManage",
+    component: CompetitionManage
+  },
+  {
+    path: "/profile",
+    component: TeacherIndex
+  },
+  {
+    path: "/search",
+    component: Search
+  },
+  {
+    path: "/teaching",
+    component: Teaching
+  },
+
+  {
+    path: "/achievement",
+    component: Achievement
+  },
+  {
+    path: "/communication",
+    component: Communication
+  },
+  {
+    path: "/honor",
+    component: Honor
+  },
+  {
+    path: "/office",
+    component: Office
+  },
+  {
+    path: "/party",
+    component: Party
+  },
+  {
+    name: "jiaoyan",
+    path: "/study",
+    component: Studying,
+    props($route) {
+      return {
+        templateType: $route.query.templateType,
+        id: $route.query.id
+      };
+    }
+  },
+  {
+    path: "/studentContest",
+    component: StudentContest
+  },
+  {
+    path: "/userDefined",
+    component: UserDefined
+  },
+  {
+    path: "/manage",
+    component: Manage,
+    children: [
+      {
+        path: "filemange",
+        component: FileManage
+      },
+      {
+        path: "accountmange",
+        component: AccountManage
+      }
+    ]
+  },
+  {
+    path: "/upload",
+    component: Upload,
+    children: [
+      {
+        path: "teaching",
+        component: TeachingUpload
+      },
+      {
+        path: "achievement",
+        component: AchievementUpload
+      },
+      {
+        path: "communication",
+        component: CommunicationUpload
+      },
+      {
+        path: "contest",
+        component: ContestUpload
+      },
+      {
+        path: "honor",
+        component: HonorUpload
+      },
+      {
+        path: "studying",
+        component: StudyingUpload
+      },
+      {
+        path: "office",
+        component: OfficeUpload
+      },
+      {
+        path: "party",
+        component: PartyUpload
+      },
+      {
+        path: "defined",
+        component: DefinedUpload
+      }
+    ]
+  }
+];
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   routes
 });
 
