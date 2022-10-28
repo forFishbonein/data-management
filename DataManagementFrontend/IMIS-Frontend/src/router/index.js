@@ -120,12 +120,16 @@ const routes = [
     component: Manage,
     children: [
       {
-        path: "filemange",
+        path: "filemanage",
         component: FileManage
       },
       {
-        path: "accountmange",
+        path: "accountmanage",
         component: AccountManage
+      },
+      {
+        path: "teachermanage",
+        component: TeacherManage
       }
     ]
   },
