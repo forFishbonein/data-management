@@ -31,10 +31,11 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目简介</td>
-            <td>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
               <el-input
                 class="property"
+                style="width: 500px"
                 type="textarea"
                 v-model="StudentContest.introduction"
                 :autosize="{ minRows: 6, maxRows: 8}"
@@ -167,16 +168,11 @@
         <table>
           <tr>
             <td class="label">
-              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
         </table>
-
-
-        <div @click="dayin()">123456789</div>
-
-
       </div>
     </div>
   </div>
@@ -185,7 +181,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-import { insertStudentContestFile } from '@/api/file.js'
+import { insertTeacherFile } from '@/api/file.js'
 export default {
   name: 'StudentContestUpload',
   components: {TeacherNav},
@@ -201,7 +197,7 @@ export default {
         name: "",
         gameName: "",
         grade: "",
-        instructor: "",
+        instructor: [],
         time: "",
 
         other: [],
@@ -224,9 +220,6 @@ export default {
 
   },
   methods: {
-    dayin() {
-      console.log(this.StudentContest)
-    },
     Template(key, value) {
       this.key = key;
       this.value = value
@@ -248,7 +241,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.StudentContest.member.splice(this.StudentContest.member.indexOf(tag), 1);
+      this.StudentContest.instructor.splice(this.StudentContest.instructor.indexOf(tag), 1);
     },
 
     showInput() {
@@ -261,7 +254,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.StudentContest.member.push(inputValue);
+        this.StudentContest.instructor.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
@@ -300,7 +293,7 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
-      insertStudentContestFile(this.StudentContest).then(resp => {
+      insertTeacherFile(this.StudentContest).then(resp => {
         console.log(resp.data)
       });
     },
@@ -350,7 +343,7 @@ export default {
       width: 200px;
       text-align: right;
       font-size: 18px;
-
+      vertical-align: top;
     }
 
 
