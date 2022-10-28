@@ -93,16 +93,19 @@ export default {
 
 .body .menu {
   width: 201px;
+  background-color: #545C64;
+  min-height: 1000px;
 }
 
 .body .context {
-  height: 100%;
-  width: 100%;
+  // height: 100%;
+  // width: 100%;
+
 }
 
 .body .menu ul {
-  width: 201px;
-  height: 100%;
+  // width: 201px;
+  // height: 100%;
 }
 
 
