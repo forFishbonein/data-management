@@ -12,7 +12,12 @@
             </if>
         </where>
     </select>
-
+    <select id="getAll" resultType="com.imis.datamanagement.common.vo.ShowVo">
+        select * from teacher t1 inner join teacher_info t2
+        <where>
+            t1.deleted = '0'
+        </where>
+    </select>
 
 
 </mapper>

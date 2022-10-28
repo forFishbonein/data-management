@@ -24,7 +24,7 @@
           </div>
 
         </div>
-        <FilePath></FilePath>
+        <!-- <FilePath></FilePath> -->
         <div class="button">
           <button class="button1">删除</button>
           <button class="button2">编辑</button>
@@ -37,8 +37,8 @@
   import TeacherNav from "../../components/TeacherNav";
   import TeacherHeader from "../../components/TeacherHeader";
   import TeacherData from "../../components/TeacherData";
-  import FilePath from "../../components/FilePath";
-
+  // import FilePath from "../../components/FilePath";
+  import { getOneFile } from '@/api/file'
   export default {
     name: "ReStudying",
     data() {
@@ -149,7 +149,6 @@
           title: "",
           num: "",
           introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
-
           name: "",
           source: "",
           type: "",
@@ -158,12 +157,10 @@
           postprojectTime: "",
           fund: "",
           member: "",
-
           other: {
             "条目1": "内容1",
             "条目2": "内容2"
           },
-
           filePath: "",
           createTime: "",
         },
@@ -219,16 +216,34 @@
           filePath: "",
           createTime: "",
         },
-
+        Query: {
+          TEMPLATE_TYPE: "",
+          id: ""
+        }
       }
-
+    },
+    props:['templateType','id'],
+    methods: {
+      getStudying(templateType, id) {
+        // console.log(templateType)
+        // console.log(id)
+        this.Query.TEMPLATE_TYPE = templateType;
+        this.Query.id = id;
+        getOneFile(this.Query).then(resp => {
+          console.log(resp)
+          this.Studying = resp.data.data
+        });
+      }
+    },
+    created(){
+      this.getStudying(this.templateType,this.id);
     },
     components: {
       TeacherNav,
       TeacherHeader,
       TeacherData,
-      FilePath
-    },
+      // FilePath
+    }
   }
 
 
