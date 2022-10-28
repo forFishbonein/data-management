@@ -102,7 +102,7 @@ export default {
 
 .body .menu ul {
   width: 201px;
-  height: 100vh;
+  height: 100%;
 }
 
 
