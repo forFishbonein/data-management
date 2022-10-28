@@ -39,7 +39,7 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="3-1">
-                <router-link to="/manage">竞赛管理</router-link>
+                <router-link to="#">竞赛管理</router-link>
               </el-menu-item>
               <el-menu-item index="3-2">
                 <router-link to="#">经验管理</router-link>
@@ -52,7 +52,7 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="4-1">
-                <router-link to="/manage/filemange">新闻管理</router-link>
+                <router-link to="#">新闻管理</router-link>
               </el-menu-item>
               <el-menu-item index="4-2">
                 <router-link to="#">新闻发布</router-link>
