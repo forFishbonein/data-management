@@ -15,9 +15,3 @@ export function getById() {
   });
 }
 
-export function getAll() {
-  return request({
-    method: "get",
-    url: "/file"
-  });
-}

@@ -3,25 +3,25 @@
     <TeacherNav></TeacherNav>
     <div class="container">
       <div class="choose">
-        <router-link to="/upload/studying">科研项目</router-link>
+        <router-link to="/upload/studying"><span>科研项目</span></router-link>
 
-        <router-link to="/upload/teaching">教研项目</router-link>
+        <router-link to="/upload/teaching"><span>教研项目</span></router-link>
 
-        <router-link to="/upload/honor">各类荣誉</router-link>
+        <router-link to="/upload/honor"><span>各类荣誉</span></router-link>
 
-        <router-link to="/upload/achievement">成果类</router-link>
+        <router-link to="/upload/achievement"><span>成果类</span></router-link>
 
-        <router-link to="/upload/contest">学生竞赛</router-link>
+        <router-link to="/upload/contest"><span>学生竞赛</span></router-link>
 
-        <router-link to="/upload/communication">交流访问</router-link>
+        <router-link to="/upload/communication"><span>交流访问</span></router-link>
 
-        <router-link to="/upload/party">党支部</router-link>
+        <router-link to="/upload/party"><span>党支部</span></router-link>
 
-        <router-link to="/upload/office">教研室</router-link>
+        <router-link to="/upload/office"><span>教研室</span></router-link>
 
 
 
-        <router-link class="ud" to="#">自定义</router-link>
+        <router-link class="ud" to="/upload/defined">自定义</router-link>
 
       </div>
       <div class="context">

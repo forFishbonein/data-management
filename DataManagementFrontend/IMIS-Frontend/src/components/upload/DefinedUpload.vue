@@ -3,6 +3,52 @@
     <div class="main">
       <div class="content">
         <table>
+          <tr>
+            <td class="template-title" colspan="3">
+              自定义模板
+            </td>
+          </tr>
+        <tr>
+          <td class="label required">编号</td>
+          <td>
+            <el-input
+              class="property"
+              placeholder="请输入项目编号"
+              v-model="UserDefined.num"
+              clearable>
+            </el-input>
+          </td>
+        </tr>
+        <tr>
+          <td class="label required">项目名称</td>
+          <td>
+            <el-input
+              class="property"
+              placeholder="请输入项目名称"
+              v-model="UserDefined.title"
+              clearable>
+            </el-input>
+          </td>
+        </tr>
+          <tr>
+            <td class="label required" >项目简介</td>
+            <td colspan="2">
+              <el-input
+                class="property"
+                style="width: 500px"
+                type="textarea"
+                v-model="UserDefined.introduction"
+                :autosize="{ minRows: 6, maxRows: 8}"
+              >
+              </el-input>
+            </td>
+          <td class="required-prompt">!简介为必填信息</td>
+        </tr>
+        </table>
+        <div class="prompt">以上内容用于区分不同项目，为必填字段</div>
+        <div class="prompt-line"></div>
+        <div class="prompt">以下为选填字段</div>
+        <table>
 
           <tr>
             <td class="label">上传文件</td>
@@ -57,7 +103,7 @@
         <table>
           <tr>
             <td class="label">
-              <el-button size="small" type="success" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
@@ -70,14 +116,14 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-
+import { insertTeacherFile } from '@/api/file.js'
 export default {
   name: "Defined",
   components: {TeacherNav},
   data() {
     return {
       UserDefined: {
-        TEMPLATE_TYPE: "teaching",
+        TEMPLATE_TYPE: "user_defined",
         id: "",
         title: "",
         num: "",
@@ -107,12 +153,12 @@ export default {
     },
     addInput() {
       let kv = new this.Template(this.m.key, this.m.value);
-      this.Teaching.other.push(kv)
-      console.log(this.Teaching.other)
+      this.UserDefined.other.push(kv)
+      console.log(this.UserDefined.other)
       var trHtml = `<td></td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].key}</td>
+                    <td align="center">${this.UserDefined.other[this.UserDefined.other.length - 1].key}</td>
                     <td>:</td>
-                    <td align="center">${this.Teaching.other[this.Teaching.other.length - 1].value}</td>`
+                    <td align="center">${this.UserDefined.other[this.UserDefined.other.length - 1].value}</td>`
       var tr = document.createElement('tr');
       tr.innerHTML = trHtml
       document.getElementById("change-table").appendChild(tr)
@@ -122,7 +168,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Teaching.member.splice(this.Teaching.member.indexOf(tag), 1);
+      this.UserDefined.member.splice(this.UserDefined.member.indexOf(tag), 1);
     },
 
     showInput() {
@@ -137,7 +183,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Teaching.member.push(inputValue);
+        this.UserDefined.member.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
@@ -171,12 +217,12 @@ export default {
       console.log(file);
     },
     onSuccess(response, file, fileList) {
-      this.Teaching.filePath.push(response.data.name)
+      this.UserDefined.filePath.push(response.data.name)
     },
     submitUpload() {
       this.$refs.upload.submit();
 
-      insertTeacherFile(this.Teaching).then(resp => {
+      insertTeacherFile(this.UserDefined).then(resp => {
         console.log(resp.data)
 
       });
@@ -193,7 +239,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .container {
 
 }
@@ -253,14 +299,14 @@ table {
 }
 }
 
-.other {
+.other {}
 
 .el-input {
   padding: 4px;
   width: 140px;
 }
 
-}
+
 
 .prompt {
   padding: 8px 0;
@@ -305,4 +351,4 @@ table {
 
 </style>
 
-</style>
+

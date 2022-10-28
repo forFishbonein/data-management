@@ -39,7 +39,7 @@ public class Communication extends AbstractTemplate {
 
     private String address;
 
-    private String member;
+    private List<String> member;
 
     private String whetherSpeak;
 

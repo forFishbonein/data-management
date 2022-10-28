@@ -15,10 +15,10 @@ import java.io.ByteArrayInputStream;
 public class FileUploadService {
 
     @Autowired
-    private OSSClient ossClient;
+    private volatile OSSClient ossClient;
 
     @Autowired
-    private AliyunConfig aliyunConfig;
+    private volatile AliyunConfig aliyunConfig;
 
     public PicUploadResult upload(MultipartFile uploadFile) {
 
