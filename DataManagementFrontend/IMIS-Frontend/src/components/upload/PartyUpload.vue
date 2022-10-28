@@ -222,7 +222,7 @@ export default {
         topic: "",
         content: "",
         address: "",
-        participant: "",
+        participant: [],
 
         other: [],
         filePath: [],
@@ -265,7 +265,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.Party.member.splice(this.Party.member.indexOf(tag), 1);
+      this.Party.participant.splice(this.Party.participant.indexOf(tag), 1);
     },
 
     showInput() {
@@ -278,7 +278,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.Party.member.push(inputValue);
+        this.Party.participant.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';

@@ -5,7 +5,7 @@
         <table>
           <tr>
             <td class="template-title" colspan="3">
-              学生竞赛模板
+              交流访问模板
             </td>
           </tr>
           <tr>
@@ -14,18 +14,18 @@
               <el-input
                 class="property"
                 placeholder="请输入项目编号"
-                v-model="StudentContest.num"
+                v-model="Communication.num"
                 clearable>
               </el-input>
             </td>
           </tr>
           <tr>
-            <td class="label required">项目名称</td>
+            <td class="label required">资源名称</td>
             <td>
               <el-input
                 class="property"
-                placeholder="请输入项目名称"
-                v-model="StudentContest.title"
+                placeholder="请输入资源名称"
+                v-model="Communication.title"
                 clearable>
               </el-input>
             </td>
@@ -37,7 +37,7 @@
                 class="property"
                 style="width: 500px"
                 type="textarea"
-                v-model="StudentContest.introduction"
+                v-model="Communication.introduction"
                 :autosize="{ minRows: 6, maxRows: 8}"
               >
               </el-input>
@@ -50,22 +50,33 @@
         <div class="prompt">以下为选填字段</div>
         <table>
           <tr>
-            <td class="label">竞赛名称</td>
+            <td class="label">活动名称</td>
             <td>
               <el-input
                 class="property"
-                placeholder="请输入竞赛名称"
-                v-model="StudentContest.gameName"
+                placeholder="请输入活动名称"
+                v-model="Communication.name"
                 clearable>
               </el-input>
             </td>
           </tr>
           <tr>
-            <td class="label">获奖级别</td>
+            <td class="label">主办机构</td>
+            <td>
+              <el-input
+                class="property"
+                placeholder="请输入主办机构名称"
+                v-model="Communication.organizer"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">交流类型</td>
             <td>
               <el-autocomplete
                 class="property"
-                v-model="StudentContest.grade"
+                v-model="Communication.type"
                 :fetch-suggestions="querySearch"
                 placeholder="请选择类型或直接输入"
                 popper-class="my-autocomplete"
@@ -82,23 +93,67 @@
             </td>
           </tr>
           <tr>
-            <td class="label">获奖时间</td>
+            <td class="label">地点</td>
+            <td>
+              <el-input
+                class="property"
+                v-model="Communication.address"
+                placeholder="请输入地点"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">起始时间</td>
             <td>
               <el-date-picker
                 class="property"
-                v-model="StudentContest.time"
+                v-model="Communication.startTime"
                 type="date"
-                placeholder="选择获奖时间">
+                placeholder="选择起始时间">
               </el-date-picker>
             </td>
           </tr>
           <tr>
-            <td class="label">指导老师</td>
+            <td class="label">终止时间</td>
+            <td>
+              <el-date-picker
+                v-model="Communication.lastTime"
+                class="property"
+                type="date"
+                placeholder="选择终止时间">
+              </el-date-picker>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">是否发言</td>
+            <td>
+              <el-input
+                v-model="Communication.whetherSpeak"
+                class="property"
+                placeholder="请选择是否"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">学生是否参与</td>
+            <td>
+              <el-input
+                v-model="Communication.whetherParticipate"
+                class="property"
+                placeholder="请选择是否"
+                clearable>
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">参会人员</td>
             <td>
               <el-tag
-                v-model="StudentContest.instructor"
+                v-model="Communication.member"
                 :key="tag"
-                v-for="tag in StudentContest.instructor"
+                v-for="tag in Communication.member"
                 closable
                 :disable-transitions="false"
                 @close="handleClose(tag)">
@@ -183,22 +238,26 @@
 import TeacherNav from "../TeacherNav";
 import { insertTeacherFile } from '@/api/file.js'
 export default {
-  name: 'StudentContestUpload',
+  name: 'CommunicationUpload',
   components: {TeacherNav},
   data() {
     return {
-      StudentContest: {
-        TEMPLATE_TYPE: "studentcontest",
+      Communication: {
+        TEMPLATE_TYPE: "communication",
         id: "",
         title: "",
         num: "",
         introduction: "",
 
+        startTime: "",
+        lastTime: "",
+        type: "",
         name: "",
-        gameName: "",
-        grade: "",
-        instructor: [],
-        time: "",
+        organizer: "",
+        address: "",
+        member: [],
+        whetherSpeak: "",
+        whetherParticipate: "",
 
         other: [],
         filePath: [],
@@ -226,12 +285,12 @@ export default {
     },
     addInput() {
       let kv = new this.Template(this.m.key, this.m.value);
-      this.StudentContest.other.push(kv)
-      console.log(this.StudentContest.other)
+      this.Communication.other.push(kv)
+      console.log(this.Communication.other)
       var trHtml = `<td></td>
-                    <td align="center">${this.StudentContest.other[this.StudentContest.other.length - 1].key}</td>
+                    <td align="center">${this.Communication.other[this.Communication.other.length - 1].key}</td>
                     <td>:</td>
-                    <td align="center">${this.StudentContest.other[this.StudentContest.other.length - 1].value}</td>`
+                    <td align="center">${this.Communication.other[this.Communication.other.length - 1].value}</td>`
       var tr = document.createElement('tr');
       tr.innerHTML = trHtml
       document.getElementById("change-table").appendChild(tr)
@@ -241,7 +300,7 @@ export default {
     },
 
     handleClose(tag) {
-      this.StudentContest.instructor.splice(this.StudentContest.instructor.indexOf(tag), 1);
+      this.Communication.member.splice(this.Communication.member.indexOf(tag), 1);
     },
 
     showInput() {
@@ -254,7 +313,7 @@ export default {
     handleInputConfirm() {
       let inputValue = this.inputValue;
       if (inputValue) {
-        this.StudentContest.instructor.push(inputValue);
+        this.Communication.member.push(inputValue);
       }
       this.inputVisible = false;
       this.inputValue = '';
@@ -273,12 +332,10 @@ export default {
     },
     loadAll() {
       return [
-        {"value": "国家级一等奖"},
-        {"value": "国家级二等奖"},
-        {"value": "国家级三等奖"},
-        {"value": "省级一等奖"},
-        {"value": "省级二等奖"},
-        {"value": "省级三等奖"},
+        {"value": "学术会议"},
+        {"value": "师资教培"},
+        {"value": "教学研讨"},
+        {"value": "参观调研"}
       ];
     },
     handleSelect(item) {
@@ -293,7 +350,7 @@ export default {
     },
     submitUpload() {
       this.$refs.upload.submit();
-      insertTeacherFile(this.StudentContest).then(resp => {
+      insertTeacherFile(this.Communication).then(resp => {
         console.log(resp.data)
       });
     },
