@@ -34,7 +34,7 @@ public class StudentContest extends AbstractTemplate{
 
     private String grade;
 
-    private String instructor;
+    private List<String>instructor;
 
     private String time;
 
