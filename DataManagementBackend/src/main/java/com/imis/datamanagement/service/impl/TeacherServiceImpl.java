@@ -29,6 +29,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -104,6 +105,11 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         }
         redisService.set(TeacherKey.getById, "" + id, showVo);
         return showVo;
+    }
+
+    @Override
+    public List<ShowVo> getAll() {
+        return teacherMapper.getAll();
     }
 
     public String codeLogin(HttpServletResponse response, LoginVo loginVo) {

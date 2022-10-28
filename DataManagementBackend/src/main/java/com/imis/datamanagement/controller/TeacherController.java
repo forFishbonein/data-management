@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @RestController
 @RequestMapping("/t")
@@ -49,6 +50,11 @@ public class TeacherController {
     @GetMapping("/{id}")
     public Result<ShowVo> getById(@PathVariable("id") Long id) {
         return Result.success(teacherService.show(id));
+    }
+
+    @GetMapping()
+    public Result<List<ShowVo>> getAll() {
+        return Result.success(teacherService.getAll());
     }
 
 
