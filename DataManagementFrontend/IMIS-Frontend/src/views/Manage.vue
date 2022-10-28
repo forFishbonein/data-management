@@ -96,7 +96,7 @@ export default {
 }
 
 .body .context {
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
 
