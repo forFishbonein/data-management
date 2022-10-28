@@ -268,7 +268,7 @@ export default {
         journalGrade: "",
         schoolGrade: "",
         publicationTime: "",
-        authorRank: "",
+        authorRank: [],
 
         other: [],
         filePath: [],
