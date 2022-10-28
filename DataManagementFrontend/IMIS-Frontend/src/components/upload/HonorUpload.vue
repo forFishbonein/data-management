@@ -72,6 +72,17 @@
             </td>
           </tr>
           <tr>
+            <td class="label">获奖时间</td>
+            <td>
+              <el-date-picker
+                class="property"
+                v-model="Honor.time"
+                type="date"
+                placeholder="选择获奖时间">
+              </el-date-picker>
+            </td>
+          </tr>
+          <tr>
             <td class="label">获奖类型</td>
             <td>
               <el-autocomplete
@@ -210,9 +221,7 @@ export default {
         award_name: "",
         time: "",
         type: "",
-        garde: "",
         level: "",
-        name: "",
         approval_num: "",
         member: [],
 

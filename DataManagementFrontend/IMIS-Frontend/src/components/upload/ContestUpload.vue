@@ -194,7 +194,7 @@ export default {
         num: "",
         introduction: "",
 
-        name: "",
+
         gameName: "",
         grade: "",
         instructor: [],
