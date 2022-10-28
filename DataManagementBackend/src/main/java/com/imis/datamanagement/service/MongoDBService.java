@@ -86,16 +86,16 @@ public class MongoDBService {
         List<UserDefined> userDefineds = mongoTemplate.find(query, UserDefined.class);
 
         List<Object> l = new ArrayList<>();
-        l.add(achievememnts);
-        l.add(communications);
-        l.add(honors);
-        l.add(offices);
-        l.add(parties);
-        l.add(studyings);
-        l.add(studentContests);
-        l.add(teachings);
-        l.add(userDefineds);
 
+        l.add(studyings);
+        l.add(teachings);
+        l.add(honors);
+        l.add(achievememnts);
+        l.add(studentContests);
+        l.add(communications);
+        l.add(parties);
+        l.add(offices);
+        l.add(userDefineds);
 
         return l;
     }
