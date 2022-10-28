@@ -62,7 +62,9 @@ public class MongoDBService {
     //获取当前用户的所有资源（个人详情）
     public String getById(Long id) {
         System.out.println("id = " + id);
-        Query query = new Query(Criteria.where("uploaderId").is(id));
+        Query query = new Query();
+        query.addCriteria(Criteria.where("uploaderId").is(id));
+        query.addCriteria(Criteria.where("deleted").is("0"));
         List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
         List<Communication> communications = mongoTemplate.find(query, Communication.class);
         List<Honor> honors = mongoTemplate.find(query, Honor.class);
@@ -91,7 +93,7 @@ public class MongoDBService {
 
     //获取所有用户的所有资源（资源广场）
     public List<Object> getAll() {
-        Query query = new Query();
+        Query query = new Query(Criteria.where("deleted").is("0"));
         List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
         List<Communication> communications = mongoTemplate.find(query, Communication.class);
         List<Honor> honors = mongoTemplate.find(query, Honor.class);
@@ -169,13 +171,12 @@ public class MongoDBService {
         if (at == null) {
             throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
         }
-        Update update = null;
-        update = new Update().set("0", abstractTemplate.getDeleted());
-        mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
+        Update update = new Update();
+        update.set("deleted", "1");
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         abstractTemplate.setUpdateTime(dateFormat.format(date));
-        update = new Update().set("updateTime", abstractTemplate.getUpdateTime());
+        update.set("updateTime", abstractTemplate.getUpdateTime());
         mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
     }
 
