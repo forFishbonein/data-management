@@ -123,7 +123,7 @@ export default {
   data() {
     return {
       UserDefined: {
-        TEMPLATE_TYPE: "user_defined",
+        TEMPLATE_TYPE: "userdefined",
         id: "",
         title: "",
         num: "",
