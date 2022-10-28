@@ -4,18 +4,18 @@
       <div class="context">
         <div class="Party">
           <div class="title">资源名称：{{ Party.title }}</div>
-          <div class="introduction">{{ Party.introduction }}</div>
+          <div v-show="this.Party.introduction" class="introduction">{{ Party.introduction }}</div>
           <div class="details">
             <div v-show="this.Party.topic" class="topic">活动主题：{{ Party.topic }}</div>
-            <div class="uploader">上传者：</div>
-            <div class="createTime">上传时间：{{ Party.createTime }}</div>
-            <div class="time">活动时间：{{ Party.time }}</div>
-            <div class="type">活动类型：{{ Party.type }}</div>
-            <div class="content">学习内容：{{ Party.content }}</div>
-            <div class="address">学习地点：{{ Party.address }}</div>
-            <div class="participant">参与人：{{ Party.participant }}</div>
+            <div v-show="this.Party.uploaderId" class="uploader">上传者：{{Party.uploaderId}}</div>
+            <div v-show="this.Party.createTime" class="createTime">上传时间：{{ Party.createTime }}</div>
+            <div v-show="this.Party.time" class="time">活动时间：{{ Party.time }}</div>
+            <div v-show="this.Party.type" class="type">活动类型：{{ Party.type }}</div>
+            <div v-show="this.Party.content" class="content">学习内容：{{ Party.content }}</div>
+            <div v-show="this.Party.address" class="address">学习地点：{{ Party.address }}</div>
+            <div v-show="this.Party.participant" class="participant">参与人：{{ Party.participant }}</div>
             <div class="add">
-              <p v-for="(val, key) in Party.other">{{ key }} : {{ val }}</p>
+              <p v-for="item in Party.other">{{ item.key }} : {{ item.value }}</p>
             </div>
 
 
@@ -41,166 +41,187 @@
   export default {
     name: "Party",
     data() {
-      return {
+    return {
+      Achievement: {
+        TEMPLATE_TYPE: "achievement",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "",
 
-        Achievement: {
-          TEMPLATE_TYPE: "achievement",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "",
+        uploaderId:"",
+        name: "",
+        author: "",
+        publicYear: "",
+        paper: "",
+        type: "",
+        press: "",
+        journalGrade: "",
+        schoolGrade: "",
+        publicationTime: "",
+        authorRank: [],
 
-          name: "",
-          author: "",
-          publicYear: "",
-          paper: "",
-          type: "",
-          press: "",
-          journalGrade: "",
-          schoolGrade: "",
-          publicationTime: "",
-          authorRank: "",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      Communication: {
+        TEMPLATE_TYPE: "communication",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "",
 
-          other: {
-            "条目1": "内容1",
-            "条目2": "内容2"
-          },
-          filePath: "",
-          createTime: "",
-        },
-        Communication: {
-          TEMPLATE_TYPE: "communication",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "",
+        uploaderId:"",
+        startTime: "",
+        lastTime: "",
+        type: "",
+        name: "",
+        organizer: "",
+        address: "",
+        member: "",
+        whetherSpeak: "",
+        whetherParticipate: "",
 
-          startTime: "",
-          lastTime: "",
-          type: "",
-          name: "",
-          organizer: "",
-          address: "",
-          member: "",
-          whetherSpeak: "",
-          whetherParticipate: "",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      Honor: {
+        TEMPLATE_TYPE: "honor",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "",
 
-          other: {},
-          filePath: "",
-          createTime: "",
-        },
-        Honor: {
-          TEMPLATE_TYPE: "honor",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "",
+        uploaderId:"",
+        award_name: "",
+        time: "",
+        type: "",
+        garde: "",
+        level: "",
+        name: "",
+        approval_num: "",
+        member: [],
 
-          award_name: "",
-          time: "",
-          type: "",
-          garde: "",
-          level: "",
-          name: "",
-          approval_num: "",
-          member: "",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      Office: {
+        TEMPLATE_TYPE: "office",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "",
 
-          other: {},
-          filePath: "",
-          createTime: "",
-        },
-        Office: {
-          TEMPLATE_TYPE: "office",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "",
+        uploaderId:"",
+        time: "",
+        type: "",
+        topic: "",
+        content: "",
+        address: "",
+        participant: [],
 
-          time: "",
-          type: "",
-          topic: "",
-          content: "",
-          address: "",
-          participant: "",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      Party: {
+        TEMPLATE_TYPE: "party",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "",
 
-          other: {},
-          filePath: "",
-          createTime: "",
-        },
-        Party: {
-          TEMPLATE_TYPE: "party",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "",
+        uploaderId:"",
+        time: "",
+        type: "",
+        topic: "",
+        content: "",
+        address: "",
+        participant: "",
 
-          time: "",
-          type: "",
-          topic: "",
-          content: "",
-          address: "",
-          participant: "",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      Studying: {
+        TEMPLATE_TYPE: "Studying",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
 
-          other: {},
-          filePath: "",
-          createTime: "",
-        },
-        StudentContest: {
-          TEMPLATE_TYPE: "studentcontest",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "",
+        uploaderId:"",
+        name: "",
+        source: "",
+        type: "",
+        level: "",
+        projectTime: "",
+        postprojectTime: "",
+        fund: "",
+        member: [],
 
-          name: "",
-          gameName: "",
-          grade: "",
-          instructor: "",
-          time: "",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      StudentContest: {
+        TEMPLATE_TYPE: "studentcontest",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "",
+ 
+        uploaderId:"",
+        name: "",
+        gameName: "",
+        grade: "",
+        instructor: [],
+        time: "",
 
-          other: {},
-          filePath: "",
-          createTime: "",
-        },
-        Teaching: {
-          TEMPLATE_TYPE: "teaching",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      Teaching: {
+        TEMPLATE_TYPE: "teaching",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
+ 
+        uploaderId:"",
+        name: "",
+        source: "",
+        type: "",
+        level: "",
+        projectTime: "",
+        postprojectTime: "",
+        fund: "",
+        member: [],
 
-          name: "",
-          source: "",
-          type: "",
-          level: "",
-          projectTime: "",
-          postprojectTime: "",
-          fund: "",
-          member: "",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      UserDefined: {
+        TEMPLATE_TYPE: "userdefined",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "",
+ 
+        uploaderId:"",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
 
-          other: {
-            "条目1": "内容1",
-            "条目2": "内容2"
-          },
+    }
 
-          filePath: "",
-          createTime: "",
-        },
-        UserDefined: {
-          TEMPLATE_TYPE: "userdefined",
-          id: "",
-          title: "",
-          num: "",
-          introduction: "",
-
-          other: {},
-          filePath: "",
-          createTime: "",
-        },
-
-      }
-
-    },
+  },
     components: {
       TeacherNav,
       TeacherHeader,

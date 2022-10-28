@@ -4,20 +4,20 @@
     <div class="context">
       <div class="Achievement">
         <div class="title">资源名称：{{ Achievement.title }}</div>
-        <div class="introduction">{{ Achievement.introduction }}</div>
+        <div v-show="this.Achievement.introduction" class="introduction">{{ Achievement.introduction }}</div>
         <div class="details">
           <div v-show="this.Achievement.name" class="name">成果名称：{{ Achievement.name }}</div>
-          <div class="uploader">上传者：</div>
-          <div class="createTime">上传时间：{{ Achievement.createTime }}</div>
-          <div class="author">作者：{{ Achievement.author }}</div>
-          <div class="publicYear">发表年：{{ Achievement.publicYear }}</div>
-          <div class="paper">论文或专著：{{ Achievement.paper }}</div>
-          <div class="type">论文类型：{{ Achievement.type }}</div>
-          <div class="press">出版社/期刊名称：{{ Achievement.press }}</div>
-          <div class="journalGrade">期刊等级：{{ Achievement.journalGrade }}</div>
-          <div class="schoolGrade">民大认定级别：{{ Achievement.schoolGrade }}</div>
-          <div class="publicationTime">出版时间/期卷号:{{ Achievement.publicationTime }}</div>
-          <div class="authorRank">作者排序：{{ Achievement.authorRank }}</div>
+          <div v-show="this.Achievement.uploader" class="uploader">上传者：{{Achievement.uploaderId}}</div>
+          <div v-show="this.Achievement.createTime" class="createTime">上传时间：{{ Achievement.createTime }}</div>
+          <div v-show="this.Achievement.author" class="author">作者：{{ Achievement.author }}</div>
+          <div v-show="this.Achievement.publicYear" class="publicYear">发表年：{{ Achievement.publicYear }}</div>
+          <div v-show="this.Achievement.paper" class="paper">论文或专著：{{ Achievement.paper }}</div>
+          <div v-show="this.Achievement.type" class="type">论文类型：{{ Achievement.type }}</div>
+          <div v-show="this.Achievement.press" class="press">出版社/期刊名称：{{ Achievement.press }}</div>
+          <div v-show="this.Achievement.journalGrade" class="journalGrade">期刊等级：{{ Achievement.journalGrade }}</div>
+          <div v-show="this.Achievement.schoolGrade" class="schoolGrade">民大认定级别：{{ Achievement.schoolGrade }}</div>
+          <div v-show="this.Achievement.publicationTime" class="publicationTime">出版时间/期卷号:{{ Achievement.publicationTime }}</div>
+          <div v-show="this.Achievement.authorRank.length" class="authorRank">作者排序：{{ Achievement.authorRank }}</div>
           <div class="add">
             <p v-for="item in Achievement.other">{{ item.key }} : {{ item.value }}</p>
           </div>
@@ -52,6 +52,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         name: "",
         author: "",
         publicYear: "",
@@ -61,10 +62,10 @@ export default {
         journalGrade: "",
         schoolGrade: "",
         publicationTime: "",
-        authorRank: "",
+        authorRank: [],
 
         other: [],
-        filePath: "",
+        filePath: [],
         createTime: "",
       },
       Communication: {
@@ -74,6 +75,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         startTime: "",
         lastTime: "",
         type: "",
@@ -84,8 +86,8 @@ export default {
         whetherSpeak: "",
         whetherParticipate: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Honor: {
@@ -95,6 +97,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         award_name: "",
         time: "",
         type: "",
@@ -102,10 +105,10 @@ export default {
         level: "",
         name: "",
         approval_num: "",
-        member: "",
+        member: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Office: {
@@ -115,15 +118,16 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         time: "",
         type: "",
         topic: "",
         content: "",
         address: "",
-        participant: "",
+        participant: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Party: {
@@ -133,6 +137,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         time: "",
         type: "",
         topic: "",
@@ -140,8 +145,8 @@ export default {
         address: "",
         participant: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Studying: {
@@ -151,6 +156,7 @@ export default {
         num: "",
         introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
 
+        uploaderId:"",
         name: "",
         source: "",
         type: "",
@@ -158,14 +164,10 @@ export default {
         projectTime: "",
         postprojectTime: "",
         fund: "",
-        member: "",
+        member: [],
 
-        other: {
-          "条目1": "内容1",
-          "条目2": "内容2"
-        },
-
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       StudentContest: {
@@ -174,15 +176,16 @@ export default {
         title: "",
         num: "",
         introduction: "",
-
+ 
+        uploaderId:"",
         name: "",
         gameName: "",
         grade: "",
-        instructor: "",
+        instructor: [],
         time: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Teaching: {
@@ -191,7 +194,8 @@ export default {
         title: "",
         num: "",
         introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
-
+ 
+        uploaderId:"",
         name: "",
         source: "",
         type: "",
@@ -199,14 +203,10 @@ export default {
         projectTime: "",
         postprojectTime: "",
         fund: "",
-        member: "",
+        member: [],
 
-        other: {
-          "条目1": "内容1",
-          "条目2": "内容2"
-        },
-
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       UserDefined: {
@@ -215,9 +215,10 @@ export default {
         title: "",
         num: "",
         introduction: "",
-
-        other: {},
-        filePath: "",
+ 
+        uploaderId:"",
+        other: [],
+        filePath: [],
         createTime: "",
       },
 
