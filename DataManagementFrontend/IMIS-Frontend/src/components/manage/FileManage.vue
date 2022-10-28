@@ -476,10 +476,6 @@ export default {
 
   data() {
     return {
-<<<<<<< HEAD
-      tableData: [
-      ]
-=======
       Studying: [],
       Teaching: [],
       Honor: [],
@@ -489,7 +485,6 @@ export default {
       Party: [],
       Office: [],
       Defined: [],
->>>>>>> 01a33fc3e4f7e9b0494742d28a3d6ea13bf8e5f5
     }
   }
 
