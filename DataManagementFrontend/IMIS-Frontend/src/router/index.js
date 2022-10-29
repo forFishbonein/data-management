@@ -7,10 +7,12 @@ import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
 import Search from "../views/Search.vue";
 
+
 //manage
 import Manage from "../views/Manage.vue";
 import AccountManage from "../components/manage/AccountManage.vue";
 import FileManage from "../components/manage/FileManage.vue";
+import TeacherManage from "../components/manage/TeacherManage.vue";
 
 //template
 import Achievement from "../views/template/Achievement.vue";
@@ -34,6 +36,8 @@ import PartyUpload from "../components/upload/PartyUpload";
 import StudyingUpload from "../components/upload/StudyingUpload";
 import TeachingUpload from "../components/upload/TeachingUpload";
 import DefinedUpload from "../components/upload/DefinedUpload";
+
+
 
 Vue.use(VueRouter);
 
@@ -172,12 +176,16 @@ const routes = [
     component: Manage,
     children: [
       {
-        path: "filemange",
+        path: "filemanage",
         component: FileManage
       },
       {
-        path: "accountmange",
+        path: "accountmanage",
         component: AccountManage
+      },
+      {
+        path: "teachermanage",
+        component: TeacherManage
       }
     ]
   },

@@ -481,6 +481,8 @@
 
 <script>
 import { getAllResource } from '@/api/manage'
+import { updateById } from '@/api/manage'
+import { deleteById } from '@/api/manage'
 
 export default {
   name: 'FileManage',
@@ -495,6 +497,14 @@ export default {
       Party: [],
       Office: [],
       Defined: [],
+      Upload: {
+        id: "",
+        TEMPLATE_TYPE: ""
+      },
+      Delete: {
+        id: "",
+        TEMPLATE_TYPE: ""
+      }
       // Query: {
       //   TEMPLATE_TYPE: "",
       //   id: ""
@@ -538,7 +548,12 @@ export default {
     },
 
     deleteById(row) {
-
+      console.log(row)
+      this.Delete.id = row.id;
+      this.Delete.TEMPLATE_TYPE = row.template_TYPE;
+      deleteById(this.Delete).then(resp => {
+        this.getAllResource();
+      });
     },
 
   },

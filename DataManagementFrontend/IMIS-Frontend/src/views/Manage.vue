@@ -16,10 +16,10 @@
             </template>
             <el-menu-item-group>
               <el-menu-item index="1-1">
-                <router-link to="/manage/filemange">文件管理</router-link>
+                <router-link to="/manage/filemanage">文件管理</router-link>
               </el-menu-item>
               <el-menu-item index="1-2">
-                <router-link to="#">账号管理</router-link>
+                <router-link to="/manage/teachermanage">账号管理</router-link>
               </el-menu-item>
             </el-menu-item-group>
           </el-submenu>
