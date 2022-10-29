@@ -98,7 +98,7 @@ nav .profile {
 nav .upload {
   display: flex;
   width: 80px;
-  height: 40px;
+  height: 36px;
   color: #FFFFFF;
   line-height: 40px;
   letter-spacing: 3px;

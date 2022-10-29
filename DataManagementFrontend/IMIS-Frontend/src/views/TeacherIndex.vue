@@ -30,14 +30,19 @@
         class="apage"
         layout="prev, pager, next">
       </el-pagination>
+      
+      
     </div>
+    <LoginFooter></LoginFooter>
   </div>
+
 </template>
 
 <script>
 import TeacherNav from '../components/TeacherNav.vue'
 import TeacherHeader from '../components/TeacherHeader.vue'
 import TeacherData from '../components/TeacherData.vue'
+import LoginFooter from '../components/LoginFooter.vue'
 import {getMaterials} from '@/api'
 
 export default {
@@ -64,7 +69,8 @@ export default {
   components: {
     TeacherNav,
     TeacherHeader,
-    TeacherData
+    TeacherData,
+    LoginFooter
   },
   mounted() {
     this.getMaterials();

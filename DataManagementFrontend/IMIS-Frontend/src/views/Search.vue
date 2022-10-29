@@ -1,19 +1,19 @@
 <template>
-  <div>
+  <div class="main">
     <TeacherNav></TeacherNav>
     <div class="container">
       <!-- <TeacherHeader></TeacherHeader> -->
       <div class="tbody">
         <div class="line"><h2>搜索结果</h2></div>
         <div class="check">
-          <input v-model="picked" type="checkbox" value="科研项目"/>科研项目
-          <input v-model="picked" type="checkbox" value="教研项目"/>教研项目
-          <input v-model="picked" type="checkbox" value="荣誉"/>荣誉
-          <input v-model="picked" type="checkbox" value="成果"/>成果
-          <input v-model="picked" type="checkbox" value="学生竞赛"/>学生竞赛
-          <input v-model="picked" type="checkbox" value="交流访问"/>交流访问
-          <input v-model="picked" type="checkbox" value="党支部"/>党支部
-          <input v-model="picked" type="checkbox" value="其他"/>其他
+          <div><input v-model="picked" type="checkbox" value="科研项目"/>&ensp;科研项目</div>
+          <div><input v-model="picked" type="checkbox" value="教研项目"/>&ensp;教研项目</div>
+          <div><input v-model="picked" type="checkbox" value="荣誉"/>&ensp;荣誉</div>
+          <div><input v-model="picked" type="checkbox" value="成果"/>&ensp;成果</div>
+          <div><input v-model="picked" type="checkbox" value="学生竞赛"/>&ensp;学生竞赛</div>
+          <div><input v-model="picked" type="checkbox" value="交流访问"/>&ensp;交流访问</div>
+          <div><input v-model="picked" type="checkbox" value="党支部"/>&ensp;党支部</div>
+          <div><input v-model="picked" type="checkbox" value="其他"/>&ensp;其他</div>
 
           <ul>
             <li v-for="(item, index) in picked" :key="index">{{ item }}</li>
@@ -78,6 +78,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.main{
+  background-color: #f5f9ff;
+}
 .container {
   width: 1200px;
   margin: 0 auto;
@@ -92,11 +96,11 @@ export default {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    background-color: #f5f9ff;
+    background-color: white;
     min-height: 800px;
 
     .line {
-      margin-top: 40px;
+      margin-top: 20px;
       margin-left: 30px;
       color: black;
       width: 1200px;
