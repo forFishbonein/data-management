@@ -215,28 +215,20 @@
           other: {},
           filePath: "",
           createTime: "",
-        },
-        Query: {
-          TEMPLATE_TYPE: "",
-          id: ""
         }
       }
     },
     props:['templateType','id'],
     methods: {
-      getStudying(templateType, id) {
-        // console.log(templateType)
-        // console.log(id)
-        this.Query.TEMPLATE_TYPE = templateType;
-        this.Query.id = id;
-        getOneFile(this.Query).then(resp => {
-          console.log(resp)
-          this.Studying = resp.data.data
-        });
-      }
     },
     created(){
-      this.getStudying(this.templateType,this.id);
+      let obj = {}
+      obj.TEMPLATE_TYPE = this.templateType;
+      obj.id = this.id;
+      this.$store.dispatch('getDetails', obj).then(res => {
+        // console.log(res)
+        this.Studying = res
+      })
     },
     components: {
       TeacherNav,

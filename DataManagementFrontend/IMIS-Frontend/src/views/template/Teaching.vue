@@ -174,7 +174,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
- 
+
         uploaderId:"",
         name: "",
         gameName: "",
@@ -192,7 +192,7 @@ export default {
         title: "",
         num: "",
         introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
- 
+
         uploaderId:"",
         name: "",
         source: "",
@@ -213,7 +213,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
- 
+
         uploaderId:"",
         other: [],
         filePath: [],
@@ -222,6 +222,15 @@ export default {
 
     }
 
+  },
+  created(){
+      let obj = {}
+      obj.TEMPLATE_TYPE = this.templateType;
+      obj.id = this.id;
+      this.$store.dispatch('getDetails', obj).then(res => {
+        // console.log(res)
+        this.Teaching = res
+      })
   },
   components: {
     TeacherNav,

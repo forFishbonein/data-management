@@ -3,6 +3,7 @@ import Vue from "vue";
 import { getToken, setToken, removeToken } from "@/request/token";
 import { codeLogin, passLogin, getUserInfo } from "@/api/login";
 import { postRegisterTeacher, postRegisterStudent } from "@/api/register";
+import { getOneFile } from "@/api/file";
 
 Vue.use(Vuex);
 
@@ -14,29 +15,37 @@ export default new Vuex.Store({
     userName: "",
     createTime: "",
     updateTime: "",
-    token: getToken()
+    token: getToken(),
+    Query: {
+      TEMPLATE_TYPE: "",
+      id: ""
+    }
   },
   mutations: {
     SET_TOKEN: (state, token) => {
       state.token = token;
     },
-    SET_USEREMAIL: (state, account) => {
+    SET_USEREMAIL: (state, userEmail) => {
       state.userEmail = userEmail;
     },
-    SET_USERNAME: (state, name) => {
+    SET_USERNAME: (state, userName) => {
       state.userName = userName;
     },
-    SET_USERID: (state, id) => {
+    SET_USERID: (state, userId) => {
       state.userId = userId;
     },
-    SET_USERSID: (state, id) => {
+    SET_USERSID: (state, userSid) => {
       state.userSid = userSid;
     },
-    SET_CREATETIME: () => {
+    SET_CREATETIME: (state, createTime) => {
       state.createTime = createTime;
     },
-    SET_UPDATETIME: () => {
+    SET_UPDATETIME: (state, updateTime) => {
       state.updateTime = updateTime;
+    },
+    SET_QUERY: (state, obj) => {
+      state.Query.TEMPLATE_TYPE = obj.TEMPLATE_TYPE;
+      state.Query.id = obj.id;
     }
   },
   actions: {
@@ -164,7 +173,7 @@ export default new Vuex.Store({
             reject(error);
           });
       });
-    }
+    },
     // studentRegister({ commit }, user) {
     //   return new Promise((resolve, reject) => {
     //     postRegisterStudent(user.account, user.nickname, user.password)
@@ -182,5 +191,21 @@ export default new Vuex.Store({
     //       });
     //   });
     // }
+    getDetails({ commit, state }, obj) {
+      return new Promise((resolve, reject) => {
+        commit("SET_QUERY", obj);
+        getOneFile(state.Query)
+          .then(res => {
+            if (res.data) {
+              resolve(res.data);
+            } else {
+              reject(res.msg);
+            }
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
+    }
   }
 });

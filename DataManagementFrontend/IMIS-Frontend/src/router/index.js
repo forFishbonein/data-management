@@ -68,33 +68,75 @@ const routes = [
     component: Search
   },
   {
+    name: "teaching",
     path: "/teaching",
-    component: Teaching
+    component: Teaching,
+    props($route) {
+      return {
+        templateType: $route.query.templateType,
+        id: $route.query.id
+      };
+    }
   },
 
   {
+    name: "achievement",
     path: "/achievement",
-    component: Achievement
+    component: Achievement,
+    props($route) {
+      return {
+        templateType: $route.query.templateType,
+        id: $route.query.id
+      };
+    }
   },
   {
+    name: "communication",
     path: "/communication",
-    component: Communication
+    component: Communication,
+    props($route) {
+      return {
+        templateType: $route.query.templateType,
+        id: $route.query.id
+      };
+    }
   },
   {
+    name: "honor",
     path: "/honor",
-    component: Honor
+    component: Honor,
+    props($route) {
+      return {
+        templateType: $route.query.templateType,
+        id: $route.query.id
+      };
+    }
   },
   {
+    name: "office",
     path: "/office",
-    component: Office
+    component: Office,
+    props($route) {
+      return {
+        templateType: $route.query.templateType,
+        id: $route.query.id
+      };
+    }
   },
   {
+    name: "party",
     path: "/party",
-    component: Party
+    component: Party,
+    props($route) {
+      return {
+        templateType: $route.query.templateType,
+        id: $route.query.id
+      };
+    }
   },
   {
-    name: "jiaoyan",
-    path: "/study",
+    name: "studying",
+    path: "/studying",
     component: Studying,
     props($route) {
       return {
@@ -104,12 +146,26 @@ const routes = [
     }
   },
   {
+    name: "studentcontest",
     path: "/studentContest",
-    component: StudentContest
+    component: StudentContest,
+    props($route) {
+      return {
+        templateType: $route.query.templateType,
+        id: $route.query.id
+      };
+    }
   },
   {
+    name: "userdefined",
     path: "/userDefined",
-    component: UserDefined
+    component: UserDefined,
+    props($route) {
+      return {
+        templateType: $route.query.templateType,
+        id: $route.query.id
+      };
+    }
   },
   {
     path: "/manage",

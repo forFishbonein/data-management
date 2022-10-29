@@ -519,12 +519,12 @@ export default {
     getOneFile(row) {
       console.log(row)
       this.$router.push({
-          name:'jiaoyan',
-          query:{
-              templateType:row.template_TYPE,
-              id:row.id
-          }
-      })
+            name: row.template_TYPE,
+            query:{
+                templateType:row.template_TYPE,
+                id:row.id
+            }
+        })
       // console.log("---")
       // console.log(this.Query);
       // console.log("---")
