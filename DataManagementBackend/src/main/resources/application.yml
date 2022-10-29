@@ -40,9 +40,9 @@ spring:
 
   # 邮箱服务
   mail:
-    host: smtp.qq.com
-    username: 2856400640@qq.com
-    password: wzjstxvqaycaddhg
+    host: smtp.126.com
+    username: songyanglei177@126.com
+    password: MTEOLFKTJDFFMGJC
     default-encoding: UTF-8
 
 # MP的配置
