@@ -14,8 +14,8 @@ class DataManagementApplicationTests {
     EmailService emailService;
     @Test
     void contextLoads() {
-//        System.out.println("hello world");
-        emailService.sendEmailTemplate("1111@qq.com","1111","1111");
+     System.out.println("hello world");
+//        emailService.sendEmailTemplate("1111@qq.com","1111","1111");
     }
 
 }
