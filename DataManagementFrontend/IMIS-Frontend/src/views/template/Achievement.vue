@@ -24,7 +24,6 @@
 
         </div>
 
-
       </div>
       <FilePath></FilePath>
       <div class="button">
@@ -176,7 +175,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
- 
+
         uploaderId:"",
         name: "",
         gameName: "",
@@ -194,7 +193,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
- 
+
         uploaderId:"",
         name: "",
         source: "",
@@ -215,7 +214,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
- 
+
         uploaderId:"",
         other: [],
         filePath: [],
