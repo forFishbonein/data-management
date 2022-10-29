@@ -30,8 +30,10 @@
         class="apage"
         layout="prev, pager, next">
       </el-pagination>
+      
+      
     </div>
-
+    <LoginFooter></LoginFooter>
   </div>
 
 </template>

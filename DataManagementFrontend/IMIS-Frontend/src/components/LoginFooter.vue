@@ -27,11 +27,11 @@ export default {
 
 <style scoped>
 .footer {
+  margin-top: 30px;
   width: 100%;
-  height: 100px;
-  background: #fcfcfc;
+  height: 45px;
+  background: #ffffff;
   position: absolute;
-  bottom: 0;
 }
 
 .container {
@@ -45,20 +45,25 @@ export default {
   -ms-flex: 1;
   flex: 1;
   overflow: hidden;
-  float: right;
-  margin-top: 20px;
+  margin-top: -15px;
   margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+}
+.link ul{
+  text-align: right;
+
 }
 
 .sublink {
-  margin-bottom: 20px;
   float: right;
 }
 
 .sublink li {
-  font-size: 16px;
+  font-size: 10px;
   display: inline-block;
   margin-right: 8px;
   color: #5c5c5c;
 }
+
 </style>
