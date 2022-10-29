@@ -85,7 +85,7 @@
               <td><p class="warm">温馨提示：普通教师用户登录仅可查看属于本人的资料，经授权后方可查看所有资料
                 所有个人信息仅供本系统使用</p></td>
             </tr>
-            <tr>
+            <tr class="know">
               <td></td>
               <td>
                 <div class="warm-box"><input class="warm-check" required type="checkbox"><i>我已知晓</i></div>
@@ -165,6 +165,9 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
+.know{
+  transform: translateY(-5px);
+}
 
 .main {
   height: 100vh;
@@ -179,7 +182,7 @@ export default {
   left: 0;
   right: 0;
   margin: auto;
-  padding: 50px;
+  padding: 30px 50px;
   width: 1070px;
   height: 650px;
   background-color: #fcfbfa;
