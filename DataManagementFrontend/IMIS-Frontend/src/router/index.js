@@ -7,7 +7,6 @@ import CodeLogin from "../views/CodeLogin.vue";
 import PassLogin from "../views/PassLogin.vue";
 import Search from "../views/Search.vue";
 
-
 //manage
 import Manage from "../views/Manage.vue";
 import AccountManage from "../components/manage/AccountManage.vue";
@@ -37,14 +36,16 @@ import StudyingUpload from "../components/upload/StudyingUpload";
 import TeachingUpload from "../components/upload/TeachingUpload";
 import DefinedUpload from "../components/upload/DefinedUpload";
 
-
+import { Message } from "element-ui";
+import store from "@/store";
+import { getToken } from "@/request/token";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    component: CodeLogin
+    component: Manage
   },
   {
     path: "/login",
@@ -61,20 +62,32 @@ const routes = [
   },
   {
     path: "/competitionManage",
-    component: CompetitionManage
+    component: CompetitionManage,
+    meta: {
+      requireLogin: true
+    }
   },
   {
     path: "/profile",
-    component: TeacherIndex
+    component: TeacherIndex,
+    meta: {
+      requireLogin: true
+    }
   },
   {
     path: "/search",
-    component: Search
+    component: Search,
+    meta: {
+      requireLogin: true
+    }
   },
   {
     name: "teaching",
     path: "/teaching",
     component: Teaching,
+    meta: {
+      requireLogin: true
+    },
     props($route) {
       return {
         templateType: $route.query.templateType,
@@ -87,6 +100,9 @@ const routes = [
     name: "achievement",
     path: "/achievement",
     component: Achievement,
+    meta: {
+      requireLogin: true
+    },
     props($route) {
       return {
         templateType: $route.query.templateType,
@@ -98,6 +114,9 @@ const routes = [
     name: "communication",
     path: "/communication",
     component: Communication,
+    meta: {
+      requireLogin: true
+    },
     props($route) {
       return {
         templateType: $route.query.templateType,
@@ -109,6 +128,9 @@ const routes = [
     name: "honor",
     path: "/honor",
     component: Honor,
+    meta: {
+      requireLogin: true
+    },
     props($route) {
       return {
         templateType: $route.query.templateType,
@@ -120,6 +142,9 @@ const routes = [
     name: "office",
     path: "/office",
     component: Office,
+    meta: {
+      requireLogin: true
+    },
     props($route) {
       return {
         templateType: $route.query.templateType,
@@ -131,6 +156,9 @@ const routes = [
     name: "party",
     path: "/party",
     component: Party,
+    meta: {
+      requireLogin: true
+    },
     props($route) {
       return {
         templateType: $route.query.templateType,
@@ -142,6 +170,9 @@ const routes = [
     name: "studying",
     path: "/studying",
     component: Studying,
+    meta: {
+      requireLogin: true
+    },
     props($route) {
       return {
         templateType: $route.query.templateType,
@@ -153,6 +184,9 @@ const routes = [
     name: "studentcontest",
     path: "/studentContest",
     component: StudentContest,
+    meta: {
+      requireLogin: true
+    },
     props($route) {
       return {
         templateType: $route.query.templateType,
@@ -164,6 +198,9 @@ const routes = [
     name: "userdefined",
     path: "/userDefined",
     component: UserDefined,
+    meta: {
+      requireLogin: true
+    },
     props($route) {
       return {
         templateType: $route.query.templateType,
@@ -174,6 +211,9 @@ const routes = [
   {
     path: "/manage",
     component: Manage,
+    meta: {
+      requireLogin: true
+    },
     children: [
       {
         path: "filemanage",
@@ -192,6 +232,9 @@ const routes = [
   {
     path: "/upload",
     component: Upload,
+    meta: {
+      requireLogin: true
+    },
     children: [
       {
         path: "teaching",
@@ -238,15 +281,17 @@ const router = new VueRouter({
 });
 
 // router.beforeEach((to, from, next) => {
+//   console.log(getToken());
 //   if (getToken()) {
 //     if (to.path === "/login") {
+//       //如果是跳转到登录页面，拦截拦截
 //       next({ path: "/" });
 //     } else {
 //       //如果不是跳转到登录页面！那么获取用户信息！
 //       if (store.state.userEmail.length === 0) {
 //         //如果还没有用户信息
 //         store
-//           .dispatch("getUserInfo") //这里调用了获取用户信息
+//           .dispatch("getUserInfo") //获取用户信息
 //           .then(data => {
 //             //获取用户信息
 //             next();
@@ -270,6 +315,7 @@ const router = new VueRouter({
 //         showClose: true,
 //         message: "请先登录哦"
 //       });
+//       router.push(-1);
 //     } else {
 //       next();
 //     }

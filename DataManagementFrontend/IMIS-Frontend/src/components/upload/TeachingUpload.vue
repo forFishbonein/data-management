@@ -240,6 +240,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
+        uploaderId: "",
         name: "",
         source: "",
         type: "",
@@ -251,6 +252,7 @@ export default {
         other: [],
         filePath: [],
         createTime: "",
+        uploaderId: this.$store.state.userId
       },
 
       fileList: [],
@@ -337,15 +339,19 @@ export default {
     },
     onSuccess(response, file, fileList) {
       this.Teaching.filePath.push(response.data.name)
-    },
-    submitUpload() {
-      this.$refs.upload.submit();
-
+      // console.log(this.Teaching)
       insertTeacherFile(this.Teaching).then(resp => {
         console.log(resp.data)
-
       });
-
+    },
+    submitUpload() {
+      if(document.getElementsByClassName('el-upload-list__item')[0] == null){
+        insertTeacherFile(this.Teaching).then(resp => {
+          console.log(resp.data)
+        });
+      }else{
+        this.$refs.upload.submit();
+      }
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);

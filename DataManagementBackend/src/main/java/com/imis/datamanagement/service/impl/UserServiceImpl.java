@@ -78,9 +78,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //生成验证码
         String code = ValidateCodeUtils.generateValidateCode(6).toString();
         log.warn("验证码已生成：" + code);
-        String context = "验证码300s内有效，若重复发送验证码，请使用最新收到的验证码：" + code;
         //发送邮件
-        emailService.sendEmailTemplate(email, subject, context);
+        emailService.sendMimeMail(email, subject, code);
         //将userEmail和code组成的key-value存入redis
         redisService.set(CodeKey.code, email, code);
 

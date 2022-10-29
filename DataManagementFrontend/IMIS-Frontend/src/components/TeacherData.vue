@@ -9,7 +9,9 @@
 
     <span v-show="dialogVisible" class="download-box">
         <div class="download-box-close" @click="dialogVisible = false">X</div>
-        <p v-for="(file,index) in filePath" :key="index">{{ file }}</p>
+        <p v-for="(file,index) in filePath" :key="index">
+          <a :href="file"></a>
+        </p>
       </span>
   </div>
 </template>
@@ -42,23 +44,18 @@ export default {
   props: {
     id: {
       type: Number,
-      default: null
     },
     title: {
       type: String,
-      default: "资料"
     },
     introduction: {
       type: String,
-      default: "这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学这里是中南民族大学"
     },
     name: {
       type: String,
-      default: "张三，李四"
     },
     time: {
       type: String,
-      default: "2022-10-9"
     },
     filePath: {
       type: Array
