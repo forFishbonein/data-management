@@ -137,6 +137,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
+        uploaderId: "",
 
         other: [],
         filePath: [],

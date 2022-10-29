@@ -218,6 +218,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
+        uploaderId: "",
 
         award_name: "",
         time: "",

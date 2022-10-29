@@ -259,6 +259,7 @@ export default {
         id: "",
         title: "",
         introduction: "",
+        uploaderId: "",
 
         name: "",
         author: "",

@@ -194,6 +194,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
+        uploaderId: "",
 
 
         gameName: "",

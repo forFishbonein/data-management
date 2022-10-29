@@ -249,6 +249,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
+        uploaderId: "",
 
         startTime: "",
         lastTime: "",

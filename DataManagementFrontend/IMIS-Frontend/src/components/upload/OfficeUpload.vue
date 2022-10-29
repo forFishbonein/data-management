@@ -217,6 +217,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
+        uploaderId: "",
 
         time: "",
         type: "",
