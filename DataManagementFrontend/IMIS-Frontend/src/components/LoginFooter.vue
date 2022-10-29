@@ -29,7 +29,7 @@ export default {
 .footer {
   width: 100%;
   height: 100px;
-  background: #f4a018;
+  background: #fcfcfc;
   position: absolute;
   bottom: 0;
 }
@@ -58,7 +58,7 @@ export default {
 .sublink li {
   font-size: 16px;
   display: inline-block;
-  margin-right: 2em;
-  color: #fff;
+  margin-right: 8px;
+  color: #5c5c5c;
 }
 </style>
