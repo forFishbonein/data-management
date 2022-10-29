@@ -251,6 +251,7 @@ export default {
         other: [],
         filePath: [],
         createTime: "",
+        uploaderId: this.$store.state.userId
       },
 
       fileList: [],
@@ -337,7 +338,7 @@ export default {
     },
     onSuccess(response, file, fileList) {
       this.Teaching.filePath.push(response.data.name)
-      console.log(this.Teaching)
+      // console.log(this.Teaching)
       insertTeacherFile(this.Teaching).then(resp => {
         console.log(resp.data)
       });
