@@ -240,6 +240,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
+        uploaderId: "",
         name: "",
         source: "",
         type: "",

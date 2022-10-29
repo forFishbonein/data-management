@@ -30,6 +30,8 @@
 // import {codeLogin} from "../api/login";
 
 
+import {postCodeTeacher} from "../api/register";
+
 export default {
   name: 'CodeLogin',
 
@@ -68,7 +70,9 @@ export default {
         response => {
           response.data.data;
         }
-      )
+      ).catch(error=>{
+        console.log(error)
+      })
     },
     toLogin(data) {
       codeLogin(data).then(
