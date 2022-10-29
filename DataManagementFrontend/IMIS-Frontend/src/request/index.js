@@ -5,7 +5,7 @@ import { Message } from "element-ui";
 
 const service = axios.create({
   // baseURL: "/static/json",
-  baseURL: "http://localhost:8888",
+  baseURL: "http://localhost:8888"
   // headers: { "Content-Type": "application/json;charset=UTF-8" },
   // transformRequest: [
   //   function(data) {
@@ -49,11 +49,11 @@ service.interceptors.response.use(
 
       // //90002 用户未登录
       // if (res.code === 90002) {
-      //   Message({
-      //     type: "warning",
-      //     showClose: true,
-      //     message: "未登录或登录超时，请重新登录哦~"
-      //   });
+      Message({
+        type: "warning",
+        showClose: true,
+        message: res.msg
+      });
 
       //   return Promise.reject("error");
       // }
