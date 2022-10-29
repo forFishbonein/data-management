@@ -1,9 +1,7 @@
 <template>
   <div class="teacher-header">
     <div class="bgpicture">
-      <img alt="背景"
-           src="https://img.tukuppt.com/bg_grid/00/09/63/Si1rs8A7Di.jpg!/fh/350"
-      >
+      
     </div>
     <div class="teacher">
       <div class="teacher-pic">
@@ -72,7 +70,8 @@ export default {
   display: flex;
   flex-direction: column;
   height: 250px;
-  border-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .bgpicture {
@@ -80,23 +79,17 @@ export default {
   height: 120px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-
-}
-
-.bgpicture > img {
-  width: 1200px;
-  height: 153px;
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px
+  background: url("../../static/img/teacher1.jpg")no-repeat 
 }
 
 .teacher {
   display: flex;
   flex-direction: row;
-  height: 300px;
+  height: 170px;
   margin-bottom: 8px;
   background-color: #FFFFFF;
-  border-radius: 12px;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
 }
 
 .teacher .teacher-pic {

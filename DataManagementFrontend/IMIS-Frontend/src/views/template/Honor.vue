@@ -4,18 +4,18 @@
     <div class="context">
       <div class="Honor">
         <div class="title">资源名称：{{ Honor.title }}</div>
-        <div class="introduction">{{ Honor.introduction }}</div>
+        <div v-show="this.Honor.introduction" class="introduction">{{ Honor.introduction }}</div>
         <div class="details">
           <div v-show="this.Honor.award_name" class="name">奖励名称：{{ Honor.award_name }}</div>
-          <div class="uploader">上传者：</div>
-          <div class="createTime">上传时间：{{ Honor.createTime }}</div>
-          <div class="time">奖励时间：{{ Honor.time }}</div>
-          <div class="type">奖励类型：{{ Honor.type }}</div>
-          <div class="level">奖励级别：{{ Honor.level }}</div>
-          <div class="approval_num">批文号：{{ Honor.approval_num }}</div>
-          <div class="member">成员：{{ Honor.member }}</div>
+          <div v-show="this.Honor.uploaderId" class="uploader">上传者：{{Honor.uploaderId}}</div>
+          <div v-show="this.Honor.createTime" class="createTime">上传时间：{{ Honor.createTime }}</div>
+          <div v-show="this.Honor.time" class="time">奖励时间：{{ Honor.time }}</div>
+          <div v-show="this.Honor.type" class="type">奖励类型：{{ Honor.type }}</div>
+          <div v-show="this.Honor.level" class="level">奖励级别：{{ Honor.level }}</div>
+          <div v-show="this.Honor.approval_num" class="approval_num">批文号：{{ Honor.approval_num }}</div>
+          <div v-show="this.Honor.member.length" class="member">成员：{{ Honor.member }}</div>
           <div class="add">
-            <p v-for="(val, key) in Honor.other">{{ key }} : {{ val }}</p>
+            <p v-for="item in Honor.other">{{ item.key }} : {{ item.value }}</p>
           </div>
 
 
@@ -41,7 +41,6 @@ export default {
   name: "Honor",
   data() {
     return {
-
       Achievement: {
         TEMPLATE_TYPE: "achievement",
         id: "",
@@ -49,6 +48,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         name: "",
         author: "",
         publicYear: "",
@@ -58,10 +58,10 @@ export default {
         journalGrade: "",
         schoolGrade: "",
         publicationTime: "",
-        authorRank: "",
+        authorRank: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Communication: {
@@ -71,6 +71,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         startTime: "",
         lastTime: "",
         type: "",
@@ -81,8 +82,8 @@ export default {
         whetherSpeak: "",
         whetherParticipate: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Honor: {
@@ -92,6 +93,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         award_name: "",
         time: "",
         type: "",
@@ -99,10 +101,10 @@ export default {
         level: "",
         name: "",
         approval_num: "",
-        member: "",
+        member: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Office: {
@@ -112,15 +114,16 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         time: "",
         type: "",
         topic: "",
         content: "",
         address: "",
-        participant: "",
+        participant: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Party: {
@@ -130,6 +133,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         time: "",
         type: "",
         topic: "",
@@ -137,8 +141,29 @@ export default {
         address: "",
         participant: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      Studying: {
+        TEMPLATE_TYPE: "Studying",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
+
+        uploaderId:"",
+        name: "",
+        source: "",
+        type: "",
+        level: "",
+        projectTime: "",
+        postprojectTime: "",
+        fund: "",
+        member: [],
+
+        other: [],
+        filePath: [],
         createTime: "",
       },
       StudentContest: {
@@ -147,15 +172,16 @@ export default {
         title: "",
         num: "",
         introduction: "",
-
+ 
+        uploaderId:"",
         name: "",
         gameName: "",
         grade: "",
-        instructor: "",
+        instructor: [],
         time: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Teaching: {
@@ -164,7 +190,8 @@ export default {
         title: "",
         num: "",
         introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
-
+ 
+        uploaderId:"",
         name: "",
         source: "",
         type: "",
@@ -172,14 +199,10 @@ export default {
         projectTime: "",
         postprojectTime: "",
         fund: "",
-        member: "",
+        member: [],
 
-        other: {
-          "条目1": "内容1",
-          "条目2": "内容2"
-        },
-
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       UserDefined: {
@@ -188,9 +211,10 @@ export default {
         title: "",
         num: "",
         introduction: "",
-
-        other: {},
-        filePath: "",
+ 
+        uploaderId:"",
+        other: [],
+        filePath: [],
         createTime: "",
       },
 

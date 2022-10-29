@@ -39,7 +39,6 @@ public class FileUploadController {
 
     @DeleteMapping
     public Result<String> delete(@RequestBody AbstractTemplate abstractTemplate) {
-        System.out.println("abstractTemplate.getId() = " + abstractTemplate.getId());
         mongoDBService.deleteTemplate(abstractTemplate);
         return Result.success("删除成功");
     }

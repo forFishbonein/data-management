@@ -4,20 +4,20 @@
     <div class="context">
       <div class="Teaching">
         <div class="title">资源名称：{{ Teaching.title }}</div>
-        <div class="introduction">{{ Teaching.introduction }}</div>
+        <div v-show="this.Teaching.introduction" class="introduction">{{ Teaching.introduction }}</div>
         <div class="details">
           <div v-show="this.Teaching.name" class="name">项目名称：{{ Teaching.name }}</div>
-          <div class="uploader">上传者：</div>
-          <div class="createTime">上传时间：{{ Teaching.createTime }}</div>
-          <div class="source">项目来源：{{ Teaching.source }}</div>
-          <div class="type">项目类型：{{ Teaching.type }}</div>
-          <div class="level">项目级别：{{ Teaching.level }}</div>
-          <div class="project_time">立项时间：{{ Teaching.projectTime }}</div>
-          <div class="post_project_time">结项时间：{{ Teaching.postprojectTime }}</div>
-          <div class="fund">项目经费：{{ Teaching.fund }}</div>
-          <div class="member">课题组成员：{{ Teaching.member }}</div>
+          <div v-show="this.Teaching.uploaderId" class="uploader">上传者：{{Teaching.uploaderId}}</div>
+          <div v-show="this.Teaching.createTime" class="createTime">上传时间：{{ Teaching.createTime }}</div>
+          <div v-show="this.Teaching.source" class="source">项目来源：{{ Teaching.source }}</div>
+          <div v-show="this.Teaching.type" class="type">项目类型：{{ Teaching.type }}</div>
+          <div v-show="this.Teaching.level" class="level">项目级别：{{ Teaching.level }}</div>
+          <div v-show="this.Teaching.projectTime" class="project_time">立项时间：{{ Teaching.projectTime }}</div>
+          <div v-show="this.Teaching.postprojectTime" class="post_project_time">结项时间：{{ Teaching.postprojectTime }}</div>
+          <div v-show="this.Teaching.fund" class="fund">项目经费：{{ Teaching.fund }}</div>
+          <div v-show="this.Teaching.member.length" class="member">课题组成员：{{ Teaching.member }}</div>
           <div class="add">
-            <p v-for="(val, key) in Teaching.other">{{ key }} : {{ val }}</p>
+            <p v-for="item in Teaching.other">{{ item.key }} : {{ item.value }}</p>
           </div>
 
 
@@ -43,7 +43,6 @@ export default {
   name: "Teaching",
   data() {
     return {
-
       Achievement: {
         TEMPLATE_TYPE: "achievement",
         id: "",
@@ -51,6 +50,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         name: "",
         author: "",
         publicYear: "",
@@ -60,10 +60,10 @@ export default {
         journalGrade: "",
         schoolGrade: "",
         publicationTime: "",
-        authorRank: "",
+        authorRank: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Communication: {
@@ -73,6 +73,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         startTime: "",
         lastTime: "",
         type: "",
@@ -83,8 +84,8 @@ export default {
         whetherSpeak: "",
         whetherParticipate: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Honor: {
@@ -94,6 +95,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         award_name: "",
         time: "",
         type: "",
@@ -101,10 +103,10 @@ export default {
         level: "",
         name: "",
         approval_num: "",
-        member: "",
+        member: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Office: {
@@ -114,15 +116,16 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         time: "",
         type: "",
         topic: "",
         content: "",
         address: "",
-        participant: "",
+        participant: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Party: {
@@ -132,6 +135,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         time: "",
         type: "",
         topic: "",
@@ -139,8 +143,29 @@ export default {
         address: "",
         participant: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      Studying: {
+        TEMPLATE_TYPE: "Studying",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
+
+        uploaderId:"",
+        name: "",
+        source: "",
+        type: "",
+        level: "",
+        projectTime: "",
+        postprojectTime: "",
+        fund: "",
+        member: [],
+
+        other: [],
+        filePath: [],
         createTime: "",
       },
       StudentContest: {
@@ -150,14 +175,15 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         name: "",
         gameName: "",
         grade: "",
-        instructor: "",
+        instructor: [],
         time: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Teaching: {
@@ -167,6 +193,7 @@ export default {
         num: "",
         introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
 
+        uploaderId:"",
         name: "",
         source: "",
         type: "",
@@ -174,14 +201,10 @@ export default {
         projectTime: "",
         postprojectTime: "",
         fund: "",
-        member: "",
+        member: [],
 
-        other: {
-          "条目1": "内容1",
-          "条目2": "内容2"
-        },
-
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       UserDefined: {
@@ -191,13 +214,23 @@ export default {
         num: "",
         introduction: "",
 
-        other: {},
-        filePath: "",
+        uploaderId:"",
+        other: [],
+        filePath: [],
         createTime: "",
       },
 
     }
 
+  },
+  created(){
+      let obj = {}
+      obj.TEMPLATE_TYPE = this.templateType;
+      obj.id = this.id;
+      this.$store.dispatch('getDetails', obj).then(res => {
+        // console.log(res)
+        this.Teaching = res
+      })
   },
   components: {
     TeacherNav,

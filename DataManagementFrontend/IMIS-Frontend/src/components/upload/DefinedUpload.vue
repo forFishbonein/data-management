@@ -8,6 +8,15 @@
               自定义模板
             </td>
           </tr>
+          <tr>
+            <td class="page-prompt" colspan="3">
+              本页面用于上传已给类别之外，暂无上传模板可用的资料。
+              <br>
+              其中资料名称与简介为必填的公共字段，用于识别该资料。
+              <br>
+              您可以添加自定义的字段并填充其信息，自定义字段的字数、个数不限。
+            </td>
+          </tr>   
         <tr>
           <td class="label required">编号</td>
           <td>
@@ -45,9 +54,9 @@
           <td class="required-prompt">!简介为必填信息</td>
         </tr>
         </table>
-        <div class="prompt">以上内容用于区分不同项目，为必填字段</div>
+        <div class="prompt"></div>
         <div class="prompt-line"></div>
-        <div class="prompt">以下为选填字段</div>
+        <div class="prompt">以下为自定义字段</div>
         <table>
 
           <tr>
@@ -92,9 +101,9 @@
               <el-button type="primary" size="small" @click="addInput()">添加</el-button>
             </td>
             <td class="prompt2">
-              此处可自定义需要的字段并输入其内容。
+              温馨提示：自定义字段一旦添加无法更改或删除。
               <br>
-              温馨提示：自定义字段一旦添加无法更改或删除
+              请谨慎填写。
             </td>
           </tr>
 
@@ -259,7 +268,13 @@ export default {
   font-size: 22px;
   font-weight: bold;
   color: #0E4687;
+}
 
+.page-prompt {
+  padding: 8px 0;
+  padding-left: 115px;
+  font-size: 14px;
+  color: #949393;
 }
 
 table {

@@ -50,8 +50,6 @@
           </el-row>
         </template>
       </el-table-column>
-
-
     </el-table>
     <!--Teaching教研项目-->
     <el-table
@@ -483,11 +481,36 @@
 
 <script>
 import { getAllResource } from '@/api/manage'
-import { getOneFile } from '@/api/file'
+import { updateById } from '@/api/manage'
+import { deleteById } from '@/api/manage'
 
 export default {
   name: 'FileManage',
-
+  data() {
+    return {
+      Studying: [],
+      Teaching: [],
+      Honor: [],
+      Achievement: [],
+      Contest: [],
+      Communication: [],
+      Party: [],
+      Office: [],
+      Defined: [],
+      Upload: {
+        id: "",
+        TEMPLATE_TYPE: ""
+      },
+      Delete: {
+        id: "",
+        TEMPLATE_TYPE: ""
+      }
+      // Query: {
+      //   TEMPLATE_TYPE: "",
+      //   id: ""
+      // }
+    }
+  },
   methods: {
     getAllResource() {
       getAllResource().then(resp => {
@@ -504,14 +527,20 @@ export default {
     },
 
     getOneFile(row) {
-      this.Query.TEMPLATE_TYPE = row.template_TYPE;
-      this.Query.id = row.id;
-      console.log("---")
-      console.log(this.Query);
-      console.log("---")
-      getOneFile(this.Query).then(resp => {
-        console.log(resp)
-      });
+      console.log(row)
+      this.$router.push({
+            name: row.template_TYPE,
+            query:{
+                templateType:row.template_TYPE,
+                id:row.id
+            }
+        })
+      // console.log("---")
+      // console.log(this.Query);
+      // console.log("---")
+      // getOneFile(this.Query).then(resp => {
+      //   console.log(resp)
+      // });
     },
 
     updateById(row) {
@@ -519,7 +548,12 @@ export default {
     },
 
     deleteById(row) {
-
+      console.log(row)
+      this.Delete.id = row.id;
+      this.Delete.TEMPLATE_TYPE = row.template_TYPE;
+      deleteById(this.Delete).then(resp => {
+        this.getAllResource();
+      });
     },
 
   },
@@ -530,23 +564,6 @@ export default {
 
   },
 
-  data() {
-    return {
-      Studying: [],
-      Teaching: [],
-      Honor: [],
-      Achievement: [],
-      Contest: [],
-      Communication: [],
-      Party: [],
-      Office: [],
-      Defined: [],
-      Query: {
-        TEMPLATE_TYPE: "",
-        id: ""
-      }
-    }
-  }
 
 }
 </script>

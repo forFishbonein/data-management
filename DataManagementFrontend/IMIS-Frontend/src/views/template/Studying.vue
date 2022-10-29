@@ -24,7 +24,7 @@
           </div>
 
         </div>
-        <FilePath></FilePath>
+        <!-- <FilePath></FilePath> -->
         <div class="button">
           <button class="button1">删除</button>
           <button class="button2">编辑</button>
@@ -37,8 +37,8 @@
   import TeacherNav from "../../components/TeacherNav";
   import TeacherHeader from "../../components/TeacherHeader";
   import TeacherData from "../../components/TeacherData";
-  import FilePath from "../../components/FilePath";
-
+  // import FilePath from "../../components/FilePath";
+  import { getOneFile } from '@/api/file'
   export default {
     name: "ReStudying",
     data() {
@@ -149,7 +149,6 @@
           title: "",
           num: "",
           introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
-
           name: "",
           source: "",
           type: "",
@@ -158,12 +157,10 @@
           postprojectTime: "",
           fund: "",
           member: "",
-
           other: {
             "条目1": "内容1",
             "条目2": "内容2"
           },
-
           filePath: "",
           createTime: "",
         },
@@ -218,17 +215,27 @@
           other: {},
           filePath: "",
           createTime: "",
-        },
-
+        }
       }
-
+    },
+    props:['templateType','id'],
+    methods: {
+    },
+    created(){
+      let obj = {}
+      obj.TEMPLATE_TYPE = this.templateType;
+      obj.id = this.id;
+      this.$store.dispatch('getDetails', obj).then(res => {
+        // console.log(res)
+        this.Studying = res
+      })
     },
     components: {
       TeacherNav,
       TeacherHeader,
       TeacherData,
-      FilePath
-    },
+      // FilePath
+    }
   }
 
 

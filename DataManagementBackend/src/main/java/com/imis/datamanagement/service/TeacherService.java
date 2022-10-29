@@ -12,6 +12,7 @@ import com.imis.datamanagement.common.vo.TeacherRegisterVo;
 import com.imis.datamanagement.domain.Teacher;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public interface TeacherService {
 
@@ -36,4 +37,6 @@ public interface TeacherService {
     String registered(Teacher teacher);
 
     ShowVo show(Long id);
+
+    List<ShowVo> getAll();
 }

@@ -4,21 +4,21 @@
     <div class="context">
       <div class="Communication">
         <div class="title">资源名称：{{ Communication.title }}</div>
-        <div class="introduction">{{ Communication.introduction }}</div>
+        <div v-show="this.Communication.introduction" class="introduction">{{ Communication.introduction }}</div>
         <div class="details">
           <div v-show="this.Communication.name" class="name">活动/会议名称：{{ Communication.name }}</div>
-          <div class="uploader">上传者：</div>
-          <div class="createTime">上传时间：{{ Communication.createTime }}</div>
-          <div class="startTime">起始时间：{{ Communication.startTime }}</div>
-          <div class="lastTime">终止时间：{{ Communication.lastTime }}</div>
-          <div class="type">交流类型：{{ Communication.type }}</div>
-          <div class="organizer">主办机构：{{ Communication.organizer }}</div>
-          <div class="address">地点：{{ Communication.address }}</div>
-          <div class="member">参会人员：{{ Teaching.member }}</div>
-          <div class="whetherSpeak">是否发言：{{ Communication.whetherSpeak }}</div>
-          <div class="whetherParticipate">学生是否参与：{{ Communication.whetherParticipate }}</div>
+          <div v-show="this.Communication.uploaderId" class="uploader">上传者:{{Communication.uploaderId}}</div>
+          <div v-show="this.Communication.createTime" class="createTime">上传时间：{{ Communication.createTime }}</div>
+          <div v-show="this.Communication.startTime" class="startTime">起始时间：{{ Communication.startTime }}</div>
+          <div v-show="this.Communication.lastTime" class="lastTime">终止时间：{{ Communication.lastTime }}</div>
+          <div v-show="this.Communication.type" class="type">交流类型：{{ Communication.type }}</div>
+          <div v-show="this.Communication.organizer" class="organizer">主办机构：{{ Communication.organizer }}</div>
+          <div v-show="this.Communication.address" class="address">地点：{{ Communication.address }}</div>
+          <div v-show="this.Teaching.member.length" class="member">参会人员：{{ Teaching.member }}</div>
+          <div v-show="this.Communication.whetherSpeak" class="whetherSpeak">是否发言：{{ Communication.whetherSpeak }}</div>
+          <div v-show="this.Communication.whetherParticipate" class="whetherParticipate">学生是否参与：{{ Communication.whetherParticipate }}</div>
           <div class="add">
-            <p v-for="(val, key) in Communication.other">{{ key }} : {{ val }}</p>
+            <p v-for="item in Communication.other">{{ item.key }} : {{ item.value }}</p>
           </div>
 
 
@@ -44,7 +44,6 @@ export default {
   name: "Communication",
   data() {
     return {
-
       Achievement: {
         TEMPLATE_TYPE: "achievement",
         id: "",
@@ -52,6 +51,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         name: "",
         author: "",
         publicYear: "",
@@ -61,10 +61,10 @@ export default {
         journalGrade: "",
         schoolGrade: "",
         publicationTime: "",
-        authorRank: "",
+        authorRank: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Communication: {
@@ -74,6 +74,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         startTime: "",
         lastTime: "",
         type: "",
@@ -84,8 +85,8 @@ export default {
         whetherSpeak: "",
         whetherParticipate: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Honor: {
@@ -95,6 +96,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         award_name: "",
         time: "",
         type: "",
@@ -102,10 +104,10 @@ export default {
         level: "",
         name: "",
         approval_num: "",
-        member: "",
+        member: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Office: {
@@ -115,15 +117,16 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         time: "",
         type: "",
         topic: "",
         content: "",
         address: "",
-        participant: "",
+        participant: [],
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Party: {
@@ -133,6 +136,7 @@ export default {
         num: "",
         introduction: "",
 
+        uploaderId:"",
         time: "",
         type: "",
         topic: "",
@@ -140,8 +144,29 @@ export default {
         address: "",
         participant: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
+        createTime: "",
+      },
+      Studying: {
+        TEMPLATE_TYPE: "Studying",
+        id: "",
+        title: "",
+        num: "",
+        introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
+
+        uploaderId:"",
+        name: "",
+        source: "",
+        type: "",
+        level: "",
+        projectTime: "",
+        postprojectTime: "",
+        fund: "",
+        member: [],
+
+        other: [],
+        filePath: [],
         createTime: "",
       },
       StudentContest: {
@@ -150,15 +175,16 @@ export default {
         title: "",
         num: "",
         introduction: "",
-
+ 
+        uploaderId:"",
         name: "",
         gameName: "",
         grade: "",
-        instructor: "",
+        instructor: [],
         time: "",
 
-        other: {},
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       Teaching: {
@@ -167,7 +193,8 @@ export default {
         title: "",
         num: "",
         introduction: "料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资料简介资",
-
+ 
+        uploaderId:"",
         name: "",
         source: "",
         type: "",
@@ -175,14 +202,10 @@ export default {
         projectTime: "",
         postprojectTime: "",
         fund: "",
-        member: "",
+        member: [],
 
-        other: {
-          "条目1": "内容1",
-          "条目2": "内容2"
-        },
-
-        filePath: "",
+        other: [],
+        filePath: [],
         createTime: "",
       },
       UserDefined: {
@@ -191,9 +214,10 @@ export default {
         title: "",
         num: "",
         introduction: "",
-
-        other: {},
-        filePath: "",
+ 
+        uploaderId:"",
+        other: [],
+        filePath: [],
         createTime: "",
       },
 
