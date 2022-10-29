@@ -16,7 +16,7 @@
               <br>
               您可以添加自定义的字段并填充其信息，自定义字段的字数、个数不限。
             </td>
-          </tr>   
+          </tr>
         <tr>
           <td class="label required">编号</td>
           <td>
@@ -227,15 +227,19 @@ export default {
     },
     onSuccess(response, file, fileList) {
       this.UserDefined.filePath.push(response.data.name)
-    },
-    submitUpload() {
-      this.$refs.upload.submit();
-
+      console.log(this.UserDefined)
       insertTeacherFile(this.UserDefined).then(resp => {
         console.log(resp.data)
-
       });
-
+    },
+    submitUpload() {
+      if(document.getElementsByClassName('el-upload-list__item')[0] == null){
+        insertTeacherFile(this.UserDefined).then(resp => {
+          console.log(resp.data)
+        });
+      }else{
+        this.$refs.upload.submit();
+      }
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
