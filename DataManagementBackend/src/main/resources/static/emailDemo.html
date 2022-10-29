@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        h1{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+尊敬的用户,您好:<br><br>
+本次请求的邮件验证码为:<br>
+<h1>[[${message}]]</h1>
+本验证码5分钟内有效，请及时输入。（请勿泄露此验证码）<br>
+如非本人操作，请忽略该邮件。<br>
+(这是一封自动发送的邮件，请不要直接回复）<br>
+</body>
+</html>
