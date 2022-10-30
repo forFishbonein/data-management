@@ -39,6 +39,8 @@ import TeacherHeader from "../../components/TeacherHeader";
 import TeacherData from "../../components/TeacherData";
 import FilePath from "../../components/FilePath";
 
+import { excelExport } from '@/api/file.js'
+
 export default {
   name: "Teaching",
   data() {
@@ -121,6 +123,15 @@ export default {
       console.log(this.ExcelTitle);
       console.log(this.ExcelValue)
 
+      var lists = [];
+      lists.push(this.ExcelTitle);
+      lists.push(this.ExcelValue);
+
+      console.log(lists)
+
+      excelExport(lists).then(resp => {
+        console.log(resp.data)
+      });
 
     }
   },

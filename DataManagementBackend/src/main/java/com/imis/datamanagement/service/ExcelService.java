@@ -6,11 +6,6 @@ package com.imis.datamanagement.service;
  * @File : DataManagement4IMIS
  */
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.imis.datamanagement.common.result.CodeMsg;
-import com.imis.datamanagement.domain.Teacher;
-import com.imis.datamanagement.domain.TeacherInfo;
-import com.imis.datamanagement.exception.GlobalException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +14,8 @@ import java.util.List;
 public class ExcelService {
 
     public void export(List<List<String>> lists) {
+
+        System.out.println(lists);
 
 
 
