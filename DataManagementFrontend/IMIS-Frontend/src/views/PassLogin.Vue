@@ -181,7 +181,7 @@ export default {
 }
 
 .login-check span,
-.login-check a{
+.login-check a {
   float: left;
   color: #113355;
   font-size: 12px;

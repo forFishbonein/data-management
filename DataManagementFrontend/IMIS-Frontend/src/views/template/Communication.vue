@@ -7,7 +7,7 @@
         <div v-show="this.Communication.introduction" class="introduction">{{ Communication.introduction }}</div>
         <div class="details">
           <div v-show="this.Communication.name" class="name">活动/会议名称：{{ Communication.name }}</div>
-          <div v-show="this.Communication.uploaderId" class="uploader">上传者:{{Communication.uploaderId}}</div>
+          <div v-show="this.Communication.uploaderId" class="uploader">上传者:{{ Communication.uploaderId }}</div>
           <div v-show="this.Communication.createTime" class="createTime">上传时间：{{ Communication.createTime }}</div>
           <div v-show="this.Communication.startTime" class="startTime">起始时间：{{ Communication.startTime }}</div>
           <div v-show="this.Communication.lastTime" class="lastTime">终止时间：{{ Communication.lastTime }}</div>
@@ -16,7 +16,9 @@
           <div v-show="this.Communication.address" class="address">地点：{{ Communication.address }}</div>
           <div v-show="this.Teaching.member.length" class="member">参会人员：{{ Communication.member.join(",") }}</div>
           <div v-show="this.Communication.whetherSpeak" class="whetherSpeak">是否发言：{{ Communication.whetherSpeak }}</div>
-          <div v-show="this.Communication.whetherParticipate" class="whetherParticipate">学生是否参与：{{ Communication.whetherParticipate }}</div>
+          <div v-show="this.Communication.whetherParticipate" class="whetherParticipate">
+            学生是否参与：{{ Communication.whetherParticipate }}
+          </div>
           <div class="add">
             <p v-for="item in Communication.other">{{ item.key }} : {{ item.value }}</p>
           </div>
@@ -51,7 +53,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId:"",
+        uploaderId: "",
         startTime: "",
         lastTime: "",
         type: "",
@@ -69,15 +71,15 @@ export default {
     }
 
   },
-  props:['templateType','id'],
-    created(){
-      let obj = {}
-      obj.TEMPLATE_TYPE = this.templateType;
-      obj.id = this.id;
-      this.$store.dispatch('getDetails', obj).then(res => {
-        // console.log(res)
-        this.Communication = res
-      })
+  props: ['templateType', 'id'],
+  created() {
+    let obj = {}
+    obj.TEMPLATE_TYPE = this.templateType;
+    obj.id = this.id;
+    this.$store.dispatch('getDetails', obj).then(res => {
+      // console.log(res)
+      this.Communication = res
+    })
   },
   components: {
     TeacherNav,

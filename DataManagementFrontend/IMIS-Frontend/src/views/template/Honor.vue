@@ -7,7 +7,7 @@
         <div v-show="this.Honor.introduction" class="introduction">{{ Honor.introduction }}</div>
         <div class="details">
           <div v-show="this.Honor.award_name" class="name">奖励名称：{{ Honor.award_name }}</div>
-          <div v-show="this.Honor.uploaderId" class="uploader">上传者：{{Honor.uploaderId}}</div>
+          <div v-show="this.Honor.uploaderId" class="uploader">上传者：{{ Honor.uploaderId }}</div>
           <div v-show="this.Honor.createTime" class="createTime">上传时间：{{ Honor.createTime }}</div>
           <div v-show="this.Honor.time" class="time">奖励时间：{{ Honor.time }}</div>
           <div v-show="this.Honor.type" class="type">奖励类型：{{ Honor.type }}</div>
@@ -48,7 +48,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId:"",
+        uploaderId: "",
         award_name: "",
         time: "",
         type: "",
@@ -65,15 +65,15 @@ export default {
     }
 
   },
-  props:['templateType','id'],
-    created(){
-      let obj = {}
-      obj.TEMPLATE_TYPE = this.templateType;
-      obj.id = this.id;
-      this.$store.dispatch('getDetails', obj).then(res => {
-        // console.log(res)
-        this.Honor = res
-      })
+  props: ['templateType', 'id'],
+  created() {
+    let obj = {}
+    obj.TEMPLATE_TYPE = this.templateType;
+    obj.id = this.id;
+    this.$store.dispatch('getDetails', obj).then(res => {
+      // console.log(res)
+      this.Honor = res
+    })
   },
   components: {
     TeacherNav,

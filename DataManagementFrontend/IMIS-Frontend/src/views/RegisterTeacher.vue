@@ -165,7 +165,8 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.know{
+
+.know {
   transform: translateY(-5px);
 }
 

@@ -100,12 +100,12 @@ nav .upload {
   width: 80px;
   height: 36px;
   color: #FFFFFF;
-  line-height: 40px;
+  line-height: 36px;
   letter-spacing: 3px;
   border-radius: 8px;
   transition: 0.25s;
   background-color: #3C85D7;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 
 nav .upload:hover {

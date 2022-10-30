@@ -1,9 +1,9 @@
 import Vuex from "vuex";
 import Vue from "vue";
-import { getToken, setToken, removeToken } from "@/request/token";
-import { codeLogin, passLogin, getUserInfo } from "@/api/login";
-import { postRegisterTeacher, postRegisterStudent } from "@/api/register";
-import { getOneFile } from "@/api/file";
+import {getToken, removeToken, setToken} from "@/request/token";
+import {codeLogin, getUserInfo, passLogin} from "@/api/login";
+import {postRegisterTeacher} from "@/api/register";
+import {getOneFile} from "@/api/file";
 
 Vue.use(Vuex);
 
@@ -49,7 +49,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    codeLogin({ commit }, user) {
+    codeLogin({commit}, user) {
       return new Promise((resolve, reject) => {
         codeLogin(user.email, user.code)
           .then(data => {
@@ -66,7 +66,7 @@ export default new Vuex.Store({
           });
       });
     },
-    passLogin({ commit }, login) {
+    passLogin({commit}, login) {
       return new Promise((resolve, reject) => {
         passLogin(login)
           .then(res => {
@@ -87,7 +87,7 @@ export default new Vuex.Store({
           });
       });
     },
-    getUserInfo({ commit, state }) {
+    getUserInfo({commit, state}) {
       return new Promise((resolve, reject) => {
         getUserInfo(state.token)
           .then(data => {
@@ -122,7 +122,7 @@ export default new Vuex.Store({
           });
       });
     },
-    logout({ commit, state }) {
+    logout({commit, state}) {
       return new Promise((resolve, reject) => {
         logout(state.token)
           .then(data => {
@@ -143,7 +143,7 @@ export default new Vuex.Store({
       });
     },
     // 前端 登出
-    fedLogOut({ commit }) {
+    fedLogOut({commit}) {
       return new Promise(resolve => {
         commit("SET_USEREMAIL", "");
         commit("SET_USERNAME", "");
@@ -157,7 +157,7 @@ export default new Vuex.Store({
         reject(error);
       });
     },
-    teacherRegister({ commit }, teacher) {
+    teacherRegister({commit}, teacher) {
       return new Promise((resolve, reject) => {
         postRegisterTeacher(teacher)
           .then(data => {
@@ -191,7 +191,7 @@ export default new Vuex.Store({
     //       });
     //   });
     // }
-    getDetails({ commit, state }, obj) {
+    getDetails({commit, state}, obj) {
       return new Promise((resolve, reject) => {
         commit("SET_QUERY", obj);
         getOneFile(state.Query)
