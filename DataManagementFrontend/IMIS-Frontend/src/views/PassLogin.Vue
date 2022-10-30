@@ -158,8 +158,8 @@ export default {
 }
 
 .login-input-box input {
-  margin: 10px 20px;
-  width: 320px;
+  margin: 10px 10px;
+  width: 340px;
   height: 40px;
   border-radius: 6px;
   padding-left: 10px;
@@ -208,7 +208,7 @@ export default {
   width: 320px;
   height: 50px;
   border-radius: 8px;
-  background-color: #113355;
+  background-color: #114879;
   color: white;
   font-size: 18px;
   letter-spacing: 1px;

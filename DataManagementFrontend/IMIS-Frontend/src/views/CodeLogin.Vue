@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       a:'',
-      count : 5,
+      count : 30,
       curCount:0,
       InterValObj:'',
       login: {
@@ -69,32 +69,32 @@ export default {
       this.$router.replace(
         name = 'registerteacher')
     },
-    setRemainTime() { 
+    setRemainTime() {
         console.log('1')
-        if (this.curCount == 0) {  
-          console.log('停止')       
-
-          window.clearInterval(this.InterValObj); 
-
+        if (this.curCount == 0) {
+          console.log('停止')
+          window.clearInterval(this.InterValObj);
           this.a[0].disabled = false;
+          this.a[0].style.backgroundColor = "#114879";
+
+
+
           this.a[0].setAttribute('value','重新发送验证码');
-        } 
-        else { 
-          this.curCount--; 
+        }
+        else {
+          this.curCount--;
           console.log(this.curCount);
           this.a[0].setAttribute('value',this.curCount + "秒后可重新发送");
         } }
         ,
     sendEmail(data) {
 
-
- //timer变量，控制时间 
-
-
       this.a=document.getElementsByClassName('login-input-box-send');
       this.a[0].disabled =true;
-      
-      
+      this.a[0].style.backgroundColor = "#113355";
+
+
+      console.log(this.a)
 
       postCodeTeacher(data).then(
         response => {
@@ -198,7 +198,7 @@ export default {
 }
 
 .login-input-box input {
-  margin: 10px 20px;
+  margin: 10px 10px;
   height: 40px;
   border-radius: 6px;
   padding-left: 10px;
@@ -211,23 +211,23 @@ export default {
 }
 
 .login-input-box-email {
-  width: 320px;
+  width: 340px;
 }
 
 .login-input-box-code {
-  width: 200px;
+  width: 180px;
 }
 
-.login-input-box-send {
+.login-input-box .login-input-box-send {
   display: inline-block;
+  padding: 16px;
   vertical-align: middle;
-  width: 90px;
-  height: 30px;
+  width: 120px;
   font-size: 12px;
   text-align: center;
   color: white;
-  line-height: 30px;
-  background-color: #113355;
+  line-height: 10px;
+  background-color: #114879;
   border-radius: 6px;
 }
 
@@ -268,7 +268,7 @@ export default {
   width: 320px;
   height: 50px;
   border-radius: 8px;
-  background-color: #113355;
+  background-color: #114879;
   color: white;
   font-size: 18px;
   letter-spacing: 1px;
