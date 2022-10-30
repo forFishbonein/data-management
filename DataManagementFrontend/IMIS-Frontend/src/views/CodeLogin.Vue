@@ -38,10 +38,10 @@ export default {
 
   data() {
     return {
-      a:'',
-      count : 30,
-      curCount:0,
-      InterValObj:'',
+      a: '',
+      count: 30,
+      curCount: 0,
+      InterValObj: '',
       login: {
         email: "",
         code: "",
@@ -70,31 +70,26 @@ export default {
         name = 'registerteacher')
     },
     setRemainTime() {
-        console.log('1')
-        if (this.curCount == 0) {
-          console.log('停止')
-          window.clearInterval(this.InterValObj);
-          this.a[0].disabled = false;
-          this.a[0].style.backgroundColor = "#114879";
+      console.log('1')
+      if (this.curCount == 0) {
+        console.log('停止')
+        window.clearInterval(this.InterValObj);
+        this.a[0].disabled = false;
+        this.a[0].style.backgroundColor = "#114879";
 
 
-
-          this.a[0].setAttribute('value','重新发送验证码');
-        }
-        else {
-          this.curCount--;
-          console.log(this.curCount);
-          this.a[0].setAttribute('value',this.curCount + "秒后可重新发送");
-        } }
-        ,
+        this.a[0].setAttribute('value', '重新发送验证码');
+      } else {
+        this.curCount--;
+        console.log(this.curCount);
+        this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
+      }
+    },
     sendEmail(data) {
 
-      this.a=document.getElementsByClassName('login-input-box-send');
-      this.a[0].disabled =true;
+      this.a = document.getElementsByClassName('login-input-box-send');
+      this.a[0].disabled = true;
       this.a[0].style.backgroundColor = "#113355";
-
-
-      console.log(this.a)
 
       postCodeTeacher(data).then(
         response => {
@@ -105,13 +100,13 @@ export default {
       })
 
       this.curCount = this.count
-      this.a[0].setAttribute('value',this.curCount + "秒后可重新发送");
-      this.InterValObj = window.setInterval(this.setRemainTime,1000);
+      this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
+      this.InterValObj = window.setInterval(this.setRemainTime, 1000);
 
     }
 
 
-  ,
+    ,
     toLogin(data) {
       codeLogin(data).then(
         response => {
@@ -129,8 +124,9 @@ export default {
   padding: 0;
 
 }
-.hide{
-  disabled:true;
+
+.hide {
+  disabled: true;
 }
 
 .main {
@@ -222,7 +218,7 @@ export default {
   display: inline-block;
   padding: 16px;
   vertical-align: middle;
-  width: 120px;
+  min-width: 120px;
   font-size: 12px;
   text-align: center;
   color: white;
