@@ -10,13 +10,14 @@
         </div>
         <div class="data">
           <div v-show="!materials.length" class="notify">您还没有上传资源</div>
-          <div v-for="(item, index) in materials" :key="index" class="data-container">
+          <div v-for="(item, index) in materials" :key="index" class="data-container" @click="getOneFile(item)">
             <TeacherData :id="item.id"
                          :createTime="item.createTime"
                          :filePath="item.filePath"
                          :introduction="item.introduction"
                          :name="item.name"
-                         :title="item.title">
+                         :title="item.title"
+                         >
             </TeacherData>
           </div>
 
@@ -44,6 +45,7 @@ import TeacherHeader from '../components/TeacherHeader.vue'
 import TeacherData from '../components/TeacherData.vue'
 import LoginFooter from '../components/LoginFooter.vue'
 import {getMaterials} from '@/api'
+import {getProfile} from '@/api/teacher.js'
 
 export default {
   name: 'TeacherIndex',
@@ -54,17 +56,29 @@ export default {
     }
   },
   methods: {
-    getMaterials() {
-      let id = store.state.userId
-      getMaterials(id).then(res => {
-        console.log(res.data.data)
-        this.materials = res.data.data;
+    getProfile() {
+      getProfile().then(res => {
+        // console.log(res.data[1])
+        for(var i = 0; i < res.data.length; i++){
+          for(var j = 0; j < res.data[i].length; j++){
+            this.materials.push(res.data[i][j]);
+          }
+        }        
       }).catch((error) => {
         if (error !== 'error') {
           this.$message({message: error, type: 'error', showClose: true});
         }
       });
-    }
+    },
+    getOneFile(item) {
+      console.log(item.id)
+      this.$router.push({
+        name: item.template_TYPE,
+            query:{
+                templateType:item.template_TYPE,
+                id:item.id}
+        })
+    },
   },
   components: {
     TeacherNav,
@@ -73,9 +87,10 @@ export default {
     LoginFooter
   },
   mounted() {
-    this.getMaterials();
+    // this.getMaterials();
+    this.getProfile();
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped>
