@@ -13,7 +13,7 @@
             <div v-show="this.Party.type" class="type">活动类型：{{ Party.type }}</div>
             <div v-show="this.Party.content" class="content">学习内容：{{ Party.content }}</div>
             <div v-show="this.Party.address" class="address">学习地点：{{ Party.address }}</div>
-            <div v-show="this.Party.participant" class="participant">参与人：{{ Party.participant }}</div>
+            <div v-show="this.Party.participant" class="participant">参与人：{{ Party.participant.join(",") }}</div>
             <div class="add">
               <p v-for="item in Party.other">{{ item.key }} : {{ item.value }}</p>
             </div>
