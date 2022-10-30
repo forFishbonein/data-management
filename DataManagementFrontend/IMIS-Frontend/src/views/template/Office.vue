@@ -13,7 +13,7 @@
             <div v-show="this.Office.type" class="type">活动类型：{{ Office.type }}</div>
             <div v-show="this.Office.content" class="content">学习内容：{{ Office.content }}</div>
             <div v-show="this.Office.address" class="address">学习地点：{{ Office.address }}</div>
-            <div v-show="this.Office.participant.length" class="participant">参与人：{{ Office.participant }}</div>
+            <div v-show="this.Office.participant.length" class="participant">参与人：{{ Office.participant.join(",") }}</div>
             <div class="add">
               <p v-for="item in Office.other">{{ item.key }} : {{ item.value }}</p>
             </div>

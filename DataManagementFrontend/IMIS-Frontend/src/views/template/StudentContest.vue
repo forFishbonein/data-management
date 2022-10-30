@@ -11,7 +11,7 @@
             <div v-show="this.StudentContest.createTime" class="createTime">上传时间：{{StudentContest.createTime}}</div>
             <div v-show="this.StudentContest.gameName" class="gameName">竞赛名称：{{StudentContest.gameName}}</div>
             <div v-show="this.StudentContest.grade" class="grade">获奖级别：{{StudentContest.grade}}</div>
-            <div v-show="this.StudentContest.instructor.length" class="instructor">指导老师：{{StudentContest.instructor}}</div>
+            <div v-show="this.StudentContest.instructor.length" class="instructor">指导老师：{{StudentContest.instructor.join(",")}}</div>
             <div v-show="this.StudentContest.time" class="time">获奖时间：{{StudentContest.time}}</div>
             <div class="add">
               <p v-for="item in StudentContest.other">{{ item.key }} : {{item.value}}</p>
