@@ -7,17 +7,17 @@
           <div class="introduction">{{ Studying.introduction }}</div>
           <div class="details">
             <div v-show="this.Studying.name" class="name">项目名称：{{ Studying.name }}</div>
-            <div class="uploader">上传者：</div>
-            <div class="createTime">上传时间：{{ Studying.createTime }}</div>
-            <div class="source">项目来源：{{ Studying.source }}</div>
-            <div class="type">项目类型：{{ Studying.type }}</div>
-            <div class="level">项目级别：{{ Studying.level }}</div>
-            <div class="project_time">立项时间：{{ Studying.projectTime }}</div>
-            <div class="post_project_time">结项时间：{{ Studying.postprojectTime }}</div>
-            <div class="fund">项目经费：{{ Studying.fund }}</div>
-            <div class="member">课题组成员：{{ Studying.member }}</div>
+            <div v-show="this.Studying.uploaderId" class="uploader">上传者：{{Studying.uploaderId}}</div>
+            <div v-show="this.Studying.createTime" class="createTime">上传时间：{{ Studying.createTime }}</div>
+            <div v-show="this.Studying.source" class="source">项目来源：{{ Studying.source }}</div>
+            <div v-show="this.Studying.type" class="type">项目类型：{{ Studying.type }}</div>
+            <div v-show="this.Studying.level" class="level">项目级别：{{ Studying.level }}</div>
+            <div v-show="this.Studying.projectTime" class="project_time">立项时间：{{ Studying.projectTime }}</div>
+            <div v-show="this.Studying.postprojectTime" class="post_project_time">结项时间：{{ Studying.postprojectTime }}</div>
+            <div v-show="this.Studying.fund" class="fund">项目经费：{{ Studying.fund }}</div>
+            <div v-show="this.Studying.member.length" class="member">课题组成员：{{ Studying.member }}</div>
             <div class="add">
-              <p v-for="(val, key) in Studying.other">{{ key }} : {{ val }}</p>
+              <p v-for="item in Studying.other">{{ item.key }} : {{ item.value }}</p>
             </div>
 
 
@@ -49,6 +49,7 @@
         title: "",
         num: "",
         introduction: "",
+
         uploaderId:"",
         name: "",
         source: "",
@@ -58,34 +59,16 @@
         postprojectTime: "",
         fund: "",
         member: [],
+
         other: [],
         filePath: [],
         createTime: "",
       },
-      StudyingExcel: {
-        TEMPLATE_TYPE: "Studying",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-        other: [],
-        filePath: [],
-        createTime: "",
-      }
+
     }
+
   },
     props:['templateType','id'],
-    methods: {
-    },
     created(){
       let obj = {}
       obj.TEMPLATE_TYPE = this.templateType;

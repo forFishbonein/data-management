@@ -39,6 +39,15 @@ public abstract class AbstractTemplate {
     @Field("a_tittle")
     String title;
 
+    @Field("a_num")
+    String num;
+
+    @Field("a_introduction")
+    String introduction;
+
+    @Field("a_uploaderId")
+    String uploaderId;
+
     @Field("a_other")
     List<Map<String, String>> other;
 

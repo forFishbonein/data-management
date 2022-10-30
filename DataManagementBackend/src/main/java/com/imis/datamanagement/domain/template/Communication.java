@@ -20,7 +20,7 @@ public class Communication extends AbstractTemplate {
 
     private String title;
 
-    private Long uploaderId;
+    private String uploaderId;
 
     private String num;
 

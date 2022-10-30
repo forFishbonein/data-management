@@ -45,7 +45,7 @@ public class FileUploadController {
 
     @GetMapping("/{id}")
     @ResponseBody
-    public Result<String> getById(@PathVariable("id") Long id) {
+    public Result<Object> getById(@PathVariable("id") Long id) {
         return Result.success(mongoDBService.getById(id));
     }
 
