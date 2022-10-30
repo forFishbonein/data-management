@@ -17,42 +17,42 @@
               您可以添加自定义的字段并填充其信息，自定义字段的字数、个数不限。
             </td>
           </tr>
-        <tr>
-          <td class="label required">编号</td>
-          <td>
-            <el-input
-              class="property"
-              placeholder="请输入项目编号"
-              v-model="UserDefined.num"
-              clearable>
-            </el-input>
-          </td>
-        </tr>
-        <tr>
-          <td class="label required">项目名称</td>
-          <td>
-            <el-input
-              class="property"
-              placeholder="请输入项目名称"
-              v-model="UserDefined.title"
-              clearable>
-            </el-input>
-          </td>
-        </tr>
           <tr>
-            <td class="label required" >项目简介</td>
+            <td class="label required">编号</td>
+            <td>
+              <el-input
+                v-model="UserDefined.num"
+                class="property"
+                clearable
+                placeholder="请输入项目编号">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">项目名称</td>
+            <td>
+              <el-input
+                v-model="UserDefined.title"
+                class="property"
+                clearable
+                placeholder="请输入项目名称">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label required">项目简介</td>
             <td colspan="2">
               <el-input
+                v-model="UserDefined.introduction"
+                :autosize="{ minRows: 6, maxRows: 8}"
                 class="property"
                 style="width: 500px"
                 type="textarea"
-                v-model="UserDefined.introduction"
-                :autosize="{ minRows: 6, maxRows: 8}"
               >
               </el-input>
             </td>
-          <td class="required-prompt">!简介为必填信息</td>
-        </tr>
+            <td class="required-prompt">!简介为必填信息</td>
+          </tr>
         </table>
         <div class="prompt"></div>
         <div class="prompt-line"></div>
@@ -63,17 +63,17 @@
             <td class="label">上传文件</td>
             <td>
               <el-upload
-                class="upload-demo"
                 ref="upload"
-                action="http://localhost:8888/file/upload"
-                :on-preview="handlePreview"
-                :on-remove="handleRemove"
                 :auto-upload="false"
                 :before-remove="beforeRemove"
-                multiple
+                :file-list="this.fileList"
                 :on-exceed="handleExceed"
+                :on-preview="handlePreview"
+                :on-remove="handleRemove"
                 :on-success="onSuccess"
-                :file-list="this.fileList">
+                action="http://localhost:8888/file/upload"
+                class="upload-demo"
+                multiple>
                 <el-button size="small" type="primary">选择文件</el-button>
               </el-upload>
             </td>
@@ -98,7 +98,7 @@
               </el-input>
             </td>
             <td>
-              <el-button type="primary" size="small" @click="addInput()">添加</el-button>
+              <el-button size="small" type="primary" @click="addInput()">添加</el-button>
             </td>
             <td class="prompt2">
               温馨提示：自定义字段一旦添加无法更改或删除。
@@ -125,7 +125,8 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-import { insertTeacherFile } from '@/api/file.js'
+import {insertTeacherFile} from '@/api/file.js'
+
 export default {
   name: "Defined",
   components: {TeacherNav},
@@ -142,6 +143,7 @@ export default {
         other: [],
         filePath: [],
         createTime: "",
+        uploaderId: this.$store.state.userId
       },
       fileList: [],
 
@@ -155,7 +157,7 @@ export default {
       // value: "",
       number: [0],
     };
-    },
+  },
   methods: {
     Template(key, value) {
       this.key = key;
@@ -234,11 +236,11 @@ export default {
       });
     },
     submitUpload() {
-      if(document.getElementsByClassName('el-upload-list__item')[0] == null){
+      if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
         insertTeacherFile(this.UserDefined).then(resp => {
           console.log(resp.data)
         });
-      }else{
+      } else {
         this.$refs.upload.submit();
       }
     },
@@ -267,87 +269,87 @@ export default {
   background-image: url("../../../static/img/temple.svg");
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
-.template-title {
-  padding: 16px;
-  padding-left: 115px;
-  font-size: 22px;
-  font-weight: bold;
-  color: #0E4687;
-}
+  .template-title {
+    padding: 16px;
+    padding-left: 115px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #0E4687;
+  }
 
-.page-prompt {
-  padding: 8px 0;
-  padding-left: 115px;
-  font-size: 14px;
-  color: #949393;
-}
+  .page-prompt {
+    padding: 8px 0;
+    padding-left: 115px;
+    font-size: 14px;
+    color: #949393;
+  }
 
-table {
+  table {
 
-.label {
-  padding: 16px;
-  width: 200px;
-  text-align: right;
-  font-size: 18px;
-  vertical-align: top;
+    .label {
+      padding: 16px;
+      width: 200px;
+      text-align: right;
+      font-size: 18px;
+      vertical-align: top;
 
-}
-
-
-.required {
-  position: relative;
-}
-
-.required-prompt {
-  padding-left: 8px;
-  vertical-align: bottom;
-  font-size: 12px;
-  color: #BB501C;
-}
-
-.required::after {
-  position: absolute;
-  right: 5px;
-  content: "*";
-  color: #BB501C;
-  display: inline-block;
-  font-size: 20px;
-}
-
-.property {
-  width: 400px;
-}
-}
-
-.other {}
-
-.el-input {
-  padding: 4px;
-  width: 140px;
-}
+    }
 
 
+    .required {
+      position: relative;
+    }
 
-.prompt {
-  padding: 8px 0;
-  padding-left: 115px;
-  font-size: 12px;
-  color: #949393;
-}
+    .required-prompt {
+      padding-left: 8px;
+      vertical-align: bottom;
+      font-size: 12px;
+      color: #BB501C;
+    }
 
-.prompt2 {
-  padding: 8px;
-  font-size: 12px;
-  color: #949393;
-}
+    .required::after {
+      position: absolute;
+      right: 5px;
+      content: "*";
+      color: #BB501C;
+      display: inline-block;
+      font-size: 20px;
+    }
 
-.prompt-line {
-  display: block;
-  margin-left: 115px;
-  width: 970px;
-  height: 2px;
-  border-bottom: 2px dashed #949393;
-}
+    .property {
+      width: 400px;
+    }
+  }
+
+  .other {
+  }
+
+  .el-input {
+    padding: 4px;
+    width: 140px;
+  }
+
+
+  .prompt {
+    padding: 8px 0;
+    padding-left: 115px;
+    font-size: 12px;
+    color: #949393;
+  }
+
+  .prompt2 {
+    padding: 8px;
+    font-size: 12px;
+    color: #949393;
+  }
+
+  .prompt-line {
+    display: block;
+    margin-left: 115px;
+    width: 970px;
+    height: 2px;
+    border-bottom: 2px dashed #949393;
+  }
 }
 
 .el-tag + .el-tag {

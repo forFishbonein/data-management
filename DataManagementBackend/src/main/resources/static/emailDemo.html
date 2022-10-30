@@ -4,17 +4,106 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+        .main{
+            width:650px;
+            height: 900px;
+            margin: auto;
+            border: solid 5px aliceblue;
+        }
+
+        .logo{
+            margin-left: -5px;
+            margin-top:40px;
+        }
+        .logo img{
+            width: 150px;
+            height:80px;
+            border: black;
+        }
+        .decoration1{
+            height:13px;
+            width:585px;
+            margin-left: 20px;
+            margin-top: -15px;
+            background:linear-gradient(to right,
+            rgb(56, 189, 248),
+            rgb(59, 130, 246));
+        }
+        .text1{
+            margin-left: 30px;
+            margin-top:30px;
+            font-size: 18px;
+            font-weight: 500;
+        }
         h1{
-            color: red;
+            margin-left:200px;
+            margin-top: 60px;
+            color: #3C85D7;
+        }
+        .tips1{
+            margin-left:250px;
+            margin-top: 55px;
+            font-size:12px;
+            color:#737373;
+        }
+        .dividing-line{
+            height: 3px;
+            width: 615px;
+            margin-left: 20px;
+            margin-top: 60px;
+            background-color: #EEEEEE;
+        }
+        .tips2{
+            margin-left:30px;
+            margin-top: 60px;
+            font-size:12px;
+            color:#737373;
+        }
+        .text2{
+            margin-left: 30px;
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .decoration2{
+            height:13px;
+            width:585px;
+            margin-left: 20px;
+            margin-top: 30px;
+            background: linear-gradient(to right,
+            rgb(96, 165, 250),
+            rgb(52, 211, 153));
         }
     </style>
 </head>
 <body>
-尊敬的用户,您好:<br><br>
-本次请求的邮件验证码为:<br>
-<h1>[[${message}]]</h1>
-本验证码5分钟内有效，请及时输入。（请勿泄露此验证码）<br>
-如非本人操作，请忽略该邮件。<br>
-(这是一封自动发送的邮件，请不要直接回复）<br>
+<div class="main">
+    <div class="logo">
+        <img alt="logo" src="img/logo.png">
+    </div>
+    <div class="decoration1"></div>
+    <div class="text1">
+        尊敬的用户:<br><br>
+        &emsp;&emsp;您好！<br><br>
+        &emsp;&emsp;本次请求的邮件验证码为:<br>
+        <h1>[[${message}]]</h1>
+    </div>
+    <div class="tips1">
+        此验证码仅在5分钟内有效
+    </div>
+    <div class="dividing-line"></div>
+    <div class="tips2">
+        如果你没有请求此验证码，可放心忽略这封电子邮件<br>
+        请勿直接回复此自动电子邮件
+    </div>
+    <div class="dividing-line"></div>
+    <div></div>
+    <div class="text2">
+        此致，<br>
+        IMIS团队
+    </div>
+    <div class="decoration2"></div>
+</div>
+
 </body>
 </html>

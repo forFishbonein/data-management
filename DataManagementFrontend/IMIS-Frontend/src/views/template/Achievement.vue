@@ -7,7 +7,7 @@
         <div v-show="this.Achievement.introduction" class="introduction">{{ Achievement.introduction }}</div>
         <div class="details">
           <div v-show="this.Achievement.name" class="name">成果名称：{{ Achievement.name }}</div>
-          <div v-show="this.Achievement.uploader" class="uploader">上传者：{{Achievement.uploaderId}}</div>
+          <div v-show="this.Achievement.uploader" class="uploader">上传者：{{ Achievement.uploaderId }}</div>
           <div v-show="this.Achievement.createTime" class="createTime">上传时间：{{ Achievement.createTime }}</div>
           <div v-show="this.Achievement.author" class="author">作者：{{ Achievement.author }}</div>
           <div v-show="this.Achievement.publicYear" class="publicYear">发表年：{{ Achievement.publicYear }}</div>
@@ -16,8 +16,14 @@
           <div v-show="this.Achievement.press" class="press">出版社/期刊名称：{{ Achievement.press }}</div>
           <div v-show="this.Achievement.journalGrade" class="journalGrade">期刊等级：{{ Achievement.journalGrade }}</div>
           <div v-show="this.Achievement.schoolGrade" class="schoolGrade">民大认定级别：{{ Achievement.schoolGrade }}</div>
-          <div v-show="this.Achievement.publicationTime" class="publicationTime">出版时间/期卷号:{{ Achievement.publicationTime }}</div>
-          <div v-show="this.Achievement.authorRank.length" class="authorRank">作者排序：{{ Achievement.authorRank }}</div>
+          <div v-show="this.Achievement.publicationTime" class="publicationTime">出版时间/期卷号:{{
+              Achievement.publicationTime
+            }}
+          </div>
+          <div v-show="this.Achievement.authorRank.length" class="authorRank">作者排序：{{
+              Achievement.authorRank.join(",")
+            }}
+          </div>
           <div class="add">
             <p v-for="item in Achievement.other">{{ item.key }} : {{ item.value }}</p>
           </div>
@@ -62,7 +68,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId:"",
+        uploaderId: "",
         name: "",
         author: "",
         publicYear: "",
@@ -82,16 +88,16 @@ export default {
     }
 
   },
-  props:['templateType','id'],
-    created(){
-      let obj = {}
-      obj.TEMPLATE_TYPE = this.templateType;
-      obj.id = this.id;
-      this.$store.dispatch('getDetails', obj).then(res => {
-        // console.log(res)
-        this.Achievement = res
-      })
-      },
+  props: ['templateType', 'id'],
+  created() {
+    let obj = {}
+    obj.TEMPLATE_TYPE = this.templateType;
+    obj.id = this.id;
+    this.$store.dispatch('getDetails', obj).then(res => {
+      // console.log(res)
+      this.Achievement = res
+    })
+  },
 
 }
 
