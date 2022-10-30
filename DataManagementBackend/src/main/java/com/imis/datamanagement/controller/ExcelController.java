@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.OutputStream;
 import java.util.List;
 
 @RestController
@@ -19,8 +22,8 @@ public class ExcelController {
 
 
     @PostMapping("/export")
-    public Result<String> sendMimeMail(@RequestBody List<List<String>> lists) {
-        excelService.export(lists);
+    public Result<String> sendMimeMail(HttpServletRequest req, HttpServletResponse resp, @RequestBody List<List<String>> lists) {
+        excelService.export(req, resp, lists);
         return Result.success("导出成功");
     }
 }
