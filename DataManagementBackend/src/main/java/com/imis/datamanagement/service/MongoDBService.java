@@ -60,11 +60,13 @@ public class MongoDBService {
     }
 
     //获取当前用户的所有资源（个人详情）
-    public String getById(Long id) {
+    public List<Object> getById(Long id) {
         System.out.println("id = " + id);
         Query query = new Query();
         query.addCriteria(Criteria.where("uploaderId").is(id));
+        System.out.println(query);
         query.addCriteria(Criteria.where("deleted").is("0"));
+
         List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
         List<Communication> communications = mongoTemplate.find(query, Communication.class);
         List<Honor> honors = mongoTemplate.find(query, Honor.class);
@@ -86,9 +88,9 @@ public class MongoDBService {
         l.add(teachings);
         l.add(userDefineds);
 
-        String json = JSON.toJSONString(l);
 
-        return json;
+
+        return l;
     }
 
     //获取所有用户的所有资源（资源广场）

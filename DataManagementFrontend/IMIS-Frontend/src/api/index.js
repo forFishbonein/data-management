@@ -11,7 +11,7 @@ export function getSearchResults(keyword) {
   return request({
     method: "get",
     data: keyword,
-    url: "/results.json"
+    url: "/results"
   });
 }
 
@@ -26,6 +26,6 @@ export function getByTeacherId(id) {
   return request({
     method: "get",
     data: {"id": id},
-    url: "/getByTeacherId.json"
+    url: "/getByTeacherId"
   });
 }

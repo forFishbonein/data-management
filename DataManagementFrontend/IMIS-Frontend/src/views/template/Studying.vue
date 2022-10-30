@@ -224,8 +224,6 @@
 
   },
     props:['templateType','id'],
-    methods: {
-    },
     created(){
       let obj = {}
       obj.TEMPLATE_TYPE = this.templateType;

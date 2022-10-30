@@ -213,6 +213,16 @@
     }
 
   },
+  props:['templateType','id'],
+    created(){
+      let obj = {}
+      obj.TEMPLATE_TYPE = this.templateType;
+      obj.id = this.id;
+      this.$store.dispatch('getDetails', obj).then(res => {
+        // console.log(res)
+        this.UserDefined = res
+      })
+  },
     components: {
       TeacherNav,
       TeacherHeader,

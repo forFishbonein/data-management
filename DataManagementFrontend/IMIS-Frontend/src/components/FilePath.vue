@@ -13,8 +13,13 @@
 export default {
   name: "FilePath",
   data() {
-  },
-}
+    return {
+      id:1,
+ name:1,
+ type:2
+
+  }
+}}
 </script>
 
 <style scoped>
