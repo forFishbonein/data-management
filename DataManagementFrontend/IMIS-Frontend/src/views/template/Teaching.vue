@@ -25,9 +25,10 @@
 
       </div>
       <FilePath></FilePath>
-      <div class="button">
-        <button class="button1" @click="exportExcel">删除</button>
-        <button class="button2">编辑</button>
+      <div>
+        <button class="button button1">删除</button>
+        <button class="button button2">编辑</button>
+        <button class="button button3" @click="exportExcel">导出Excel</button>
       </div>
     </div>
   </div>
@@ -192,32 +193,36 @@ export default {
 }
 
 .button {
-  height: 80px;
+  float: right;
+  margin: 8px;
+  padding: 8px 16px;
+  text-align: center;
+  color: #fff;
+  border-radius: 8px;
+}
 
+.button3 {
+  background: #26af00;
+}
+
+.button3:hover {
+  background: #1e8000;
 }
 
 .button2 {
-  margin: 20px;
-  padding: 20px;
-  float: right;
-  padding-right: 30px;
-  width: 100px;
-  height: 70px;
   background: #104A85;
-  text-align: center;
-  color: #fff;
+}
+
+.button2:hover {
+  background: #08386a;
 }
 
 .button1 {
-  margin: 20px;
-  padding: 20px;
-  float: right;
-  padding-right: 30px;
-  width: 100px;
-  height: 70px;
   background: #EB8C2D;
-  text-align: center;
-  color: #fff;
+}
+
+.button1:hover {
+  background: #c6721f;
 }
 
 
