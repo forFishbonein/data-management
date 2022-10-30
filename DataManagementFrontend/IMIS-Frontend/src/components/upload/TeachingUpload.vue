@@ -240,13 +240,12 @@ export default {
         title: "",
         num: "",
         introduction: "",
-        uploaderId: "",
         name: "",
         source: "",
         type: "",
         level: "",
         projectTime: "",
-        postprojectTime: "",
+        postProjectTime: "",
         fund: "",
         member: [],
         other: [],
@@ -323,7 +322,7 @@ export default {
     },
     loadAll() {
       return [
-        {"value": "一般项目"},
+        {"value": "教研"},
       ];
     },
     handleSelect(item) {

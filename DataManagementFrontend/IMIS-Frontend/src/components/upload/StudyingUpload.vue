@@ -245,7 +245,7 @@ export default {
         type: "",
         level: "",
         projectTime: "",
-        postprojectTime: "",
+        postProjectTime: "",
         fund: "",
         member: [],
 
@@ -322,7 +322,7 @@ export default {
     },
     loadAll() {
       return [
-        {"value": "教研"},
+        {"value": "一般项目"},
       ];
     },
     handleSelect(item) {
