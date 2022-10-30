@@ -7,15 +7,15 @@
         <div v-show="this.Teaching.introduction" class="introduction">{{ Teaching.introduction }}</div>
         <div class="details">
           <div v-show="this.Teaching.name" class="name">项目名称：{{ Teaching.name }}</div>
-          <div v-show="this.Teaching.uploaderId" class="uploader">上传者：{{Teaching.uploaderId}}</div>
+          <div v-show="this.Teaching.uploaderId" class="uploader">上传者：{{ Teaching.uploaderId }}</div>
           <div v-show="this.Teaching.createTime" class="createTime">上传时间：{{ Teaching.createTime }}</div>
           <div v-show="this.Teaching.source" class="source">项目来源：{{ Teaching.source }}</div>
           <div v-show="this.Teaching.type" class="type">项目类型：{{ Teaching.type }}</div>
           <div v-show="this.Teaching.level" class="level">项目级别：{{ Teaching.level }}</div>
           <div v-show="this.Teaching.projectTime" class="project_time">立项时间：{{ Teaching.projectTime }}</div>
-          <div v-show="this.Teaching.postprojectTime" class="post_project_time">结项时间：{{ Teaching.postprojectTime }}</div>
+          <div v-show="this.Teaching.postProjectTime" class="post_project_time">结项时间：{{Teaching.postProjectTime}}</div>
           <div v-show="this.Teaching.fund" class="fund">项目经费：{{ Teaching.fund }}</div>
-          <div v-show="this.Teaching.member.length" class="member">课题组成员：{{ Teaching.member }}</div>
+          <div v-show="this.Teaching.member.length" class="member">课题组成员：{{ Teaching.member.join(",") }}</div>
           <div class="add">
             <p v-for="item in Teaching.other">{{ item.key }} : {{ item.value }}</p>
           </div>
@@ -26,7 +26,7 @@
       </div>
       <FilePath></FilePath>
       <div class="button">
-        <button class="button1">删除</button>
+        <button class="button1" @click="exportExcel">删除</button>
         <button class="button2">编辑</button>
       </div>
     </div>
@@ -39,6 +39,8 @@ import TeacherHeader from "../../components/TeacherHeader";
 import TeacherData from "../../components/TeacherData";
 import FilePath from "../../components/FilePath";
 
+import { excelExport } from '@/api/file.js'
+
 export default {
   name: "Teaching",
   data() {
@@ -50,13 +52,13 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId:"",
+        uploaderId: "",
         name: "",
         source: "",
         type: "",
         level: "",
         projectTime: "",
-        postprojectTime: "",
+        postProjectTime: "",
         fund: "",
         member: [],
 
@@ -64,19 +66,76 @@ export default {
         filePath: [],
         createTime: "",
       },
+      ExcelTitle: [],
+      ExcelValue: [],
     }
 
   },
-  props:['templateType','id'],
-    created(){
-      let obj = {}
-      obj.TEMPLATE_TYPE = this.templateType;
-      obj.id = this.id;
-      this.$store.dispatch('getDetails', obj).then(res => {
-        // console.log(res)
-        this.Teaching = res
-      })
+  props: ['templateType', 'id'],
+  created() {
+    let obj = {}
+    obj.TEMPLATE_TYPE = this.templateType;
+    obj.id = this.id;
+    this.$store.dispatch('getDetails', obj).then(res => {
+      // console.log(res)
+      this.Teaching = res
+    })
   },
+
+  methods: {
+    exportExcel() {
+      this.ExcelTitle.push(
+        "编号",
+        "立项时间",
+        "项目来源",
+        "项目类型",
+        "项目名称",
+        "结项时间",
+        "经费（万元）",
+        "课题组成员");
+
+      this.ExcelValue.push(
+        this.Teaching.num,
+        this.Teaching.projectTime,
+        this.Teaching.source,
+        this.Teaching.type,
+        this.Teaching.name,
+        this.Teaching.postProjectTime,
+        this.Teaching.fund,
+      );
+
+      let item = 0;
+      let str = "";
+      for (item in this.Teaching.member) {
+        str = str + this.Teaching.member[item] + ",";
+      }
+      var reg=/,$/gi;
+      str=str.replace(reg,"");
+
+      this.ExcelValue.push(str);
+
+      item = 0;
+      for (item in this.Teaching.other) {
+        this.ExcelTitle.push(this.Teaching.other[item].key);
+        this.ExcelValue.push(this.Teaching.other[item].value);
+      }
+
+      console.log(this.ExcelTitle);
+      console.log(this.ExcelValue)
+
+      var lists = [];
+      lists.push(this.ExcelTitle);
+      lists.push(this.ExcelValue);
+
+      console.log(lists)
+
+      excelExport(lists).then(resp => {
+        console.log(resp.data)
+      });
+
+    }
+  },
+
   components: {
     TeacherNav,
     TeacherHeader,

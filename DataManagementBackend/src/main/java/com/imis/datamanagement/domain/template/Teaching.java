@@ -44,6 +44,8 @@ public class Teaching extends AbstractTemplate {
 
     private String projectTime;
 
+    private String postProjectTime;
+
     private String fund;
 
     private List<String> member;

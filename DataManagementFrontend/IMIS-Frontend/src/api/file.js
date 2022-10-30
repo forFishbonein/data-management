@@ -17,4 +17,13 @@ export function getOneFile(data) {
   });
 }
 
+export function excelExport(data) {
+  console.log(data);
+  return request({
+    data: data,
+    method: "post",
+    url: "/excel/export"
+  });
+}
+
 

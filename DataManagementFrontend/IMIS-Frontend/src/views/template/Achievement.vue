@@ -17,7 +17,7 @@
           <div v-show="this.Achievement.journalGrade" class="journalGrade">期刊等级：{{ Achievement.journalGrade }}</div>
           <div v-show="this.Achievement.schoolGrade" class="schoolGrade">民大认定级别：{{ Achievement.schoolGrade }}</div>
           <div v-show="this.Achievement.publicationTime" class="publicationTime">出版时间/期卷号:{{ Achievement.publicationTime }}</div>
-          <div v-show="this.Achievement.authorRank.length" class="authorRank">作者排序：{{ Achievement.authorRank }}</div>
+          <div v-show="this.Achievement.authorRank.length" class="authorRank">作者排序：{{ Achievement.authorRank.join(",") }}</div>
           <div class="add">
             <p v-for="item in Achievement.other">{{ item.key }} : {{ item.value }}</p>
           </div>
