@@ -100,8 +100,23 @@ export default {
         this.Teaching.name,
         this.Teaching.postProjectTime,
         this.Teaching.fund,
-        this.Teaching.member,
       );
+
+      let item = 0;
+      let str = "";
+      for (item in this.Teaching.member) {
+        str = str + this.Teaching.member[item] + ",";
+      }
+      var reg=/,$/gi;
+      str=str.replace(reg,"");
+
+      this.ExcelValue.push(str);
+
+      item = 0;
+      for (item in this.Teaching.other) {
+        this.ExcelTitle.push(this.Teaching.other[item].key);
+        this.ExcelValue.push(this.Teaching.other[item].value);
+      }
 
       console.log(this.ExcelTitle);
       console.log(this.ExcelValue)
