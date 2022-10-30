@@ -26,7 +26,11 @@
 
 
       </div>
-      <FilePath></FilePath>
+      <FilePath
+      
+      >
+
+      </FilePath>
       <div class="button">
         <button class="button1">删除</button>
         <button class="button2">编辑</button>
