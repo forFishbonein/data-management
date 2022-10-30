@@ -30,21 +30,21 @@
 
 
 <script>
-import {getByTeacherId} from '@/api'
+// import {getByTeacherId} from '@/api'
 
 export default {
   name: "TeacherHeader",
   mounted() {
-    console.log(this)
-    this.getById(this.id);
+    // console.log(this)
+    // this.getById(this.id);
   },
   methods: {
-    getById(id) {
-      getByTeacherId(id).then(resp => {
-        this.teacher = resp.data.data;
-        console.log(resp.data.data);
-      });
-    }
+    // getById(id) {
+    //   getByTeacherId(id).then(resp => {
+    //     this.teacher = resp.data.data;
+    //     console.log(resp.data.data);
+    //   });
+    // }
   },
 
   data() {

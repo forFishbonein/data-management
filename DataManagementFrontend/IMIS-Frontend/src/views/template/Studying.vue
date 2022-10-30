@@ -7,17 +7,17 @@
           <div class="introduction">{{ Studying.introduction }}</div>
           <div class="details">
             <div v-show="this.Studying.name" class="name">项目名称：{{ Studying.name }}</div>
-            <div class="uploader">上传者：</div>
-            <div class="createTime">上传时间：{{ Studying.createTime }}</div>
-            <div class="source">项目来源：{{ Studying.source }}</div>
-            <div class="type">项目类型：{{ Studying.type }}</div>
-            <div class="level">项目级别：{{ Studying.level }}</div>
-            <div class="project_time">立项时间：{{ Studying.projectTime }}</div>
-            <div class="post_project_time">结项时间：{{ Studying.postprojectTime }}</div>
-            <div class="fund">项目经费：{{ Studying.fund }}</div>
-            <div class="member">课题组成员：{{ Studying.member }}</div>
+            <div v-show="this.Studying.uploaderId" class="uploader">上传者：{{Studying.uploaderId}}</div>
+            <div v-show="this.Studying.createTime" class="createTime">上传时间：{{ Studying.createTime }}</div>
+            <div v-show="this.Studying.source" class="source">项目来源：{{ Studying.source }}</div>
+            <div v-show="this.Studying.type" class="type">项目类型：{{ Studying.type }}</div>
+            <div v-show="this.Studying.level" class="level">项目级别：{{ Studying.level }}</div>
+            <div v-show="this.Studying.projectTime" class="project_time">立项时间：{{ Studying.projectTime }}</div>
+            <div v-show="this.Studying.postProjectTime" class="post_project_time">结项时间：{{ Studying.postProjectTime }}</div>
+            <div v-show="this.Studying.fund" class="fund">项目经费：{{ Studying.fund }}</div>
+            <div v-show="this.Studying.member.length" class="member">课题组成员：{{ Studying.member.join(",") }}</div>
             <div class="add">
-              <p v-for="(val, key) in Studying.other">{{ key }} : {{ val }}</p>
+              <p v-for="item in Studying.other">{{ item.key }} : {{ item.value }}</p>
             </div>
 
 
@@ -43,110 +43,6 @@
     name: "ReStudying",
     data() {
     return {
-      Achievement: {
-        TEMPLATE_TYPE: "achievement",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        author: "",
-        publicYear: "",
-        paper: "",
-        type: "",
-        press: "",
-        journalGrade: "",
-        schoolGrade: "",
-        publicationTime: "",
-        authorRank: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Communication: {
-        TEMPLATE_TYPE: "communication",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        startTime: "",
-        lastTime: "",
-        type: "",
-        name: "",
-        organizer: "",
-        address: "",
-        member: "",
-        whetherSpeak: "",
-        whetherParticipate: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Honor: {
-        TEMPLATE_TYPE: "honor",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        award_name: "",
-        time: "",
-        type: "",
-        garde: "",
-        level: "",
-        name: "",
-        approval_num: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Office: {
-        TEMPLATE_TYPE: "office",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        time: "",
-        type: "",
-        topic: "",
-        content: "",
-        address: "",
-        participant: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Party: {
-        TEMPLATE_TYPE: "party",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        time: "",
-        type: "",
-        topic: "",
-        content: "",
-        address: "",
-        participant: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
       Studying: {
         TEMPLATE_TYPE: "Studying",
         id: "",
@@ -160,61 +56,10 @@
         type: "",
         level: "",
         projectTime: "",
-        postprojectTime: "",
+        postProjectTime: "",
         fund: "",
         member: [],
 
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      StudentContest: {
-        TEMPLATE_TYPE: "studentcontest",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        name: "",
-        gameName: "",
-        grade: "",
-        instructor: [],
-        time: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      UserDefined: {
-        TEMPLATE_TYPE: "userdefined",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
         other: [],
         filePath: [],
         createTime: "",
@@ -224,8 +69,6 @@
 
   },
     props:['templateType','id'],
-    methods: {
-    },
     created(){
       let obj = {}
       obj.TEMPLATE_TYPE = this.templateType;

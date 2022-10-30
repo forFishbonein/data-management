@@ -11,7 +11,7 @@
             <div v-show="this.StudentContest.createTime" class="createTime">上传时间：{{StudentContest.createTime}}</div>
             <div v-show="this.StudentContest.gameName" class="gameName">竞赛名称：{{StudentContest.gameName}}</div>
             <div v-show="this.StudentContest.grade" class="grade">获奖级别：{{StudentContest.grade}}</div>
-            <div v-show="this.StudentContest.instructor.length" class="instructor">指导老师：{{StudentContest.instructor}}</div>
+            <div v-show="this.StudentContest.instructor.length" class="instructor">指导老师：{{StudentContest.instructor.join(",")}}</div>
             <div v-show="this.StudentContest.time" class="time">获奖时间：{{StudentContest.time}}</div>
             <div class="add">
               <p v-for="item in StudentContest.other">{{ item.key }} : {{item.value}}</p>
@@ -39,138 +39,13 @@ import FilePath from "../../components/FilePath";
     name: "StudentContest",
     data() {
     return {
-      Achievement: {
-        TEMPLATE_TYPE: "achievement",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        author: "",
-        publicYear: "",
-        paper: "",
-        type: "",
-        press: "",
-        journalGrade: "",
-        schoolGrade: "",
-        publicationTime: "",
-        authorRank: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Communication: {
-        TEMPLATE_TYPE: "communication",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        startTime: "",
-        lastTime: "",
-        type: "",
-        name: "",
-        organizer: "",
-        address: "",
-        member: "",
-        whetherSpeak: "",
-        whetherParticipate: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Honor: {
-        TEMPLATE_TYPE: "honor",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        award_name: "",
-        time: "",
-        type: "",
-        garde: "",
-        level: "",
-        name: "",
-        approval_num: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Office: {
-        TEMPLATE_TYPE: "office",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        time: "",
-        type: "",
-        topic: "",
-        content: "",
-        address: "",
-        participant: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Party: {
-        TEMPLATE_TYPE: "party",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        time: "",
-        type: "",
-        topic: "",
-        content: "",
-        address: "",
-        participant: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Studying: {
-        TEMPLATE_TYPE: "Studying",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
       StudentContest: {
         TEMPLATE_TYPE: "studentcontest",
         id: "",
         title: "",
         num: "",
         introduction: "",
- 
+
         uploaderId:"",
         name: "",
         gameName: "",
@@ -182,42 +57,18 @@ import FilePath from "../../components/FilePath";
         filePath: [],
         createTime: "",
       },
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      UserDefined: {
-        TEMPLATE_TYPE: "userdefined",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-
     }
 
+  },
+  props:['templateType','id'],
+    created(){
+      let obj = {}
+      obj.TEMPLATE_TYPE = this.templateType;
+      obj.id = this.id;
+      this.$store.dispatch('getDetails', obj).then(res => {
+        // console.log(res)
+        this.StudentContest = res
+      })
   },
     components: {
       TeacherNav,

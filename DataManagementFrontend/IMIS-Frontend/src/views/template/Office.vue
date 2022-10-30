@@ -13,7 +13,7 @@
             <div v-show="this.Office.type" class="type">活动类型：{{ Office.type }}</div>
             <div v-show="this.Office.content" class="content">学习内容：{{ Office.content }}</div>
             <div v-show="this.Office.address" class="address">学习地点：{{ Office.address }}</div>
-            <div v-show="this.Office.participant.length" class="participant">参与人：{{ Office.participant }}</div>
+            <div v-show="this.Office.participant.length" class="participant">参与人：{{ Office.participant.join(",") }}</div>
             <div class="add">
               <p v-for="item in Office.other">{{ item.key }} : {{ item.value }}</p>
             </div>
@@ -41,72 +41,6 @@
     name: "Office",
     data() {
     return {
-      Achievement: {
-        TEMPLATE_TYPE: "achievement",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        author: "",
-        publicYear: "",
-        paper: "",
-        type: "",
-        press: "",
-        journalGrade: "",
-        schoolGrade: "",
-        publicationTime: "",
-        authorRank: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Communication: {
-        TEMPLATE_TYPE: "communication",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        startTime: "",
-        lastTime: "",
-        type: "",
-        name: "",
-        organizer: "",
-        address: "",
-        member: "",
-        whetherSpeak: "",
-        whetherParticipate: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Honor: {
-        TEMPLATE_TYPE: "honor",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        award_name: "",
-        time: "",
-        type: "",
-        garde: "",
-        level: "",
-        name: "",
-        approval_num: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
       Office: {
         TEMPLATE_TYPE: "office",
         id: "",
@@ -126,100 +60,17 @@
         filePath: [],
         createTime: "",
       },
-      Party: {
-        TEMPLATE_TYPE: "party",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        time: "",
-        type: "",
-        topic: "",
-        content: "",
-        address: "",
-        participant: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Studying: {
-        TEMPLATE_TYPE: "Studying",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      StudentContest: {
-        TEMPLATE_TYPE: "studentcontest",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        name: "",
-        gameName: "",
-        grade: "",
-        instructor: [],
-        time: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      UserDefined: {
-        TEMPLATE_TYPE: "userdefined",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-
     }
-
+  },
+  props:['templateType','id'],
+    created(){
+      let obj = {}
+      obj.TEMPLATE_TYPE = this.templateType;
+      obj.id = this.id;
+      this.$store.dispatch('getDetails', obj).then(res => {
+        // console.log(res)
+        this.Office = res
+      })
   },
     components: {
       TeacherNav,

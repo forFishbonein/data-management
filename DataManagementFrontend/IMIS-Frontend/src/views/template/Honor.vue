@@ -13,7 +13,7 @@
           <div v-show="this.Honor.type" class="type">奖励类型：{{ Honor.type }}</div>
           <div v-show="this.Honor.level" class="level">奖励级别：{{ Honor.level }}</div>
           <div v-show="this.Honor.approval_num" class="approval_num">批文号：{{ Honor.approval_num }}</div>
-          <div v-show="this.Honor.member.length" class="member">成员：{{ Honor.member }}</div>
+          <div v-show="this.Honor.member.length" class="member">成员：{{ Honor.member.join(",") }}</div>
           <div class="add">
             <p v-for="item in Honor.other">{{ item.key }} : {{ item.value }}</p>
           </div>
@@ -41,51 +41,6 @@ export default {
   name: "Honor",
   data() {
     return {
-      Achievement: {
-        TEMPLATE_TYPE: "achievement",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        author: "",
-        publicYear: "",
-        paper: "",
-        type: "",
-        press: "",
-        journalGrade: "",
-        schoolGrade: "",
-        publicationTime: "",
-        authorRank: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Communication: {
-        TEMPLATE_TYPE: "communication",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        startTime: "",
-        lastTime: "",
-        type: "",
-        name: "",
-        organizer: "",
-        address: "",
-        member: "",
-        whetherSpeak: "",
-        whetherParticipate: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
       Honor: {
         TEMPLATE_TYPE: "honor",
         id: "",
@@ -107,119 +62,18 @@ export default {
         filePath: [],
         createTime: "",
       },
-      Office: {
-        TEMPLATE_TYPE: "office",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        time: "",
-        type: "",
-        topic: "",
-        content: "",
-        address: "",
-        participant: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Party: {
-        TEMPLATE_TYPE: "party",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        time: "",
-        type: "",
-        topic: "",
-        content: "",
-        address: "",
-        participant: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Studying: {
-        TEMPLATE_TYPE: "Studying",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      StudentContest: {
-        TEMPLATE_TYPE: "studentcontest",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        name: "",
-        gameName: "",
-        grade: "",
-        instructor: [],
-        time: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      UserDefined: {
-        TEMPLATE_TYPE: "userdefined",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-
     }
 
+  },
+  props:['templateType','id'],
+    created(){
+      let obj = {}
+      obj.TEMPLATE_TYPE = this.templateType;
+      obj.id = this.id;
+      this.$store.dispatch('getDetails', obj).then(res => {
+        // console.log(res)
+        this.Honor = res
+      })
   },
   components: {
     TeacherNav,

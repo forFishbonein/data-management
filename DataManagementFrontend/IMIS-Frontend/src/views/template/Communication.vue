@@ -14,7 +14,7 @@
           <div v-show="this.Communication.type" class="type">交流类型：{{ Communication.type }}</div>
           <div v-show="this.Communication.organizer" class="organizer">主办机构：{{ Communication.organizer }}</div>
           <div v-show="this.Communication.address" class="address">地点：{{ Communication.address }}</div>
-          <div v-show="this.Teaching.member.length" class="member">参会人员：{{ Teaching.member }}</div>
+          <div v-show="this.Teaching.member.length" class="member">参会人员：{{ Communication.member.join(",") }}</div>
           <div v-show="this.Communication.whetherSpeak" class="whetherSpeak">是否发言：{{ Communication.whetherSpeak }}</div>
           <div v-show="this.Communication.whetherParticipate" class="whetherParticipate">学生是否参与：{{ Communication.whetherParticipate }}</div>
           <div class="add">
@@ -44,29 +44,6 @@ export default {
   name: "Communication",
   data() {
     return {
-      Achievement: {
-        TEMPLATE_TYPE: "achievement",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        author: "",
-        publicYear: "",
-        paper: "",
-        type: "",
-        press: "",
-        journalGrade: "",
-        schoolGrade: "",
-        publicationTime: "",
-        authorRank: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
       Communication: {
         TEMPLATE_TYPE: "communication",
         id: "",
@@ -89,140 +66,18 @@ export default {
         filePath: [],
         createTime: "",
       },
-      Honor: {
-        TEMPLATE_TYPE: "honor",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        award_name: "",
-        time: "",
-        type: "",
-        garde: "",
-        level: "",
-        name: "",
-        approval_num: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Office: {
-        TEMPLATE_TYPE: "office",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        time: "",
-        type: "",
-        topic: "",
-        content: "",
-        address: "",
-        participant: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Party: {
-        TEMPLATE_TYPE: "party",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        time: "",
-        type: "",
-        topic: "",
-        content: "",
-        address: "",
-        participant: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Studying: {
-        TEMPLATE_TYPE: "Studying",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      StudentContest: {
-        TEMPLATE_TYPE: "studentcontest",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        name: "",
-        gameName: "",
-        grade: "",
-        instructor: [],
-        time: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      UserDefined: {
-        TEMPLATE_TYPE: "userdefined",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
- 
-        uploaderId:"",
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-
     }
 
+  },
+  props:['templateType','id'],
+    created(){
+      let obj = {}
+      obj.TEMPLATE_TYPE = this.templateType;
+      obj.id = this.id;
+      this.$store.dispatch('getDetails', obj).then(res => {
+        // console.log(res)
+        this.Communication = res
+      })
   },
   components: {
     TeacherNav,

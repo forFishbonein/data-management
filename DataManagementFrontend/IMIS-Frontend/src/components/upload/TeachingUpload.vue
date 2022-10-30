@@ -118,7 +118,7 @@
             <td class="label">结项时间</td>
             <td>
               <el-date-picker
-                v-model="Teaching.postprojectTime"
+                v-model="Teaching.postProjectTime"
                 class="property"
                 type="date"
                 placeholder="选择结项时间">
@@ -240,13 +240,12 @@ export default {
         title: "",
         num: "",
         introduction: "",
-        uploaderId: "",
         name: "",
         source: "",
         type: "",
         level: "",
         projectTime: "",
-        postprojectTime: "",
+        postProjectTime: "",
         fund: "",
         member: [],
         other: [],
@@ -323,7 +322,7 @@ export default {
     },
     loadAll() {
       return [
-        {"value": "一般项目"},
+        {"value": "教研"},
       ];
     },
     handleSelect(item) {

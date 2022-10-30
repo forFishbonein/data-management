@@ -30,7 +30,7 @@ public class Teaching extends AbstractTemplate {
     @ExcelProperty("标题")
     private String title;
 
-    private Long uploaderId;
+    private String uploaderId;
 
     private String num;
 
@@ -46,6 +46,8 @@ public class Teaching extends AbstractTemplate {
     private String level;
 
     private String projectTime;
+
+    private String postProjectTime;
 
     private String fund;
 
