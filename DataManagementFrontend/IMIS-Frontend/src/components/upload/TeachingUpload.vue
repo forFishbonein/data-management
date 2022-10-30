@@ -118,7 +118,7 @@
             <td class="label">结项时间</td>
             <td>
               <el-date-picker
-                v-model="Teaching.postprojectTime"
+                v-model="Teaching.postProjectTime"
                 class="property"
                 type="date"
                 placeholder="选择结项时间">

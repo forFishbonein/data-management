@@ -13,8 +13,8 @@
           <div v-show="this.Teaching.type" class="type">项目类型：{{ Teaching.type }}</div>
           <div v-show="this.Teaching.level" class="level">项目级别：{{ Teaching.level }}</div>
           <div v-show="this.Teaching.projectTime" class="project_time">立项时间：{{ Teaching.projectTime }}</div>
-          <div v-show="this.Teaching.postprojectTime" class="post_project_time">结项时间：{{
-              Teaching.postprojectTime
+          <div v-show="this.Teaching.postProjectTime" class="post_project_time">结项时间：{{
+              Teaching.postProjectTime
             }}
           </div>
           <div v-show="this.Teaching.fund" class="fund">项目经费：{{ Teaching.fund }}</div>

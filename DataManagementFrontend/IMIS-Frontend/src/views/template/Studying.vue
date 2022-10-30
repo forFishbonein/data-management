@@ -13,7 +13,7 @@
             <div v-show="this.Studying.type" class="type">项目类型：{{ Studying.type }}</div>
             <div v-show="this.Studying.level" class="level">项目级别：{{ Studying.level }}</div>
             <div v-show="this.Studying.projectTime" class="project_time">立项时间：{{ Studying.projectTime }}</div>
-            <div v-show="this.Studying.postprojectTime" class="post_project_time">结项时间：{{ Studying.postprojectTime }}</div>
+            <div v-show="this.Studying.postProjectTime" class="post_project_time">结项时间：{{ Studying.postProjectTime }}</div>
             <div v-show="this.Studying.fund" class="fund">项目经费：{{ Studying.fund }}</div>
             <div v-show="this.Studying.member.length" class="member">课题组成员：{{ Studying.member }}</div>
             <div class="add">
