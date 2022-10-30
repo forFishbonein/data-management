@@ -84,6 +84,8 @@ export default {
 
   methods: {
     exportExcel() {
+      this.ExcelTitle=[];
+      this.ExcelValue=[];
       this.ExcelTitle.push(
         "编号",
         "立项时间",
@@ -131,9 +133,11 @@ export default {
 
       excelExport(lists).then(resp => {
         console.log(resp.data)
-      });
+      }).catch(error => {
+        console.log(error)
+      })
 
-    }
+    },
   },
 
   components: {
