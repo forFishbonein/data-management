@@ -32,7 +32,11 @@
 
 
       </div>
-      <FilePath></FilePath>
+      <FilePath
+      
+      >
+
+      </FilePath>
       <div class="button">
         <button class="button button1">删除</button>
         <button class="button button2">编辑</button>

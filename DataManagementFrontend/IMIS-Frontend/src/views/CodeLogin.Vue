@@ -12,7 +12,7 @@
       <div class="login-input-box">
         <input v-model="login.email" class="login-input-box-email" placeholder="请输入邮箱" type="text">
         <input v-model="login.code" class="login-input-box-code" placeholder="请输入验证码" type="text">
-        <span class="login-input-box-send" @click="sendEmail({ email: login.email })">获取验证码</span>
+        <input class="login-input-box-send" value="获取验证码" type="button" @click="sendEmail({ email: login.email })"/>
       </div>
       <div class="login-check">
         <span><input type="checkbox">记住我</span>
@@ -38,6 +38,10 @@ export default {
 
   data() {
     return {
+      a:'',
+      count : 5,
+      curCount:0,
+      InterValObj:'',
       login: {
         email: "",
         code: "",
@@ -65,7 +69,33 @@ export default {
       this.$router.replace(
         name = 'registerteacher')
     },
+    setRemainTime() { 
+        console.log('1')
+        if (this.curCount == 0) {  
+          console.log('停止')       
+
+          window.clearInterval(this.InterValObj); 
+
+          this.a[0].disabled = false;
+          this.a[0].setAttribute('value','重新发送验证码');
+        } 
+        else { 
+          this.curCount--; 
+          console.log(this.curCount);
+          this.a[0].setAttribute('value',this.curCount + "秒后可重新发送");
+        } }
+        ,
     sendEmail(data) {
+
+
+ //timer变量，控制时间 
+
+
+      this.a=document.getElementsByClassName('login-input-box-send');
+      this.a[0].disabled =true;
+      
+      
+
       postCodeTeacher(data).then(
         response => {
           response.data.data;
@@ -73,7 +103,15 @@ export default {
       ).catch(error => {
         console.log(error)
       })
-    },
+
+      this.curCount = this.count
+      this.a[0].setAttribute('value',this.curCount + "秒后可重新发送");
+      this.InterValObj = window.setInterval(this.setRemainTime,1000);
+
+    }
+
+
+  ,
     toLogin(data) {
       codeLogin(data).then(
         response => {
@@ -90,6 +128,9 @@ export default {
   margin: 0;
   padding: 0;
 
+}
+.hide{
+  disabled:true;
 }
 
 .main {
