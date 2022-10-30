@@ -13,7 +13,7 @@
           <div v-show="this.Honor.type" class="type">奖励类型：{{ Honor.type }}</div>
           <div v-show="this.Honor.level" class="level">奖励级别：{{ Honor.level }}</div>
           <div v-show="this.Honor.approval_num" class="approval_num">批文号：{{ Honor.approval_num }}</div>
-          <div v-show="this.Honor.member.length" class="member">成员：{{ Honor.member }}</div>
+          <div v-show="this.Honor.member.length" class="member">成员：{{ Honor.member.join(",") }}</div>
           <div class="add">
             <p v-for="item in Honor.other">{{ item.key }} : {{ item.value }}</p>
           </div>
