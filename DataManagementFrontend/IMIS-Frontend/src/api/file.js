@@ -4,7 +4,7 @@ export function insertTeacherFile(data) {
   return request({
     data,
     method: "put",
-    url: "/file",
+    url: "/file"
   });
 }
 
@@ -22,8 +22,10 @@ export function excelExport(data) {
   return request({
     data: data,
     method: "post",
-    url: "/excel/export"
+    url: "/excel/export",
+    // headers: {
+    //   "Content-Type": "application/x-www-form-urlencoded"
+    // },
+    responseType: "blob"
   });
 }
-
-

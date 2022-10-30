@@ -131,8 +131,24 @@ export default {
 
       console.log(lists)
 
-      excelExport(lists).then(resp => {
-        console.log(resp.data)
+      excelExport(lists).then(res => {
+        // alert("成功了")
+        console.log(res)
+        // console.log(res.data)
+        const _res = res;
+        let blob = new Blob([_res], {type: 'application/vnd.ms-excel;charset=utf-8'});
+        let downloadElement = document.createElement("a");
+        let href = window.URL.createObjectURL(blob); //创建下载的链接
+        downloadElement.href = href;
+        var dates = new Date();
+        var times = dates.getTime();
+        var fileName = this.Teaching.title
+        downloadElement.download = times + fileName + '.xls'; //下载后文件名
+        // downloadElement.download = "导出表.xls"; //下载后文件名
+        document.body.appendChild(downloadElement);
+        downloadElement.click(); //点击下载
+        document.body.removeChild(downloadElement); //下载完成移除元素
+        window.URL.revokeObjectURL(href);
       }).catch(error => {
         console.log(error)
       })

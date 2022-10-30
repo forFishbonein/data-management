@@ -24,7 +24,7 @@ public class Result<T> {
 		this.data = data;
 	}
 	
-	private Result(int code, String msg) {
+	public Result(int code, String msg) {
 		this.code = code;
 		this.msg = msg;
 	}

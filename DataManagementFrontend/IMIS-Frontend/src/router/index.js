@@ -45,7 +45,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    component: FileManage
+    component: CodeLogin
   },
   {
     path: "/login",
