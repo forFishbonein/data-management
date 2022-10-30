@@ -253,6 +253,7 @@ export default {
 
         filePath: [],
         createTime: "",
+        uploaderId: this.$store.state.userId
       },
 
       fileList: [],

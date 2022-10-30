@@ -275,6 +275,7 @@ export default {
         other: [],
         filePath: [],
         createTime: "",
+        uploaderId: this.$store.state.userId
       },
 
       fileList: [],
