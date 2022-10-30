@@ -43,6 +43,12 @@ import FilePath from "../../components/FilePath";
 
 export default {
   name: "Achievement",
+  components: {
+    TeacherNav,
+    TeacherHeader,
+    TeacherData,
+    FilePath
+  },
   data() {
     return {
       Achievement: {
@@ -81,71 +87,8 @@ export default {
         // console.log(res)
         this.Achievement = res
       })
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      StudentContest: {
-        TEMPLATE_TYPE: "studentcontest",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        gameName: "",
-        grade: "",
-        instructor: [],
-        time: "",
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      Teaching: {
-        TEMPLATE_TYPE: "teaching",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        name: "",
-        source: "",
-        type: "",
-        level: "",
-        projectTime: "",
-        postprojectTime: "",
-        fund: "",
-        member: [],
-
-        other: [],
-        filePath: [],
-        createTime: "",
-      },
-      UserDefined: {
-        TEMPLATE_TYPE: "userdefined",
-        id: "",
-        title: "",
-        num: "",
-        introduction: "",
-
-        uploaderId:"",
-        other: [],
-        filePath: [],
-        createTime: "",
       },
 
-    }
-
-  },
-  components: {
-    TeacherNav,
-    TeacherHeader,
-    TeacherData,
-    FilePath
-  },
 }
 
 

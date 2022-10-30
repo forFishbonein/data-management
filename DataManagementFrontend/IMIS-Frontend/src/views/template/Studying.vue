@@ -17,7 +17,7 @@
             <div class="fund">项目经费：{{ Studying.fund }}</div>
             <div class="member">课题组成员：{{ Studying.member }}</div>
             <div class="add">
-              <p v-for="(val, key) in Studying.other">{{ key }} : {{ val }}</p>
+              <p v-for="item in Studying.other">{{ item.key }} : {{ item.value }}</p>
             </div>
 
 
@@ -174,7 +174,7 @@
         title: "",
         num: "",
         introduction: "",
- 
+
         uploaderId:"",
         name: "",
         gameName: "",
@@ -192,7 +192,7 @@
         title: "",
         num: "",
         introduction: "",
- 
+
         uploaderId:"",
         name: "",
         source: "",
@@ -213,7 +213,7 @@
         title: "",
         num: "",
         introduction: "",
- 
+
         uploaderId:"",
         other: [],
         filePath: [],
