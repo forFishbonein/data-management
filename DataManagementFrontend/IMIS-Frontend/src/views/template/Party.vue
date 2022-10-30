@@ -58,7 +58,7 @@ export default {
         topic: "",
         content: "",
         address: "",
-        participant: "",
+        participant: [],
 
         other: [],
         filePath: [],
