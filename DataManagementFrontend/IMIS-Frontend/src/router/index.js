@@ -36,10 +36,6 @@ import StudyingUpload from "../components/upload/StudyingUpload";
 import TeachingUpload from "../components/upload/TeachingUpload";
 import DefinedUpload from "../components/upload/DefinedUpload";
 
-import { Message } from "element-ui";
-import store from "@/store";
-import { getToken } from "@/request/token";
-
 Vue.use(VueRouter);
 
 const routes = [

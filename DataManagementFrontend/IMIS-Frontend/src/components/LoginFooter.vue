@@ -50,7 +50,8 @@ export default {
   display: flex;
   flex-direction: column;
 }
-.link ul{
+
+.link ul {
   text-align: right;
 
 }

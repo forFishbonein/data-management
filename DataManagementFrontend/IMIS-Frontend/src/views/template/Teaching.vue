@@ -13,7 +13,8 @@
           <div v-show="this.Teaching.type" class="type">项目类型：{{ Teaching.type }}</div>
           <div v-show="this.Teaching.level" class="level">项目级别：{{ Teaching.level }}</div>
           <div v-show="this.Teaching.projectTime" class="project_time">立项时间：{{ Teaching.projectTime }}</div>
-          <div v-show="this.Teaching.postProjectTime" class="post_project_time">结项时间：{{Teaching.postProjectTime}}</div>
+          <div v-show="this.Teaching.postProjectTime" class="post_project_time">结项时间：{{ Teaching.postProjectTime }}
+          </div>
           <div v-show="this.Teaching.fund" class="fund">项目经费：{{ Teaching.fund }}</div>
           <div v-show="this.Teaching.member.length" class="member">课题组成员：{{ Teaching.member.join(",") }}</div>
           <div class="add">
@@ -40,7 +41,7 @@ import TeacherHeader from "../../components/TeacherHeader";
 import TeacherData from "../../components/TeacherData";
 import FilePath from "../../components/FilePath";
 
-import { excelExport } from '@/api/file.js'
+import {excelExport} from '@/api/file.js'
 
 export default {
   name: "Teaching",
@@ -85,8 +86,8 @@ export default {
 
   methods: {
     exportExcel() {
-      this.ExcelTitle=[];
-      this.ExcelValue=[];
+      this.ExcelTitle = [];
+      this.ExcelValue = [];
       this.ExcelTitle.push(
         "编号",
         "立项时间",
@@ -112,8 +113,8 @@ export default {
       for (item in this.Teaching.member) {
         str = str + this.Teaching.member[item] + ",";
       }
-      var reg=/,$/gi;
-      str=str.replace(reg,"");
+      var reg = /,$/gi;
+      str = str.replace(reg, "");
 
       this.ExcelValue.push(str);
 

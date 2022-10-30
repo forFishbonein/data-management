@@ -2,8 +2,6 @@
   <div class="container">
 
 
-
-
   </div>
 </template>
 
@@ -12,9 +10,7 @@ export default {
   name: "FilePath",
   data() {
 
-    return {
-
-    }
+    return {}
   },
 }
 </script>

@@ -1,6 +1,6 @@
 import request from "@/request"
 
-export function postCodeTeacher(data){
+export function postCodeTeacher(data) {
   return request({
     data,
     method: 'post',
@@ -8,7 +8,7 @@ export function postCodeTeacher(data){
   })
 }
 
-export function postRegisterTeacher(data){
+export function postRegisterTeacher(data) {
   return request({
     data,
     method: 'post',
@@ -16,7 +16,7 @@ export function postRegisterTeacher(data){
   })
 }
 
-export function postRegisterStudent(data){
+export function postRegisterStudent(data) {
   return request({
     data,
     method: 'post',
