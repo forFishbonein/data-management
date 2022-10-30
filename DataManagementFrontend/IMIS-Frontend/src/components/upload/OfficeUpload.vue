@@ -152,6 +152,7 @@
                 :before-remove="beforeRemove"
                 multiple
                 :on-exceed="handleExceed"
+                :on-success="onSuccess"
                 :file-list="this.fileList">
                 <el-button size="small" type="primary">选择文件</el-button>
               </el-upload>
@@ -216,6 +217,7 @@ export default {
         title: "",
         num: "",
         introduction: "",
+        uploaderId: "",
 
         time: "",
         type: "",
@@ -313,12 +315,21 @@ export default {
     handlePreview(file) {
       console.log(file);
     },
-    submitUpload() {
-      this.$refs.upload.submit();
-
+    onSuccess(response, file, fileList) {
+      this.Office.filePath.push(response.data.name)
+      console.log(this.Office)
       insertTeacherFile(this.Office).then(resp => {
         console.log(resp.data)
       });
+    },
+    submitUpload() {
+      if(document.getElementsByClassName('el-upload-list__item')[0] == null){
+        insertTeacherFile(this.Office).then(resp => {
+          console.log(resp.data)
+        });
+      }else{
+        this.$refs.upload.submit();
+      }
     },
     handleExceed(files, fileList) {
       this.$message.warning(`当前限制选择 3 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);

@@ -80,8 +80,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         String subject = "邮件注册验证码";
         String code = ValidateCodeUtils.generateValidateCode(6).toString();
         log.warn("验证码已生成：" + code);
-        String context = "验证码300s内有效，若重复发送验证码，请使用最新收到的验证码：" + code;
-        emailService.sendEmailTemplate(email, subject, context);
+        emailService.sendMimeMail(email, subject, code);
         redisService.set(CodeKey.code, email, code);
         log.info("验证码发送成功");
     }

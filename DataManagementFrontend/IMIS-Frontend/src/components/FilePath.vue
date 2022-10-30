@@ -1,11 +1,9 @@
 <template>
   <div class="container">
-    <div class="context">
-      <div class="id">{{ id }}</div>
-      <div class="name">{{ name }}</div>
-      <div class="type">{{ type }}</div>
-    </div>
-    <div></div>
+
+
+
+
   </div>
 </template>
 
@@ -13,13 +11,12 @@
 export default {
   name: "FilePath",
   data() {
-    return {
-      id:1,
- name:1,
- type:2
 
-  }
-}}
+    return {
+
+    }
+  },
+}
 </script>
 
 <style scoped>
