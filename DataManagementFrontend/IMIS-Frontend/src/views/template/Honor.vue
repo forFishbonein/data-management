@@ -7,7 +7,7 @@
         <div v-show="this.Honor.introduction" class="introduction">{{ Honor.introduction }}</div>
         <div class="details">
           <div v-show="this.Honor.award_name" class="name">奖励名称：{{ Honor.award_name }}</div>
-          <div v-show="this.Honor.uploaderId" class="uploader">上传者：{{Honor.uploaderId}}</div>
+          <div v-show="this.Honor.uploaderId" class="uploader">上传者：{{ Honor.uploaderId }}</div>
           <div v-show="this.Honor.createTime" class="createTime">上传时间：{{ Honor.createTime }}</div>
           <div v-show="this.Honor.time" class="time">奖励时间：{{ Honor.time }}</div>
           <div v-show="this.Honor.type" class="type">奖励类型：{{ Honor.type }}</div>
@@ -24,8 +24,9 @@
       </div>
       <FilePath></FilePath>
       <div class="button">
-        <button class="button1">删除</button>
-        <button class="button2">编辑</button>
+        <button class="button button1">删除</button>
+        <button class="button button2">编辑</button>
+        <button class="button button3" @click="exportExcel">导出Excel</button>
       </div>
     </div>
   </div>
@@ -36,6 +37,8 @@ import TeacherNav from "../../components/TeacherNav";
 import TeacherHeader from "../../components/TeacherHeader";
 import TeacherData from "../../components/TeacherData";
 import FilePath from "../../components/FilePath";
+
+import {excelExport} from '@/api/file.js'
 
 export default {
   name: "Honor",
@@ -48,7 +51,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId:"",
+        uploaderId: "",
         award_name: "",
         time: "",
         type: "",
@@ -65,16 +68,88 @@ export default {
     }
 
   },
-  props:['templateType','id'],
-    created(){
-      let obj = {}
-      obj.TEMPLATE_TYPE = this.templateType;
-      obj.id = this.id;
-      this.$store.dispatch('getDetails', obj).then(res => {
-        // console.log(res)
-        this.Honor = res
-      })
+  props: ['templateType', 'id'],
+  created() {
+    let obj = {}
+    obj.TEMPLATE_TYPE = this.templateType;
+    obj.id = this.id;
+    this.$store.dispatch('getDetails', obj).then(res => {
+      // console.log(res)
+      this.Honor = res
+    })
   },
+  methods: {
+    exportExcel() {
+      this.ExcelTitle = [];
+      this.ExcelValue = [];
+      this.ExcelTitle.push(
+        "编号",
+        "时间",
+        "奖励名称",
+        "奖励类型",
+        "等级",
+        "级别",
+        "项目名称",
+        "批文号",
+        "成员");
+
+      this.ExcelValue.push(
+        this.Honor.num,
+        this.Honor.time,
+        this.Honor.award_name,
+        this.Honor.type,
+        this.Honor.grade,
+        this.Honor.name,
+        this.Honor.approval_num,
+      );
+
+      let item = 0;
+      let str = "";
+      for (item in this.Honor.member) {
+        str = str + this.Honor.member[item] + ",";
+      }
+      var reg = /,$/gi;
+      str = str.replace(reg, "");
+
+      this.ExcelValue.push(str);
+
+      item = 0;
+      for (item in this.Honor.other) {
+        this.ExcelTitle.push(this.Honor.other[item].key);
+        this.ExcelValue.push(this.Honor.other[item].value);
+      }
+
+      console.log(this.ExcelTitle);
+      console.log(this.ExcelValue)
+
+      var lists = [];
+      lists.push(this.ExcelTitle);
+      lists.push(this.ExcelValue);
+
+      console.log(lists)
+
+      excelExport(lists).then(res => {
+        console.log(res)
+        const _res = res;
+        let blob = new Blob([_res], {type: 'application/vnd.ms-excel;charset=utf-8'});
+        let downloadElement = document.createElement("a");
+        let href = window.URL.createObjectURL(blob);
+        downloadElement.href = href;
+        var dates = new Date();
+        var times = dates.getTime();
+        var fileName = this.Honor.title
+        downloadElement.download = times + fileName + '.xls';
+        document.body.appendChild(downloadElement);
+        downloadElement.click();
+        document.body.removeChild(downloadElement);
+        window.URL.revokeObjectURL(href);
+      }).catch(error => {
+        console.log(error)
+      })
+
+    },
+  },
+
   components: {
     TeacherNav,
     TeacherHeader,
@@ -127,32 +202,36 @@ export default {
 }
 
 .button {
-  height: 80px;
+  float: right;
+  margin: 8px;
+  padding: 8px 16px;
+  text-align: center;
+  color: #fff;
+  border-radius: 8px;
+}
 
+.button3 {
+  background: #26af00;
+}
+
+.button3:hover {
+  background: #1e8000;
 }
 
 .button2 {
-  margin: 20px;
-  padding: 20px;
-  float: right;
-  padding-right: 30px;
-  width: 100px;
-  height: 70px;
   background: #104A85;
-  text-align: center;
-  color: #fff;
+}
+
+.button2:hover {
+  background: #08386a;
 }
 
 .button1 {
-  margin: 20px;
-  padding: 20px;
-  float: right;
-  padding-right: 30px;
-  width: 100px;
-  height: 70px;
   background: #EB8C2D;
-  text-align: center;
-  color: #fff;
+}
+
+.button1:hover {
+  background: #c6721f;
 }
 
 

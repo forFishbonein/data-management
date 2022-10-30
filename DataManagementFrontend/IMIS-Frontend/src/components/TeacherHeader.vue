@@ -1,7 +1,7 @@
 <template>
   <div class="teacher-header">
     <div class="bgpicture">
-      
+
     </div>
     <div class="teacher">
       <div class="teacher-pic">
@@ -79,7 +79,7 @@ export default {
   height: 120px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-  background: url("../../static/img/teacher1.jpg")no-repeat 
+  background: url("../../static/img/teacher1.jpg") no-repeat
 }
 
 .teacher {

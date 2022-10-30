@@ -27,12 +27,7 @@ import java.util.List;
 @Service
 public class ExcelService {
 
-    public void export(HttpServletRequest req, HttpServletResponse resp, List<List<String>> lists) {
-
-        resp.setContentType("application/vnd.ms-excel");
-        resp.setHeader("Content-Disposition","attachment;filename=\"duty.xls\"");
-
-
+    public void export(HttpServletResponse resp, List<List<String>> lists) {
         List<String> l0 = new ArrayList<>();
         List<String> l1 = new ArrayList<>();
 
@@ -59,24 +54,23 @@ public class ExcelService {
             cell.setCellValue(l1.get(item));
         }
         try {
+            String fileName = "导出表";
+            resp.setContentType("application/vnd.ms-excel");
+            resp.setCharacterEncoding("utf-8");
+            resp.setHeader("Content-Disposition", "attachment;filename=" + new String(fileName.getBytes("gbk"), "iso8859-1") + ".xls");
+//            resp.setHeader("Content-Disposition","attachment;filename=\"duty.xls\"");
             OutputStream outputStream = resp.getOutputStream();
 
             //FileOutputStream out = new FileOutputStream("E:\\s3d4.xls");
             wb.write(outputStream);
+//            outputStream.flush();
             //流的关闭
             //out.close();
             outputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
             throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
-
         }
         //创建流并将wb输出
-
-
-
-        return;
     }
-
-
 }

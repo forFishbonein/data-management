@@ -8,24 +8,24 @@ import store from "./store";
 import {
   Autocomplete,
   Button,
-  Input,
   DatePicker,
+  Dialog,
+  Form,
+  FormItem,
+  Input,
   Link,
   Menu,
   MenuItem,
   MenuItemGroup,
   Message,
   MessageBox,
-  Dialog,
   Pagination,
+  Row,
   Submenu,
   Table,
   TableColumn,
   Tag,
   Upload,
-  Form,
-  FormItem,
-  Row,
 } from "element-ui";
 
 Vue.use(Pagination);
@@ -50,8 +50,6 @@ Vue.use(Row);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox;
-
-
 
 
 Vue.config.productionTip = false;

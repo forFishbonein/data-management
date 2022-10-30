@@ -12,10 +12,10 @@
             <td class="label required">编号</td>
             <td>
               <el-input
-                class="property"
-                placeholder="请输入项目编号"
                 v-model="Office.num"
-                clearable>
+                class="property"
+                clearable
+                placeholder="请输入项目编号">
               </el-input>
             </td>
           </tr>
@@ -23,22 +23,22 @@
             <td class="label required">资源名称</td>
             <td>
               <el-input
-                class="property"
-                placeholder="请输入资源名称"
                 v-model="Office.title"
-                clearable>
+                class="property"
+                clearable
+                placeholder="请输入资源名称">
               </el-input>
             </td>
           </tr>
           <tr>
-            <td class="label required" >项目简介</td>
+            <td class="label required">项目简介</td>
             <td colspan="2">
               <el-input
+                v-model="Office.introduction"
+                :autosize="{ minRows: 6, maxRows: 8}"
                 class="property"
                 style="width: 500px"
                 type="textarea"
-                v-model="Office.introduction"
-                :autosize="{ minRows: 6, maxRows: 8}"
               >
               </el-input>
             </td>
@@ -53,10 +53,10 @@
             <td class="label">活动主题</td>
             <td>
               <el-input
-                class="property"
-                placeholder="请输入活动主题"
                 v-model="Office.topic"
-                clearable>
+                class="property"
+                clearable
+                placeholder="请输入活动主题">
               </el-input>
             </td>
           </tr>
@@ -64,10 +64,10 @@
             <td class="label">学习内容</td>
             <td>
               <el-input
-                class="property"
-                type="textarea"
                 v-model="Office.content"
                 :autosize="{ minRows: 6, maxRows: 8}"
+                class="property"
+                type="textarea"
               >
               </el-input>
             </td>
@@ -76,9 +76,9 @@
             <td class="label">活动类型</td>
             <td>
               <el-autocomplete
-                class="property"
                 v-model="Office.type"
                 :fetch-suggestions="querySearch"
+                class="property"
                 placeholder="请选择类型或直接输入"
                 popper-class="my-autocomplete"
                 @select="handleSelect">
@@ -97,10 +97,10 @@
             <td class="label">活动时间</td>
             <td>
               <el-date-picker
-                class="property"
                 v-model="Office.time"
-                type="date"
-                placeholder="选择时间">
+                class="property"
+                placeholder="选择时间"
+                type="date">
               </el-date-picker>
             </td>
           </tr>
@@ -108,10 +108,10 @@
             <td class="label">活动地点</td>
             <td>
               <el-input
-                class="property"
                 v-model="Office.address"
-                placeholder="请输入活动地点"
-                clearable>
+                class="property"
+                clearable
+                placeholder="请输入活动地点">
               </el-input>
             </td>
           </tr>
@@ -119,22 +119,22 @@
             <td class="label">参与人</td>
             <td>
               <el-tag
-                v-model="Office.participant"
-                :key="tag"
                 v-for="tag in Office.participant"
-                closable
+                :key="tag"
+                v-model="Office.participant"
                 :disable-transitions="false"
+                closable
                 @close="handleClose(tag)">
                 {{ tag }}
               </el-tag>
               <el-input
-                class="input-new-tag"
                 v-if="inputVisible"
-                v-model="inputValue"
                 ref="saveTagInput"
+                v-model="inputValue"
+                class="input-new-tag"
                 size="small"
-                @keyup.enter.native="handleInputConfirm"
-                @blur="handleInputConfirm">
+                @blur="handleInputConfirm"
+                @keyup.enter.native="handleInputConfirm">
               </el-input>
               <el-button v-else class="button-new-tag" size="small" @click="showInput">+添加成员</el-button>
             </td>
@@ -143,17 +143,17 @@
             <td class="label">上传文件</td>
             <td>
               <el-upload
-                class="upload-demo"
                 ref="upload"
-                action="http://localhost:8888/file/upload"
-                :on-preview="handlePreview"
-                :on-remove="handleRemove"
                 :auto-upload="false"
                 :before-remove="beforeRemove"
-                multiple
+                :file-list="this.fileList"
                 :on-exceed="handleExceed"
+                :on-preview="handlePreview"
+                :on-remove="handleRemove"
                 :on-success="onSuccess"
-                :file-list="this.fileList">
+                action="http://localhost:8888/file/upload"
+                class="upload-demo"
+                multiple>
                 <el-button size="small" type="primary">选择文件</el-button>
               </el-upload>
             </td>
@@ -178,7 +178,7 @@
               </el-input>
             </td>
             <td>
-              <el-button type="primary" size="small" @click="addInput()">添加</el-button>
+              <el-button size="small" type="primary" @click="addInput()">添加</el-button>
             </td>
             <td class="prompt2">
               此处可自定义需要的字段并输入其内容。
@@ -205,7 +205,8 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-import { insertTeacherFile } from '@/api/file.js'
+import {insertTeacherFile} from '@/api/file.js'
+
 export default {
   name: 'OfficeUpload',
   components: {TeacherNav},
@@ -229,6 +230,7 @@ export default {
         other: [],
         filePath: [],
         createTime: "",
+        uploaderId: this.$store.state.userId
       },
 
       fileList: [],
@@ -323,11 +325,11 @@ export default {
       });
     },
     submitUpload() {
-      if(document.getElementsByClassName('el-upload-list__item')[0] == null){
+      if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
         insertTeacherFile(this.Office).then(resp => {
           console.log(resp.data)
         });
-      }else{
+      } else {
         this.$refs.upload.submit();
       }
     },
