@@ -22,18 +22,16 @@
           <div class="add">
             <p v-for="item in Studying.other">{{ item.key }} : {{ item.value }}</p>
           </div>
-
-
+          <FilePath></FilePath>
+          <div class="button">
+            <button class="button button1">删除</button>
+            <button class="button button2">编辑</button>
+            <button class="button button3" @click="exportExcel">导出Excel</button>
+          </div>
         </div>
-
-      </div>
-      <!-- <FilePath></FilePath> -->
-      <div class="button">
-        <button class="button button1">删除</button>
-        <button class="button button2">编辑</button>
-        <button class="button button3" @click="exportExcel">导出Excel</button>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 </template>
 
@@ -41,11 +39,12 @@
 import TeacherNav from "../../components/TeacherNav";
 import TeacherHeader from "../../components/TeacherHeader";
 import TeacherData from "../../components/TeacherData";
-// import FilePath from "../../components/FilePath";
+import FilePath from "../../components/FilePath";
 import {excelExport} from '@/api/file.js'
+import LoginFooter from "../../components/LoginFooter.vue";
 
 export default {
-  name: "ReStudying",
+  name: "Studying",
   data() {
     return {
       Studying: {
@@ -158,8 +157,8 @@ export default {
     TeacherNav,
     TeacherHeader,
     TeacherData,
-    // FilePath
-  }
+    LoginFooter
+}
 }
 
 

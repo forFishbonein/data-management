@@ -45,7 +45,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    component: CodeLogin
+    component: Teaching
   },
   {
     path: "/login",
@@ -293,6 +293,8 @@ router.beforeEach((to, from, next) => {
         store
           .dispatch("getUserInfo") //获取用户信息
           .then(data => {
+            // console.log(store.state.teacherEmail)
+            // alert("!11 21211")
             //获取用户信息
             next();
           })

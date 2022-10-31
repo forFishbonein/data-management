@@ -31,31 +31,35 @@
 
 <script>
 // import {getByTeacherId} from '@/api'
-import store from "@/store";
+// import store from "@/store";
 
 export default {
   name: "TeacherHeader",
-  mounted() {
-
-  },
-  methods: {
-
-
-    data() {
-      return {
-        id: "",
-
-        teacher: {
-          teacherName: this.$store.state.teacherName,
-          teacherEmail: this.$store.state.teacherEmail,
-          teacherSid: this.$store.state.teacherSid,
-          teacherId: this.$store.state.teacherId,
-          teacherTitle: this.$store.state.teacherTitle,
-          teacherTele: this.$store.state.teacherTele
-        },
-
+  data() {
+    return {
+      id: "",
+      teacher: {
+        teacherName: "",
+        teacherEmail: "",
+        teacherSid:"",
+        teacherId:"",
+        teacherTitle: "",
+        teacherTele:""
       }
     }
+  },
+  methods: {
+    getInfo() {
+      this.teacher.teacherName = this.$store.state.teacherName
+      this.teacher.teacherEmail = this.$store.state.teacherEmail
+      this.teacher.teacherSid = this.$store.state.teacherSid
+      this.teacher.teacherId = this.$store.state.teacherId
+      this.teacher.teacherTitle = this.$store.state.teacherTitle
+      this.teacher.teacherTele = this.$store.state.teacherTele
+    }
+  },
+  created() {
+    this.getInfo()
   }
 }
 </script>

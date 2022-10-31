@@ -1,9 +1,9 @@
 import Vuex from "vuex";
 import Vue from "vue";
-import {getToken, removeToken, setToken} from "@/request/token";
-import {codeLogin, getUserInfo, passLogin} from "@/api/login";
-import {postRegisterTeacher} from "@/api/register";
-import {getOneFile} from "@/api/file";
+import { getToken, removeToken, setToken } from "@/request/token";
+import { codeLogin, getUserInfo, passLogin } from "@/api/login";
+import { postRegisterTeacher } from "@/api/register";
+import { getOneFile } from "@/api/file";
 
 Vue.use(Vuex);
 
@@ -57,9 +57,10 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    codeLogin({commit}, user) {
+    codeLogin({ commit }, user) {
       return new Promise((resolve, reject) => {
-        codeLogin(user.email, user.code).then(data => {
+        codeLogin(user.email, user.code)
+          .then(data => {
             if (data.success) {
               commit("SET_TOKEN", data.data);
               setToken(data.data);
@@ -73,11 +74,11 @@ export default new Vuex.Store({
           });
       });
     },
-    passLogin({commit}, login) {
+    passLogin({ commit }, login) {
       return new Promise((resolve, reject) => {
-
-        passLogin(login).then(res => {
-
+        passLogin(login)
+          .then(res => {
+            console.log(res);
             // if (res.success) {
             console.log(res.data);
             commit("SET_TOKEN", res.data);
@@ -86,26 +87,29 @@ export default new Vuex.Store({
             // } else {
             //   reject(res.msg);
             // }
-          }).catch(error => {
+          })
+          .catch(error => {
             console.log(error);
             reject(error);
           });
       });
     },
-    getUserInfo({commit, state}) {
+    getUserInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getUserInfo(state.token)
-          .then(data => {
-            if (data.success) {
-              commit("SET_TEACHEREMAIL", data.data.teacherEmail);
-              commit("SET_TEACHERNAME", data.data.teacherName);
-              commit("SET_TEACHERID", data.data.teacherId);
-              commit("SET_TEACHERSID", data.data.teacherSid);
-              commit("SET_TEACHERTITLE", data.data.teacherTitle);
-              commit("SET_TEACHERTELE", data.data.teacherTele);
-              commit("SET_CREATETIME", data.data.createTime);
-              commit("SET_UPDATETIME", data.data.updateTime);
-              resolve(data);
+          .then(res => {
+            if (res) {
+              // alert("大赛的撒大所大所多")
+              // console.log(res);
+              commit("SET_TEACHEREMAIL", res.data.teacherEmail);
+              commit("SET_TEACHERNAME", res.data.teacherName);
+              commit("SET_TEACHERID", res.data.teacherId);
+              commit("SET_TEACHERSID", res.data.teacherSid);
+              commit("SET_TEACHERTITLE", res.data.teacherTitle);
+              commit("SET_TEACHERTELE", res.data.teacherTele);
+              commit("SET_CREATETIME", res.data.createTime);
+              commit("SET_UPDATETIME", res.data.updateTime);
+              resolve(res);
             } else {
               commit("SET_TEACHEREMAIL", "");
               commit("SET_TEACHERNAME", "");
@@ -116,7 +120,7 @@ export default new Vuex.Store({
               commit("SET_CREATETIME", "");
               commit("SET_UPDATETIME", "");
               removeToken();
-              resolve(data);
+              resolve(res);
             }
           })
           .catch(error => {
@@ -133,7 +137,7 @@ export default new Vuex.Store({
           });
       });
     },
-    logout({commit, state}) {
+    logout({ commit, state }) {
       return new Promise((resolve, reject) => {
         logout(state.token)
           .then(data => {
@@ -156,7 +160,7 @@ export default new Vuex.Store({
       });
     },
     // 前端 登出
-    fedLogOut({commit}) {
+    fedLogOut({ commit }) {
       return new Promise(resolve => {
         commit("SET_TEACHEREMAIL", "");
         commit("SET_TEACHERNAME", "");
@@ -172,7 +176,7 @@ export default new Vuex.Store({
         reject(error);
       });
     },
-    teacherRegister({commit}, teacher) {
+    teacherRegister({ commit }, teacher) {
       return new Promise((resolve, reject) => {
         postRegisterTeacher(teacher)
           .then(data => {
@@ -206,7 +210,7 @@ export default new Vuex.Store({
     //       });
     //   });
     // }
-    getDetails({commit, state}, obj) {
+    getDetails({ commit, state }, obj) {
       return new Promise((resolve, reject) => {
         commit("SET_QUERY", obj);
         getOneFile(state.Query)
