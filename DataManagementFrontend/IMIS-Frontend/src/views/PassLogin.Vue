@@ -50,9 +50,6 @@ export default {
       )
     },
     passLogin(login) {
-      // this.$router.replace(
-      //   name = 'passlogin'
-      // )
 
       this.$store.dispatch('passLogin', login).then(res => {
         this.$message({message: '登录成功！', type: 'success', showClose: true});
