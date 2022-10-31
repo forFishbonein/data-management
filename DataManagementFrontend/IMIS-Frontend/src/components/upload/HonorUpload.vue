@@ -261,6 +261,8 @@ export default {
     };
 
   },
+  props: ["obj"],
+
   methods: {
     Template(key, value) {
       this.key = key;
@@ -435,6 +437,8 @@ export default {
   },
   mounted() {
     this.restaurants = this.loadAll();
+    this.Honor = this.obj;
+
   }
 }
 

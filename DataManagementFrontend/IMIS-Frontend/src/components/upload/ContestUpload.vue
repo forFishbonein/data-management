@@ -237,6 +237,8 @@ export default {
     };
 
   },
+  props: ["obj"],
+
   methods: {
     Template(key, value) {
       this.key = key;
@@ -386,7 +388,7 @@ export default {
         vm => {
           if(vm.$store.state.flag != 1){
 
-            if(from.fullPath == "/manage/filemanage" || from.path == "/studentcontest"){
+            if(from.fullPath == "/manage/filemanage" || from.path == "/studentContest"){
 
               console.log(vm)
               console.log(from.fullPath)
@@ -411,6 +413,8 @@ export default {
   },
   mounted() {
     this.restaurants = this.loadAll();
+    this.StudentContest = this.obj;
+
   }
 }
 

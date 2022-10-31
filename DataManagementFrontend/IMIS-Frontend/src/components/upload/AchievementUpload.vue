@@ -264,6 +264,7 @@ export default {
     return {
       Achievement: {
         TEMPLATE_TYPE: "achievement",
+        num: "",
         id: "",
         title: "",
         introduction: "",
@@ -301,6 +302,7 @@ export default {
     };
 
   },
+  props: ["obj"],
   methods: {
     Template(key, value) {
       this.key = key;
@@ -402,18 +404,18 @@ export default {
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`);
-    }
-  },
+    },
+
   changeMethod(path){
     this.$store.dispatch('changeFlag',1)
     this.$store.dispatch('changePageFrom', path)
     console.log(this.$store.state.flag)
     console.log(this.$store.state.pageFrom)
     this.onSuccess = function (){
-      this.Achievement.filePath.push(response.data.name)
+      this.StudentContest.filePath.push(response.data.name)
       console.log(this.Achievement)
       updateTeacherFile(this.Achievement).then(resp => {
-        const h = this.$createElement;
+        const h = this.Achievement;
         this.$notify({
           title: '提示',
           message: h('i', { style: 'color: green'}, resp.data)
@@ -422,21 +424,22 @@ export default {
         this.$router.replace(this.$store.state.pageFrom)
       });
     }
-    this.submitUpload = function () {
-      if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
-        updateTeacherFile(this.Achievement).then(resp => {
-          const h = this.$createElement;
-          this.$notify({
-            title: '提示',
-            message: h('i', { style: 'color: green'}, resp.data)
+      this.submitUpload = function () {
+        if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
+          updateTeacherFile(this.Achievement).then(resp => {
+            const h = this.$createElement;
+            this.$notify({
+              title: '提示',
+              message: h('i', { style: 'color: green'}, resp.data)
+            });
+            console.log(resp.data)
+            this.$router.replace(this.$store.state.pageFrom)
           });
-          console.log(resp.data)
-          this.$router.replace(this.$store.state.pageFrom)
-        });
-      } else {
-        this.$refs.upload.submit();
+        } else {
+          this.$refs.upload.submit();
+        }
       }
-    }
+    },
   },
 
   beforeRouteEnter (to, from, next) {
@@ -460,12 +463,12 @@ export default {
           // vm.$router.push('/manage')
         }
       }
-        // a = document.getElementById("insert");
-        // a[0].style.display = "none"
-        // a = document.getElementById("update");
-        // a[0].style.display = "block"
+      // a = document.getElementById("insert");
+      // a[0].style.display = "none"
+      // a = document.getElementById("update");
+      // a[0].style.display = "block"
 
-    // }
+      // }
     ); // err 与 12134 是随便传的值， 可忽略
   },
   // beforeRouteLeave(to, from){
@@ -481,6 +484,7 @@ export default {
     //   this.$router.push(this.pageFrom)
     // }
     this.restaurants = this.loadAll();
+    this.Achievement = this.obj;
   }
 }
 

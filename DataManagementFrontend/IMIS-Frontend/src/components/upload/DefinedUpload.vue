@@ -160,6 +160,8 @@ export default {
       pageFrom: ""
     };
   },
+  props: ["obj"],
+
   methods: {
     Template(key, value) {
       this.key = key;
@@ -328,6 +330,11 @@ export default {
         // }
       ); // err 与 12134 是随便传的值， 可忽略
     },
+
+  },
+  mounted() {
+    this.restaurants = this.loadAll();
+    this.UserDefined = this.obj;
 
   }
 

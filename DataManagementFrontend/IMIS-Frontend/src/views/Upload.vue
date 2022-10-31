@@ -11,7 +11,7 @@
 
         <router-link to="/upload/achievement"><span>成果类</span></router-link>
 
-        <router-link to="/upload/contest"><span>学生竞赛</span></router-link>
+        <router-link to="/upload/studentcontest"><span>学生竞赛</span></router-link>
 
         <router-link to="/upload/communication"><span>交流访问</span></router-link>
 
@@ -20,7 +20,7 @@
         <router-link to="/upload/office"><span>教研室</span></router-link>
 
 
-        <router-link class="ud" to="/upload/defined">自定义</router-link>
+        <router-link class="ud" to="/upload/userdefined">自定义</router-link>
 
       </div>
       <div class="context">
