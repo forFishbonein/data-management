@@ -15,9 +15,9 @@ export function getAllTeacher() {
 // }
 
 
-export function getProfile() {
+export function getProfile(id) {
   return request({
     method: "get",
-    url: `/file/1584124052249804800`
+    url: `/file/${id}`
   });
 }

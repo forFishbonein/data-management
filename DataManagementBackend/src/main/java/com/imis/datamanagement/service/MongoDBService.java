@@ -62,8 +62,10 @@ public class MongoDBService {
     //获取当前用户的所有资源（个人详情）
     public List<Object> getById(Long id) {
         System.out.println("id = " + id);
+//        Criteria criteria = new Criteria();
+//        Query query = new Query(Criteria.where("uploaderId").is(String.valueOf(id)));
         Query query = new Query();
-        query.addCriteria(Criteria.where("uploaderId").is(id));
+        query.addCriteria(Criteria.where("uploaderId").is(String.valueOf(id)));
         System.out.println(query);
         query.addCriteria(Criteria.where("deleted").is("0"));
 
@@ -88,7 +90,7 @@ public class MongoDBService {
         l.add(teachings);
         l.add(userDefineds);
 
-
+        System.out.println(l);
 
         return l;
     }
@@ -122,6 +124,7 @@ public class MongoDBService {
     }
 
     public void insertTemplate(@RequestBody AbstractTemplate abstractTemplate) {
+        System.out.println(abstractTemplate.getUploaderId());
         abstractTemplate.setTEMPLATE_TYPE(abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
         abstractTemplate.setId(getMongoId(abstractTemplate));
         Date date = new Date();

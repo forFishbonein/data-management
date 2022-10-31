@@ -6,12 +6,15 @@ package com.imis.datamanagement.common.vo;
  * @File : DataManagement4IMIS
  */
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
 @Data
 public class ShowVo {
 
-    private Long teacherId;
+    @JsonSerialize(using = ToStringSerializer.class)
+    private String teacherId;
 
     private String teacherEmail;
 

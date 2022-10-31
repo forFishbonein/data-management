@@ -4,6 +4,8 @@ package com.imis.datamanagement.domain.template;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableLogic;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
@@ -24,6 +26,7 @@ public class Achievement extends AbstractTemplate{
 
     private String title;
 
+    @JsonSerialize(using = ToStringSerializer.class)
     private String uploaderId;
 
     private String num;

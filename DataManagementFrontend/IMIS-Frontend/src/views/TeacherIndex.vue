@@ -56,7 +56,8 @@ export default {
   },
   methods: {
     getProfile() {
-      getProfile().then(res => {
+      getProfile(this.$store.state.teacherId).then(res => {
+        console.log(res)
         // console.log(res.data[1])
         for (var i = 0; i < res.data.length; i++) {
           for (var j = 0; j < res.data[i].length; j++) {

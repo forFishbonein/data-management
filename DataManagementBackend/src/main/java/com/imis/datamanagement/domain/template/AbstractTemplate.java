@@ -8,6 +8,8 @@ package com.imis.datamanagement.domain.template;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -46,6 +48,7 @@ public abstract class AbstractTemplate {
     String introduction;
 
     @Field("a_uploaderId")
+    @JsonSerialize(using = ToStringSerializer.class)
     String uploaderId;
 
     @Field("a_other")

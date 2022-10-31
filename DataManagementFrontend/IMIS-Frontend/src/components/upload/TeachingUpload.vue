@@ -357,6 +357,7 @@ export default {
     },
     submitUpload:function () {
       if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
+        alert(this.Teaching.uploaderId)
         insertTeacherFile(this.Teaching).then(resp => {
           const h = this.$createElement;
           this.$notify({
