@@ -42,14 +42,14 @@ export default new Vuex.Store({
     SET_TEACHERTITLE: (state, teacherTitle) => {
       state.teacherTitle = teacherTitle;
     },
-    SET_TEACHERTELE: (state, teacherSid) => {
-      state.teacherSid = teacherSid;
+    SET_TEACHERTELE: (state, teacherTele) => {
+      state.teacherTele = teacherTele;
     },
     SET_CREATETIME: (state, createTime) => {
       state.createTime = createTime;
     },
-    SET_UPDATETIME: (state, teacherTele) => {
-      state.teacherTele = teacherTele;
+    SET_UPDATETIME: (state, updateTime) => {
+      state.updateTime = updateTime;
     },
     SET_QUERY: (state, obj) => {
       state.Query.TEMPLATE_TYPE = obj.TEMPLATE_TYPE;
@@ -75,11 +75,9 @@ export default new Vuex.Store({
     },
     passLogin({commit}, login) {
       return new Promise((resolve, reject) => {
-        console.log("000")
+
         passLogin(login).then(res => {
-            alert("123123")
-            console.log(res);
-            // alert("1111");
+
             // if (res.success) {
             console.log(res.data);
             commit("SET_TOKEN", res.data);
@@ -99,18 +97,22 @@ export default new Vuex.Store({
         getUserInfo(state.token)
           .then(data => {
             if (data.success) {
-              commit("SET_USEREMAIL", data.data.userEmail);
-              commit("SET_USERNAME", data.data.userName);
-              commit("SET_USERID", data.data.userId);
-              commit("SET_USERSID", data.data.userSid);
+              commit("SET_TEACHEREMAIL", data.data.teacherEmail);
+              commit("SET_TEACHERNAME", data.data.teacherName);
+              commit("SET_TEACHERID", data.data.teacherId);
+              commit("SET_TEACHERSID", data.data.teacherSid);
+              commit("SET_TEACHERTITLE", data.data.teacherTitle);
+              commit("SET_TEACHERTELE", data.data.teacherTele);
               commit("SET_CREATETIME", data.data.createTime);
               commit("SET_UPDATETIME", data.data.updateTime);
               resolve(data);
             } else {
-              commit("SET_USEREMAIL", "");
-              commit("SET_USERNAME", "");
-              commit("SET_USERID", "");
-              commit("SET_USERSID", "");
+              commit("SET_TEACHEREMAIL", "");
+              commit("SET_TEACHERNAME", "");
+              commit("SET_TEACHERID", "");
+              commit("SET_TEACHERSID", "");
+              commit("SET_TEACHERTITLE", "");
+              commit("SET_TEACHERTELE", "");
               commit("SET_CREATETIME", "");
               commit("SET_UPDATETIME", "");
               removeToken();
@@ -118,10 +120,12 @@ export default new Vuex.Store({
             }
           })
           .catch(error => {
-            commit("SET_USEREMAIL", "");
-            commit("SET_USERNAME", "");
-            commit("SET_USERID", "");
-            commit("SET_USERSID", "");
+            commit("SET_TEACHEREMAIL", "");
+            commit("SET_TEACHERNAME", "");
+            commit("SET_TEACHERID", "");
+            commit("SET_TEACHERSID", "");
+            commit("SET_TEACHERTITLE", "");
+            commit("SET_TEACHERTELE", "");
             commit("SET_CREATETIME", "");
             commit("SET_UPDATETIME", "");
             removeToken();
@@ -134,10 +138,12 @@ export default new Vuex.Store({
         logout(state.token)
           .then(data => {
             if (data.success) {
-              commit("SET_USEREMAIL", "");
-              commit("SET_USERNAME", "");
-              commit("SET_USERID", "");
-              commit("SET_USERSID", "");
+              commit("SET_TEACHEREMAIL", "");
+              commit("SET_TEACHERNAME", "");
+              commit("SET_TEACHERID", "");
+              commit("SET_TEACHERSID", "");
+              commit("SET_TEACHERTITLE", "");
+              commit("SET_TEACHERTELE", "");
               commit("SET_CREATETIME", "");
               commit("SET_UPDATETIME", "");
               removeToken();
@@ -152,10 +158,12 @@ export default new Vuex.Store({
     // 前端 登出
     fedLogOut({commit}) {
       return new Promise(resolve => {
-        commit("SET_USEREMAIL", "");
-        commit("SET_USERNAME", "");
-        commit("SET_USERID", "");
-        commit("SET_USERSID", "");
+        commit("SET_TEACHEREMAIL", "");
+        commit("SET_TEACHERNAME", "");
+        commit("SET_TEACHERID", "");
+        commit("SET_TEACHERSID", "");
+        commit("SET_TEACHERTITLE", "");
+        commit("SET_TEACHERTELE", "");
         commit("SET_CREATETIME", "");
         commit("SET_UPDATETIME", "");
         removeToken();

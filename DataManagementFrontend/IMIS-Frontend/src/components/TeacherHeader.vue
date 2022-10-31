@@ -31,6 +31,7 @@
 
 <script>
 // import {getByTeacherId} from '@/api'
+import store from "@/store";
 
 export default {
   name: "TeacherHeader",
