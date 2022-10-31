@@ -11,10 +11,10 @@
         <NavSearch></NavSearch>
       </div>
       <div class="profile">
-        <el-dropdown>
+        <el-dropdown @command="logout">
           <router-link to="/profile">个人中心</router-link>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
+            <el-dropdown-item command="a">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>

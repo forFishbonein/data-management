@@ -150,6 +150,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         logout(state.token)
           .then(res => {
+            console.log(res);
             if (res) {
               commit("SET_TEACHEREMAIL", "");
               commit("SET_TEACHERNAME", "");
@@ -164,6 +165,7 @@ export default new Vuex.Store({
             }
           })
           .catch(error => {
+            console.log(error);
             reject(error);
           });
       });
