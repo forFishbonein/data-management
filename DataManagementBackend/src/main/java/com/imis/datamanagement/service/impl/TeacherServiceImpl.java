@@ -99,7 +99,8 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
     }
 
     @Override
-    public ShowVo show(Long id) {
+    public ShowVo show(String ids) {
+        Long id = Long.parseLong(ids);
         ShowVo showVo = teacherMapper.getByTeacherId(id);
         if (showVo == null) {
             throw new GlobalException(CodeMsg.USER_NOT_EXIST);
@@ -132,7 +133,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         }
         redisService.delete(CodeKey.code, email);
         String token = UUIDUtil.uuid();
-        ShowVo teacher = show(teacherInMysql.getTeacherId());
+        ShowVo teacher = show(String.valueOf(teacherInMysql.getTeacherId()));
         addCookie(response, token, teacher);
         return token;
     }
@@ -199,7 +200,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         }
         String token = UUIDUtil.uuid();
         System.out.println(token);
-        ShowVo teacher = show(teacherInMysql.getTeacherId());
+        ShowVo teacher = show(String.valueOf(teacherInMysql.getTeacherId()));
         addCookie(response, token, teacher);
         return token;
     }
