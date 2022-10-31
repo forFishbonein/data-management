@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <form action="" class="login-form">
+    <form action="" @submit.prevent class="login-form">
       <div class="login-way-box">
         <div class="codeLogin">
           <router-link to="/codeLogin">验证码登录</router-link>
