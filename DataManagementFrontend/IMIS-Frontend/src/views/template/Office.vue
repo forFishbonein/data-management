@@ -85,7 +85,7 @@ export default {
         "活动类型",
         "活动内容",
         "地点",
-        "参与人）");
+        "参与人");
 
       this.ExcelValue.push(
         this.Office.num,

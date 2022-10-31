@@ -6,6 +6,7 @@ package com.imis.datamanagement.service;
  * @File : DataManagement4IMIS
  */
 
+import com.alibaba.fastjson.JSON;
 import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.domain.template.*;
 import com.imis.datamanagement.exception.GlobalException;
@@ -66,7 +67,7 @@ public class MongoDBService {
         System.out.println(query);
         query.addCriteria(Criteria.where("deleted").is("0"));
 
-        List<Achievement> achievements = mongoTemplate.find(query, Achievement.class);
+        List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
         List<Communication> communications = mongoTemplate.find(query, Communication.class);
         List<Honor> honors = mongoTemplate.find(query, Honor.class);
         List<Office> offices = mongoTemplate.find(query, Office.class);

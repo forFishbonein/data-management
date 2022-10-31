@@ -26,4 +26,7 @@ public class Teacher implements Serializable {
 
     @TableLogic
     private String deleted;
+
+
+
 }
