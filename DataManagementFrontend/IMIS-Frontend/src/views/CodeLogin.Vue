@@ -68,7 +68,6 @@ export default {
         name = 'registerteacher')
     },
     setRemainTime() {
-      console.log('1')
       if (this.curCount == 0) {
         console.log('停止')
         window.clearInterval(this.InterValObj);
@@ -79,7 +78,6 @@ export default {
         this.a[0].setAttribute('value', '重新发送验证码');
       } else {
         this.curCount--;
-        console.log(this.curCount);
         this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
       }
     },
@@ -105,7 +103,6 @@ export default {
       })
 
       this.curCount = this.count
-      this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
       this.InterValObj = window.setInterval(this.setRemainTime, 1000);
 
     },
