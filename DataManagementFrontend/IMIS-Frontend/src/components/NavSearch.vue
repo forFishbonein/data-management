@@ -21,16 +21,21 @@ export default {
   },
   methods: {
     getSearchResults(keyword) {
-      getSearchResults(keyword).then(
-        response => {
-          console.log(response.data)
-          // this.$bus.$emit('searchResult',response.data.data)
-          this.$bus.$emit('searchResult', response.data)
-        },
-        error => {
-          console.log('请求失败了', error.message)
-        }
-      )
+      const h = this.$createElement;
+      this.$notify({
+        title: '提示',
+        message: h('i', { style: 'color: grey'}, "功能暂未开放，敬请期待")
+      });
+      // getSearchResults(keyword).then(
+      //   response => {
+      //     console.log(response.data)
+      //     // this.$bus.$emit('searchResult',response.data.data)
+      //     this.$bus.$emit('searchResult', response.data)
+      //   },
+      //   error => {
+      //     console.log('请求失败了', error.message)
+      //   }
+      // )
     }
   },
 }

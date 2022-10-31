@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <form action="" class="login-form">
+    <form action="" @submit.prevent class="login-form">
       <div class="login-way-box">
         <div class="codeLogin">
           <router-link to="/codeLogin">验证码登录</router-link>
@@ -10,16 +10,19 @@
         </div>
       </div>
       <div class="login-input-box">
-        <input v-model="login.email" class="login-input-box-email" placeholder="请输入邮箱" type="text">
-        <input v-model="login.code" class="login-input-box-code" placeholder="请输入验证码" type="text">
-        <input class="login-input-box-send" value="获取验证码" type="button" @click="sendEmail({ email: login.email })"/>
+        <input v-model="login.email" class="login-input-box-email"
+               placeholder="请输入邮箱" type="text">
+        <input v-model="login.code" class="login-input-box-code"
+               placeholder="请输入验证码" type="text">
+        <input class="login-input-box-send" value="获取验证码" type="button"
+               @click="sendEmail({ email: login.email })"/>
       </div>
       <div class="login-check">
-        <span><input type="checkbox">记住我</span>
+        <span><input type="checkbox">&nbsp;记住我</span>
         <router-link to="/register">注册账号</router-link>
         <router-link to="/register">忘记密码？</router-link>
       </div>
-      <button class="login-button" @click="toLogin(login)">登 录</button>
+      <button class="login-button" @click="codeLogin(login)">登 录</button>
 
     </form>
 
@@ -55,11 +58,6 @@ export default {
         name = 'profile'
       )
     },
-    codeLogin() {
-      this.$router.replace(
-        name = 'codelogin'
-      )
-    },
     passLogin() {
       this.$router.replace(
         name = 'passlogin'
@@ -93,7 +91,14 @@ export default {
 
       postCodeTeacher(data).then(
         response => {
-          response.data.data;
+          if (response.code == 0) {
+            const h = this.$createElement;
+            this.$notify({
+              title: '验证码已发送！',
+              message: h('i', { style: 'color: teal'},)
+            });
+          }
+
         }
       ).catch(error => {
         console.log(error)
@@ -103,17 +108,36 @@ export default {
       this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
       this.InterValObj = window.setInterval(this.setRemainTime, 1000);
 
-    }
-
-
-    ,
-    toLogin(data) {
-      codeLogin(data).then(
-        response => {
-
-        }
-      )
     },
+    codeLogin(login) {
+
+      this.$store.dispatch('codeLogin', login).then(res => {
+        console.log(res.code != 0)
+        if (res.code != 0) {
+          const h = this.$createElement;
+          this.$notify({
+            title: '错误！',
+            message: h('i', { style: 'color: red'}, res.msg)
+          });
+        } else {
+          const h = this.$createElement;
+          this.$notify({
+            title: '登录成功！',
+            message: h('i', { style: 'color: teal'},)
+          });
+          this.$router.push({path: '/profile'})
+        }
+      }).catch((error) => {
+        if (error !== 'error') {
+          const h = this.$createElement;
+          this.$notify({
+            title: '错误！',
+            message: h('i', { style: 'color: red'}, error)
+          });
+        }
+      })
+    },
+
   }
 }
 </script>
@@ -142,10 +166,11 @@ export default {
   left: 50%;
   margin: 0 auto;
   margin-left: -180px;
-  width: 360px;
+  width: 400px;
   height: 480px;
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #fdfdfd;
+  background-image: url("../../static/img/temple.svg");
+  border-radius: 10px;
 }
 
 .login-way-box {
@@ -194,11 +219,12 @@ export default {
 }
 
 .login-input-box input {
-  margin: 10px 10px;
+  margin-top: 30px;
+  margin-left:27px;
   height: 40px;
   border-radius: 6px;
-  padding-left: 10px;
   border: #97a5c3 solid 1px;
+
 }
 
 .login-input-box input:focus,
@@ -207,30 +233,25 @@ export default {
 }
 
 .login-input-box-email {
-  width: 340px;
+  width: 343px;
+  padding-left: 10px;
 }
 
 .login-input-box-code {
   width: 180px;
+  padding-left: 10px;
 }
 
-.login-input-box .login-input-box-send {
-  display: inline-block;
-  padding: 16px;
-  vertical-align: middle;
-  min-width: 120px;
-  font-size: 12px;
-  text-align: center;
-  color: white;
-  line-height: 10px;
-  background-color: #114879;
-  border-radius: 6px;
+.login-input-box-send{
+  width: 130px;
+  color:#FFFFFF;
+  padding-left: 3px;
+  background-color: #3d3d3d;
 }
-
 .login-input-box-send:hover,
 .login-button:hover {
   cursor: pointer;
-  background-color: #1a3f66;
+  background-color: #061931;
 }
 
 .login-check {
@@ -241,16 +262,16 @@ export default {
   float: left;
   color: #113355;
   font-size: 12px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .login-check span {
-  margin-left: 20px;
+  margin-left: 30px;
 
 }
 
 .login-check a:nth-child(2) {
-  margin-left: 140px;
+  margin-left: 165px;
 
 }
 
@@ -260,11 +281,11 @@ export default {
 
 .login-button {
   margin-top: 60px;
-  margin-left: 20px;
+  margin-left: 37px;
   width: 320px;
-  height: 50px;
+  height: 45px;
   border-radius: 8px;
-  background-color: #114879;
+  background-color: #3d3d3d;
   color: white;
   font-size: 18px;
   letter-spacing: 1px;

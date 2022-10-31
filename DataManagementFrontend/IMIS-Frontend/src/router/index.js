@@ -239,42 +239,132 @@ const routes = [
     children: [
       {
         path: "teaching",
-        component: TeachingUpload
+        component: TeachingUpload,
+        props($route) {
+          return {
+            obj: $route.query.obj
+          };
+        }
       },
       {
         path: "achievement",
-        component: AchievementUpload
+        component: AchievementUpload,
+        props($route) {
+          return {
+            obj: $route.query.obj
+          };
+        }
       },
       {
         path: "communication",
-        component: CommunicationUpload
+        component: CommunicationUpload,
+        props($route) {
+          return {
+            obj: $route.query.obj
+          };
+        }
       },
       {
-        path: "contest",
-        component: ContestUpload
+        path: "studentcontest",
+        component: ContestUpload,
+        props($route) {
+          return {
+            obj: $route.query.obj
+          };
+        }
       },
       {
         path: "honor",
-        component: HonorUpload
+        component: HonorUpload,
+        props($route) {
+          return {
+            obj: $route.query.obj
+          };
+        }
       },
       {
         path: "studying",
-        component: StudyingUpload
+        component: StudyingUpload,
+        props($route) {
+          return {
+            obj: $route.query.obj
+          };
+        }
       },
       {
         path: "office",
-        component: OfficeUpload
+        component: OfficeUpload,
+        props($route) {
+          return {
+            obj: $route.query.obj
+          };
+        }
       },
       {
         path: "party",
-        component: PartyUpload
+        component: PartyUpload,
+        props($route) {
+          return {
+            obj: $route.query.obj
+          };
+        }
       },
       {
-        path: "defined",
-        component: DefinedUpload
+        path: "userdefined",
+        component: DefinedUpload,
+        props($route) {
+          return {
+            obj: $route.query.obj
+          };
+        }
       }
     ]
-  }
+  },
+  // {
+  //   path: "/update",
+  //   meta: {
+  //     requireLogin: true
+  //   },
+  //   children: [
+  //     {
+  //       path: "teaching",
+  //       component: TeachingUpdate
+  //     },
+  //     {
+  //       path: "achievement",
+  //       component: AchievementUpdate
+  //     },
+  //     {
+  //       path: "communication",
+  //       component: CommunicationUpdate
+  //     },
+  //     {
+  //       path: "contest",
+  //       component: ContestUpdate
+  //     },
+  //     {
+  //       path: "honor",
+  //       component: HonorUpdate
+  //     },
+  //     {
+  //       path: "studying",
+  //       component: StudyingUpdate
+  //     },
+  //     {
+  //       path: "office",
+  //       component: OfficeUpdate
+  //     },
+  //     {
+  //       path: "party",
+  //       component: PartyUpdate
+  //     },
+  //     {
+  //       path: "defined",
+  //       component: DefinedUpdate
+  //     }
+  //   ]
+  // }
+
 ];
 const router = new VueRouter({
   mode: "history",
@@ -293,6 +383,8 @@ router.beforeEach((to, from, next) => {
         store
           .dispatch("getUserInfo") //获取用户信息
           .then(data => {
+            // console.log(store.state.teacherEmail)
+            // alert("!11 21211")
             //获取用户信息
             next();
           })

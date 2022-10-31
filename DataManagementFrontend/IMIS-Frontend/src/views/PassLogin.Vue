@@ -14,7 +14,7 @@
         <input v-model="login.password" placeholder="请输入密码" type="password">
       </div>
       <div class="login-check">
-        <span><input type="checkbox">记住我</span>
+        <span><input type="checkbox">&nbsp;记住我</span>
         <router-link to="/register">注册账号</router-link>
         <router-link to="/register">忘记密码？</router-link>
       </div>
@@ -50,16 +50,30 @@ export default {
       )
     },
     passLogin(login) {
-      // this.$router.replace(
-      //   name = 'passlogin'
-      // )
 
       this.$store.dispatch('passLogin', login).then(res => {
-        this.$message({message: '登录成功！', type: 'success', showClose: true});
-        this.$router.push({path: '/profile'})
+        console.log(res.code != 0)
+        if (res.code != 0) {
+          const h = this.$createElement;
+          this.$notify({
+            title: '错误！',
+            message: h('i', { style: 'color: red'}, res.msg)
+          });
+        } else {
+          const h = this.$createElement;
+          this.$notify({
+            title: '登录成功！',
+            message: h('i', { style: 'color: teal'},)
+          });
+          this.$router.push({path: '/profile'})
+        }
       }).catch((error) => {
         if (error !== 'error') {
-          this.$message({message: error, type: 'error', showClose: true});
+          const h = this.$createElement;
+          this.$notify({
+            title: '错误！',
+            message: h('i', { style: 'color: red'}, error)
+          });
         }
       })
     },
@@ -67,13 +81,7 @@ export default {
       this.$router.replace(
         name = 'registerteacher')
     },
-    sendEmail(data) {
-      postCodeTeacher(data).then(
-        response => {
-          response.data.data;
-        }
-      )
-    },
+
 
   }
 }
@@ -99,10 +107,11 @@ export default {
   left: 50%;
   margin: 0 auto;
   margin-left: -180px;
-  width: 360px;
+  width: 400px;
   height: 480px;
-  background-color: rgba(255, 255, 255, 0.3);
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background-color: #fdfdfd;
+  background-image: url("../../static/img/temple.svg");
+  border-radius: 10px;
 }
 
 .login-way-box {
@@ -151,7 +160,8 @@ export default {
 }
 
 .login-input-box input {
-  margin: 10px 10px;
+  margin-top: 30px;
+  margin-left:27px;
   width: 340px;
   height: 40px;
   border-radius: 6px;
@@ -178,16 +188,16 @@ export default {
   float: left;
   color: #113355;
   font-size: 12px;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 .login-check span {
-  margin-left: 20px;
+  margin-left: 30px;
 
 }
 
 .login-check a:nth-child(2) {
-  margin-left: 140px;
+  margin-left: 165px;
 
 }
 
@@ -197,11 +207,11 @@ export default {
 
 .login-button {
   margin-top: 60px;
-  margin-left: 20px;
+  margin-left: 37px;
   width: 320px;
-  height: 50px;
+  height: 45px;
   border-radius: 8px;
-  background-color: #114879;
+  background-color: #3d3d3d;
   color: white;
   font-size: 18px;
   letter-spacing: 1px;

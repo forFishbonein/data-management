@@ -6,7 +6,7 @@
         <div class="login"><span>已有账户？</span>
           <router-link to="/login"><span>登录</span></router-link>
         </div>
-        <form action="">
+        <form action=""  @submit.prevent>
           <table>
             <tr>
               <td width="20%"><span>邮箱地址</span></td>

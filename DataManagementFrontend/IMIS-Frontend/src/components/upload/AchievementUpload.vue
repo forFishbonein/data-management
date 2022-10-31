@@ -235,7 +235,7 @@
         <table>
           <tr>
             <td class="label">
-              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="primary" id="insert" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
@@ -249,8 +249,13 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-import {insertTeacherFile} from '@/api/file.js'
+import {insertTeacherFile, updateTeacherFile} from '@/api/file.js'
 import LoginFooter from "../LoginFooter";
+import Vue from "vue";
+
+window.onbeforeunload = function (event) {
+  window.location.href="/upload"
+}
 
 export default {
   name: 'AchievementUpload',
@@ -259,6 +264,7 @@ export default {
     return {
       Achievement: {
         TEMPLATE_TYPE: "achievement",
+        num: "",
         id: "",
         title: "",
         introduction: "",
@@ -291,9 +297,12 @@ export default {
       // key: "",
       // value: "",
       number: [0],
+      pageFrom: ""
+
     };
 
   },
+  props: ["obj"],
   methods: {
     Template(key, value) {
       this.key = key;
@@ -361,17 +370,30 @@ export default {
     handlePreview(file) {
       console.log(file);
     },
-    onSuccess(response, file, fileList) {
+    onSuccess:function (response, file, fileList) {
+      // alert("trtrt")
       this.Achievement.filePath.push(response.data.name)
       console.log(this.Achievement)
       insertTeacherFile(this.Achievement).then(resp => {
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('i', { style: 'color: green'}, resp.data)
+        });
         console.log(resp.data)
+        this.$router.push({path: "/profile"});
       });
     },
-    submitUpload() {
+    submitUpload:function () {
       if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
         insertTeacherFile(this.Achievement).then(resp => {
+          const h = this.$createElement;
+          this.$notify({
+            title: '提示',
+            message: h('i', { style: 'color: green'}, resp.data)
+          });
           console.log(resp.data)
+          this.$router.push({path: "/profile"});
         });
       } else {
         this.$refs.upload.submit();
@@ -382,12 +404,91 @@ export default {
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`);
+    },
+
+  changeMethod(path){
+    this.$store.dispatch('changeFlag',1)
+    this.$store.dispatch('changePageFrom', path)
+    console.log(this.$store.state.flag)
+    console.log(this.$store.state.pageFrom)
+    this.onSuccess = function (){
+      this.StudentContest.filePath.push(response.data.name)
+      console.log(this.Achievement)
+      updateTeacherFile(this.Achievement).then(resp => {
+        const h = this.Achievement;
+        this.$notify({
+          title: '提示',
+          message: h('i', { style: 'color: green'}, resp.data)
+        });
+        console.log(resp.data)
+        this.$router.replace(this.$store.state.pageFrom)
+      });
     }
+      this.submitUpload = function () {
+        if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
+          updateTeacherFile(this.Achievement).then(resp => {
+            const h = this.$createElement;
+            this.$notify({
+              title: '提示',
+              message: h('i', { style: 'color: green'}, resp.data)
+            });
+            console.log(resp.data)
+            this.$router.replace(this.$store.state.pageFrom)
+          });
+        } else {
+          this.$refs.upload.submit();
+        }
+      }
+    },
   },
+
+  beforeRouteEnter (to, from, next) {
+    // console.log("123123")
+    console.log(to, from) // 可以拿到 from， 知道上一个路由是什么，从而进行判断
+    //在next中写处理函数
+    next(
+      vm => {
+        if(vm.$store.state.flag != 1){
+
+          if(from.fullPath == "/manage/filemanage" || from.path == "/achievement"){
+
+            console.log(vm)
+            console.log(from.fullPath)
+            vm.changeMethod(from.fullPath)
+          }
+        }else{
+          vm.$store.dispatch('changeFlag',0)
+          // alert(vm.$store.state.pageFrom)
+          vm.$router.push(vm.$store.state.pageFrom)
+          // vm.$router.push('/manage')
+        }
+      }
+      // a = document.getElementById("insert");
+      // a[0].style.display = "none"
+      // a = document.getElementById("update");
+      // a[0].style.display = "block"
+
+      // }
+    ); // err 与 12134 是随便传的值， 可忽略
+  },
+  // beforeRouteLeave(to, from){
+  //   alert(3132131)
+  //   console.log(to ,from)
+  //   vm => {}
+  //
+  // },
   mounted() {
+    // if (window.performance.navigation.type == 1) {
+    //   console.log("页面被刷新")
+    //   console.log(this.pageFrom)
+    //   this.$router.push(this.pageFrom)
+    // }
     this.restaurants = this.loadAll();
+    this.Achievement = this.obj;
   }
 }
+
+
 
 
 </script>

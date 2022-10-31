@@ -8,17 +8,22 @@
             width:650px;
             height: 900px;
             margin: auto;
+            background: #ffefba;  /* fallback for old browsers */
+            background: -webkit-linear-gradient(to top, rgb(255, 252, 240), rgb(248, 227, 227));  /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to top, rgb(255, 252, 240), rgb(248, 227, 227)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
             border: solid 5px aliceblue;
         }
 
         .logo{
             margin-left: -5px;
             margin-top:40px;
+
         }
-        .logo img{
-            width: 150px;
-            height:80px;
-            border: black;
+        .logo h1{
+            width: 100px;
+            height:40px;
+            margin-left: 25px;
+            color: #316bad;
         }
         .decoration1{
             height:13px;
@@ -35,9 +40,12 @@
             font-size: 18px;
             font-weight: 500;
         }
-        h1{
-            margin-left:200px;
-            margin-top: 60px;
+        .code{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .code h1{
             color: #3C85D7;
         }
         .tips1{
@@ -79,14 +87,14 @@
 <body>
 <div class="main">
     <div class="logo">
-        <img alt="logo" src="img/logo.png">
+        <h1>IMIS</h1>
     </div>
     <div class="decoration1"></div>
     <div class="text1">
         尊敬的用户:<br><br>
         &emsp;&emsp;您好！<br><br>
         &emsp;&emsp;本次请求的邮件验证码为:<br>
-        <h1>[[${message}]]</h1>
+        <div class="code"><h1>[[${message}]]</h1></div>
     </div>
     <div class="tips1">
         此验证码仅在5分钟内有效

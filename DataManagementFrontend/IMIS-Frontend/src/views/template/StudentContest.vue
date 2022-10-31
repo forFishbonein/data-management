@@ -18,18 +18,17 @@
           <div class="add">
             <p v-for="item in StudentContest.other">{{ item.key }} : {{ item.value }}</p>
           </div>
-
-
+          <FilePath>
+          </FilePath>
+          <div class="button">
+            <button class="button button1" @click="deleteById(StudentContest.id,StudentContest.template_TYPE)">删除</button>
+            <button class="button button2" @click="updateById">编辑</button>
+            <button class="button button3" @click="exportExcel">导出Excel</button>
+          </div>
         </div>
-
-      </div>
-      <FilePath></FilePath>
-      <div class="button">
-        <button class="button button1">删除</button>
-        <button class="button button2">编辑</button>
-        <button class="button button3" @click="exportExcel">导出Excel</button>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 </template>
 
@@ -40,6 +39,8 @@ import TeacherData from "../../components/TeacherData";
 import FilePath from "../../components/FilePath";
 
 import {excelExport} from '@/api/file.js'
+import LoginFooter from "../../components/LoginFooter.vue";
+import {deleteById} from '@/api/manage'
 
 export default {
   name: "StudentContest",
@@ -63,6 +64,10 @@ export default {
         filePath: [],
         createTime: "",
       },
+      Delete: {
+        id: "",
+        TEMPLATE_TYPE: ""
+      }
     }
 
   },
@@ -77,6 +82,16 @@ export default {
     })
   },
   methods: {
+    deleteById(id,type) {
+      console.log(id)
+      console.log(type)
+      this.Delete.id =id;
+      this.Delete.TEMPLATE_TYPE = type;
+      deleteById(this.Delete).then(resp => {
+        this.$router.replace(name = 'profile')
+
+      });
+    },
     exportExcel() {
       this.ExcelTitle = [];
       this.ExcelValue = [];
@@ -141,14 +156,21 @@ export default {
       })
 
     },
+    updateById() {
+      console.log(this.StudentContest)
+      this.$router.push({
+        path: "/upload/" + this.StudentContest.template_TYPE,
+      })
+    }
   },
 
   components: {
     TeacherNav,
     TeacherHeader,
     TeacherData,
-    FilePath
-  },
+    FilePath,
+    LoginFooter
+},
 }
 
 

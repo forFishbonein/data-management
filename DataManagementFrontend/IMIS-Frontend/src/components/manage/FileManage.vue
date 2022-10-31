@@ -542,7 +542,14 @@ export default {
     },
 
     updateById(row) {
-
+      console.log("row==")
+      console.log(row)
+      this.$router.push({
+        path: "/upload/" + row.template_TYPE,
+        query: {
+          obj: row,
+        }
+      })
     },
 
     deleteById(row) {

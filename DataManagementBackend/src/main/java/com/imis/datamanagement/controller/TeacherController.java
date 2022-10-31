@@ -16,6 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
@@ -33,6 +34,12 @@ public class TeacherController {
     @PostMapping("/login")
     public Result<String> codeLogin(HttpServletResponse response, @RequestBody LoginVo loginVo) {
         return Result.success(teacherService.codeLogin(response, loginVo));
+    }
+
+    @PostMapping("/logout")
+    public Result<String> logout(HttpServletRequest request) {
+        String token = request.getHeader("Authorization");
+        return Result.success(teacherService.logout(token));
     }
 
     @PostMapping("/passLogin")
@@ -58,7 +65,8 @@ public class TeacherController {
     }
 
     @GetMapping("/user")
-    public Result<ShowVo> getByToken(HttpServletResponse response,@RequestParam String token) {
+    public Result<ShowVo> getByToken(HttpServletRequest request, HttpServletResponse response) {
+        String token = request.getHeader("Authorization");
         return Result.success(teacherService.getByToken(response, token));
     }
 

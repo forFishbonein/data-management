@@ -19,8 +19,16 @@ export function passLogin(login) {
 
 export function getUserInfo(token) {
   return request({
-    headers: {Authorization: token},
+    headers: { Authorization: token },
     url: "/t/user",
     method: "get"
+  });
+}
+
+export function logout(token) {
+  return request({
+    headers: { Authorization: token },
+    url: "/t/logout",
+    method: "post"
   });
 }

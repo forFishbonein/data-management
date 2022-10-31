@@ -11,10 +11,16 @@
         <NavSearch></NavSearch>
       </div>
       <div class="profile">
-        <router-link to="/person">个人中心</router-link>
+        <el-dropdown @command="logout">
+          <router-link to="/profile">个人中心</router-link>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="a">退出登录</el-dropdown-item>
+          </el-dropdown-menu>
+        </el-dropdown>
       </div>
       <div class="upload">
-        <router-link class="upload" to="/upload"><span style="text-align: center">上传</span></router-link>
+
+        <router-link class="upload" to="/upload/studying"><span style="text-align: center">上传</span></router-link>
       </div>
     </nav>
   </div>
@@ -24,9 +30,25 @@ import NavSearch from '../components/NavSearch.vue'
 
 export default {
   name: "TeacherNav",
+  methods:{
+    logout(){
+      this.$store.dispatch('logout').then(res => {
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('i', { style: 'color: grey'}, "已退出")
+        });
+        this.$router.push({path: '/'})
+      }).catch((error) => {
+        if (error !== 'error') {
+          this.$message({message: error, type: 'error', showClose: true});
+        }
+      })
+    }
+  },
   components: {
     NavSearch
-  }
+  },
 }
 </script>
 
@@ -93,6 +115,14 @@ nav .profile {
   text-align: center;
   display: flex;
   cursor: pointer;
+}
+
+.el-dropdown-link {
+  cursor: pointer;
+  color: #409EFF;
+}
+.el-icon-arrow-down {
+  font-size: 12px;
 }
 
 nav .upload {
