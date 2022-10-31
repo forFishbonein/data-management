@@ -13,7 +13,8 @@
           <div v-show="this.Teaching.type" class="type">项目类型：{{ Teaching.type }}</div>
           <div v-show="this.Teaching.level" class="level">项目级别：{{ Teaching.level }}</div>
           <div v-show="this.Teaching.projectTime" class="project_time">立项时间：{{ Teaching.projectTime }}</div>
-          <div v-show="this.Teaching.postProjectTime" class="post_project_time">结项时间：{{Teaching.postProjectTime}}</div>
+          <div v-show="this.Teaching.postProjectTime" class="post_project_time">结项时间：{{ Teaching.postProjectTime }}
+          </div>
           <div v-show="this.Teaching.fund" class="fund">项目经费：{{ Teaching.fund }}</div>
           <div v-show="this.Teaching.member.length" class="member">课题组成员：{{ Teaching.member.join(",") }}</div>
           <div class="add">
@@ -25,9 +26,10 @@
 
       </div>
       <FilePath></FilePath>
-      <div class="button">
-        <button class="button1" @click="exportExcel">删除</button>
-        <button class="button2">编辑</button>
+      <div>
+        <button class="button button1">删除</button>
+        <button class="button button2">编辑</button>
+        <button class="button button3" @click="exportExcel">导出Excel</button>
       </div>
     </div>
   </div>
@@ -38,6 +40,8 @@ import TeacherNav from "../../components/TeacherNav";
 import TeacherHeader from "../../components/TeacherHeader";
 import TeacherData from "../../components/TeacherData";
 import FilePath from "../../components/FilePath";
+
+import {excelExport} from '@/api/file.js'
 
 export default {
   name: "Teaching",
@@ -82,6 +86,8 @@ export default {
 
   methods: {
     exportExcel() {
+      this.ExcelTitle = [];
+      this.ExcelValue = [];
       this.ExcelTitle.push(
         "编号",
         "立项时间",
@@ -107,8 +113,8 @@ export default {
       for (item in this.Teaching.member) {
         str = str + this.Teaching.member[item] + ",";
       }
-      var reg=/,$/gi;
-      str=str.replace(reg,"");
+      var reg = /,$/gi;
+      str = str.replace(reg, "");
 
       this.ExcelValue.push(str);
 
@@ -121,8 +127,32 @@ export default {
       console.log(this.ExcelTitle);
       console.log(this.ExcelValue)
 
+      var lists = [];
+      lists.push(this.ExcelTitle);
+      lists.push(this.ExcelValue);
 
-    }
+      console.log(lists)
+
+      excelExport(lists).then(res => {
+        console.log(res)
+        const _res = res;
+        let blob = new Blob([_res], {type: 'application/vnd.ms-excel;charset=utf-8'});
+        let downloadElement = document.createElement("a");
+        let href = window.URL.createObjectURL(blob);
+        downloadElement.href = href;
+        var dates = new Date();
+        var times = dates.getTime();
+        var fileName = this.Teaching.title
+        downloadElement.download = times + fileName + '.xls';
+        document.body.appendChild(downloadElement);
+        downloadElement.click();
+        document.body.removeChild(downloadElement);
+        window.URL.revokeObjectURL(href);
+      }).catch(error => {
+        console.log(error)
+      })
+
+    },
   },
 
   components: {
@@ -177,32 +207,36 @@ export default {
 }
 
 .button {
-  height: 80px;
+  float: right;
+  margin: 8px;
+  padding: 8px 16px;
+  text-align: center;
+  color: #fff;
+  border-radius: 8px;
+}
 
+.button3 {
+  background: #26af00;
+}
+
+.button3:hover {
+  background: #1e8000;
 }
 
 .button2 {
-  margin: 20px;
-  padding: 20px;
-  float: right;
-  padding-right: 30px;
-  width: 100px;
-  height: 70px;
   background: #104A85;
-  text-align: center;
-  color: #fff;
+}
+
+.button2:hover {
+  background: #08386a;
 }
 
 .button1 {
-  margin: 20px;
-  padding: 20px;
-  float: right;
-  padding-right: 30px;
-  width: 100px;
-  height: 70px;
   background: #EB8C2D;
-  text-align: center;
-  color: #fff;
+}
+
+.button1:hover {
+  background: #c6721f;
 }
 
 

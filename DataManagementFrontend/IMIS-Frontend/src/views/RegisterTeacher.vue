@@ -27,7 +27,7 @@
               </td>
               <td width="35%">
                 <p class="prompt">
-                  <button class="button" @click="sendEmail({ email: teacher.teacherEmail })">获取验证码</button>
+                  <input class="button" value="获取验证码" type="button" @click="sendEmail({ email: teacher.teacherEmail })">
                 </p>
               </td>
             </tr>
@@ -82,8 +82,11 @@
             </tr>
             <tr>
               <td></td>
-              <td><p class="warm">温馨提示：普通教师用户登录仅可查看属于本人的资料，经授权后方可查看所有资料
-                所有个人信息仅供本系统使用</p></td>
+              <td>
+                <p class="warm">温馨提示：普通教师用户登录仅可查看属于本人的资料，经授权后方可查看所有资料
+                所有个人信息仅供本系统使用
+                </p>
+              </td>
             </tr>
             <tr class="know">
               <td></td>
@@ -117,6 +120,10 @@ export default {
 
   data() {
     return {
+      a: '',
+      count: 30,
+      curCount: 0,
+      InterValObj: '',
       teacher: {
         teacherEmail: "",
         code: "",
@@ -130,13 +137,36 @@ export default {
     }
   },
   methods: {
+    setRemainTime() {
+      console.log('1')
+      if (this.curCount == 0) {
+        console.log('停止')
+        window.clearInterval(this.InterValObj);
+        this.a[0].disabled = false;
+        this.a[0].style.backgroundColor = "#3d3d3d";
 
+
+        this.a[0].setAttribute('value', '重新发送验证码');
+      } else {
+        this.curCount--;
+        console.log(this.curCount);
+        this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
+      }
+    },
     sendEmail(data) {
+      this.a=document.getElementsByClassName('button');
+      this.a[0].disabled =true;
+      this.a[0].style.backgroundColor = "#585858";
+
       postCodeTeacher(data).then(
         response => {
           console.log(response.data.data);
         }
       )
+
+      this.curCount = this.count
+      this.a[0].setAttribute('value',this.curCount + "秒后可重新发送");
+      this.InterValObj = window.setInterval(this.setRemainTime,1000);
     },
     regHandle(teacher) {
       if (this.teacher.teacherPass !== '' && this.teacher.teacherRePass !== '') {
@@ -165,7 +195,8 @@ export default {
   padding: 0;
   box-sizing: border-box;
 }
-.know{
+
+.know {
   transform: translateY(-5px);
 }
 
@@ -185,7 +216,8 @@ export default {
   padding: 30px 50px;
   width: 1070px;
   height: 650px;
-  background-color: #fcfbfa;
+  background-color: #fdfdfd;
+  background-image: url("../../static/img/temple.svg");
   border-radius: 10px;
 }
 
@@ -240,8 +272,9 @@ export default {
   border-bottom: 2px solid #eee;
 }
 
-.context table td .underline input[type=text] {
-  background-color: #fcfbfa;
+.context table td .underline input {
+  background-color: #fdfdfd;
+  background-image: url("../../static/img/temple.svg");
   width: 100%;
   padding: 8px;
 }
@@ -251,6 +284,7 @@ export default {
   width: 100%;
   border: 2px dashed #947519;
   background-color: white;
+  background-image: none;
 }
 
 .warm {
@@ -276,7 +310,7 @@ export default {
 }
 
 .button {
-  padding: 4px 8px;
+  padding: 6px 16px;
   background-color: #3d3d3d;
   font-size: 12px;
   color: white;
@@ -286,7 +320,8 @@ export default {
   font-weight: 800;
 }
 
-.bottom:hover {
+.bottom:hover,
+.button:hover {
   background-color: #312d2a;
   cursor: pointer;
 }

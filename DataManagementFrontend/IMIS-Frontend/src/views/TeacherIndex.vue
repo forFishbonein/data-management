@@ -17,7 +17,7 @@
                          :introduction="item.introduction"
                          :name="item.name"
                          :title="item.title"
-                         >
+            >
             </TeacherData>
           </div>
 
@@ -31,8 +31,8 @@
         class="apage"
         layout="prev, pager, next">
       </el-pagination>
-      
-      
+
+
     </div>
     <LoginFooter></LoginFooter>
   </div>
@@ -44,7 +44,6 @@ import TeacherNav from '../components/TeacherNav.vue'
 import TeacherHeader from '../components/TeacherHeader.vue'
 import TeacherData from '../components/TeacherData.vue'
 import LoginFooter from '../components/LoginFooter.vue'
-import {getMaterials} from '@/api'
 import {getProfile} from '@/api/teacher.js'
 
 export default {
@@ -59,11 +58,11 @@ export default {
     getProfile() {
       getProfile().then(res => {
         // console.log(res.data[1])
-        for(var i = 0; i < res.data.length; i++){
-          for(var j = 0; j < res.data[i].length; j++){
+        for (var i = 0; i < res.data.length; i++) {
+          for (var j = 0; j < res.data[i].length; j++) {
             this.materials.push(res.data[i][j]);
           }
-        }        
+        }
       }).catch((error) => {
         if (error !== 'error') {
           this.$message({message: error, type: 'error', showClose: true});
@@ -74,10 +73,11 @@ export default {
       console.log(item.id)
       this.$router.push({
         name: item.template_TYPE,
-            query:{
-                templateType:item.template_TYPE,
-                id:item.id}
-        })
+        query: {
+          templateType: item.template_TYPE,
+          id: item.id
+        }
+      })
     },
   },
   components: {
@@ -89,8 +89,8 @@ export default {
   mounted() {
     // this.getMaterials();
     this.getProfile();
-    }
   }
+}
 </script>
 
 <style lang="scss" scoped>

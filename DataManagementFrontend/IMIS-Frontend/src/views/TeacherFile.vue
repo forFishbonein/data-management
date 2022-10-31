@@ -33,8 +33,8 @@ export default {
   data() {
     return {
 
-      Achievememnt: {
-        TEMPLATE_TYPE: "achievememnt",
+      Achievement: {
+        TEMPLATE_TYPE: "achievement",
         id: "",
         title: "",
         num: "",

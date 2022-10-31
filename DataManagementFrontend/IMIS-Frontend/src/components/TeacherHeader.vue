@@ -1,7 +1,7 @@
 <template>
   <div class="teacher-header">
     <div class="bgpicture">
-      
+
     </div>
     <div class="teacher">
       <div class="teacher-pic">
@@ -31,35 +31,35 @@
 
 <script>
 // import {getByTeacherId} from '@/api'
+// import store from "@/store";
 
 export default {
   name: "TeacherHeader",
-  mounted() {
-    // console.log(this)
-    // this.getById(this.id);
-  },
-  methods: {
-    // getById(id) {
-    //   getByTeacherId(id).then(resp => {
-    //     this.teacher = resp.data.data;
-    //     console.log(resp.data.data);
-    //   });
-    // }
-  },
-
   data() {
     return {
-      id: "1581923146833891329",
-
+      id: "",
       teacher: {
-        teacherName: "BBB",
-        teacherEmail: "w@w.ww",
-        teacherSid: "20202107",
-        teacherTitle: "副教授",
-        teacherTele: "12345678901"
+        teacherName: "",
+        teacherEmail: "",
+        teacherSid:"",
+        teacherId:"",
+        teacherTitle: "",
+        teacherTele:""
       }
-
     }
+  },
+  methods: {
+    getInfo() {
+      this.teacher.teacherName = this.$store.state.teacherName
+      this.teacher.teacherEmail = this.$store.state.teacherEmail
+      this.teacher.teacherSid = this.$store.state.teacherSid
+      this.teacher.teacherId = this.$store.state.teacherId,
+      this.teacher.teacherTitle = this.$store.state.teacherTitle
+      this.teacher.teacherTele = this.$store.state.teacherTele
+    }
+  },
+  created() {
+    this.getInfo()
   }
 }
 </script>
@@ -79,7 +79,7 @@ export default {
   height: 120px;
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-  background: url("../../static/img/teacher1.jpg")no-repeat 
+  background: url("../../static/img/teacher1.jpg") no-repeat
 }
 
 .teacher {

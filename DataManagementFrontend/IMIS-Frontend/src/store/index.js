@@ -1,18 +1,20 @@
 import Vuex from "vuex";
 import Vue from "vue";
-import { getToken, setToken, removeToken } from "@/request/token";
-import { codeLogin, passLogin, getUserInfo } from "@/api/login";
-import { postRegisterTeacher, postRegisterStudent } from "@/api/register";
+import { getToken, removeToken, setToken } from "@/request/token";
+import { codeLogin, getUserInfo, passLogin } from "@/api/login";
+import { postRegisterTeacher } from "@/api/register";
 import { getOneFile } from "@/api/file";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    userId: "",
-    userEmail: "",
-    userSid: "",
-    userName: "",
+    teacherId: "",
+    teacherEmail: "",
+    teacherName: "",
+    teacherSid: "",
+    teacherTitle: "",
+    teacherTele: "",
     createTime: "",
     updateTime: "",
     token: getToken(),
@@ -25,17 +27,23 @@ export default new Vuex.Store({
     SET_TOKEN: (state, token) => {
       state.token = token;
     },
-    SET_USEREMAIL: (state, userEmail) => {
-      state.userEmail = userEmail;
+    SET_TEACHEREMAIL: (state, teacherEmail) => {
+      state.teacherEmail = teacherEmail;
     },
-    SET_USERNAME: (state, userName) => {
-      state.userName = userName;
+    SET_TEACHERNAME: (state, teacherName) => {
+      state.teacherName = teacherName;
     },
-    SET_USERID: (state, userId) => {
-      state.userId = userId;
+    SET_TEACHERID: (state, teacherId) => {
+      state.teacherId = teacherId;
     },
-    SET_USERSID: (state, userSid) => {
-      state.userSid = userSid;
+    SET_TEACHERSID: (state, teacherSid) => {
+      state.teacherSid = teacherSid;
+    },
+    SET_TEACHERTITLE: (state, teacherTitle) => {
+      state.teacherTitle = teacherTitle;
+    },
+    SET_TEACHERTELE: (state, teacherTele) => {
+      state.teacherTele = teacherTele;
     },
     SET_CREATETIME: (state, createTime) => {
       state.createTime = createTime;
@@ -71,11 +79,10 @@ export default new Vuex.Store({
         passLogin(login)
           .then(res => {
             console.log(res);
-            // alert("1111");
             // if (res.success) {
-            console.log(res.data.data);
-            commit("SET_TOKEN", res.data.data);
-            setToken(res.data.data);
+            console.log(res.data);
+            commit("SET_TOKEN", res.data);
+            setToken(res.data);
             resolve();
             // } else {
             //   reject(res.msg);
@@ -90,31 +97,39 @@ export default new Vuex.Store({
     getUserInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getUserInfo(state.token)
-          .then(data => {
-            if (data.success) {
-              commit("SET_USEREMAIL", data.data.userEmail);
-              commit("SET_USERNAME", data.data.userName);
-              commit("SET_USERID", data.data.userId);
-              commit("SET_USERSID", data.data.userSid);
-              commit("SET_CREATETIME", data.data.createTime);
-              commit("SET_UPDATETIME", data.data.updateTime);
-              resolve(data);
+          .then(res => {
+            if (res) {
+              // alert("大赛的撒大所大所多")
+              // console.log(res);
+              commit("SET_TEACHEREMAIL", res.data.teacherEmail);
+              commit("SET_TEACHERNAME", res.data.teacherName);
+              commit("SET_TEACHERID", res.data.teacherId);
+              commit("SET_TEACHERSID", res.data.teacherSid);
+              commit("SET_TEACHERTITLE", res.data.teacherTitle);
+              commit("SET_TEACHERTELE", res.data.teacherTele);
+              commit("SET_CREATETIME", res.data.createTime);
+              commit("SET_UPDATETIME", res.data.updateTime);
+              resolve(res);
             } else {
-              commit("SET_USEREMAIL", "");
-              commit("SET_USERNAME", "");
-              commit("SET_USERID", "");
-              commit("SET_USERSID", "");
+              commit("SET_TEACHEREMAIL", "");
+              commit("SET_TEACHERNAME", "");
+              commit("SET_TEACHERID", "");
+              commit("SET_TEACHERSID", "");
+              commit("SET_TEACHERTITLE", "");
+              commit("SET_TEACHERTELE", "");
               commit("SET_CREATETIME", "");
               commit("SET_UPDATETIME", "");
               removeToken();
-              resolve(data);
+              resolve(res);
             }
           })
           .catch(error => {
-            commit("SET_USEREMAIL", "");
-            commit("SET_USERNAME", "");
-            commit("SET_USERID", "");
-            commit("SET_USERSID", "");
+            commit("SET_TEACHEREMAIL", "");
+            commit("SET_TEACHERNAME", "");
+            commit("SET_TEACHERID", "");
+            commit("SET_TEACHERSID", "");
+            commit("SET_TEACHERTITLE", "");
+            commit("SET_TEACHERTELE", "");
             commit("SET_CREATETIME", "");
             commit("SET_UPDATETIME", "");
             removeToken();
@@ -127,10 +142,12 @@ export default new Vuex.Store({
         logout(state.token)
           .then(data => {
             if (data.success) {
-              commit("SET_USEREMAIL", "");
-              commit("SET_USERNAME", "");
-              commit("SET_USERID", "");
-              commit("SET_USERSID", "");
+              commit("SET_TEACHEREMAIL", "");
+              commit("SET_TEACHERNAME", "");
+              commit("SET_TEACHERID", "");
+              commit("SET_TEACHERSID", "");
+              commit("SET_TEACHERTITLE", "");
+              commit("SET_TEACHERTELE", "");
               commit("SET_CREATETIME", "");
               commit("SET_UPDATETIME", "");
               removeToken();
@@ -145,10 +162,12 @@ export default new Vuex.Store({
     // 前端 登出
     fedLogOut({ commit }) {
       return new Promise(resolve => {
-        commit("SET_USEREMAIL", "");
-        commit("SET_USERNAME", "");
-        commit("SET_USERID", "");
-        commit("SET_USERSID", "");
+        commit("SET_TEACHEREMAIL", "");
+        commit("SET_TEACHERNAME", "");
+        commit("SET_TEACHERID", "");
+        commit("SET_TEACHERSID", "");
+        commit("SET_TEACHERTITLE", "");
+        commit("SET_TEACHERTELE", "");
         commit("SET_CREATETIME", "");
         commit("SET_UPDATETIME", "");
         removeToken();

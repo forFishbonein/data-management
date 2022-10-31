@@ -79,9 +79,10 @@ export default {
 
 <style lang="scss" scoped>
 
-.main{
+.main {
   background-color: #f5f9ff;
 }
+
 .container {
   width: 1200px;
   margin: 0 auto;

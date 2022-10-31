@@ -6,6 +6,7 @@ package com.imis.datamanagement.domain.template;
  * @File : DataManagement4IMIS
  */
 
+import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
@@ -23,8 +24,10 @@ public class Teaching extends AbstractTemplate {
     static final String TEMPLATE_TYPE = "teaching";
 
     @Id
+    @ExcelProperty("用户id")
     private Integer id;
 
+    @ExcelProperty("标题")
     private String title;
 
     private String uploaderId;
@@ -48,6 +51,7 @@ public class Teaching extends AbstractTemplate {
 
     private String fund;
 
+    @ExcelProperty("参与人")
     private List<String> member;
 
     //------------------

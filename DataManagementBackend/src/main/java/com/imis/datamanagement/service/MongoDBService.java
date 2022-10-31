@@ -78,7 +78,7 @@ public class MongoDBService {
         List<UserDefined> userDefineds = mongoTemplate.find(query, UserDefined.class);
 
         List<Object> l = new ArrayList<>();
-        l.add(achievememnts);
+        l.add(achievements);
         l.add(communications);
         l.add(honors);
         l.add(offices);
@@ -96,7 +96,7 @@ public class MongoDBService {
     //获取所有用户的所有资源（资源广场）
     public List<Object> getAll() {
         Query query = new Query(Criteria.where("deleted").is("0"));
-        List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
+        List<Achievement> achievements = mongoTemplate.find(query, Achievement.class);
         List<Communication> communications = mongoTemplate.find(query, Communication.class);
         List<Honor> honors = mongoTemplate.find(query, Honor.class);
         List<Office> offices = mongoTemplate.find(query, Office.class);
@@ -111,7 +111,7 @@ public class MongoDBService {
         l.add(studyings);
         l.add(teachings);
         l.add(honors);
-        l.add(achievememnts);
+        l.add(achievements);
         l.add(studentContests);
         l.add(communications);
         l.add(parties);
