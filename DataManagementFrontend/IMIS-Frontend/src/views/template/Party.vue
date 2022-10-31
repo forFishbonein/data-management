@@ -22,7 +22,7 @@
           </FilePath>
           <div class="button">
             <button class="button button1">删除</button>
-            <button class="button button2">编辑</button>
+            <button class="button button2" @click="updateById">编辑</button>
             <button class="button button3" @click="exportExcel">导出Excel</button>
           </div>
         </div>
@@ -144,6 +144,12 @@ export default {
       })
 
     },
+    updateById() {
+      console.log(this.Party)
+      this.$router.push({
+        path: "/upload/" + this.Party.template_TYPE,
+      })
+    }
   },
 
   components: {
