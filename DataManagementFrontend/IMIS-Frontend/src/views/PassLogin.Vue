@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <form action="" class="login-form">
+    <form action="" @submit.prevent class="login-form">
       <div class="login-way-box">
         <div class="codeLogin">
           <router-link to="/login">验证码登录</router-link>
@@ -53,13 +53,11 @@ export default {
       // this.$router.replace(
       //   name = 'passlogin'
       // )
+
       this.$store.dispatch('passLogin', login).then(res => {
         this.$message({message: '登录成功！', type: 'success', showClose: true});
-        // console.log(res)
-        // alert("登陆成功");
-        this.$router.push({path: '/'})
+        this.$router.push({path: '/profile'})
       }).catch((error) => {
-        console.log(error);
         if (error !== 'error') {
           this.$message({message: error, type: 'error', showClose: true});
         }
@@ -76,12 +74,7 @@ export default {
         }
       )
     },
-    toLogin(data) {
-      passLogin(data).then(
-        response => {
-        }
-      )
-    },
+
   }
 }
 </script>

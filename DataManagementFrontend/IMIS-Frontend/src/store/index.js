@@ -9,10 +9,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    userId: "",
-    userEmail: "",
-    userSid: "",
-    userName: "",
+    teacherId: "",
+    teacherEmail: "",
+    teacherName: "",
+    teacherSid: "",
+    teacherTitle: "",
+    teacherTele: "",
     createTime: "",
     updateTime: "",
     token: getToken(),
@@ -25,17 +27,23 @@ export default new Vuex.Store({
     SET_TOKEN: (state, token) => {
       state.token = token;
     },
-    SET_USEREMAIL: (state, userEmail) => {
-      state.userEmail = userEmail;
+    SET_TEACHEREMAIL: (state, teacherEmail) => {
+      state.teacherEmail = teacherEmail;
     },
-    SET_USERNAME: (state, userName) => {
-      state.userName = userName;
+    SET_TEACHERNAME: (state, teacherName) => {
+      state.teacherName = teacherName;
     },
-    SET_USERID: (state, userId) => {
-      state.userId = userId;
+    SET_TEACHERID: (state, teacherId) => {
+      state.teacherId = teacherId;
     },
-    SET_USERSID: (state, userSid) => {
-      state.userSid = userSid;
+    SET_TEACHERSID: (state, teacherSid) => {
+      state.teacherSid = teacherSid;
+    },
+    SET_TEACHERTITLE: (state, teacherTitle) => {
+      state.teacherTitle = teacherTitle;
+    },
+    SET_TEACHERTELE: (state, teacherTele) => {
+      state.teacherTele = teacherTele;
     },
     SET_CREATETIME: (state, createTime) => {
       state.createTime = createTime;
@@ -51,8 +59,7 @@ export default new Vuex.Store({
   actions: {
     codeLogin({commit}, user) {
       return new Promise((resolve, reject) => {
-        codeLogin(user.email, user.code)
-          .then(data => {
+        codeLogin(user.email, user.code).then(data => {
             if (data.success) {
               commit("SET_TOKEN", data.data);
               setToken(data.data);
@@ -68,20 +75,18 @@ export default new Vuex.Store({
     },
     passLogin({commit}, login) {
       return new Promise((resolve, reject) => {
-        passLogin(login)
-          .then(res => {
-            console.log(res);
-            // alert("1111");
+
+        passLogin(login).then(res => {
+
             // if (res.success) {
-            console.log(res.data.data);
-            commit("SET_TOKEN", res.data.data);
-            setToken(res.data.data);
+            console.log(res.data);
+            commit("SET_TOKEN", res.data);
+            setToken(res.data);
             resolve();
             // } else {
             //   reject(res.msg);
             // }
-          })
-          .catch(error => {
+          }).catch(error => {
             console.log(error);
             reject(error);
           });
@@ -92,18 +97,22 @@ export default new Vuex.Store({
         getUserInfo(state.token)
           .then(data => {
             if (data.success) {
-              commit("SET_USEREMAIL", data.data.userEmail);
-              commit("SET_USERNAME", data.data.userName);
-              commit("SET_USERID", data.data.userId);
-              commit("SET_USERSID", data.data.userSid);
+              commit("SET_TEACHEREMAIL", data.data.teacherEmail);
+              commit("SET_TEACHERNAME", data.data.teacherName);
+              commit("SET_TEACHERID", data.data.teacherId);
+              commit("SET_TEACHERSID", data.data.teacherSid);
+              commit("SET_TEACHERTITLE", data.data.teacherTitle);
+              commit("SET_TEACHERTELE", data.data.teacherTele);
               commit("SET_CREATETIME", data.data.createTime);
               commit("SET_UPDATETIME", data.data.updateTime);
               resolve(data);
             } else {
-              commit("SET_USEREMAIL", "");
-              commit("SET_USERNAME", "");
-              commit("SET_USERID", "");
-              commit("SET_USERSID", "");
+              commit("SET_TEACHEREMAIL", "");
+              commit("SET_TEACHERNAME", "");
+              commit("SET_TEACHERID", "");
+              commit("SET_TEACHERSID", "");
+              commit("SET_TEACHERTITLE", "");
+              commit("SET_TEACHERTELE", "");
               commit("SET_CREATETIME", "");
               commit("SET_UPDATETIME", "");
               removeToken();
@@ -111,10 +120,12 @@ export default new Vuex.Store({
             }
           })
           .catch(error => {
-            commit("SET_USEREMAIL", "");
-            commit("SET_USERNAME", "");
-            commit("SET_USERID", "");
-            commit("SET_USERSID", "");
+            commit("SET_TEACHEREMAIL", "");
+            commit("SET_TEACHERNAME", "");
+            commit("SET_TEACHERID", "");
+            commit("SET_TEACHERSID", "");
+            commit("SET_TEACHERTITLE", "");
+            commit("SET_TEACHERTELE", "");
             commit("SET_CREATETIME", "");
             commit("SET_UPDATETIME", "");
             removeToken();
@@ -127,10 +138,12 @@ export default new Vuex.Store({
         logout(state.token)
           .then(data => {
             if (data.success) {
-              commit("SET_USEREMAIL", "");
-              commit("SET_USERNAME", "");
-              commit("SET_USERID", "");
-              commit("SET_USERSID", "");
+              commit("SET_TEACHEREMAIL", "");
+              commit("SET_TEACHERNAME", "");
+              commit("SET_TEACHERID", "");
+              commit("SET_TEACHERSID", "");
+              commit("SET_TEACHERTITLE", "");
+              commit("SET_TEACHERTELE", "");
               commit("SET_CREATETIME", "");
               commit("SET_UPDATETIME", "");
               removeToken();
@@ -145,10 +158,12 @@ export default new Vuex.Store({
     // 前端 登出
     fedLogOut({commit}) {
       return new Promise(resolve => {
-        commit("SET_USEREMAIL", "");
-        commit("SET_USERNAME", "");
-        commit("SET_USERID", "");
-        commit("SET_USERSID", "");
+        commit("SET_TEACHEREMAIL", "");
+        commit("SET_TEACHERNAME", "");
+        commit("SET_TEACHERID", "");
+        commit("SET_TEACHERSID", "");
+        commit("SET_TEACHERTITLE", "");
+        commit("SET_TEACHERTELE", "");
         commit("SET_CREATETIME", "");
         commit("SET_UPDATETIME", "");
         removeToken();
