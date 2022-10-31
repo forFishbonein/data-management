@@ -184,7 +184,14 @@ export default {
         }
       }
     }
-  }
+  },
+  beforeRouteEnter (to, from, next) {
+      next(
+        vm => {
+          vm.$store.dispatch('fedLogOut');
+        }
+      );
+  },
 }
 </script>
 

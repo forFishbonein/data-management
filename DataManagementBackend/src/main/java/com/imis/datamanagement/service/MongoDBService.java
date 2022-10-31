@@ -121,7 +121,6 @@ public class MongoDBService {
         return l;
     }
 
-
     public void insertTemplate(@RequestBody AbstractTemplate abstractTemplate) {
         abstractTemplate.setTEMPLATE_TYPE(abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
         abstractTemplate.setId(getMongoId(abstractTemplate));

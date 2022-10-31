@@ -170,9 +170,8 @@ export default new Vuex.Store({
           });
       });
     },
-    // 前端 登出
     fedLogOut({ commit }) {
-      return new Promise(res => {
+      return new Promise((resolve, reject) => {
         commit("SET_TEACHEREMAIL", "");
         commit("SET_TEACHERNAME", "");
         commit("SET_TEACHERID", "");

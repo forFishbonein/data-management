@@ -80,10 +80,17 @@ export default {
     toRegister() {
       this.$router.replace(
         name = 'registerteacher')
-    },
+    }
+  },
+  beforeRouteEnter (to, from, next) {
+      next(
+        vm => {
+          vm.$store.dispatch('fedLogOut');
+        }
+      );
+  },
 
 
-  }
 }
 </script>
 
