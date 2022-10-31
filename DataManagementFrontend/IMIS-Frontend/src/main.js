@@ -28,7 +28,8 @@ import {
   Upload,
   Dropdown,
   DropdownItem,
-  DropdownMenu
+  DropdownMenu,
+  Notification
 } from "element-ui";
 
 Vue.use(Pagination);
@@ -56,6 +57,7 @@ Vue.use(DropdownMenu);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox;
+Vue.prototype.$notify = Notification;
 
 
 Vue.config.productionTip = false;
