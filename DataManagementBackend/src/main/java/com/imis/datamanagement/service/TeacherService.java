@@ -36,7 +36,7 @@ public interface TeacherService {
 
     String registered(Teacher teacher);
 
-    ShowVo show(Long id);
+    ShowVo show(String id);
 
     List<ShowVo> getAll();
 }

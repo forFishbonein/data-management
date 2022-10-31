@@ -55,7 +55,7 @@ public class TeacherController {
     }
 
     @GetMapping("/{id}")
-    public Result<ShowVo> getById(@PathVariable("id") Long id) {
+    public Result<ShowVo> getById(@PathVariable("id") String id) {
         return Result.success(teacherService.show(id));
     }
 
