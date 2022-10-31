@@ -68,10 +68,11 @@ export default new Vuex.Store({
     },
     passLogin({commit}, login) {
       return new Promise((resolve, reject) => {
+        // alert("111112121");
         passLogin(login)
           .then(res => {
             console.log(res);
-            // alert("1111");
+            alert("1111");
             // if (res.success) {
             console.log(res.data.data);
             commit("SET_TOKEN", res.data.data);
@@ -82,6 +83,7 @@ export default new Vuex.Store({
             // }
           })
           .catch(error => {
+            alert("111112121");
             console.log(error);
             reject(error);
           });
