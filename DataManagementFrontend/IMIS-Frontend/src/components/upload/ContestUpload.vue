@@ -20,13 +20,13 @@
             </td>
           </tr>
           <tr>
-            <td class="label required">项目名称</td>
+            <td class="label required">资源名称</td>
             <td>
               <el-input
                 v-model="StudentContest.title"
                 class="property"
                 clearable
-                placeholder="请输入项目名称">
+                placeholder="请输入资源名称">
               </el-input>
             </td>
           </tr>
@@ -54,6 +54,17 @@
             <td>
               <el-input
                 v-model="StudentContest.gameName"
+                class="property"
+                clearable
+                placeholder="请输入竞赛名称">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
+            <td class="label">项目名称</td>
+            <td>
+              <el-input
+                v-model="StudentContest.name"
                 class="property"
                 clearable
                 placeholder="请输入竞赛名称">
@@ -199,6 +210,7 @@ export default {
         introduction: "",
 
 
+        name:"",
         gameName: "",
         grade: "",
         instructor: [],
