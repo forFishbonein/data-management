@@ -37,7 +37,7 @@ public class TeacherController {
     }
 
     @PostMapping("/logout")
-    public Result<String> codeLogin(HttpServletRequest request) {
+    public Result<String> logout(HttpServletRequest request) {
         String token = request.getHeader("Authorization");
         return Result.success(teacherService.logout(token));
     }
