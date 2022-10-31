@@ -67,7 +67,7 @@ public class MongoDBService {
         System.out.println(query);
         query.addCriteria(Criteria.where("deleted").is("0"));
 
-        List<Achievememnt> achievememnts = mongoTemplate.find(query, Achievememnt.class);
+        List<Achievement> achievements = mongoTemplate.find(query, Achievement.class);
         List<Communication> communications = mongoTemplate.find(query, Communication.class);
         List<Honor> honors = mongoTemplate.find(query, Honor.class);
         List<Office> offices = mongoTemplate.find(query, Office.class);

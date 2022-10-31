@@ -11,10 +11,10 @@
         <NavSearch></NavSearch>
       </div>
       <div class="profile">
-        <router-link to="/person">个人中心</router-link>
+        <router-link to="/profile">个人中心</router-link>
       </div>
       <div class="upload">
-        <router-link class="upload" to="/upload"><span style="text-align: center">上传</span></router-link>
+        <router-link class="upload" to="/upload/studying"><span style="text-align: center">上传</span></router-link>
       </div>
     </nav>
   </div>
