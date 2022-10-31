@@ -43,7 +43,7 @@ public class TeacherInfoService extends ServiceImpl<TeacherInfoMapper, TeacherIn
         teacherInfo.setTeacherSid(registerVo.getTeacherSid());
         teacherInfo.setTeacherName(registerVo.getTeacherName());
         teacherInfo.setTeacherTele(registerVo.getTeacherTele());
-        teacherInfo.setTeacherTittle(registerVo.getTeacherTittle());
+        teacherInfo.setTeacherTitle(registerVo.getTeacherTittle());
         teacherInfoMapper.insert(teacherInfo);
     }
 

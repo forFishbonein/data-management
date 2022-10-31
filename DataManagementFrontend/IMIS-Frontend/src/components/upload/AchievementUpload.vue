@@ -283,7 +283,7 @@ export default {
         other: [],
         filePath: [],
         createTime: "",
-        uploaderId: this.$store.state.userId
+        uploaderId: this.$store.state.teacherId
       },
 
       fileList: [],
@@ -452,6 +452,7 @@ export default {
 
           if(from.fullPath == "/manage/filemanage" || from.path == "/achievement"){
 
+            vm.Achievement = vm.obj
             console.log(vm)
             console.log(from.fullPath)
             vm.changeMethod(from.fullPath)
@@ -484,7 +485,7 @@ export default {
     //   this.$router.push(this.pageFrom)
     // }
     this.restaurants = this.loadAll();
-    this.Achievement = this.obj;
+    // this.Achievement = this.obj;
   }
 }
 
