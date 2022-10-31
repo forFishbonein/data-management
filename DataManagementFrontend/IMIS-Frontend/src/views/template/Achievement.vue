@@ -38,8 +38,9 @@
 
       </FilePath>
       <div class="button">
-        <button class="button1">删除</button>
-        <button class="button2">编辑</button>
+        <button class="button button1">删除</button>
+        <button class="button button2">编辑</button>
+        <button class="button button3" @click="exportExcel">导出Excel</button>
       </div>
     </div>
   </div>
@@ -50,6 +51,8 @@ import TeacherNav from "../../components/TeacherNav";
 import TeacherHeader from "../../components/TeacherHeader";
 import TeacherData from "../../components/TeacherData";
 import FilePath from "../../components/FilePath";
+
+import {excelExport} from '@/api/file.js'
 
 export default {
   name: "Achievement",
@@ -98,6 +101,82 @@ export default {
       this.Achievement = res
     })
   },
+  methods: {
+    exportExcel() {
+      this.ExcelTitle = [];
+      this.ExcelValue = [];
+      this.ExcelTitle.push(
+        "编号",
+        "作者",
+        "发表年",
+        "论文或专著",
+        "论文类型",
+        "成果名称",
+        "出版社/期刊名称",
+        "期刊等级",
+        "民大认定级别",
+        "出版时间/卷期号",
+        "作者排序");
+
+      this.ExcelValue.push(
+        this.Achievement.num,
+        this.Achievement.author,
+        this.Achievement.publicYear,
+        this.Achievement.paper,
+        this.Achievement.type,
+        this.Achievement.name,
+        this.Achievement.press,
+        this.Achievement.journalGrade,
+        this.Achievement.schoolGrade,
+        this.Achievement.publicationTime,
+      );
+
+      let item = 0;
+      let str = "";
+      for (item in this.Achievement.authorRank) {
+        str = str + this.Achievement.authorRank[item] + ",";
+      }
+      var reg = /,$/gi;
+      str = str.replace(reg, "");
+
+      this.ExcelValue.push(str);
+
+      item = 0;
+      for (item in this.Achievement.other) {
+        this.ExcelTitle.push(this.Achievement.other[item].key);
+        this.ExcelValue.push(this.Achievement.other[item].value);
+      }
+
+      console.log(this.ExcelTitle);
+      console.log(this.ExcelValue)
+
+      var lists = [];
+      lists.push(this.ExcelTitle);
+      lists.push(this.ExcelValue);
+
+      console.log(lists)
+
+      excelExport(lists).then(res => {
+        console.log(res)
+        const _res = res;
+        let blob = new Blob([_res], {type: 'application/vnd.ms-excel;charset=utf-8'});
+        let downloadElement = document.createElement("a");
+        let href = window.URL.createObjectURL(blob);
+        downloadElement.href = href;
+        var dates = new Date();
+        var times = dates.getTime();
+        var fileName = this.Achievement.title
+        downloadElement.download = times + fileName + '.xls';
+        document.body.appendChild(downloadElement);
+        downloadElement.click();
+        document.body.removeChild(downloadElement);
+        window.URL.revokeObjectURL(href);
+      }).catch(error => {
+        console.log(error)
+      })
+
+    },
+  },
 
 }
 
@@ -145,32 +224,36 @@ export default {
 }
 
 .button {
-  height: 80px;
+  float: right;
+  margin: 8px;
+  padding: 8px 16px;
+  text-align: center;
+  color: #fff;
+  border-radius: 8px;
+}
 
+.button3 {
+  background: #26af00;
+}
+
+.button3:hover {
+  background: #1e8000;
 }
 
 .button2 {
-  margin: 20px;
-  padding: 20px;
-  float: right;
-  padding-right: 30px;
-  width: 100px;
-  height: 70px;
   background: #104A85;
-  text-align: center;
-  color: #fff;
+}
+
+.button2:hover {
+  background: #08386a;
 }
 
 .button1 {
-  margin: 20px;
-  padding: 20px;
-  float: right;
-  padding-right: 30px;
-  width: 100px;
-  height: 70px;
   background: #EB8C2D;
-  text-align: center;
-  color: #fff;
+}
+
+.button1:hover {
+  background: #c6721f;
 }
 
 

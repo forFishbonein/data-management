@@ -242,6 +242,7 @@
         </table>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 
 </template>
@@ -249,10 +250,11 @@
 <script>
 import TeacherNav from "../TeacherNav";
 import {insertTeacherFile} from '@/api/file.js'
+import LoginFooter from "../LoginFooter";
 
 export default {
   name: 'AchievementUpload',
-  components: {TeacherNav},
+  components: {LoginFooter, TeacherNav},
   data() {
     return {
       Achievement: {
@@ -260,7 +262,6 @@ export default {
         id: "",
         title: "",
         introduction: "",
-        uploaderId: "",
 
         name: "",
         author: "",

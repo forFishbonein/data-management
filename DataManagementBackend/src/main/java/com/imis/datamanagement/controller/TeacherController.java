@@ -57,5 +57,9 @@ public class TeacherController {
         return Result.success(teacherService.getAll());
     }
 
+    @GetMapping("/user")
+    public Result<ShowVo> getByToken(HttpServletResponse response,@RequestParam String token) {
+        return Result.success(teacherService.getByToken(response, token));
+    }
 
 }
