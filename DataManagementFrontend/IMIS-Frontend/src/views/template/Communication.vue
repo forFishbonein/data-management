@@ -63,7 +63,7 @@ export default {
         name: "",
         organizer: "",
         address: "",
-        member: "",
+        member: [],
         whetherSpeak: "",
         whetherParticipate: "",
 
