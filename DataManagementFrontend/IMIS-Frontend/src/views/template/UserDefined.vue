@@ -11,7 +11,7 @@
           </div>
           <FilePath></FilePath>
           <div class="button">
-            <button class="button button1">删除</button>
+            <button class="button button1" @click="deleteById(UserDefined.id,UserDefined.template_TYPE)">删除</button>
             <button class="button button2" @click="updateById">编辑</button>
             <button class="button button3" @click="exportExcel">导出Excel</button>
           </div>
@@ -30,6 +30,7 @@ import FilePath from "../../components/FilePath";
 
 import {excelExport} from '@/api/file.js'
 import LoginFooter from "../../components/LoginFooter.vue";
+import {deleteById} from '@/api/manage'
 
 export default {
   name: "UserDefined",
@@ -48,6 +49,10 @@ export default {
         filePath: [],
         createTime: "",
       },
+      Delete: {
+        id: "",
+        TEMPLATE_TYPE: ""
+      }
 
     }
 
@@ -63,6 +68,16 @@ export default {
     })
   },
   methods: {
+    deleteById(id,type) {
+      console.log(id)
+      console.log(type)
+      this.Delete.id =id;
+      this.Delete.TEMPLATE_TYPE = type;
+      deleteById(this.Delete).then(resp => {
+        this.$router.replace(name = 'profile')
+
+      });
+    },
     exportExcel() {
       this.ExcelTitle = [];
       this.ExcelValue = [];
