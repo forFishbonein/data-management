@@ -1,6 +1,7 @@
 import Vuex from "vuex";
 import Vue from "vue";
 import { getToken, removeToken, setToken } from "@/request/token";
+import { getFlag, setFlag , getPageFrom, setPageFrom } from "@/request/flag";
 import { codeLogin, getUserInfo, passLogin } from "@/api/login";
 import { postRegisterTeacher } from "@/api/register";
 import { getOneFile } from "@/api/file";
@@ -21,7 +22,9 @@ export default new Vuex.Store({
     Query: {
       TEMPLATE_TYPE: "",
       id: ""
-    }
+    },
+    flag: getFlag(),
+    pageFrom: getPageFrom()
   },
   mutations: {
     SET_TOKEN: (state, token) => {
@@ -54,6 +57,14 @@ export default new Vuex.Store({
     SET_QUERY: (state, obj) => {
       state.Query.TEMPLATE_TYPE = obj.TEMPLATE_TYPE;
       state.Query.id = obj.id;
+    },
+    SET_FLAG: (state, shu) => {
+      state.flag = shu;
+      setFlag(shu)
+    },
+    SET_PAGEFROM :(state, page) => {
+      state.pageFrom = page;
+      setPageFrom(page)
     }
   },
   actions: {
@@ -225,6 +236,12 @@ export default new Vuex.Store({
             reject(error);
           });
       });
+    },
+    changeFlag({commit, state},shu){
+      commit("SET_FLAG", shu);
+    },
+    changePageFrom({commit, state},page){
+      commit("SET_PAGEFROM", page);
     }
   }
 });

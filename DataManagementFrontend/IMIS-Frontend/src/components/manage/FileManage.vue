@@ -542,7 +542,11 @@ export default {
     },
 
     updateById(row) {
-
+      console.log(row)
+      this.$router.push({
+        path: "/upload/" + row.template_TYPE,
+        row
+      })
     },
 
     deleteById(row) {

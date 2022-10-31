@@ -30,7 +30,7 @@
       <FilePath></FilePath>
       <div class="button">
         <button class="button button1">删除</button>
-        <button class="button button2">编辑</button>
+        <button class="button button2" @click="updateById">编辑</button>
         <button class="button button3" @click="exportExcel">导出Excel</button>
       </div>
     </div>
@@ -63,7 +63,7 @@ export default {
         name: "",
         organizer: "",
         address: "",
-        member: "",
+        member: [],
         whetherSpeak: "",
         whetherParticipate: "",
 
@@ -157,6 +157,12 @@ export default {
       })
 
     },
+    updateById() {
+      console.log(this.Communication)
+      this.$router.push({
+        path: "/upload/" + this.Communication.template_TYPE,
+      })
+    }
   },
 
 

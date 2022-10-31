@@ -26,6 +26,10 @@ import {
   TableColumn,
   Tag,
   Upload,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  Notification
 } from "element-ui";
 
 Vue.use(Pagination);
@@ -47,9 +51,13 @@ Vue.use(Dialog);
 Vue.use(Form);
 Vue.use(FormItem);
 Vue.use(Row);
+Vue.use(Dropdown);
+Vue.use(DropdownItem);
+Vue.use(DropdownMenu);
 
 Vue.prototype.$message = Message;
 Vue.prototype.$confirm = MessageBox;
+Vue.prototype.$notify = Notification;
 
 
 Vue.config.productionTip = false;
