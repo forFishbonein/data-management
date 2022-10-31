@@ -53,12 +53,14 @@ export default {
       // this.$router.replace(
       //   name = 'passlogin'
       // )
+
       this.$store.dispatch('passLogin', login).then(res => {
         this.$message({message: '登录成功！', type: 'success', showClose: true});
-        // console.log(res)
-        // alert("登陆成功");
-        this.$router.push({path: '/'})
+        console.log(res)
+        alert("登陆成功");
+        this.$router.push({path: '/profile'})
       }).catch((error) => {
+        console.log("passLogin请求的error");
         console.log(error);
         if (error !== 'error') {
           this.$message({message: error, type: 'error', showClose: true});
@@ -76,12 +78,7 @@ export default {
         }
       )
     },
-    toLogin(data) {
-      passLogin(data).then(
-        response => {
-        }
-      )
-    },
+
   }
 }
 </script>

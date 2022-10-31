@@ -119,6 +119,7 @@
         </table>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 
 </template>
@@ -126,10 +127,11 @@
 <script>
 import TeacherNav from "../TeacherNav";
 import {insertTeacherFile} from '@/api/file.js'
+import LoginFooter from "../LoginFooter";
 
 export default {
   name: "Defined",
-  components: {TeacherNav},
+  components: {LoginFooter, TeacherNav},
   data() {
     return {
       UserDefined: {
@@ -138,7 +140,6 @@ export default {
         title: "",
         num: "",
         introduction: "",
-        uploaderId: "",
 
         other: [],
         filePath: [],

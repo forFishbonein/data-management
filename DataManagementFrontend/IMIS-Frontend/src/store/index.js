@@ -9,10 +9,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    userId: "",
-    userEmail: "",
-    userSid: "",
-    userName: "",
+    teacherId: "",
+    teacherEmail: "",
+    teacherName: "",
+    teacherSid: "",
+    teacherTitle: "",
+    teacherTele: "",
     createTime: "",
     updateTime: "",
     token: getToken(),
@@ -25,23 +27,29 @@ export default new Vuex.Store({
     SET_TOKEN: (state, token) => {
       state.token = token;
     },
-    SET_USEREMAIL: (state, userEmail) => {
-      state.userEmail = userEmail;
+    SET_TEACHEREMAIL: (state, teacherEmail) => {
+      state.teacherEmail = teacherEmail;
     },
-    SET_USERNAME: (state, userName) => {
-      state.userName = userName;
+    SET_TEACHERNAME: (state, teacherName) => {
+      state.teacherName = teacherName;
     },
-    SET_USERID: (state, userId) => {
-      state.userId = userId;
+    SET_TEACHERID: (state, teacherId) => {
+      state.teacherId = teacherId;
     },
-    SET_USERSID: (state, userSid) => {
-      state.userSid = userSid;
+    SET_TEACHERSID: (state, teacherSid) => {
+      state.teacherSid = teacherSid;
+    },
+    SET_TEACHERTITLE: (state, teacherTitle) => {
+      state.teacherTitle = teacherTitle;
+    },
+    SET_TEACHERTELE: (state, teacherSid) => {
+      state.teacherSid = teacherSid;
     },
     SET_CREATETIME: (state, createTime) => {
       state.createTime = createTime;
     },
-    SET_UPDATETIME: (state, updateTime) => {
-      state.updateTime = updateTime;
+    SET_UPDATETIME: (state, teacherTele) => {
+      state.teacherTele = teacherTele;
     },
     SET_QUERY: (state, obj) => {
       state.Query.TEMPLATE_TYPE = obj.TEMPLATE_TYPE;
@@ -51,8 +59,7 @@ export default new Vuex.Store({
   actions: {
     codeLogin({commit}, user) {
       return new Promise((resolve, reject) => {
-        codeLogin(user.email, user.code)
-          .then(data => {
+        codeLogin(user.email, user.code).then(data => {
             if (data.success) {
               commit("SET_TOKEN", data.data);
               setToken(data.data);
@@ -68,20 +75,20 @@ export default new Vuex.Store({
     },
     passLogin({commit}, login) {
       return new Promise((resolve, reject) => {
-        passLogin(login)
-          .then(res => {
+        console.log("000")
+        passLogin(login).then(res => {
+            alert("123123")
             console.log(res);
             // alert("1111");
             // if (res.success) {
-            console.log(res.data.data);
-            commit("SET_TOKEN", res.data.data);
-            setToken(res.data.data);
+            console.log(res.data);
+            commit("SET_TOKEN", res.data);
+            setToken(res.data);
             resolve();
             // } else {
             //   reject(res.msg);
             // }
-          })
-          .catch(error => {
+          }).catch(error => {
             console.log(error);
             reject(error);
           });

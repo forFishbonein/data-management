@@ -6,7 +6,7 @@ package com.imis.datamanagement.service.impl;
  * @File : DataManagement4IMIS
  */
 
-import com.alibaba.druid.util.StringUtils;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.common.result.CodeMsg;
@@ -24,6 +24,7 @@ import com.imis.datamanagement.service.TeacherService;
 import com.imis.datamanagement.redis.utils.UUIDUtil;
 import com.imis.datamanagement.redis.utils.ValidateCodeUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -103,6 +104,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
             throw new GlobalException(CodeMsg.USER_NOT_EXIST);
         }
         redisService.set(TeacherKey.getById, "" + id, showVo);
+        System.out.println(showVo);
         return showVo;
     }
 
@@ -195,6 +197,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
             throw new GlobalException(CodeMsg.PASSWORD_ERROR);
         }
         String token = UUIDUtil.uuid();
+        System.out.println(token);
         ShowVo teacher = show(teacherInMysql.getTeacherId());
         addCookie(response, token, teacher);
         return token;

@@ -36,6 +36,9 @@ import StudyingUpload from "../components/upload/StudyingUpload";
 import TeachingUpload from "../components/upload/TeachingUpload";
 import DefinedUpload from "../components/upload/DefinedUpload";
 
+import { getToken } from "@/request/token.js";
+import { Message } from "element-ui";
+
 Vue.use(VueRouter);
 
 const routes = [
@@ -64,6 +67,7 @@ const routes = [
     }
   },
   {
+    name: "profile",
     path: "/profile",
     component: TeacherIndex,
     meta: {
@@ -278,6 +282,7 @@ const router = new VueRouter({
 
 // router.beforeEach((to, from, next) => {
 //   console.log(getToken());
+//   console.log("123")
 //   if (getToken()) {
 //     if (to.path === "/login") {
 //       //如果是跳转到登录页面，拦截拦截
@@ -309,7 +314,7 @@ const router = new VueRouter({
 //       Message({
 //         type: "warning",
 //         showClose: true,
-//         message: "请先登录哦"
+//         message: "未登录"
 //       });
 //       router.push(-1);
 //     } else {

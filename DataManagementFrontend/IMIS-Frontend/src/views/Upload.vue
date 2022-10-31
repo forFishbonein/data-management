@@ -98,6 +98,6 @@ export default {
 }
 
 .router-link-active {
-  color: red;
+  color: #296ab6;
 }
 </style>

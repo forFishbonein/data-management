@@ -52,7 +52,7 @@ export default {
   methods: {
     turn() {
       this.$router.replace(
-        name = 'person'
+        name = 'profile'
       )
     },
     codeLogin() {

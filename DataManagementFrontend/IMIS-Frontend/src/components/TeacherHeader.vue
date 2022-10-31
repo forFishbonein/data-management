@@ -35,30 +35,25 @@
 export default {
   name: "TeacherHeader",
   mounted() {
-    // console.log(this)
-    // this.getById(this.id);
+
   },
   methods: {
-    // getById(id) {
-    //   getByTeacherId(id).then(resp => {
-    //     this.teacher = resp.data.data;
-    //     console.log(resp.data.data);
-    //   });
-    // }
-  },
 
-  data() {
-    return {
-      id: "1581923146833891329",
 
-      teacher: {
-        teacherName: "BBB",
-        teacherEmail: "w@w.ww",
-        teacherSid: "20202107",
-        teacherTitle: "副教授",
-        teacherTele: "12345678901"
+    data() {
+      return {
+        id: "",
+
+        teacher: {
+          teacherName: this.$store.state.teacherName,
+          teacherEmail: this.$store.state.teacherEmail,
+          teacherSid: this.$store.state.teacherSid,
+          teacherId: this.$store.state.teacherId,
+          teacherTitle: this.$store.state.teacherTitle,
+          teacherTele: this.$store.state.teacherTele
+        },
+
       }
-
     }
   }
 }
