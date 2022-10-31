@@ -343,6 +343,11 @@ export default {
       this.Teaching.filePath.push(response.data.name)
       // console.log(this.Teaching)
       insertTeacherFile(this.Teaching).then(resp => {
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('i', { style: 'color: green'}, res.msg)
+        });
         console.log(resp.data)
       });
       this.$router.push({path: "/profile"});
@@ -350,6 +355,11 @@ export default {
     submitUpload:function () {
       if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
         insertTeacherFile(this.Teaching).then(resp => {
+          const h = this.$createElement;
+          this.$notify({
+            title: '提示',
+            message: h('i', { style: 'color: green'}, res.msg)
+          });
           console.log(resp.data)
           this.$router.push({path: "/profile"});
         });
@@ -372,12 +382,24 @@ export default {
         this.Teaching.filePath.push(response.data.name)
         console.log(this.Teaching)
         updateTeacherFile(this.Teaching).then(resp => {
+          const h = this.$createElement;
+          this.$notify({
+            title: '提示',
+            message: h('i', { style: 'color: green'}, res.msg)
+          });
           console.log(resp.data)
+          this.$router.replace(this.$store.state.pageFrom)
         });
       }
       this.submitUpload = function () {
         if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
           updateTeacherFile(this.Teaching).then(resp => {
+            const h = this.$createElement;
+            this.$notify({
+              title: '提示',
+              message: h('i', { style: 'color: green'}, res.msg)
+            });
+            this.$router.replace(this.$store.state.pageFrom)
             console.log(resp.data)
           });
         } else {

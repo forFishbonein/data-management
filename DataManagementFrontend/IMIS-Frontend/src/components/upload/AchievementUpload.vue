@@ -373,13 +373,25 @@ export default {
       this.Achievement.filePath.push(response.data.name)
       console.log(this.Achievement)
       insertTeacherFile(this.Achievement).then(resp => {
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('i', { style: 'color: green'}, res.msg)
+        });
         console.log(resp.data)
+        this.$router.push({path: "/profile"});
       });
     },
     submitUpload:function () {
       if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
         insertTeacherFile(this.Achievement).then(resp => {
+          const h = this.$createElement;
+          this.$notify({
+            title: '提示',
+            message: h('i', { style: 'color: green'}, res.msg)
+          });
           console.log(resp.data)
+          this.$router.push({path: "/profile"});
         });
       } else {
         this.$refs.upload.submit();
@@ -401,13 +413,25 @@ export default {
       this.Achievement.filePath.push(response.data.name)
       console.log(this.Achievement)
       updateTeacherFile(this.Achievement).then(resp => {
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('i', { style: 'color: green'}, res.msg)
+        });
         console.log(resp.data)
+        this.$router.replace(this.$store.state.pageFrom)
       });
     }
     this.submitUpload = function () {
       if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
         updateTeacherFile(this.Achievement).then(resp => {
+          const h = this.$createElement;
+          this.$notify({
+            title: '提示',
+            message: h('i', { style: 'color: green'}, res.msg)
+          });
           console.log(resp.data)
+          this.$router.replace(this.$store.state.pageFrom)
         });
       } else {
         this.$refs.upload.submit();

@@ -52,11 +52,28 @@ export default {
     passLogin(login) {
 
       this.$store.dispatch('passLogin', login).then(res => {
-        this.$message({message: '登录成功！', type: 'success', showClose: true});
-        this.$router.push({path: '/profile'})
+        console.log(res.code != 0)
+        if (res.code != 0) {
+          const h = this.$createElement;
+          this.$notify({
+            title: '错误！',
+            message: h('i', { style: 'color: red'}, res.msg)
+          });
+        } else {
+          const h = this.$createElement;
+          this.$notify({
+            title: '登录成功！',
+            message: h('i', { style: 'color: teal'},)
+          });
+          this.$router.push({path: '/profile'})
+        }
       }).catch((error) => {
         if (error !== 'error') {
-          this.$message({message: error, type: 'error', showClose: true});
+          const h = this.$createElement;
+          this.$notify({
+            title: '错误！',
+            message: h('i', { style: 'color: red'}, error)
+          });
         }
       })
     },
@@ -64,13 +81,7 @@ export default {
       this.$router.replace(
         name = 'registerteacher')
     },
-    sendEmail(data) {
-      postCodeTeacher(data).then(
-        response => {
-          response.data.data;
-        }
-      )
-    },
+
 
   }
 }

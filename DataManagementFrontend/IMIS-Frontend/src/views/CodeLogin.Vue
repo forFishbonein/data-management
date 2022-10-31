@@ -22,7 +22,7 @@
         <router-link to="/register">注册账号</router-link>
         <router-link to="/register">忘记密码？</router-link>
       </div>
-      <button class="login-button" @click="toLogin(login)">登 录</button>
+      <button class="login-button" @click="codeLogin(login)">登 录</button>
 
     </form>
 
@@ -58,11 +58,6 @@ export default {
         name = 'profile'
       )
     },
-    codeLogin() {
-      this.$router.replace(
-        name = 'codelogin'
-      )
-    },
     passLogin() {
       this.$router.replace(
         name = 'passlogin'
@@ -96,7 +91,14 @@ export default {
 
       postCodeTeacher(data).then(
         response => {
-          response.data.data;
+          if (response.code == 0) {
+            const h = this.$createElement;
+            this.$notify({
+              title: '验证码已发送！',
+              message: h('i', { style: 'color: teal'},)
+            });
+          }
+
         }
       ).catch(error => {
         console.log(error)
@@ -106,17 +108,36 @@ export default {
       this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
       this.InterValObj = window.setInterval(this.setRemainTime, 1000);
 
-    }
-
-
-    ,
-    toLogin(data) {
-      codeLogin(data).then(
-        response => {
-
-        }
-      )
     },
+    codeLogin(login) {
+
+      this.$store.dispatch('codeLogin', login).then(res => {
+        console.log(res.code != 0)
+        if (res.code != 0) {
+          const h = this.$createElement;
+          this.$notify({
+            title: '错误！',
+            message: h('i', { style: 'color: red'}, res.msg)
+          });
+        } else {
+          const h = this.$createElement;
+          this.$notify({
+            title: '登录成功！',
+            message: h('i', { style: 'color: teal'},)
+          });
+          this.$router.push({path: '/profile'})
+        }
+      }).catch((error) => {
+        if (error !== 'error') {
+          const h = this.$createElement;
+          this.$notify({
+            title: '错误！',
+            message: h('i', { style: 'color: red'}, error)
+          });
+        }
+      })
+    },
+
   }
 }
 </script>
