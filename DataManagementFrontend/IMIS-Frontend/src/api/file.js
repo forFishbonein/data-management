@@ -8,6 +8,14 @@ export function insertTeacherFile(data) {
   });
 }
 
+export function updateTeacherFile(data) {
+  return request({
+    data,
+    method: "post",
+    url: "/file"
+  });
+}
+
 export function getOneFile(data) {
   console.log(data);
   return request({

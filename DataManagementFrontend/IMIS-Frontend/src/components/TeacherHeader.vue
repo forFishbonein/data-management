@@ -53,7 +53,7 @@ export default {
       this.teacher.teacherName = this.$store.state.teacherName
       this.teacher.teacherEmail = this.$store.state.teacherEmail
       this.teacher.teacherSid = this.$store.state.teacherSid
-      this.teacher.teacherId = this.$store.state.teacherId,
+      this.teacher.teacherId = this.$store.state.teacherId
       this.teacher.teacherTitle = this.$store.state.teacherTitle
       this.teacher.teacherTele = this.$store.state.teacherTele
     }

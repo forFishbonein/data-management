@@ -4,15 +4,7 @@
       <div class="title">{{ title }}</div>
       <div class="introduction">{{ introductionManage(introduction) }}</div>
     </div>
-    <span class="time">上传时间:{{ time }}&nbsp;</span>
-    <span v-show="filePath.length" class="download" @click="dialogVisible = true">下载附件</span>
-
-    <span v-show="dialogVisible" class="download-box">
-        <div class="download-box-close" @click="dialogVisible = false">X</div>
-        <p v-for="(file,index) in filePath" :key="index">
-          <a :href="file"></a>
-        </p>
-      </span>
+    <span class="time">上传时间:{{ createTime }}&nbsp;</span>
   </div>
 </template>
 
@@ -22,7 +14,6 @@ export default {
   mounted() {
   },
 
-
   methods: {
     introductionManage(str) {
       if (str.length > 250) {
@@ -31,7 +22,6 @@ export default {
       }
       return str;
     }
-
   },
 
   data() {
@@ -54,7 +44,7 @@ export default {
     name: {
       type: String,
     },
-    time: {
+    createTime: {
       type: String,
     },
     filePath: {
@@ -77,6 +67,14 @@ export default {
   box-shadow: 2px 1px 8px 0px rgba(0, 0, 0, 0.10);
   border-radius: 5px;
   /* border-bottom: 1px solid #e5e5e5; */
+}
+
+#container:hover {
+  cursor: pointer;
+  background-color: #efefef;
+  transition: .5s;
+  box-shadow: 2px 1px 8px 0px rgba(23, 22, 22, 0.1);
+
 }
 
 .context {
@@ -114,36 +112,6 @@ export default {
   font-size: 14px;
   color: #595959;
 
-}
-
-.download {
-  position: absolute;
-  left: 170px;
-  bottom: 1px;
-  font-size: 14px;
-  color: #6ca6f5;
-  margin-bottom: 10px;
-  margin-left: 30px;
-}
-
-.download:hover {
-  color: #3d80ce;
-  cursor: pointer;
-}
-
-.download-box {
-  float: left;
-  position: absolute;
-  z-index: 999;
-  left: 50%;
-  margin-left: -250px;
-  width: 500px;
-  background-color: #3d80ce;
-}
-
-.download-box-close {
-  height: 30px;
-  background-color: #3d80ce;
 }
 
 </style>
