@@ -11,9 +11,9 @@
       </div>
       <div class="login-input-box">
         <input v-model="login.email" class="login-input-box-email"
-               placeholder="   请输入邮箱" type="text">
+               placeholder="请输入邮箱" type="text">
         <input v-model="login.code" class="login-input-box-code"
-               placeholder="   请输入验证码" type="text">
+               placeholder="请输入验证码" type="text">
         <input class="login-input-box-send" value="获取验证码" type="button"
                @click="sendEmail({ email: login.email })"/>
       </div>
@@ -225,6 +225,7 @@ export default {
   height: 40px;
   border-radius: 6px;
   border: #97a5c3 solid 1px;
+
 }
 
 .login-input-box input:focus,
@@ -234,10 +235,12 @@ export default {
 
 .login-input-box-email {
   width: 343px;
+  padding-left: 10px;
 }
 
 .login-input-box-code {
   width: 180px;
+  padding-left: 10px;
 }
 
 .login-input-box-send{
