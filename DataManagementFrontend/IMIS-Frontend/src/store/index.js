@@ -193,7 +193,7 @@ export default new Vuex.Store({
             if (data.data) {
               commit("SET_TOKEN", data.data);
               setToken(data.data);
-              resolve();
+              resolve(data);
             } else {
               reject(data.msg);
             }

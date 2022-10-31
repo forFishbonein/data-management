@@ -54,7 +54,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId: "",
+        uploaderId: this.$store.state.teacherId,
         award_name: "",
         time: "",
         type: "",
@@ -169,6 +169,9 @@ export default {
       console.log(this.Honor)
       this.$router.push({
         path: "/upload/" + this.Honor.template_TYPE,
+        query: {
+          obj: this.Honor,
+        }
       })
     }
   },

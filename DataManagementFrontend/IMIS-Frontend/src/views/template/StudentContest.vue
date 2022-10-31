@@ -53,7 +53,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId: "",
+        uploaderId: this.$store.state.teacherId,
         name: "",
         gameName: "",
         grade: "",
@@ -160,6 +160,9 @@ export default {
       console.log(this.StudentContest)
       this.$router.push({
         path: "/upload/" + this.StudentContest.template_TYPE,
+        query: {
+          obj: this.StudentContest,
+        }
       })
     }
   },

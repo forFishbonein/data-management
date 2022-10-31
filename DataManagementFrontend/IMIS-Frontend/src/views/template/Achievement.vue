@@ -70,7 +70,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId: "",
+        uploaderId: this.$store.state.teacherId,
         name: "",
         author: "",
         publicYear: "",
@@ -194,6 +194,9 @@ export default {
       console.log(this.Achievement)
       this.$router.push({
         path: "/upload/" + this.Achievement.template_TYPE,
+        query: {
+          obj: this.Achievement,
+        }
       })
     }
   },

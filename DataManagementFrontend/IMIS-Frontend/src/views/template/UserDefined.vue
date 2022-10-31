@@ -44,7 +44,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId: "",
+        uploaderId: this.$store.state.teacherId,
         other: [],
         filePath: [],
         createTime: "",
@@ -128,6 +128,9 @@ export default {
       console.log(this.UserDefined)
       this.$router.push({
         path: "/upload/" + this.UserDefined.template_TYPE,
+        query: {
+          obj: this.UserDefined,
+        }
       })
     }
   },

@@ -165,7 +165,6 @@ export default {
     setRemainTime() {
       console.log('1')
       if (this.curCount == 0) {
-        console.log('停止')
         window.clearInterval(this.InterValObj);
         this.a[0].disabled = false;
         this.a[0].style.backgroundColor = "#3d3d3d";
@@ -174,7 +173,6 @@ export default {
         this.a[0].setAttribute('value', '重新发送验证码');
       } else {
         this.curCount--;
-        console.log(this.curCount);
         this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
       }
     },
@@ -190,7 +188,6 @@ export default {
       )
 
       this.curCount = this.count
-      this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
       this.InterValObj = window.setInterval(this.setRemainTime, 1000);
     },
     regHandle(teacher) {
@@ -198,20 +195,32 @@ export default {
         const h = this.$createElement;
         this.$notify({
           title: '提示',
-          message: h('i', { style: 'color: red'}, "请按照提示输入所需信息")
+          message: h('none', { style: 'color: red'}, "请按照提示输入所需信息")
         });
         return;
       }
       if (this.teacher.teacherPass !== '' && this.teacher.teacherRePass !== '') {
         if (this.teacher.teacherPass !== this.teacher.teacherRePass) {
-          this.$message({message: '两次输入的密码不一致！', type: 'error', showClose: true});
+          const h = this.$createElement;
+          this.$notify({
+            title: '错误',
+            message: h('none',{ style: 'color: red'}, "两次输入的密码不一致")
+          });
         } else {
           this.$store.dispatch('teacherRegister', teacher).then(() => {
-            this.$message({message: '注册成功！', type: 'success', showClose: true});
+            const h = this.$createElement;
+            this.$notify({
+              title: '提示',
+              message: h('none',{ style: 'color: green'}, "注册成功")
+            });
             this.$router.push({path: '/'})
           }).catch((error) => {
             if (error !== 'error') {
-              this.$message({message: error, type: 'error', showClose: true});
+              const h = this.$createElement;
+              this.$notify({
+                title: '错误',
+                message: h('none',{ style: 'color: red'}, error)
+              });
             }
           })
         }

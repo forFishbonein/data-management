@@ -56,7 +56,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId: "",
+        uploaderId: this.$store.state.teacherId,
         startTime: "",
         lastTime: "",
         type: "",
@@ -176,6 +176,9 @@ export default {
       console.log(this.Communication)
       this.$router.push({
         path: "/upload/" + this.Communication.template_TYPE,
+        query: {
+          obj: this.Communication,
+        }
       })
     }
   },

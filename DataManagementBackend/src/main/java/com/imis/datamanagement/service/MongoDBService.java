@@ -135,15 +135,16 @@ public class MongoDBService {
     public void updateTemplate(@RequestBody AbstractTemplate abstractTemplate) {
         Query query = new Query(Criteria.where("_id").is(abstractTemplate.getId()));
         AbstractTemplate at = mongoTemplate.findOne(query, abstractTemplate.getClass());
-        if (at != null) {
-            throw new GlobalException(CodeMsg.FILE_EXIST);
+        if (at == null) {
+            throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
         }
         if (at.getDeleted() == null || at.getDeleted().equals("1")) {
             throw new GlobalException(CodeMsg.FILE_NOT_EXIST);
         }
 
-        Update update = null;
+        Update update = new Update();
 
+        System.out.println(abstractTemplate);
         try {
             Class c = Class.forName(abstractTemplate.getClass().getName());
             Field[] fields = c.getDeclaredFields();
@@ -152,7 +153,6 @@ public class MongoDBService {
             }
             for (Field f : fields) {
                 String field = f.toString().substring(f.toString().lastIndexOf(".") + 1);
-                update = new Update();
                 update.set(field, f.get(abstractTemplate));
             }
             Date date = new Date();
@@ -160,6 +160,7 @@ public class MongoDBService {
             abstractTemplate.setUpdateTime(dateFormat.format(date));
             update.set("updateTime", abstractTemplate.getUpdateTime());
             mongoTemplate.updateFirst(query, update, abstractTemplate.getClass().getSimpleName().toLowerCase(Locale.ROOT));
+            System.out.println(update);
         } catch (ClassNotFoundException | IllegalAccessException e) {
             e.printStackTrace();
         }

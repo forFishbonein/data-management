@@ -54,7 +54,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId: "",
+        uploaderId: this.$store.state.teacherId,
         name: "",
         source: "",
         type: "",
@@ -171,6 +171,9 @@ export default {
       console.log(this.Teaching)
       this.$router.push({
         path: "/upload/" + this.Teaching.template_TYPE,
+        query: {
+          obj: this.Teaching,
+        }
       })
     }
   },

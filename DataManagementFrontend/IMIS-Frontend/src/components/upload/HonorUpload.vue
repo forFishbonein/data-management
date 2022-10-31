@@ -243,7 +243,7 @@ export default {
         other: [],
         filePath: [],
         createTime: "",
-        uploaderId: this.$store.state.userId
+        uploaderId: this.$store.state.teacherId
       },
 
       fileList: [],
@@ -370,74 +370,73 @@ export default {
       return this.$confirm(`确定移除 ${file.name}？`);
     },
     changeMethod(path){
+      var _this = this
       this.$store.dispatch('changeFlag',1)
       this.$store.dispatch('changePageFrom', path)
       console.log(this.$store.state.flag)
       console.log(this.$store.state.pageFrom)
-      this.onSuccess = function (){
-        this.Honor.filePath.push(response.data.name)
-        console.log(this.Honor)
-        updateTeacherFile(this.Honor).then(resp => {
-          const h = this.$createElement;
-          this.$notify({
+      this.onSuccess = function (response, file, fileList){
+        _this.Teaching.filePath.push(response.data.name)
+        updateTeacherFile(_this.Teaching).then(resp => {
+          const h = _this.$createElement;
+          _this.$notify({
             title: '提示',
-            message: h('i', { style: 'color: green'}, resp.data)
+            message: h('i', { style: 'color: green'}, "更新成功")
           });
           console.log(resp.data)
-          this.$router.replace(this.$store.state.pageFrom)
+          _this.$router.replace(_this.$store.state.pageFrom)
         });
       }
       this.submitUpload = function () {
         if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
-          updateTeacherFile(this.Honor).then(resp => {
-            const h = this.$createElement;
-            this.$notify({
+          console.log(_this)
+          updateTeacherFile(_this.Teaching).then(resp => {
+            console.log(resp)
+            const h = _this.$createElement;
+            _this.$notify({
               title: '提示',
-              message: h('i', { style: 'color: green'}, resp.data)
+              message: h('i', { style: 'color: green'}, "更新成功")
             });
+            _this.$router.replace(_this.$store.state.pageFrom)
             console.log(resp.data)
-            this.$router.replace(this.$store.state.pageFrom)
           });
         } else {
-          this.$refs.upload.submit();
+          _this.$refs.upload.submit();
         }
       }
     },
 
-    beforeRouteEnter (to, from, next) {
-      // console.log("123123")
-      console.log(to, from) // 可以拿到 from， 知道上一个路由是什么，从而进行判断
-      //在next中写处理函数
-      next(
-        vm => {
-          if(vm.$store.state.flag != 1){
 
-            if(from.fullPath == "/manage/filemanage" || from.path == "/honor"){
-
-              console.log(vm)
-              console.log(from.fullPath)
-              vm.changeMethod(from.fullPath)
-            }
-          }else{
-            vm.$store.dispatch('changeFlag',0)
-            // alert(vm.$store.state.pageFrom)
-            vm.$router.push(vm.$store.state.pageFrom)
-            // vm.$router.push('/manage')
-          }
-        }
-        // a = document.getElementById("insert");
-        // a[0].style.display = "none"
-        // a = document.getElementById("update");
-        // a[0].style.display = "block"
-
-        // }
-      ); // err 与 12134 是随便传的值， 可忽略
-    },
 
   },
+  beforeRouteEnter (to, from, next) {
+    // console.log("123123")
+    console.log(to, from) // 可以拿到 from， 知道上一个路由是什么，从而进行判断
+    //在next中写处理函数
+    next(
+      vm => {
+        if(vm.$store.state.flag != 1){
+
+          if(from.fullPath == "/manage/filemanage" || from.path == "/teaching"){
+            vm.Teaching = vm.obj;
+            vm.Teaching.TEMPLATE_TYPE = vm.obj.template_TYPE;
+            console.log(vm)
+            console.log(from.fullPath)
+            vm.changeMethod(from.fullPath)
+          }
+        }else{
+          vm.$store.dispatch('changeFlag',0)
+          // alert(vm.$store.state.pageFrom)
+          if(vm.$store.state.pageFrom != ""){
+            vm.$router.push(vm.$store.state.pageFrom)
+          }
+        }
+      }
+    ); // err 与 12134 是随便传的值， 可忽略
+  },
+
   mounted() {
     this.restaurants = this.loadAll();
-    this.Honor = this.obj;
 
   }
 }

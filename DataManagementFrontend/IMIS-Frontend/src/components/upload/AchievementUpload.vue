@@ -406,40 +406,44 @@ export default {
       return this.$confirm(`确定移除 ${file.name}？`);
     },
 
-  changeMethod(path){
-    this.$store.dispatch('changeFlag',1)
-    this.$store.dispatch('changePageFrom', path)
-    console.log(this.$store.state.flag)
-    console.log(this.$store.state.pageFrom)
-    this.onSuccess = function (){
-      this.StudentContest.filePath.push(response.data.name)
-      console.log(this.Achievement)
-      updateTeacherFile(this.Achievement).then(resp => {
-        const h = this.Achievement;
-        this.$notify({
-          title: '提示',
-          message: h('i', { style: 'color: green'}, resp.data)
+    changeMethod(path){
+      var _this = this
+      this.$store.dispatch('changeFlag',1)
+      this.$store.dispatch('changePageFrom', path)
+      console.log(this.$store.state.flag)
+      console.log(this.$store.state.pageFrom)
+      this.onSuccess = function (response, file, fileList){
+        _this.Teaching.filePath.push(response.data.name)
+        updateTeacherFile(_this.Teaching).then(resp => {
+          const h = _this.$createElement;
+          _this.$notify({
+            title: '提示',
+            message: h('i', { style: 'color: green'}, "更新成功")
+          });
+          console.log(resp.data)
+          _this.$router.replace(_this.$store.state.pageFrom)
         });
-        console.log(resp.data)
-        this.$router.replace(this.$store.state.pageFrom)
-      });
-    }
+      }
       this.submitUpload = function () {
         if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
-          updateTeacherFile(this.Achievement).then(resp => {
-            const h = this.$createElement;
-            this.$notify({
+          console.log(_this)
+          updateTeacherFile(_this.Teaching).then(resp => {
+            console.log(resp)
+            const h = _this.$createElement;
+            _this.$notify({
               title: '提示',
-              message: h('i', { style: 'color: green'}, resp.data)
+              message: h('i', { style: 'color: green'}, "更新成功")
             });
+            _this.$router.replace(_this.$store.state.pageFrom)
             console.log(resp.data)
-            this.$router.replace(this.$store.state.pageFrom)
           });
         } else {
-          this.$refs.upload.submit();
+          _this.$refs.upload.submit();
         }
       }
     },
+
+
   },
 
   beforeRouteEnter (to, from, next) {
@@ -450,9 +454,9 @@ export default {
       vm => {
         if(vm.$store.state.flag != 1){
 
-          if(from.fullPath == "/manage/filemanage" || from.path == "/achievement"){
-
-            vm.Achievement = vm.obj
+          if(from.fullPath == "/manage/filemanage" || from.path == "/teaching"){
+            vm.Teaching = vm.obj;
+            vm.Teaching.TEMPLATE_TYPE = vm.obj.template_TYPE;
             console.log(vm)
             console.log(from.fullPath)
             vm.changeMethod(from.fullPath)
@@ -460,16 +464,11 @@ export default {
         }else{
           vm.$store.dispatch('changeFlag',0)
           // alert(vm.$store.state.pageFrom)
-          vm.$router.push(vm.$store.state.pageFrom)
-          // vm.$router.push('/manage')
+          if(vm.$store.state.pageFrom != ""){
+            vm.$router.push(vm.$store.state.pageFrom)
+          }
         }
       }
-      // a = document.getElementById("insert");
-      // a[0].style.display = "none"
-      // a = document.getElementById("update");
-      // a[0].style.display = "block"
-
-      // }
     ); // err 与 12134 是随便传的值， 可忽略
   },
   // beforeRouteLeave(to, from){

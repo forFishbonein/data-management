@@ -53,7 +53,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId: "",
+        uploaderId: this.$store.state.teacherId,
         time: "",
         type: "",
         topic: "",
@@ -160,6 +160,9 @@ export default {
       console.log(this.Office)
       this.$router.push({
         path: "/upload/" + this.Office.template_TYPE,
+        query: {
+          obj: this.Office,
+        }
       })
     }
   },
