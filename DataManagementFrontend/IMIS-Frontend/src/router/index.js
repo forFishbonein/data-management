@@ -274,7 +274,52 @@ const routes = [
         component: DefinedUpload
       }
     ]
-  }
+  },
+  // {
+  //   path: "/update",
+  //   meta: {
+  //     requireLogin: true
+  //   },
+  //   children: [
+  //     {
+  //       path: "teaching",
+  //       component: TeachingUpdate
+  //     },
+  //     {
+  //       path: "achievement",
+  //       component: AchievementUpdate
+  //     },
+  //     {
+  //       path: "communication",
+  //       component: CommunicationUpdate
+  //     },
+  //     {
+  //       path: "contest",
+  //       component: ContestUpdate
+  //     },
+  //     {
+  //       path: "honor",
+  //       component: HonorUpdate
+  //     },
+  //     {
+  //       path: "studying",
+  //       component: StudyingUpdate
+  //     },
+  //     {
+  //       path: "office",
+  //       component: OfficeUpdate
+  //     },
+  //     {
+  //       path: "party",
+  //       component: PartyUpdate
+  //     },
+  //     {
+  //       path: "defined",
+  //       component: DefinedUpdate
+  //     }
+  //   ]
+  // }
+
 ];
 const router = new VueRouter({
   mode: "history",

@@ -267,6 +267,7 @@ export default {
       // key: "",
       // value: "",
       number: [0],
+      pageFrom: ""
     };
 
   },
@@ -338,7 +339,7 @@ export default {
     handlePreview(file) {
       console.log(file);
     },
-    onSuccess(response, file, fileList) {
+    onSuccess:function (response, file, fileList) {
       this.Teaching.filePath.push(response.data.name)
       // console.log(this.Teaching)
       insertTeacherFile(this.Teaching).then(resp => {
@@ -346,7 +347,7 @@ export default {
       });
       this.$router.push({path: "/profile"});
     },
-    submitUpload() {
+    submitUpload:function () {
       if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
         insertTeacherFile(this.Teaching).then(resp => {
           console.log(resp.data)
@@ -361,7 +362,60 @@ export default {
     },
     beforeRemove(file, fileList) {
       return this.$confirm(`确定移除 ${file.name}？`);
-    }
+    },
+    changeMethod(path){
+      this.$store.dispatch('changeFlag',1)
+      this.$store.dispatch('changePageFrom', path)
+      console.log(this.$store.state.flag)
+      console.log(this.$store.state.pageFrom)
+      this.onSuccess = function (){
+        this.Teaching.filePath.push(response.data.name)
+        console.log(this.Teaching)
+        updateTeacherFile(this.Teaching).then(resp => {
+          console.log(resp.data)
+        });
+      }
+      this.submitUpload = function () {
+        if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
+          updateTeacherFile(this.Teaching).then(resp => {
+            console.log(resp.data)
+          });
+        } else {
+          this.$refs.upload.submit();
+        }
+      }
+    },
+
+    beforeRouteEnter (to, from, next) {
+      // console.log("123123")
+      console.log(to, from) // 可以拿到 from， 知道上一个路由是什么，从而进行判断
+      //在next中写处理函数
+      next(
+        vm => {
+          if(vm.$store.state.flag != 1){
+
+            if(from.fullPath == "/manage/filemanage" || from.path == "/teaching"){
+
+              console.log(vm)
+              console.log(from.fullPath)
+              vm.changeMethod(from.fullPath)
+            }
+          }else{
+            vm.$store.dispatch('changeFlag',0)
+            // alert(vm.$store.state.pageFrom)
+            vm.$router.push(vm.$store.state.pageFrom)
+            // vm.$router.push('/manage')
+          }
+        }
+        // a = document.getElementById("insert");
+        // a[0].style.display = "none"
+        // a = document.getElementById("update");
+        // a[0].style.display = "block"
+
+        // }
+      ); // err 与 12134 是随便传的值， 可忽略
+    },
+
   },
   mounted() {
     this.restaurants = this.loadAll();
