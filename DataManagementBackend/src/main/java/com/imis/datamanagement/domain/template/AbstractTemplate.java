@@ -20,7 +20,7 @@ import java.util.Map;
         visible = true
 )
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = Achievememnt.class, name = Achievememnt.TEMPLATE_TYPE),
+        @JsonSubTypes.Type(value = Achievement.class, name = Achievement.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = Communication.class, name = Communication.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = Honor.class, name = Honor.TEMPLATE_TYPE),
         @JsonSubTypes.Type(value = Office.class, name = Office.TEMPLATE_TYPE),
