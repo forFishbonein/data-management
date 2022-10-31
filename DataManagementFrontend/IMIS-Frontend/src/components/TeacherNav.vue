@@ -33,7 +33,11 @@ export default {
   methods:{
     logout(){
       this.$store.dispatch('logout').then(res => {
-        this.$message({message: '登出成功！', type: 'success', showClose: true});
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('i', { style: 'color: grey'}, "已退出")
+        });
         this.$router.push({path: '/'})
       }).catch((error) => {
         if (error !== 'error') {

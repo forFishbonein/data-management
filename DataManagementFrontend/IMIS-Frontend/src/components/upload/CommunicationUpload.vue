@@ -361,7 +361,7 @@ export default {
         const h = this.$createElement;
         this.$notify({
           title: '提示',
-          message: h('i', { style: 'color: green'}, res.msg)
+          message: h('i', { style: 'color: green'}, resp.data)
         });
         console.log(resp.data)
         this.$router.push({path: "/profile"});
@@ -373,7 +373,7 @@ export default {
           const h = this.$createElement;
           this.$notify({
             title: '提示',
-            message: h('i', { style: 'color: green'}, res.msg)
+            message: h('i', { style: 'color: green'}, resp.data)
           });
           console.log(resp.data)
           this.$router.push({path: "/profile"});
@@ -400,7 +400,7 @@ export default {
           const h = this.$createElement;
           this.$notify({
             title: '提示',
-            message: h('i', { style: 'color: green'}, res.msg)
+            message: h('i', { style: 'color: green'}, resp.data)
           });
           console.log(resp.data)
           this.$router.replace(this.$store.state.pageFrom)
@@ -412,7 +412,7 @@ export default {
             const h = this.$createElement;
             this.$notify({
               title: '提示',
-              message: h('i', { style: 'color: green'}, res.msg)
+              message: h('i', { style: 'color: green'}, resp.data)
             });
             console.log(resp.data)
             this.$router.replace(this.$store.state.pageFrom)
