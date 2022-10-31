@@ -17,7 +17,7 @@ public class TeacherInfo {
 
     private String teacherName;
 
-    private String teacherTittle;
+    private String teacherTitle;
 
     private String teacherTele;
 

@@ -21,7 +21,7 @@ public class ShowVo {
 
     private String teacherName;
 
-    private String teacherTittle;
+    private String teacherTitle;
 
     private String teacherTele;
 
