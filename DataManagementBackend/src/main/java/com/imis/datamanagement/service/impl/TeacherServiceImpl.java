@@ -7,6 +7,8 @@ package com.imis.datamanagement.service.impl;
  */
 
 
+
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.imis.datamanagement.common.result.CodeMsg;
@@ -24,7 +26,6 @@ import com.imis.datamanagement.service.TeacherService;
 import com.imis.datamanagement.redis.utils.UUIDUtil;
 import com.imis.datamanagement.redis.utils.ValidateCodeUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -170,7 +171,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
     }
 
     public ShowVo getByToken(HttpServletResponse response, String token) {
-        if (StringUtils.isEmpty(token)) {
+        if (token == null || "".equals(token)) {
             return null;
         }
         ShowVo teacher = redisService.get(TeacherKey.token, token, ShowVo.class);
