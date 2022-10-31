@@ -95,7 +95,6 @@ export default {
       this.a[0].disabled =true;
       
       
-
       postCodeTeacher(data).then(
         response => {
           response.data.data;
