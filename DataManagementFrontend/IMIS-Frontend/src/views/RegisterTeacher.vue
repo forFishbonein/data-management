@@ -6,14 +6,16 @@
         <div class="login"><span>已有账户？</span>
           <router-link to="/login"><span>登录</span></router-link>
         </div>
-        <form action=""  @submit.prevent>
+        <form action="" @submit.prevent>
           <table>
             <tr>
               <td width="20%"><span>邮箱地址</span></td>
               <td width="35%">
-                <p class="underline"><input v-model="teacher.teacherEmail" oninput="setCustomValidity('')"
-                                            oninvalid="setCustomValidity('请填写邮箱')"
-                                            required type="text">
+                <p class="underline">
+                  <input v-model="teacher.teacherEmail"
+                         oninput="setCustomValidity('')"
+                         oninvalid="setCustomValidity('请填写邮箱')"
+                         required type="text">
                 </p>
               </td>
               <td width="35%"><p class="prompt">您的电子邮箱地址即为您的用户名</p></td>
@@ -45,53 +47,75 @@
             </tr>
             <tr>
               <td><span>确认密码</span></td>
-              <td width="35%"><p class="underline"><input v-model="teacher.teacherRePass"
-                                                          oninput="setCustomValidity('')"
-                                                          oninvalid="setCustomValidity('请再次输入密码')"
-                                                          required
-                                                          type="text"></p></td>
+              <td width="35%">
+                <p class="underline">
+                <input v-model="teacher.teacherRePass"
+                       oninput="setCustomValidity('')"
+                       oninvalid="setCustomValidity('请再次输入密码')"
+                       required
+                       type="text">
+              </p>
+              </td>
             </tr>
             <tr>
               <td><span>姓名</span></td>
-              <td width="35%"><p class="underline"><input v-model="teacher.teacherName" oninput="setCustomValidity('')"
-                                                          oninvalid="setCustomValidity('请填写姓名')"
-                                                          required
-                                                          type="text"></p></td>
+              <td width="35%">
+                <p class="underline">
+                <input v-model="teacher.teacherName" oninput="setCustomValidity('')"
+                       oninvalid="setCustomValidity('请填写姓名')"
+                       required
+                       type="text">
+              </p>
+              </td>
             </tr>
             <tr>
               <td><span>职位</span></td>
-              <td width="35%"><p class="underline"><input v-model="teacher.teacherTittle"
-                                                          oninput="setCustomValidity('')"
-                                                          oninvalid="setCustomValidity('请填写职位')"
-                                                          required
-                                                          type="text"></p></td>
+              <td width="35%">
+                <p class="underline">
+                <input v-model="teacher.teacherTittle"
+                       oninput="setCustomValidity('')"
+                       oninvalid="setCustomValidity('请填写职位')"
+                       required
+                       type="text">
+              </p>
+              </td>
             </tr>
             <tr>
               <td><span>教工号</span></td>
-              <td width="35%"><p class="underline"><input v-model="teacher.teacherSid" oninput="setCustomValidity('')"
-                                                          oninvalid="setCustomValidity('请填写教工号')"
-                                                          required
-                                                          type="text"></p></td>
+              <td width="35%">
+                <p class="underline">
+                <input v-model="teacher.teacherSid"
+                       oninput="setCustomValidity('')"
+                       oninvalid="setCustomValidity('请填写教工号')"
+                       required
+                       type="text">
+                </p>
+              </td>
             </tr>
             <tr>
               <td><span>电话</span></td>
-              <td width="35%"><p class="underline"><input v-model="teacher.teacherTele" oninput="setCustomValidity('')"
-                                                          oninvalid="setCustomValidity('请填写电话')"
-                                                          required
-                                                          type="text"></p></td>
+              <td width="35%">
+                <p class="underline">
+                <input v-model="teacher.teacherTele"
+                       oninput="setCustomValidity('')"
+                       oninvalid="setCustomValidity('请填写电话')"
+                       required
+                       type="text">
+              </p>
+              </td>
             </tr>
             <tr>
               <td></td>
               <td>
                 <p class="warm">温馨提示：普通教师用户登录仅可查看属于本人的资料，经授权后方可查看所有资料
-                所有个人信息仅供本系统使用
+                  所有个人信息仅供本系统使用
                 </p>
               </td>
             </tr>
             <tr class="know">
               <td></td>
               <td>
-                <div class="warm-box"><input class="warm-check" required type="checkbox"><i>我已知晓</i></div>
+                <div class="warm-box"><input class="warm-check" v-model="checkbox" required type="checkbox"><i>我已知晓</i></div>
               </td>
             </tr>
             <tr>
@@ -121,6 +145,7 @@ export default {
   data() {
     return {
       a: '',
+      checkbox: false,
       count: 30,
       curCount: 0,
       InterValObj: '',
@@ -154,8 +179,8 @@ export default {
       }
     },
     sendEmail(data) {
-      this.a=document.getElementsByClassName('button');
-      this.a[0].disabled =true;
+      this.a = document.getElementsByClassName('button');
+      this.a[0].disabled = true;
       this.a[0].style.backgroundColor = "#585858";
 
       postCodeTeacher(data).then(
@@ -165,10 +190,18 @@ export default {
       )
 
       this.curCount = this.count
-      this.a[0].setAttribute('value',this.curCount + "秒后可重新发送");
-      this.InterValObj = window.setInterval(this.setRemainTime,1000);
+      this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
+      this.InterValObj = window.setInterval(this.setRemainTime, 1000);
     },
     regHandle(teacher) {
+      if (this.checkbox == false) {
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('i', { style: 'color: red'}, "请按照提示输入所需信息")
+        });
+        return;
+      }
       if (this.teacher.teacherPass !== '' && this.teacher.teacherRePass !== '') {
         if (this.teacher.teacherPass !== this.teacher.teacherRePass) {
           this.$message({message: '两次输入的密码不一致！', type: 'error', showClose: true});
