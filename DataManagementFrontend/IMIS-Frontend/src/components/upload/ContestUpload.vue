@@ -393,7 +393,7 @@ export default {
       vm => {
         if(vm.$store.state.flag != 1){
 
-          if(from.fullPath == "/manage/filemanage" || from.path == "/StudentContest"){
+          if(from.fullPath == "/manage/filemanage" || from.path == "/studentContest"){
             vm.StudentContest = vm.obj;
             vm.StudentContest.TEMPLATE_TYPE = vm.obj.template_TYPE;
             console.log(vm)

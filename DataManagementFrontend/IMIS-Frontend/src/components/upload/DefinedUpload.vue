@@ -314,7 +314,7 @@ export default {
       vm => {
         if(vm.$store.state.flag != 1){
 
-          if(from.fullPath == "/manage/filemanage" || from.path == "/UserDefined"){
+          if(from.fullPath == "/manage/filemanage" || from.path == "/userDefined"){
             vm.UserDefined = vm.obj;
             vm.UserDefined.TEMPLATE_TYPE = vm.obj.template_TYPE;
             console.log(vm)

@@ -417,7 +417,7 @@ export default {
       vm => {
         if(vm.$store.state.flag != 1){
 
-          if(from.fullPath == "/manage/filemanage" || from.path == "/Honor"){
+          if(from.fullPath == "/manage/filemanage" || from.path == "/honor"){
             vm.Honor = vm.obj;
             vm.Honor.TEMPLATE_TYPE = vm.obj.template_TYPE;
             console.log(vm)

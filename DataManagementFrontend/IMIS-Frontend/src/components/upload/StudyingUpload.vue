@@ -424,7 +424,7 @@ export default {
       vm => {
         if(vm.$store.state.flag != 1){
 
-          if(from.fullPath == "/manage/filemanage" || from.path == "/Studying"){
+          if(from.fullPath == "/manage/filemanage" || from.path == "/studying"){
             vm.Studying = vm.obj;
             vm.Studying.TEMPLATE_TYPE = vm.obj.template_TYPE;
             console.log(vm)

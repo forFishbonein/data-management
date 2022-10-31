@@ -454,7 +454,7 @@ export default {
       vm => {
         if(vm.$store.state.flag != 1){
 
-          if(from.fullPath == "/manage/filemanage" || from.path == "/Achievement"){
+          if(from.fullPath == "/manage/filemanage" || from.path == "/achievement"){
             vm.Achievement = vm.obj;
             vm.Achievement.TEMPLATE_TYPE = vm.obj.template_TYPE;
             console.log(vm)
