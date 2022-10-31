@@ -6,29 +6,30 @@
         <div class="title">资源名称：{{ Honor.title }}</div>
         <div v-show="this.Honor.introduction" class="introduction">{{ Honor.introduction }}</div>
         <div class="details">
-          <div v-show="this.Honor.award_name" class="name">奖励名称：{{ Honor.award_name }}</div>
+          <div v-show="this.Honor.award_name" class="name">获奖名称：{{ Honor.award_name }}</div>
           <div v-show="this.Honor.uploaderId" class="uploader">上传者：{{ Honor.uploaderId }}</div>
           <div v-show="this.Honor.createTime" class="createTime">上传时间：{{ Honor.createTime }}</div>
-          <div v-show="this.Honor.time" class="time">奖励时间：{{ Honor.time }}</div>
-          <div v-show="this.Honor.type" class="type">奖励类型：{{ Honor.type }}</div>
-          <div v-show="this.Honor.level" class="level">奖励级别：{{ Honor.level }}</div>
+          <div v-show="this.Honor.time" class="time">获奖时间：{{ Honor.time }}</div>
+          <div v-show="this.Honor.type" class="type">获奖类型：{{ Honor.type }}</div>
+          <div v-show="this.Honor.level" class="level">获奖级别：{{ Honor.level }}</div>
+          <div v-show="this.Honor.name" class="level">项目名称：{{ Honor.name }}</div>
           <div v-show="this.Honor.approval_num" class="approval_num">批文号：{{ Honor.approval_num }}</div>
           <div v-show="this.Honor.member.length" class="member">成员：{{ Honor.member.join(",") }}</div>
           <div class="add">
             <p v-for="item in Honor.other">{{ item.key }} : {{ item.value }}</p>
           </div>
 
-
+          <FilePath>
+          </FilePath>
+          <div class="button">
+            <button class="button button1">删除</button>
+            <button class="button button2">编辑</button>
+            <button class="button button3" @click="exportExcel">导出Excel</button>
+          </div>
         </div>
-
-      </div>
-      <FilePath></FilePath>
-      <div class="button">
-        <button class="button button1">删除</button>
-        <button class="button button2">编辑</button>
-        <button class="button button3" @click="exportExcel">导出Excel</button>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 </template>
 
@@ -39,6 +40,7 @@ import TeacherData from "../../components/TeacherData";
 import FilePath from "../../components/FilePath";
 
 import {excelExport} from '@/api/file.js'
+import LoginFooter from "../../components/LoginFooter.vue";
 
 export default {
   name: "Honor",
@@ -85,10 +87,9 @@ export default {
       this.ExcelTitle.push(
         "编号",
         "时间",
-        "奖励名称",
-        "奖励类型",
-        "等级",
-        "级别",
+        "获奖名称",
+        "获奖类型",
+        "获奖级别",
         "项目名称",
         "批文号",
         "成员");
@@ -101,6 +102,7 @@ export default {
         this.Honor.grade,
         this.Honor.name,
         this.Honor.approval_num,
+
       );
 
       let item = 0;
@@ -154,8 +156,9 @@ export default {
     TeacherNav,
     TeacherHeader,
     TeacherData,
-    FilePath
-  },
+    FilePath,
+    LoginFooter
+},
 }
 
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 import store from "@/store";
-import {getToken} from "@/request/token";
-import {Message} from "element-ui";
+import { getToken } from "@/request/token";
+import { Message } from "element-ui";
 
 const service = axios.create({
   // baseURL: "/static/json",
@@ -42,8 +42,8 @@ service.interceptors.response.use(
     const res = response.data;
     if (res.type != null && res.type != "application/vnd.ms-excel") {
       if (res.code !== 0) {
-        console.log(response);
-        console.log(res);
+        // console.log(response);
+        // console.log(res);
         console.log("code不为0,默认报错!!!!加一下code");
         // //90001 Session超时
         // if (res.code === 90001) {

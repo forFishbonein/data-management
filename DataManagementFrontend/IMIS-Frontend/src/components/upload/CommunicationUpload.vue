@@ -231,6 +231,7 @@
         </table>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 
 </template>
@@ -238,10 +239,11 @@
 <script>
 import TeacherNav from "../TeacherNav";
 import {insertTeacherFile} from '@/api/file.js'
+import LoginFooter from "../LoginFooter";
 
 export default {
   name: 'CommunicationUpload',
-  components: {TeacherNav},
+  components: {LoginFooter, TeacherNav},
   data() {
     return {
       Communication: {
@@ -250,7 +252,6 @@ export default {
         title: "",
         num: "",
         introduction: "",
-        uploaderId: "",
 
         startTime: "",
         lastTime: "",

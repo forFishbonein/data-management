@@ -104,6 +104,17 @@
             </td>
           </tr>
           <tr>
+            <td class="label">项目名称</td>
+            <td>
+              <el-input
+                v-model="Honor.name"
+                class="property"
+                clearable
+                placeholder="请输入项目名称">
+              </el-input>
+            </td>
+          </tr>
+          <tr>
             <td class="label">批文号</td>
             <td>
               <el-input
@@ -199,6 +210,7 @@
 
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 
 </template>
@@ -207,10 +219,11 @@
 import TeacherNav from "../TeacherNav";
 
 import {insertTeacherFile} from '@/api/file.js'
+import LoginFooter from "../LoginFooter";
 
 export default {
   name: 'HonorUpload',
-  components: {TeacherNav},
+  components: {LoginFooter, TeacherNav},
   data() {
     return {
       Honor: {
@@ -219,7 +232,6 @@ export default {
         title: "",
         num: "",
         introduction: "",
-        uploaderId: "",
 
         award_name: "",
         time: "",

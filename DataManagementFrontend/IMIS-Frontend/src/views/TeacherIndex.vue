@@ -141,6 +141,8 @@ export default {
       font-weight: 550;
       margin-right: 0;
     }
+
+
   }
 
 

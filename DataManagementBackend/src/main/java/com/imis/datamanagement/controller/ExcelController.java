@@ -19,7 +19,6 @@ public class ExcelController {
     @Resource
     ExcelService excelService;
 
-
     @PostMapping(value = "/export", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public void sendMimeMail(HttpServletResponse resp, @RequestBody List<List<String>> lists) {
         excelService.export(resp, lists);

@@ -20,7 +20,7 @@ export function passLogin(login) {
 export function getUserInfo(token) {
   return request({
     headers: {Authorization: token},
-    url: "/user",
+    url: "/t/user",
     method: "get"
   });
 }

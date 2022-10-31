@@ -28,21 +28,17 @@
             <p v-for="item in Achievement.other">{{ item.key }} : {{ item.value }}</p>
           </div>
 
+          <FilePath>
+          </FilePath>
+          <div class="button">
+            <button class="button button1">删除</button>
+            <button class="button button2">编辑</button>
+            <button class="button button3" @click="exportExcel">导出Excel</button>
+          </div>
         </div>
-
-
-      </div>
-      <FilePath
-      
-      >
-
-      </FilePath>
-      <div class="button">
-        <button class="button button1">删除</button>
-        <button class="button button2">编辑</button>
-        <button class="button button3" @click="exportExcel">导出Excel</button>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 </template>
 
@@ -53,10 +49,12 @@ import TeacherData from "../../components/TeacherData";
 import FilePath from "../../components/FilePath";
 
 import {excelExport} from '@/api/file.js'
+import LoginFooter from "../../components/LoginFooter";
 
 export default {
   name: "Achievement",
   components: {
+    LoginFooter,
     TeacherNav,
     TeacherHeader,
     TeacherData,
