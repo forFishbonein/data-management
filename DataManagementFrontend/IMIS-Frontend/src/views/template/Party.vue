@@ -163,6 +163,9 @@ export default {
       console.log(this.Party)
       this.$router.push({
         path: "/upload/" + this.Party.template_TYPE,
+        query: {
+          obj: this.Party,
+        }
       })
     }
   },

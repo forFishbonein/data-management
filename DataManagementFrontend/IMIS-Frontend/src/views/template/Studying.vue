@@ -169,6 +169,9 @@ export default {
       console.log(this.Studying)
       this.$router.push({
         path: "/upload/" + this.Studying.template_TYPE,
+        query: {
+          obj: this.Studying,
+        }
       })
     }
   },

@@ -176,6 +176,9 @@ export default {
       console.log(this.Communication)
       this.$router.push({
         path: "/upload/" + this.Communication.template_TYPE,
+        query: {
+          obj: this.Communication,
+        }
       })
     }
   },

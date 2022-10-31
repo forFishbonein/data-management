@@ -169,6 +169,9 @@ export default {
       console.log(this.Honor)
       this.$router.push({
         path: "/upload/" + this.Honor.template_TYPE,
+        query: {
+          obj: this.Honor,
+        }
       })
     }
   },

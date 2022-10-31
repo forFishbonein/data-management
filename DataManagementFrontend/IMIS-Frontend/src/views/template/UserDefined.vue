@@ -128,6 +128,9 @@ export default {
       console.log(this.UserDefined)
       this.$router.push({
         path: "/upload/" + this.UserDefined.template_TYPE,
+        query: {
+          obj: this.UserDefined,
+        }
       })
     }
   },

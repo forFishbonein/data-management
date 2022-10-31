@@ -160,6 +160,9 @@ export default {
       console.log(this.Office)
       this.$router.push({
         path: "/upload/" + this.Office.template_TYPE,
+        query: {
+          obj: this.Office,
+        }
       })
     }
   },
