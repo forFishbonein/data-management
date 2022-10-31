@@ -54,7 +54,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId: "",
+        uploaderId: this.$store.state.teacherId,
         award_name: "",
         time: "",
         type: "",

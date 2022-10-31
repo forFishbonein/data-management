@@ -561,8 +561,17 @@ export default {
       });
     },
 
-  },
 
+  },
+  beforeRouteEnter (to, from, next) {
+    // console.log("123123")
+    console.log(to, from) // 可以拿到 from， 知道上一个路由是什么，从而进行判断
+    //在next中写处理函数
+    next(
+      vm => {
+        vm.$store.dispatch('changePageFrom',"")
+      })
+  },
   mounted() {
     this.getAllResource();
 

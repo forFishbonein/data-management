@@ -56,7 +56,7 @@ export default {
         num: "",
         introduction: "",
 
-        uploaderId: "",
+        uploaderId: this.$store.state.teacherId,
         startTime: "",
         lastTime: "",
         type: "",
