@@ -15,7 +15,7 @@ import java.util.Map;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Document(collection = "achievement")
-public class Achievememnt extends AbstractTemplate{
+public class Achievement extends AbstractTemplate{
 
     static final String TEMPLATE_TYPE = "achievement";
 
