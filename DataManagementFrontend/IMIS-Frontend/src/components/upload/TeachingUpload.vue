@@ -220,6 +220,7 @@
         </table>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 
 </template>
@@ -228,10 +229,11 @@
 import TeacherNav from "../TeacherNav";
 
 import {insertTeacherFile} from '@/api/file.js'
+import LoginFooter from "../LoginFooter";
 
 export default {
   name: 'TeachingUpload',
-  components: {TeacherNav},
+  components: {LoginFooter, TeacherNav},
   data() {
     return {
       Teaching: {
@@ -342,11 +344,13 @@ export default {
       insertTeacherFile(this.Teaching).then(resp => {
         console.log(resp.data)
       });
+      this.$router.push({path: "/profile"});
     },
     submitUpload() {
       if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
         insertTeacherFile(this.Teaching).then(resp => {
           console.log(resp.data)
+          this.$router.push({path: "/profile"});
         });
       } else {
         this.$refs.upload.submit();

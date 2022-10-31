@@ -14,7 +14,7 @@
           <div v-show="this.Communication.type" class="type">交流类型：{{ Communication.type }}</div>
           <div v-show="this.Communication.organizer" class="organizer">主办机构：{{ Communication.organizer }}</div>
           <div v-show="this.Communication.address" class="address">地点：{{ Communication.address }}</div>
-          <div v-show="this.Teaching.member.length" class="member">参会人员：{{ Communication.member.join(",") }}</div>
+          <div v-show="this.Communication.member.length" class="member">参会人员：{{ Communication.member.join(",") }}</div>
           <div v-show="this.Communication.whetherSpeak" class="whetherSpeak">是否发言：{{ Communication.whetherSpeak }}</div>
           <div v-show="this.Communication.whetherParticipate" class="whetherParticipate">
             学生是否参与：{{ Communication.whetherParticipate }}
@@ -29,8 +29,9 @@
       </div>
       <FilePath></FilePath>
       <div class="button">
-        <button class="button1">删除</button>
-        <button class="button2">编辑</button>
+        <button class="button button1">删除</button>
+        <button class="button button2">编辑</button>
+        <button class="button button3" @click="exportExcel">导出Excel</button>
       </div>
     </div>
   </div>
@@ -41,6 +42,8 @@ import TeacherNav from "../../components/TeacherNav";
 import TeacherHeader from "../../components/TeacherHeader";
 import TeacherData from "../../components/TeacherData";
 import FilePath from "../../components/FilePath";
+
+import {excelExport} from '@/api/file.js'
 
 export default {
   name: "Communication",
@@ -81,6 +84,82 @@ export default {
       this.Communication = res
     })
   },
+  methods: {
+    exportExcel() {
+      this.ExcelTitle = [];
+      this.ExcelValue = [];
+      this.ExcelTitle.push(
+        "编号",
+        "起始时间",
+        "终止时间",
+        "交流类型",
+        "活动（会议）名称",
+        "主办机构",
+        "地点",
+        "参会人员",
+        "是否发言",
+        "学生是否参与");
+
+      this.ExcelValue.push(
+        this.Communication.num,
+        this.Communication.startTime,
+        this.Communication.lastTime,
+        this.Communication.type,
+        this.Communication.name,
+        this.Communication.organizer,
+        this.Communication.address,
+      );
+
+      let item = 0;
+      let str = "";
+      for (item in this.Communication.member) {
+        str = str + this.Communication.member[item] + ",";
+      }
+      var reg = /,$/gi;
+      str = str.replace(reg, "");
+
+      this.ExcelValue.push(str);
+      this.ExcelValue.push(this.Communication.whetherSpeak);
+      this.ExcelValue.push(this.Communication.whetherParticipate);
+
+      item = 0;
+      for (item in this.Communication.other) {
+        this.ExcelTitle.push(this.Communication.other[item].key);
+        this.ExcelValue.push(this.Communication.other[item].value);
+      }
+
+      console.log(this.ExcelTitle);
+      console.log(this.ExcelValue)
+
+      var lists = [];
+      lists.push(this.ExcelTitle);
+      lists.push(this.ExcelValue);
+
+      console.log(lists)
+
+      excelExport(lists).then(res => {
+        console.log(res)
+        const _res = res;
+        let blob = new Blob([_res], {type: 'application/vnd.ms-excel;charset=utf-8'});
+        let downloadElement = document.createElement("a");
+        let href = window.URL.createObjectURL(blob);
+        downloadElement.href = href;
+        var dates = new Date();
+        var times = dates.getTime();
+        var fileName = this.Communication.title
+        downloadElement.download = times + fileName + '.xls';
+        document.body.appendChild(downloadElement);
+        downloadElement.click();
+        document.body.removeChild(downloadElement);
+        window.URL.revokeObjectURL(href);
+      }).catch(error => {
+        console.log(error)
+      })
+
+    },
+  },
+
+
   components: {
     TeacherNav,
     TeacherHeader,
@@ -133,32 +212,36 @@ export default {
 }
 
 .button {
-  height: 80px;
+  float: right;
+  margin: 8px;
+  padding: 8px 16px;
+  text-align: center;
+  color: #fff;
+  border-radius: 8px;
+}
 
+.button3 {
+  background: #26af00;
+}
+
+.button3:hover {
+  background: #1e8000;
 }
 
 .button2 {
-  margin: 20px;
-  padding: 20px;
-  float: right;
-  padding-right: 30px;
-  width: 100px;
-  height: 70px;
   background: #104A85;
-  text-align: center;
-  color: #fff;
+}
+
+.button2:hover {
+  background: #08386a;
 }
 
 .button1 {
-  margin: 20px;
-  padding: 20px;
-  float: right;
-  padding-right: 30px;
-  width: 100px;
-  height: 70px;
   background: #EB8C2D;
-  text-align: center;
-  color: #fff;
+}
+
+.button1:hover {
+  background: #c6721f;
 }
 
 

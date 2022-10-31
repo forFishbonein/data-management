@@ -176,6 +176,7 @@
         </table>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 
 </template>
@@ -183,10 +184,11 @@
 <script>
 import TeacherNav from "../TeacherNav";
 import {insertTeacherFile} from '@/api/file.js'
+import LoginFooter from "../LoginFooter";
 
 export default {
   name: 'StudentContestUpload',
-  components: {TeacherNav},
+  components: {LoginFooter, TeacherNav},
   data() {
     return {
       StudentContest: {
@@ -195,7 +197,6 @@ export default {
         title: "",
         num: "",
         introduction: "",
-        uploaderId: "",
 
 
         gameName: "",

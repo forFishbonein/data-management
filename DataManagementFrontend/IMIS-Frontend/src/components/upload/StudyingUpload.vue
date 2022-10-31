@@ -220,6 +220,7 @@
         </table>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 
 </template>
@@ -227,10 +228,11 @@
 <script>
 import TeacherNav from "../TeacherNav";
 import {insertTeacherFile} from '@/api/file.js'
+import LoginFooter from "../LoginFooter";
 
 export default {
   name: 'StudyingUpload',
-  components: {TeacherNav},
+  components: {LoginFooter, TeacherNav},
   data() {
     return {
       Studying: {
@@ -239,7 +241,6 @@ export default {
         title: "",
         num: "",
         introduction: "",
-        uploaderId: "",
 
         name: "",
         source: "",

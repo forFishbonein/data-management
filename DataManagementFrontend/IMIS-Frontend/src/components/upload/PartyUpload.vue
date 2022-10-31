@@ -199,6 +199,7 @@
         </table>
       </div>
     </div>
+    <LoginFooter></LoginFooter>
   </div>
 
 </template>
@@ -206,10 +207,11 @@
 <script>
 import TeacherNav from "../TeacherNav";
 import {insertTeacherFile} from '@/api/file.js'
+import LoginFooter from "../LoginFooter";
 
 export default {
   name: 'PartyUpload',
-  components: {TeacherNav},
+  components: {LoginFooter, TeacherNav},
   data() {
     return {
       Party: {
@@ -218,7 +220,6 @@ export default {
         title: "",
         num: "",
         introduction: "",
-        uploaderId: "",
 
         time: "",
         type: "",
