@@ -1,8 +1,8 @@
 import Vuex from "vuex";
 import Vue from "vue";
 import { getToken, removeToken, setToken } from "@/request/token";
-import { getFlag, setFlag , getPageFrom, setPageFrom } from "@/request/flag";
-import { codeLogin, getUserInfo, passLogin } from "@/api/login";
+import { getFlag, setFlag, getPageFrom, setPageFrom } from "@/request/flag";
+import { codeLogin, getUserInfo, passLogin, logout } from "@/api/login";
 import { postRegisterTeacher } from "@/api/register";
 import { getOneFile } from "@/api/file";
 
@@ -60,11 +60,11 @@ export default new Vuex.Store({
     },
     SET_FLAG: (state, shu) => {
       state.flag = shu;
-      setFlag(shu)
+      setFlag(shu);
     },
-    SET_PAGEFROM :(state, page) => {
+    SET_PAGEFROM: (state, page) => {
       state.pageFrom = page;
-      setPageFrom(page)
+      setPageFrom(page);
     }
   },
   actions: {
@@ -110,8 +110,6 @@ export default new Vuex.Store({
         getUserInfo(state.token)
           .then(res => {
             if (res) {
-              // alert("大赛的撒大所大所多")
-              // console.log(res);
               commit("SET_TEACHEREMAIL", res.data.teacherEmail);
               commit("SET_TEACHERNAME", res.data.teacherName);
               commit("SET_TEACHERID", res.data.teacherId);
@@ -151,8 +149,9 @@ export default new Vuex.Store({
     logout({ commit, state }) {
       return new Promise((resolve, reject) => {
         logout(state.token)
-          .then(data => {
-            if (data.success) {
+          .then(res => {
+            console.log(res);
+            if (res) {
               commit("SET_TEACHEREMAIL", "");
               commit("SET_TEACHERNAME", "");
               commit("SET_TEACHERID", "");
@@ -162,17 +161,18 @@ export default new Vuex.Store({
               commit("SET_CREATETIME", "");
               commit("SET_UPDATETIME", "");
               removeToken();
-              resolve();
+              resolve(res);
             }
           })
           .catch(error => {
+            console.log(error);
             reject(error);
           });
       });
     },
     // 前端 登出
     fedLogOut({ commit }) {
-      return new Promise(resolve => {
+      return new Promise(res => {
         commit("SET_TEACHEREMAIL", "");
         commit("SET_TEACHERNAME", "");
         commit("SET_TEACHERID", "");
@@ -237,10 +237,10 @@ export default new Vuex.Store({
           });
       });
     },
-    changeFlag({commit, state},shu){
+    changeFlag({ commit, state }, shu) {
       commit("SET_FLAG", shu);
     },
-    changePageFrom({commit, state},page){
+    changePageFrom({ commit, state }, page) {
       commit("SET_PAGEFROM", page);
     }
   }

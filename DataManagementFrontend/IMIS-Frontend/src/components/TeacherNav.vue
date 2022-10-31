@@ -11,10 +11,10 @@
         <NavSearch></NavSearch>
       </div>
       <div class="profile">
-        <el-dropdown>
+        <el-dropdown @command="logout">
           <router-link to="/profile">个人中心</router-link>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item @click="logout">退出登录</el-dropdown-item>
+            <el-dropdown-item command="a">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
@@ -30,9 +30,21 @@ import NavSearch from '../components/NavSearch.vue'
 
 export default {
   name: "TeacherNav",
+  methods:{
+    logout(){
+      this.$store.dispatch('logout').then(res => {
+        this.$message({message: '登出成功！', type: 'success', showClose: true});
+        this.$router.push({path: '/'})
+      }).catch((error) => {
+        if (error !== 'error') {
+          this.$message({message: error, type: 'error', showClose: true});
+        }
+      })
+    }
+  },
   components: {
     NavSearch
-  }
+  },
 }
 </script>
 
