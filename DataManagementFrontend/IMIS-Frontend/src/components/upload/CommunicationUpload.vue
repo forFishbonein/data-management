@@ -397,8 +397,8 @@ export default {
       console.log(this.$store.state.flag)
       console.log(this.$store.state.pageFrom)
       this.onSuccess = function (response, file, fileList){
-        _this.Teaching.filePath.push(response.data.name)
-        updateTeacherFile(_this.Teaching).then(resp => {
+        _this.Communication.filePath.push(response.data.name)
+        updateTeacherFile(_this.Communication).then(resp => {
           const h = _this.$createElement;
           _this.$notify({
             title: '提示',
@@ -411,7 +411,7 @@ export default {
       this.submitUpload = function () {
         if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
           console.log(_this)
-          updateTeacherFile(_this.Teaching).then(resp => {
+          updateTeacherFile(_this.Communication).then(resp => {
             console.log(resp)
             const h = _this.$createElement;
             _this.$notify({
@@ -438,9 +438,9 @@ export default {
       vm => {
         if(vm.$store.state.flag != 1){
 
-          if(from.fullPath == "/manage/filemanage" || from.path == "/teaching"){
-            vm.Teaching = vm.obj;
-            vm.Teaching.TEMPLATE_TYPE = vm.obj.template_TYPE;
+          if(from.fullPath == "/manage/filemanage" || from.path == "/Communication"){
+            vm.Communication = vm.obj;
+            vm.Communication.TEMPLATE_TYPE = vm.obj.template_TYPE;
             console.log(vm)
             console.log(from.fullPath)
             vm.changeMethod(from.fullPath)
