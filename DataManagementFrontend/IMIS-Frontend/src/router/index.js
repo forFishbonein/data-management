@@ -281,47 +281,47 @@ const router = new VueRouter({
   routes
 });
 
-router.beforeEach((to, from, next) => {
-  if (getToken()) {
-    if (to.path === "/login") {
-      //如果是跳转到登录页面，拦截拦截
-      next({ path: "/" });
-    } else {
-      //如果不是跳转到登录页面！那么获取用户信息！
-      if (store.state.teacherEmail.length === 0) {
-        //如果还没有用户信息
-        store
-          .dispatch("getUserInfo") //获取用户信息
-          .then(data => {
-            // console.log(store.state.teacherEmail)
-            // alert("!11 21211")
-            //获取用户信息
-            next();
-          })
-          .catch(() => {
-            Message({
-              type: "warning",
-              showClose: true,
-              message: "登录已过期"
-            });
-            next({ path: "/" });
-          });
-      } else {
-        next();
-      }
-    }
-  } else {
-    if (to.matched.some(r => r.meta.requireLogin)) {
-      Message({
-        type: "warning",
-        showClose: true,
-        message: "未登录"
-      });
-      router.push(-1);
-    } else {
-      next();
-    }
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (getToken()) {
+//     if (to.path === "/login") {
+//       //如果是跳转到登录页面，拦截拦截
+//       next({ path: "/" });
+//     } else {
+//       //如果不是跳转到登录页面！那么获取用户信息！
+//       if (store.state.teacherEmail.length === 0) {
+//         //如果还没有用户信息
+//         store
+//           .dispatch("getUserInfo") //获取用户信息
+//           .then(data => {
+//             // console.log(store.state.teacherEmail)
+//             // alert("!11 21211")
+//             //获取用户信息
+//             next();
+//           })
+//           .catch(() => {
+//             Message({
+//               type: "warning",
+//               showClose: true,
+//               message: "登录已过期"
+//             });
+//             next({ path: "/" });
+//           });
+//       } else {
+//         next();
+//       }
+//     }
+//   } else {
+//     if (to.matched.some(r => r.meta.requireLogin)) {
+//       Message({
+//         type: "warning",
+//         showClose: true,
+//         message: "未登录"
+//       });
+//       router.push(-1);
+//     } else {
+//       next();
+//     }
+//   }
+// });
 
 export default router;

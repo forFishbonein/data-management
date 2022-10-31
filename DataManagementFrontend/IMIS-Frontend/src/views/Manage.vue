@@ -74,7 +74,6 @@
 export default {
   name: 'Manage',
 
-
   methods: {
     handleOpen(key, keyPath) {
     },
