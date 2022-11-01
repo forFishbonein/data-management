@@ -373,6 +373,9 @@ export default {
     onSuccess:function (response, file, fileList) {
       // alert("trtrt")
       this.Achievement.filePath.push(response.data.name)
+      if (this.Achievement.filePath.length < fileList.length) {
+        return
+      }
       console.log(this.Achievement)
       insertTeacherFile(this.Achievement).then(resp => {
         const h = this.$createElement;
@@ -414,6 +417,9 @@ export default {
       console.log(this.$store.state.pageFrom)
       this.onSuccess = function (response, file, fileList){
         _this.Achievement.filePath.push(response.data.name)
+        if (_this.Achievement.filePath.length < fileList.length) {
+          return
+        }
         updateTeacherFile(_this.Achievement).then(resp => {
           const h = _this.$createElement;
           _this.$notify({
