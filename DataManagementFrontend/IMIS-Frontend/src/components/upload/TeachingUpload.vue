@@ -212,8 +212,9 @@
 
         <table>
           <tr>
+            <td width="75px"></td>
             <td class="label">
-              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="warning" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
@@ -268,7 +269,8 @@ export default {
       // key: "",
       // value: "",
       number: [0],
-      pageFrom: ""
+      pageFrom: "",
+
     };
 
   },
@@ -344,7 +346,9 @@ export default {
     },
     onSuccess:function (response, file, fileList) {
       this.Teaching.filePath.push(response.data.name)
-      // console.log(this.Teaching)
+      if (this.Teaching.filePath.length < fileList.length) {
+        return
+      }
       insertTeacherFile(this.Teaching).then(resp => {
         const h = this.$createElement;
         this.$notify({
@@ -356,13 +360,14 @@ export default {
       this.$router.push({path: "/profile"});
     },
     submitUpload:function () {
+
       if (document.getElementsByClassName('el-upload-list__item')[0] == null) {
         // alert(this.Teaching.uploaderId)
         insertTeacherFile(this.Teaching).then(resp => {
           const h = this.$createElement;
           this.$notify({
             title: '提示',
-            message: h('i', { style: 'color: green'}, resp.msg)
+            message: h('i', { style: 'color: green'}, "上传成功")
           });
           console.log(resp.data)
           this.$router.push({path: "/profile"});
@@ -385,6 +390,9 @@ export default {
       console.log(this.$store.state.pageFrom)
       this.onSuccess = function (response, file, fileList){
         _this.Teaching.filePath.push(response.data.name)
+        if (_this.Teaching.filePath.length < fileList.length) {
+          return
+        }
         updateTeacherFile(_this.Teaching).then(resp => {
           const h = _this.$createElement;
           _this.$notify({

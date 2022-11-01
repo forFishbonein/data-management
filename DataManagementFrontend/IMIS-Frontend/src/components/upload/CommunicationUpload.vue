@@ -359,6 +359,9 @@ export default {
     onSuccess(response, file, fileList) {
       this.Communication.filePath.push(response.data.name)
       console.log(this.Communication)
+      if (this.Communication.filePath.length < fileList.length) {
+        return
+      }
       insertTeacherFile(this.Communication).then(resp => {
         const h = this.$createElement;
         this.$notify({
@@ -398,6 +401,9 @@ export default {
       console.log(this.$store.state.pageFrom)
       this.onSuccess = function (response, file, fileList){
         _this.Communication.filePath.push(response.data.name)
+        if (_this.Communication.filePath.length < fileList.length) {
+          return
+        }
         updateTeacherFile(_this.Communication).then(resp => {
           const h = _this.$createElement;
           _this.$notify({

@@ -20,7 +20,7 @@
           <div class="add">
             <p v-for="item in Teaching.other">{{ item.key }} : {{ item.value }}</p>
           </div>
-          <el-link v-for="val in Teaching.filePath" :key="val" @click="download(val)">{{val.split('.').slice(-2)[0]+'.'+val.split('.').slice(-2)[1]}}</el-link>
+          <el-link style="display:block;" v-for="val in Teaching.filePath" :key="val" @click="download(val)">{{val.split('.').slice(-2)[0]+'.'+val.split('.').slice(-2)[1]}}</el-link>
 
           <div class="button">
             <button class="button button1" @click="deleteById(Teaching.id,Teaching.template_TYPE)">删除</button>

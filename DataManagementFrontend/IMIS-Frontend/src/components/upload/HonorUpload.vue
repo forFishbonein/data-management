@@ -338,6 +338,9 @@ export default {
     onSuccess:function (response, file, fileList) {
       this.Honor.filePath.push(response.data.name)
       console.log(this.Honor)
+      if (this.Honor.filePath.length < fileList.length) {
+        return
+      }
       insertTeacherFile(this.Honor).then(resp => {
         const h = this.$createElement;
         this.$notify({
@@ -377,6 +380,9 @@ export default {
       console.log(this.$store.state.pageFrom)
       this.onSuccess = function (response, file, fileList){
         _this.Honor.filePath.push(response.data.name)
+        if (_this.Honor.filePath.length < fileList.length) {
+          return
+        }
         updateTeacherFile(_this.Honor).then(resp => {
           const h = _this.$createElement;
           _this.$notify({

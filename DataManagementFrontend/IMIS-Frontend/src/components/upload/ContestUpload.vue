@@ -314,6 +314,9 @@ export default {
     onSuccess:function (response, file, fileList) {
       this.StudentContest.filePath.push(response.data.name)
       console.log(this.StudentContest)
+      if (this.StudentContest.filePath.length < fileList.length) {
+        return
+      }
       insertTeacherFile(this.StudentContest).then(resp => {
         const h = this.$createElement;
         this.$notify({
@@ -353,6 +356,9 @@ export default {
       console.log(this.$store.state.pageFrom)
       this.onSuccess = function (response, file, fileList){
         _this.StudentContest.filePath.push(response.data.name)
+        if (_this.StudentContest.filePath.length < fileList.length) {
+          return
+        }
         updateTeacherFile(_this.StudentContest).then(resp => {
           const h = _this.$createElement;
           _this.$notify({

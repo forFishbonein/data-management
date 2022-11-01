@@ -107,14 +107,14 @@ export default {
 
     },
     codeLogin(login) {
-
       this.$store.dispatch('codeLogin', login).then(res => {
+
         console.log(res.code != 0)
         if (res.code != 0) {
           const h = this.$createElement;
           this.$notify({
             title: '错误！',
-            message: h('i', { style: 'color: red'}, res.msg)
+            message: h('i', { style: 'color: red'}, res)
           });
         } else {
           const h = this.$createElement;
