@@ -70,7 +70,7 @@ export default new Vuex.Store({
   actions: {
     codeLogin({ commit }, user) {
       return new Promise((resolve, reject) => {
-        codeLogin(user.email, user.code)
+        codeLogin(user)
           .then(data => {
             if (data.success) {
               commit("SET_TOKEN", data.data);

@@ -1,6 +1,8 @@
 import request from "@/request";
 
 export function codeLogin(data) {
+  console.log(data)
+  console.log("----")
   return request({
     data: data,
     method: "post",
