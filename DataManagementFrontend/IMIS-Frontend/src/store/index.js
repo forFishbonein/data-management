@@ -68,17 +68,16 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    codeLogin({ commit }, user) {
+    codeLogin({ commit }, login) {
       return new Promise((resolve, reject) => {
-        codeLogin(user)
-          .then(data => {
-            if (data.success) {
-              commit("SET_TOKEN", data.data);
-              setToken(data.data);
-              resolve();
-            } else {
-              reject(data.msg);
-            }
+        codeLogin(login)
+          .then(res => {
+            console.log(res);
+            // if (res.success) {
+            console.log(res.data);
+            commit("SET_TOKEN", res.data);
+            setToken(res.data);
+            resolve(res);
           })
           .catch(error => {
             reject(error);
