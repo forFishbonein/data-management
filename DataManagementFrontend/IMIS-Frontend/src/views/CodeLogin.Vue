@@ -160,7 +160,7 @@ export default {
 .main {
   position: relative;
   height: 100vh;
-  background: url(../../static/img/register2.jpg) no-repeat center;
+  background: url(../../static/img/login.jpg) no-repeat center;
   background-size: 100%;
 }
 
@@ -169,7 +169,7 @@ export default {
   top: 120px;
   left: 50%;
   margin: 0 auto;
-  margin-left: -180px;
+  margin-left: -203px;
   width: 400px;
   height: 480px;
   background-color: #fdfdfd;
@@ -218,7 +218,7 @@ export default {
 }
 
 .passLogin a:hover:before {
-  background-color: #2464a7;
+  background-color: #113355;
   transform: scaleX(1);
 }
 

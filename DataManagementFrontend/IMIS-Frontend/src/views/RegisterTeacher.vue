@@ -251,7 +251,7 @@ export default {
 
 .main {
   height: 100vh;
-  background: url("../../static/img/register1.jpg") no-repeat;
+  background: url("../../static/img/register.jpg") no-repeat;
   background-size: 100%;
 }
 

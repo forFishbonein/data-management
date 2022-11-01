@@ -81,7 +81,7 @@ nav .searchInput {
   height: 36px;
   border-left: #ccc 1.5px solid;
   border-radius: 8px 0px 0px 8px;
-  font-size: 16px;
+  font-size: 14px;
   padding-left: 10px;
 }
 
