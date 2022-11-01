@@ -19,9 +19,10 @@
             <p v-for="item in Honor.other">{{ item.key }} : {{ item.value }}</p>
           </div>
 
-          <FilePath>
-          </FilePath>
+          <el-link v-for="val in Honor.filePath" :key="val" @click="download(val)">{{val.split('.').slice(-2)[0]+'.'+val.split('.').slice(-2)[1]}}</el-link>
+
           <div class="button">
+
             <button class="button button1" @click="deleteById(Honor.id,Honor.template_TYPE)">删除</button>
             <button class="button button2" @click="updateById">编辑</button>
             <button class="button button3" @click="exportExcel">导出Excel</button>
@@ -86,6 +87,10 @@ export default {
     })
   },
   methods: {
+    download(url){
+      // console.log(url.split('.').slice(-2)[0])
+      window.open(url)
+    },
     deleteById(id,type) {
       console.log(id)
       console.log(type)
