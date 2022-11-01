@@ -196,6 +196,7 @@ export default {
 .container {
   /* height: 100vh; */
   background-color: #eaf2fb;
+
 }
 
 .context {
@@ -203,6 +204,7 @@ export default {
   margin: 20px auto;
   padding: 20px;
   background-color: white;
+  background-image: url("../../../static/img/temple.svg");
   border-radius: 16px;
 }
 
@@ -218,16 +220,15 @@ export default {
   margin: 20px;
   padding: 20px;
   padding-left: 30px;
-  background-color: #FDFDFD;
+  background-color:rgba(253, 253, 253, 0.4);
   color: #113355;
-  /* border-radius: 16px; */
 }
 
 .details {
   margin: 20px;
   padding: 20px;
   padding-left: 30px;
-  background-color: #FDFDFD;
+  background-color:rgba(253, 253, 253, 0.4);
   color: #113355;
   line-height: 35px;
 }
