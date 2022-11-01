@@ -1,7 +1,7 @@
 import request from "@/request";
 
 export function insertTeacherFile(data) {
-  alert(data.uploaderId)
+  // alert(data.uploaderId)
   return request({
     data,
     method: "put",
