@@ -79,7 +79,7 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
         if (redisService.exists(CodeKey.code, email)) {
             redisService.delete(CodeKey.code, email);
         }
-        String subject = "邮件注册验证码";
+        String subject = "邮件验证码";
         String code = ValidateCodeUtils.generateValidateCode(6).toString();
         log.warn("验证码已生成：" + code);
         emailService.sendMimeMail(email, subject, code);

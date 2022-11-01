@@ -212,8 +212,9 @@
 
         <table>
           <tr>
+            <td width="75px"></td>
             <td class="label">
-              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
+              <el-button size="small" type="warning" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
