@@ -3,7 +3,7 @@
     <TeacherNav></TeacherNav>
     <div class="context">
       <div class="Honor">
-        <div class="title">资源名称：{{ Honor.title }}</div>
+        <div class="title">{{ Honor.title }}</div>
         <div v-show="this.Honor.introduction" class="introduction">{{ Honor.introduction }}</div>
         <div class="details">
           <div v-show="this.Honor.award_name" class="name">获奖名称：{{ Honor.award_name }}</div>
@@ -204,6 +204,7 @@ beforeRouteEnter (to, from, next) {
 .container {
   /* height: 100vh; */
   background-color: #eaf2fb;
+  padding-bottom: 10px;
 }
 
 .context {
@@ -211,6 +212,7 @@ beforeRouteEnter (to, from, next) {
   margin: 20px auto;
   padding: 20px;
   background-color: white;
+  background-image: url("../../../static/img/temple.svg");
   border-radius: 16px;
 }
 
@@ -218,7 +220,7 @@ beforeRouteEnter (to, from, next) {
   padding: 10px;
   color: #113355;
   font-size: 28px;
-  padding-left: 30px;
+  padding-left: 50px;
 
 }
 
@@ -226,23 +228,25 @@ beforeRouteEnter (to, from, next) {
   margin: 20px;
   padding: 20px;
   padding-left: 30px;
-  background-color: #FDFDFD;
+  background-color:rgba(253, 253, 253, 0.4);
   color: #113355;
-  /* border-radius: 16px; */
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .details {
-  margin: 20px;
-  padding: 20px;
+  margin: 5px 20px 20px 20px;
+  padding: 5px 20px 20px 20px;
   padding-left: 30px;
-  background-color: #FDFDFD;
+  background-color:rgba(253, 253, 253, 0.4);
   color: #113355;
   line-height: 35px;
+  font-size:16px;
 }
 
 .button {
   float: right;
-  margin: 8px;
+  margin-left: 15px;
   padding: 8px 16px;
   text-align: center;
   color: #fff;

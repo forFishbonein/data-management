@@ -98,9 +98,15 @@ export default {
 .introduction {
   display: flex;
   padding: 15px;
-  width: 1100px;
+  width: 1000px;
+  min-height: 50px;
   font-size: 16px;
   color: #666;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* word-wrap: break-word;
+  word-break: break-all; */
 }
 
 .time {

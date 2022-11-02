@@ -70,6 +70,7 @@ export default {
   display: flex;
   flex-direction: column;
   height: 250px;
+  margin-top: 10px;
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
 }
