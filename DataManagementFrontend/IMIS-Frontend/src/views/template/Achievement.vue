@@ -205,7 +205,13 @@ export default {
       })
     }
   },
-
+  beforeRouteEnter (to, from, next) {
+    console.log(to, from)
+    next(
+      vm => {
+        vm.$store.dispatch('changePageFrom',"")
+      })
+  },
 }
 
 

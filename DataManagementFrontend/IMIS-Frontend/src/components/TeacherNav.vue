@@ -5,7 +5,7 @@
         <img alt="logo" src="../../static/img/logo.png">
       </div>
       <div class="resource">
-        <router-link to="/resource">资源广场</router-link>
+        <router-link to="/manage/filemanage">资源广场</router-link>
       </div>
       <div class="search">
         <NavSearch></NavSearch>

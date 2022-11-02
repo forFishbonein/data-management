@@ -50,7 +50,14 @@ export default {
       )
     },
     passLogin(login) {
-
+      if(login.email === "" || login.password === ""){
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('none', { style: 'color: red'}, "请将信息填写完整")
+        });
+        return;
+      }
       this.$store.dispatch('passLogin', login).then(res => {
         console.log(res.code != 0)
         if (res.code != 0) {

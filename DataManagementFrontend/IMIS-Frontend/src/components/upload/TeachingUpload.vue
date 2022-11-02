@@ -229,8 +229,7 @@
 <script>
 import TeacherNav from "../TeacherNav";
 
-import {insertTeacherFile} from '@/api/file.js'
-import {updateTeacherFile} from '@/api/file.js'
+import {insertTeacherFile, updateTeacherFile} from '@/api/file.js'
 import LoginFooter from "../LoginFooter";
 
 export default {
