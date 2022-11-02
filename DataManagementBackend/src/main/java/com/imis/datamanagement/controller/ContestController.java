@@ -5,6 +5,7 @@ import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.domain.Contest;
 import com.imis.datamanagement.service.ContestService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -14,8 +15,11 @@ import java.util.List;
 @RequestMapping("/contest")
 @Slf4j
 public class ContestController {
-    @Resource
-    ContestService contestService;
+    final ContestService contestService;
+
+    public ContestController(ContestService contestService) {
+        this.contestService = contestService;
+    }
 
     //根据id查询
     @GetMapping("/{contestId}")
