@@ -82,11 +82,17 @@ export default {
       }
     },
     sendEmail(data) {
-
+      if(data.email === ""){
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('none', { style: 'color: red'}, "请输入邮箱")
+        });
+        return;
+      }
       this.a = document.getElementsByClassName('login-input-box-send');
       this.a[0].disabled = true;
       this.a[0].style.backgroundColor = "#113355";
-
       postCodeTeacher(data).then(
         response => {
           if (response.code == 0) {
@@ -107,6 +113,14 @@ export default {
 
     },
     codeLogin(login) {
+      if(login.email === "" || login.code === ""){
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('none', { style: 'color: red'}, "请将信息填写完整")
+        });
+        return;
+      }
       this.$store.dispatch('codeLogin', login).then(res => {
 
         console.log(res.code != 0)
@@ -160,7 +174,7 @@ export default {
 .main {
   position: relative;
   height: 100vh;
-  background: url(../../static/img/register2.jpg) no-repeat center;
+  background: url(../../static/img/login.jpg) no-repeat center;
   background-size: 100%;
 }
 
@@ -169,7 +183,7 @@ export default {
   top: 120px;
   left: 50%;
   margin: 0 auto;
-  margin-left: -180px;
+  margin-left: -203px;
   width: 400px;
   height: 480px;
   background-color: #fdfdfd;
@@ -218,7 +232,7 @@ export default {
 }
 
 .passLogin a:hover:before {
-  background-color: #2464a7;
+  background-color: #113355;
   transform: scaleX(1);
 }
 

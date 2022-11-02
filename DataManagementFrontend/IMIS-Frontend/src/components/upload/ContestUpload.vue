@@ -179,7 +179,7 @@
 
         <table>
           <tr>
-            <td class="label">
+            <td class="label-submit">
               <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
@@ -194,7 +194,7 @@
 
 <script>
 import TeacherNav from "../TeacherNav";
-import {insertTeacherFile} from '@/api/file.js'
+import {insertTeacherFile, updateTeacherFile} from '@/api/file.js'
 import LoginFooter from "../LoginFooter";
 
 export default {

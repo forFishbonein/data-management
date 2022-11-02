@@ -3,7 +3,7 @@
     <TeacherNav></TeacherNav>
     <div class="context">
       <div class="Studying">
-        <div class="title">资源名称：{{ Studying.title }}</div>
+        <div class="title">{{ Studying.title }}</div>
         <div class="introduction">{{ Studying.introduction }}</div>
         <div class="details">
           <div v-show="this.Studying.name" class="name">项目名称：{{ Studying.name }}</div>
@@ -186,7 +186,14 @@ export default {
     TeacherHeader,
     TeacherData,
     LoginFooter
-}
+},
+beforeRouteEnter (to, from, next) {
+    console.log(to, from)
+    next(
+      vm => {
+        vm.$store.dispatch('changePageFrom',"")
+      })
+  },
 }
 
 
@@ -196,6 +203,7 @@ export default {
 .container {
   /* height: 100vh; */
   background-color: #eaf2fb;
+  padding-bottom: 10px;
 }
 
 .context {
@@ -203,6 +211,7 @@ export default {
   margin: 20px auto;
   padding: 20px;
   background-color: white;
+  background-image: url("../../../static/img/temple.svg");
   border-radius: 16px;
 }
 
@@ -210,7 +219,7 @@ export default {
   padding: 10px;
   color: #113355;
   font-size: 28px;
-  padding-left: 30px;
+  padding-left: 50px;
 
 }
 
@@ -218,23 +227,25 @@ export default {
   margin: 20px;
   padding: 20px;
   padding-left: 30px;
-  background-color: #FDFDFD;
+  background-color:rgba(253, 253, 253, 0.4);
   color: #113355;
-  /* border-radius: 16px; */
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .details {
-  margin: 20px;
-  padding: 20px;
+  margin: 5px 20px 20px 20px;
+  padding: 5px 20px 20px 20px;
   padding-left: 30px;
-  background-color: #FDFDFD;
+  background-color:rgba(253, 253, 253, 0.4);
   color: #113355;
   line-height: 35px;
+  font-size:16px;
 }
 
 .button {
   float: right;
-  margin: 8px;
+  margin-left: 15px;
   padding: 8px 16px;
   text-align: center;
   color: #fff;

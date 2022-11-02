@@ -5,7 +5,7 @@
         <img alt="logo" src="../../static/img/logo.png">
       </div>
       <div class="resource">
-        <router-link to="/resource">资源广场</router-link>
+        <router-link to="/manage/filemanage">资源广场</router-link>
       </div>
       <div class="search">
         <NavSearch></NavSearch>
@@ -19,8 +19,11 @@
         </el-dropdown>
       </div>
       <div class="upload">
-
-        <router-link class="upload" to="/upload/studying"><span style="text-align: center">上传</span></router-link>
+        <router-link class="upload" to="/upload/studying">
+          <span style="text-align: center">
+            上传
+          </span>
+        </router-link>
       </div>
     </nav>
   </div>
@@ -130,12 +133,12 @@ nav .upload {
   width: 80px;
   height: 36px;
   color: #FFFFFF;
-  line-height: 36px;
+  line-height: 34px;
   letter-spacing: 3px;
   border-radius: 8px;
   transition: 0.25s;
   background-color: #3C85D7;
-  margin-top: 3px;
+  margin-top: 2.8px;
 }
 
 nav .upload:hover {
@@ -145,7 +148,6 @@ nav .upload:hover {
 
 nav .upload span {
   width: 100px;
-  text-align: center;
 }
 
 

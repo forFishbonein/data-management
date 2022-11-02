@@ -50,7 +50,14 @@ export default {
       )
     },
     passLogin(login) {
-
+      if(login.email === "" || login.password === ""){
+        const h = this.$createElement;
+        this.$notify({
+          title: '提示',
+          message: h('none', { style: 'color: red'}, "请将信息填写完整")
+        });
+        return;
+      }
       this.$store.dispatch('passLogin', login).then(res => {
         console.log(res.code != 0)
         if (res.code != 0) {
@@ -104,7 +111,7 @@ export default {
 .main {
   position: relative;
   height: 100vh;
-  background: url(../../static/img/register2.jpg) no-repeat center;
+  background: url(../../static/img/login.jpg) no-repeat center;
   background-size: 100%;
 }
 
@@ -113,7 +120,7 @@ export default {
   top: 120px;
   left: 50%;
   margin: 0 auto;
-  margin-left: -180px;
+  margin-left: -203px;
   width: 400px;
   height: 480px;
   background-color: #fdfdfd;
@@ -162,7 +169,7 @@ export default {
 }
 
 .codeLogin a:hover:before {
-  background-color: #2464a7;
+  background-color: #113355;
   transform: scaleX(1);
 }
 

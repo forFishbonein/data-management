@@ -212,8 +212,9 @@
 
         <table>
           <tr>
-            <td class="label">
-              <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
+            <td width="75px"></td>
+            <td class="label-submit">
+              <el-button size="small" type="warning" @click="submitUpload">提交</el-button>
             </td>
 
           </tr>
@@ -228,8 +229,7 @@
 <script>
 import TeacherNav from "../TeacherNav";
 
-import {insertTeacherFile} from '@/api/file.js'
-import {updateTeacherFile} from '@/api/file.js'
+import {insertTeacherFile, updateTeacherFile} from '@/api/file.js'
 import LoginFooter from "../LoginFooter";
 
 export default {
@@ -492,6 +492,14 @@ export default {
       font-size: 18px;
       vertical-align: top;
 
+    }
+
+    .label-submit{
+      padding: 16px;
+      width: 278px;
+      text-align: right;
+      font-size: 18px;
+      vertical-align: top;
     }
 
 
