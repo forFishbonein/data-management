@@ -6,6 +6,7 @@ import com.imis.datamanagement.domain.template.AbstractTemplate;
 import com.imis.datamanagement.service.FileUploadService;
 import com.imis.datamanagement.service.MongoDBService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,8 +17,11 @@ import javax.annotation.Resource;
 @Slf4j
 public class FileUploadController {
 
-    @Resource
-    MongoDBService mongoDBService;
+    final MongoDBService mongoDBService;
+
+    public FileUploadController(MongoDBService mongoDBService) {
+        this.mongoDBService = mongoDBService;
+    }
 
     @PostMapping("/detail")
     @ResponseBody

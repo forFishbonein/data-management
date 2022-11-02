@@ -5,6 +5,7 @@ import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.domain.News;
 import com.imis.datamanagement.service.NewsService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,8 +16,11 @@ import java.util.List;
 @Slf4j
 public class NewsController {
 
-    @Resource
-    NewsService newsService;
+    final NewsService newsService;
+
+    public NewsController(NewsService newsService) {
+        this.newsService = newsService;
+    }
 
     //根据id查询
     @GetMapping("/{newsId}")

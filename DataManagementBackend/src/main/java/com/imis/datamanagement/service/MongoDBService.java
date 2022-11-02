@@ -11,6 +11,7 @@ import com.imis.datamanagement.common.result.CodeMsg;
 import com.imis.datamanagement.domain.template.*;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.redis.utils.MongoUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -29,8 +30,11 @@ import java.util.Locale;
 @Service
 public class MongoDBService {
 
-    @Resource
-    MongoTemplate mongoTemplate;
+    final MongoTemplate mongoTemplate;
+
+    public MongoDBService(MongoTemplate mongoTemplate) {
+        this.mongoTemplate = mongoTemplate;
+    }
 
     public Integer getMongoId(AbstractTemplate abstractTemplate) {
         Integer id = MongoUtil.getMongoId();

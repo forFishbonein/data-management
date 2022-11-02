@@ -13,6 +13,7 @@ import com.imis.datamanagement.common.vo.TeacherRegisterVo;
 import com.imis.datamanagement.service.TeacherInfoService;
 import com.imis.datamanagement.service.TeacherService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -25,11 +26,14 @@ import java.util.List;
 @Slf4j
 public class TeacherController {
 
-    @Resource
-    TeacherService teacherService;
+    final TeacherService teacherService;
 
-    @Resource
-    TeacherInfoService teacherInfoService;
+    final TeacherInfoService teacherInfoService;
+
+    public TeacherController(TeacherService teacherService, TeacherInfoService teacherInfoService) {
+        this.teacherService = teacherService;
+        this.teacherInfoService = teacherInfoService;
+    }
 
     @PostMapping("/login")
     public Result<String> codeLogin(HttpServletResponse response, @RequestBody LoginVo loginVo) {

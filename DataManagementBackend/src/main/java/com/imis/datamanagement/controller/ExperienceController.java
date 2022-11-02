@@ -5,6 +5,7 @@ import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.domain.Experience;
 import com.imis.datamanagement.service.ExperienceService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -16,8 +17,11 @@ import java.util.List;
 public class ExperienceController {
 
 
-    @Resource
-    ExperienceService experienceService;
+    final ExperienceService experienceService;
+
+    public ExperienceController(ExperienceService experienceService) {
+        this.experienceService = experienceService;
+    }
 
     //根据id查询一条信息
     @GetMapping("/{ExperienceId}")

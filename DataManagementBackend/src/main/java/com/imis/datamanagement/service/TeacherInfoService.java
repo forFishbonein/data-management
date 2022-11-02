@@ -14,6 +14,7 @@ import com.imis.datamanagement.domain.Teacher;
 import com.imis.datamanagement.domain.TeacherInfo;
 import com.imis.datamanagement.exception.GlobalException;
 import com.imis.datamanagement.mapper.TeacherInfoMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,11 +22,14 @@ import javax.annotation.Resource;
 @Service
 public class TeacherInfoService extends ServiceImpl<TeacherInfoMapper, TeacherInfo> {
 
-    @Resource
-    TeacherInfoMapper teacherInfoMapper;
+    final TeacherInfoMapper teacherInfoMapper;
 
-    @Resource
-    TeacherService teacherService;
+    final TeacherService teacherService;
+
+    public TeacherInfoService(TeacherInfoMapper teacherInfoMapper, TeacherService teacherService) {
+        this.teacherInfoMapper = teacherInfoMapper;
+        this.teacherService = teacherService;
+    }
 
     public void createInfo(Long id, TeacherRegisterVo registerVo) {
         Teacher teacherInMysql = teacherService.getById(id);

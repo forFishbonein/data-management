@@ -26,6 +26,7 @@ import com.imis.datamanagement.service.TeacherService;
 import com.imis.datamanagement.redis.utils.UUIDUtil;
 import com.imis.datamanagement.redis.utils.ValidateCodeUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -37,16 +38,19 @@ import java.util.List;
 @Slf4j
 public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> implements TeacherService {
 
-    @Resource
-    TeacherMapper teacherMapper;
+    final TeacherMapper teacherMapper;
 
-    @Resource
-    EmailService emailService;
+    final EmailService emailService;
 
-    @Resource
-    RedisService redisService;
+    final RedisService redisService;
 
     public static final String COOKIE_NAME_TOKEN = "token";
+
+    public TeacherServiceImpl(TeacherMapper teacherMapper, EmailService emailService, RedisService redisService) {
+        this.teacherMapper = teacherMapper;
+        this.emailService = emailService;
+        this.redisService = redisService;
+    }
 
     public Teacher getById(long id) {
         Teacher teacher = redisService.get(TeacherKey.getById, "" + id, Teacher.class);

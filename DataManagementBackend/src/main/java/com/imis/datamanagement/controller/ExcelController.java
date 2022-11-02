@@ -2,6 +2,7 @@ package com.imis.datamanagement.controller;
 
 import com.imis.datamanagement.common.result.Result;
 import com.imis.datamanagement.service.ExcelService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,8 +17,11 @@ import java.util.List;
 @RequestMapping("/excel")
 public class ExcelController {
 
-    @Resource
-    ExcelService excelService;
+    final ExcelService excelService;
+
+    public ExcelController(ExcelService excelService) {
+        this.excelService = excelService;
+    }
 
     @PostMapping(value = "/export", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public void sendMimeMail(HttpServletResponse resp, @RequestBody List<List<String>> lists) {
