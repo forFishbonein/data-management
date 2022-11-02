@@ -179,7 +179,7 @@
 
         <table>
           <tr>
-            <td class="label">
+            <td class="label-submit">
               <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 

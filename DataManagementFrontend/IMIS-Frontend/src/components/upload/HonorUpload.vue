@@ -201,7 +201,7 @@
 
         <table>
           <tr>
-            <td class="label">
+            <td class="label-submit">
               <el-button size="small" type="primary" @click="submitUpload">提交</el-button>
             </td>
 
@@ -484,6 +484,13 @@ export default {
       vertical-align: top;
     }
 
+    .label-submit{
+      padding: 16px;
+      width: 278px;
+      text-align: right;
+      font-size: 18px;
+      vertical-align: top;
+    }
 
     .required {
       position: relative;
