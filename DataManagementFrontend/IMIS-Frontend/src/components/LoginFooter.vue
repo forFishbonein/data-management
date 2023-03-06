@@ -4,14 +4,14 @@
       <div class="link">
         <div class="sublink">
           <ul>
-            <li>指导老师：杨单</li>
-            <li>邮箱：boinc@qq.com</li>
-            <li>电话：027-67843646</li>
+            <li>指导老师：杨老师</li>
+            <li>邮箱：b****@qq.com</li>
+            <li>电话：027-67******</li>
           </ul>
         </div>
         <div class="sublink">
           <ul>
-            <li>开发人员：方菲、郭莹莹、何宇航、郝文海、刘璇、漆美霖、宋阳磊、王鑫、王亚东</li>
+            <li>开发人员：方女士、郭女士、何先生、郝先生、刘女士、漆女士、宋先生、王先生、王先生</li>
           </ul>
         </div>
       </div>

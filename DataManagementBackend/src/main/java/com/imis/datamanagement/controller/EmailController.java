@@ -29,4 +29,6 @@ public class EmailController {
         userService.sendEmail(loginVo);
         return Result.success("已发送");
     }
+
+
 }

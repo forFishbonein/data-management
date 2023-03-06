@@ -8,10 +8,10 @@ spring:
     enabled: false
   #druid配置
   datasource:
-    username: root
-    password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://124.220.15.95:3306/imis?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://47.98.138.0:3306/imis?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: imis
+    password: erLkfPYnX7hxT35t
     type: com.alibaba.druid.pool.DruidDataSource
     initialSize: 5
     minIdle: 5
@@ -26,17 +26,10 @@ spring:
     poolPreparedStatements: true
   main:
     banner-mode: off
-  #  mvc:
-  #    static-path-pattern : /static/**
-  #  resources:
-  #    static-locations:
-  #      classpath: /static/
-
 
   data:
     mongodb:
       uri: mongodb://admin:12345678@121.41.107.144:27017/template?authMechanism=DEFAULT&authSource=admin&authMechanism=SCRAM-SHA-1
-
 
   # 邮箱服务
   mail:
