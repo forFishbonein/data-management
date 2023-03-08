@@ -15,7 +15,7 @@
                 <p class="underline">
                   <input
                     v-model="teacher.teacherEmail"
-                    oninput="setCustomValidity('')"
+                    oninput="setCustomValidity('2121312')"
                     oninvalid="setCustomValidity('请填写邮箱')"
                     required
                     type="text"

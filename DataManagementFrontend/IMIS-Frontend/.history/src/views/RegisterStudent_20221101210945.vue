@@ -3,8 +3,7 @@
     <div class="container">
       <div class="context">
         <h1>创建账户</h1>
-        <div class="login">
-          <span>已有账户？</span>
+        <div class="login"><span>已有账户？</span>
           <a href="#"><span>登录</span></a>
         </div>
         <form action="">
@@ -12,96 +11,53 @@
             <tr>
               <td width="20%"><span>邮箱地址</span></td>
               <td width="35%">
-                <p class="underline">
-                  <input
-                    v-model="teacher.teacherEmail"
-                    oninput="setCustomValidity('')"
-                    oninvalid="setCustomValidity('请填写邮箱')"
-                    required
-                    type="text"
-                  />
+                <p class="underline"><input v-model="teacher.teacherEmail" oninput="setCustomValidity('')"
+                                            oninvalid="setCustomValidity('请填写邮箱')"
+                                            required type="text">
                 </p>
               </td>
-              <td width="35%">
-                <p class="prompt">您的电子邮箱地址即为您的用户名</p>
-              </td>
+              <td width="35%"><p class="prompt">您的电子邮箱地址即为您的用户名</p></td>
             </tr>
             <tr>
               <td width="20%"><span>验证码</span></td>
-              <td width="35%">
-                <p class="underline">
-                  <input
-                    v-model="teacher.code"
-                    oninput="setCustomValidity('')"
-                    oninvalid="setCustomValidity('请填写验证码')"
-                    required
-                    type="text"
-                  />
-                </p>
+              <td width="35%"><p class="underline">
+                <input v-model="teacher.code" oninput="setCustomValidity('')" oninvalid="setCustomValidity('请填写验证码')"
+                       required
+                       type="text"></p>
               </td>
               <td width="35%">
                 <p class="prompt">
-                  <button
-                    class="button"
-                    @click="sendEmail({ email: teacher.teacherEmail })"
-                  >
-                    获取验证码
-                  </button>
+                  <button class="button" @click="sendEmail({ email: teacher.teacherEmail })">获取验证码</button>
                 </p>
               </td>
             </tr>
             <tr>
               <td><span>密码</span></td>
-              <td width="35%">
-                <p class="underline">
-                  <input
-                    v-model="teacher.teacherPass"
-                    oninput="setCustomValidity('')"
-                    oninvalid="setCustomValidity('请填写密码')"
-                    required
-                    type="text"
-                  />
-                </p>
-              </td>
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherPass" oninput="setCustomValidity('')"
+                                                          oninvalid="setCustomValidity('请填写密码')"
+                                                          required
+                                                          type="text"></p></td>
               <td><p class="prompt">密码不能少于6位</p></td>
             </tr>
             <tr>
               <td><span>确认密码</span></td>
-              <td width="35%">
-                <p class="underline">
-                  <input
-                    v-model="teacher.teacherRePass"
-                    oninput="setCustomValidity('')"
-                    oninvalid="setCustomValidity('请再次输入密码')"
-                    required
-                    type="text"
-                  />
-                </p>
-              </td>
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherRePass"
+                                                          oninput="setCustomValidity('')"
+                                                          oninvalid="setCustomValidity('请再次输入密码')"
+                                                          required
+                                                          type="text"></p></td>
             </tr>
             <tr>
               <td><span>学号</span></td>
-              <td width="35%">
-                <p class="underline">
-                  <input
-                    v-model="teacher.teacherSid"
-                    oninput="setCustomValidity('')"
-                    oninvalid="setCustomValidity('请填写学号')"
-                    required
-                    type="text"
-                  />
-                </p>
-              </td>
+              <td width="35%"><p class="underline"><input v-model="teacher.teacherSid" oninput="setCustomValidity('')"
+                                                          oninvalid="setCustomValidity('请填写学号')"
+                                                          required
+                                                          type="text"></p></td>
             </tr>
             <tr>
               <td></td>
               <td>
-                <input
-                  class="bottom"
-                  type="submit"
-                  value="创建账户"
-                  @click="regHandle(teacher)"
-                />
+                <input class="bottom" type="submit" value="创建账户" @click="regHandle(teacher)">
               </td>
             </tr>
           </table>
@@ -112,10 +68,10 @@
 </template>
 
 <script>
-import { postCodeStudent } from "../api/register";
+import {postCodeStudent} from "../api/register";
 
 export default {
-  name: "RegisterStudent",
+  name: 'RegisterStudent',
 
   data() {
     return {
@@ -129,23 +85,23 @@ export default {
         code: "",
         studentPass: "",
         studentRePass: "",
-        studentSid: ""
-      }
-    };
+        studentSid: "",
+      },
+    }
   },
   methods: {
+
     sendEmail(data) {
-      postCodeStudent(data).then(response => {
-        console.log(response.data.data);
-      });
+      postCodeStudent(data).then(
+        response => {
+          console.log(response.data.data);
+        }
+      )
     },
     regHandle(student) {
-      if (
-        this.student.studentPass !== "" &&
-        this.student.studentRePass !== ""
-      ) {
+      if (this.student.studentPass !== '' && this.student.studentRePass !== '') {
         if (this.student.studentPass !== this.student.studentRePass) {
-          alert("两次输入的密码不一致！");
+          alert("两次输入的密码不一致！")
         } else {
           // postRegisterTeacher(data).then(
           //   response => {
@@ -153,32 +109,23 @@ export default {
           //   }
           // )
 
-          this.$store
-            .dispatch("studentRegister", student)
-            .then(() => {
-              // alert('恭喜您注册成功')
-              this.$message({
-                message: "注册成功！",
-                type: "success",
-                showClose: true
-              });
-              this.$router.push({ path: "/" });
-            })
-            .catch(error => {
-              if (error !== "error") {
-                // alert('注册失败')
-                this.$message({
-                  message: error,
-                  type: "error",
-                  showClose: true
-                });
-              }
-            });
+          this.$store.dispatch('studentRegister', student).then(() => {
+            // alert('恭喜您注册成功')
+            this.$message({message: '注册成功！', type: 'success', showClose: true});
+            this.$router.push({path: '/'})
+          }).catch((error) => {
+            if (error !== 'error') {
+              // alert('注册失败')
+              this.$message({message: error, type: 'error', showClose: true});
+            }
+          })
+
         }
+
       }
     }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -224,6 +171,7 @@ export default {
   color: #947519;
 }
 
+
 .context table {
   width: 100%;
 }
@@ -247,7 +195,7 @@ export default {
 
 .context table td span::after {
   content: "*";
-  color: #bb501c;
+  color: #BB501C;
   display: inline-block;
   font-size: 20px;
   margin-left: 2px;
@@ -259,7 +207,7 @@ export default {
   border-bottom: 2px solid #eee;
 }
 
-.context table td .underline input[type="text"] {
+.context table td .underline input[type=text] {
   background-color: #fcfbfa;
   width: 100%;
   padding: 8px;
@@ -309,4 +257,5 @@ export default {
   background-color: #312d2a;
   cursor: pointer;
 }
+
 </style>

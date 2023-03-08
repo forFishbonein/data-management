@@ -10,161 +10,159 @@
         </div>
       </div>
       <div class="login-input-box">
-        <input v-model="login.email" class="login-input-box-email"
-               placeholder="请输入邮箱" type="text">
-        <input v-model="login.code" class="login-input-box-code"
-               placeholder="请输入验证码" type="text">
-        <input class="login-input-box-send" value="获取验证码" type="button"
-               @click="sendEmail({ email: login.email })"/>
+        <input
+          v-model="login.email"
+          class="login-input-box-email"
+          placeholder="请输入邮箱"
+          type="text"
+        />
+        <input
+          v-model="login.code"
+          class="login-input-box-code"
+          placeholder="请输入验证码"
+          type="text"
+        />
+        <input
+          class="login-input-box-send"
+          value="获取验证码"
+          type="button"
+          @click="sendEmail({ email: login.email })"
+        />
       </div>
       <div class="login-check">
-        <span><input type="checkbox">&nbsp;记住我</span>
+        <span><input type="checkbox" />&nbsp;记住我</span>
         <router-link to="/register">注册账号</router-link>
         <router-link to="/register">忘记密码？</router-link>
       </div>
       <button class="login-button" @click="codeLogin(login)">登 录</button>
-
     </form>
-
   </div>
 </template>
 
 <script>
 // import {codeLogin} from "../api/login";
 
-
-import {postCodeTeacher} from "../api/register";
+import { postCodeTeacher } from "../api/register";
 
 export default {
-  name: 'CodeLogin',
-
+  name: "CodeLogin",
 
   data() {
     return {
-      a: '',
+      a: "",
       count: 30,
       curCount: 0,
-      InterValObj: '',
+      InterValObj: "",
       login: {
         email: "",
-        code: "",
-      },
-    }
+        code: ""
+      }
+    };
   },
 
   methods: {
     turn() {
-      this.$router.replace(
-        name = 'profile'
-      )
+      this.$router.replace((name = "profile"));
     },
     passLogin() {
-      this.$router.replace(
-        name = 'passlogin'
-      )
+      this.$router.replace((name = "passlogin"));
     },
     toRegister() {
-      this.$router.replace(
-        name = 'registerteacher')
+      this.$router.replace((name = "registerteacher"));
     },
     setRemainTime() {
       if (this.curCount == 0) {
-        console.log('停止')
+        console.log("停止");
         window.clearInterval(this.InterValObj);
         this.a[0].disabled = false;
         this.a[0].style.backgroundColor = "#114879";
 
-
-        this.a[0].setAttribute('value', '重新发送验证码');
+        this.a[0].setAttribute("value", "重新发送验证码");
       } else {
         this.curCount--;
-        this.a[0].setAttribute('value', this.curCount + "秒后可重新发送");
+        this.a[0].setAttribute("value", this.curCount + "秒后可重新发送");
       }
     },
     sendEmail(data) {
-      if(data.email === ""){
+      if (data.email === "") {
         const h = this.$createElement;
         this.$notify({
-          title: '提示',
-          message: h('none', { style: 'color: red'}, "请输入邮箱")
+          title: "提示",
+          message: h("none", { style: "color: red" }, "请输入邮箱")
         });
         return;
       }
-      this.a = document.getElementsByClassName('login-input-box-send');
+      this.a = document.getElementsByClassName("login-input-box-send");
       this.a[0].disabled = true;
       this.a[0].style.backgroundColor = "#113355";
-      postCodeTeacher(data).then(
-        response => {
+      postCodeTeacher(data)
+        .then(response => {
           if (response.code == 0) {
             const h = this.$createElement;
             this.$notify({
-              title: '验证码已发送！',
-              message: h('i', { style: 'color: teal'},)
+              title: "验证码已发送！",
+              message: h("i", { style: "color: teal" })
             });
           }
+        })
+        .catch(error => {
+          console.log(error);
+        });
 
-        }
-      ).catch(error => {
-        console.log(error)
-      })
-
-      this.curCount = this.count
+      this.curCount = this.count;
       this.InterValObj = window.setInterval(this.setRemainTime, 1000);
-
     },
     codeLogin(login) {
-      if(login.email === "" || login.code === ""){
+      if (login.email === "" || login.code === "") {
         const h = this.$createElement;
         this.$notify({
-          title: '提示',
-          message: h('none', { style: 'color: red'}, "请将信息填写完整")
+          title: "提示",
+          message: h("none", { style: "color: red" }, "请将信息填写完整")
         });
         return;
       }
-      this.$store.dispatch('codeLogin', login).then(res => {
-
-        console.log(res.code != 0)
-        if (res.code != 0) {
-          const h = this.$createElement;
-          this.$notify({
-            title: '错误！',
-            message: h('i', { style: 'color: red'}, res)
-          });
-        } else {
-          const h = this.$createElement;
-          this.$notify({
-            title: '登录成功！',
-            message: h('i', { style: 'color: teal'},)
-          });
-          this.$router.push({path: '/profile'})
-        }
-      }).catch((error) => {
-        if (error !== 'error') {
-          const h = this.$createElement;
-          this.$notify({
-            title: '错误！',
-            message: h('i', { style: 'color: red'}, error)
-          });
-        }
-      })
-    },
-
+      this.$store
+        .dispatch("codeLogin", login)
+        .then(res => {
+          console.log(res.code != 0);
+          if (res.code != 0) {
+            const h = this.$createElement;
+            this.$notify({
+              title: "错误！",
+              message: h("i", { style: "color: red" }, res)
+            });
+          } else {
+            const h = this.$createElement;
+            this.$notify({
+              title: "登录成功！",
+              message: h("i", { style: "color: teal" })
+            });
+            this.$router.push({ path: "/profile" });
+          }
+        })
+        .catch(error => {
+          if (error !== "error") {
+            const h = this.$createElement;
+            this.$notify({
+              title: "错误！",
+              message: h("i", { style: "color: red" }, error)
+            });
+          }
+        });
+    }
   },
-  beforeRouteEnter (to, from, next) {
-      next(
-        vm => {
-          vm.$store.dispatch('fedLogOut');
-        }
-      );
-  },
-}
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.$store.dispatch("fedLogOut");
+    });
+  }
+};
 </script>
 
 <style scoped>
 * {
   margin: 0;
   padding: 0;
-
 }
 
 .hide {
@@ -217,7 +215,7 @@ export default {
 
 .codeLogin a:before,
 .passLogin a:before {
-  content: '';
+  content: "";
   height: 3px;
   background-color: #1a3f66;
   width: 100%;
@@ -228,7 +226,7 @@ export default {
 
 .passLogin a:before {
   transform: scaleX(0);
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .passLogin a:hover:before {
@@ -238,11 +236,10 @@ export default {
 
 .login-input-box input {
   margin-top: 30px;
-  margin-left:27px;
+  margin-left: 27px;
   height: 40px;
   border-radius: 6px;
   border: #97a5c3 solid 1px;
-
 }
 
 .login-input-box input:focus,
@@ -260,9 +257,9 @@ export default {
   padding-left: 10px;
 }
 
-.login-input-box-send{
+.login-input-box-send {
   width: 130px;
-  color:#FFFFFF;
+  color: #ffffff;
   padding-left: 3px;
   background-color: #3d3d3d;
 }
@@ -285,12 +282,10 @@ export default {
 
 .login-check span {
   margin-left: 30px;
-
 }
 
 .login-check a:nth-child(2) {
   margin-left: 165px;
-
 }
 
 .login-check a:nth-child(3) {
@@ -310,12 +305,4 @@ export default {
   word-spacing: 20px;
   font-weight: 700;
 }
-
-
 </style>
-
-
-
-
-
-

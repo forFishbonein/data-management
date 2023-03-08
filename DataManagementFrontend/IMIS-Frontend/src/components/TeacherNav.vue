@@ -2,7 +2,7 @@
   <div class="con">
     <nav>
       <div class="logo">
-        <img alt="logo" src="../../static/img/logo.png">
+        <img alt="logo" src="../../static/img/logo.png" />
       </div>
       <div class="resource">
         <router-link to="/manage/filemanage">资源广场</router-link>
@@ -29,30 +29,33 @@
   </div>
 </template>
 <script>
-import NavSearch from '../components/NavSearch.vue'
+import NavSearch from "../components/NavSearch.vue";
 
 export default {
   name: "TeacherNav",
-  methods:{
-    logout(){
-      this.$store.dispatch('logout').then(res => {
-        const h = this.$createElement;
-        this.$notify({
-          title: '提示',
-          message: h('i', { style: 'color: grey'}, "已退出")
+  methods: {
+    logout() {
+      this.$store
+        .dispatch("logout")
+        .then(res => {
+          const h = this.$createElement;
+          this.$notify({
+            title: "提示",
+            message: h("i", { style: "color: grey" }, "已退出")
+          });
+          this.$router.push({ path: "/" });
+        })
+        .catch(error => {
+          if (error !== "error") {
+            this.$message({ message: error, type: "error", showClose: true });
+          }
         });
-        this.$router.push({path: '/'})
-      }).catch((error) => {
-        if (error !== 'error') {
-          this.$message({message: error, type: 'error', showClose: true});
-        }
-      })
     }
   },
   components: {
     NavSearch
-  },
-}
+  }
+};
 </script>
 
 <style scoped>
@@ -63,7 +66,7 @@ export default {
 
   width: 100%;
   height: 45px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
 }
 
@@ -79,7 +82,7 @@ nav {
 
 nav .resource a:before,
 nav .profile a:before {
-  content: '';
+  content: "";
   height: 2px;
   background-color: #7dc5e7;
   width: 100%;
@@ -87,7 +90,7 @@ nav .profile a:before {
   left: 0;
   bottom: 2px;
   transform: scaleX(0);
-  transition: .3s;
+  transition: 0.3s;
 }
 
 nav .resource a:hover:before,
@@ -113,7 +116,7 @@ nav .resource {
 }
 
 nav .profile {
-  color: #3C85D7;
+  color: #3c85d7;
   position: relative;
   text-align: center;
   display: flex;
@@ -122,7 +125,7 @@ nav .profile {
 
 .el-dropdown-link {
   cursor: pointer;
-  color: #409EFF;
+  color: #409eff;
 }
 .el-icon-arrow-down {
   font-size: 12px;
@@ -132,23 +135,21 @@ nav .upload {
   display: flex;
   width: 80px;
   height: 36px;
-  color: #FFFFFF;
+  color: #ffffff;
   line-height: 34px;
   letter-spacing: 3px;
   border-radius: 8px;
   transition: 0.25s;
-  background-color: #3C85D7;
+  background-color: #3c85d7;
   margin-top: 2.8px;
 }
 
 nav .upload:hover {
-  background-color: #1E5594;
+  background-color: #1e5594;
   cursor: pointer;
 }
 
 nav .upload span {
   width: 100px;
 }
-
-
 </style>
